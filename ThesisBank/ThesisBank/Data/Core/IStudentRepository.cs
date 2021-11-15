@@ -1,4 +1,4 @@
-﻿namespace ThesisBank.Data
+﻿namespace Core
 {
     public interface IStudentRepository
     {

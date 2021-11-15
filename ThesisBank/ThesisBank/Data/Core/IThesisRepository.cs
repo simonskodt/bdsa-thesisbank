@@ -1,10 +1,9 @@
-﻿namespace ThesisBank.Data
+﻿namespace Core
 {
-    public interface IThesisRepo
+    public interface IThesisRepository
     {
         ThesisDTO ReadThesis(int id);
-        
         IReadOnlyCollection<ThesisDTO> ReadAll();
-        IReadOnlyCollection<ThesisDTO> ReadRequested(IReadOnlyCollection<ThesisDTO> );
+        IReadOnlyCollection<ThesisDTO> ReadRequested(int teacherID);
     }
 }
