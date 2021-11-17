@@ -7,5 +7,6 @@ namespace Core
         ThesisDTO ReadThesis(int id);
         IReadOnlyCollection<ThesisDTO> ReadAll();
         IReadOnlyCollection<ThesisDTO> ReadRequested(int teacherID);
+
     }
 }
