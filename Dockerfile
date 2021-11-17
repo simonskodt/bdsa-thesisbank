@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 COPY . /source
 WORKDIR /source
-EXPOSE 6112
+#EXPOSE 5077
 
 RUN dotnet restore
 
@@ -14,10 +14,15 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
 
-EXPOSE 6112/tcp
-ENV ASPNETCORE_URLS http://*:6112
+EXPOSE 5077/tcp
+ENV ASPNETCORE_URLS http://*:5077
 
 ENTRYPOINT ["dotnet", "ThesisBank.dll"]
+
+
+
+
+
 
 #FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 #WORKDIR /app
