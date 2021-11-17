@@ -4,12 +4,8 @@ namespace Core
 {
     public interface ITeacherRepository
     {
-        Response Accecpt(int thesisID){
-            throw new NotImplementedException();
-        }
+        Response Accecpt(int thesisID);
 
-        Response Reject(int thesisID){
-            throw new NotImplementedException();
-        }
+        Response Reject(int thesisID);
     }
 }
