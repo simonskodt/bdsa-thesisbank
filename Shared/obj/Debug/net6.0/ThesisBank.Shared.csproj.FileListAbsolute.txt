@@ -1,0 +1,12 @@
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\bin\Debug\net6.0\ThesisBank.Shared.deps.json
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\bin\Debug\net6.0\ThesisBank.Shared.dll
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\bin\Debug\net6.0\ref\ThesisBank.Shared.dll
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\bin\Debug\net6.0\ThesisBank.Shared.pdb
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.csproj.AssemblyReference.cache
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.AssemblyInfoInputs.cache
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.AssemblyInfo.cs
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.csproj.CoreCompileInputs.cache
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.dll
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ref\ThesisBank.Shared.dll
+C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\obj\Debug\net6.0\ThesisBank.Shared.pdb
