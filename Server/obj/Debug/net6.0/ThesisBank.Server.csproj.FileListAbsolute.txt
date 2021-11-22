@@ -148,3 +148,5 @@ C:/ALI/SWU/3.semester/GIT/ThesisBank/Server/obj/Debug/net6.0/ThesisBank.Server.g
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/bin/Debug/net6.0/Entities.pdb
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/bin/Debug/net6.0/Humanizer.dll
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/bin/Debug/net6.0/Core.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/bin/Debug/net6.0/Core.pdb
