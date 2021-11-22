@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows,browser
 build_property.RootNamespace = ThesisBank.Shared
-build_property.ProjectDir = C:\ALI\SWU\3.semester\GIT\ThesisBank\Shared\
+build_property.ProjectDir = /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/

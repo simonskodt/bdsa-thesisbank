@@ -1778,39 +1778,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alyson\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/victorbrorson/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ALI\\SWU\\3.semester\\GIT\\ThesisBank\\Client\\ThesisBank.Client.csproj",
+      "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
       "projectName": "ThesisBank.Client",
-      "projectPath": "C:\\ALI\\SWU\\3.semester\\GIT\\ThesisBank\\Client\\ThesisBank.Client.csproj",
-      "packagesPath": "C:\\Users\\Alyson\\.nuget\\packages\\",
-      "outputPath": "C:\\ALI\\SWU\\3.semester\\GIT\\ThesisBank\\Client\\obj\\",
+      "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
+      "packagesPath": "/Users/victorbrorson/.nuget/packages/",
+      "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Alyson\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\ALI\\SWU\\3.semester\\GIT\\ThesisBank\\Shared\\ThesisBank.Shared.csproj": {
-              "projectPath": "C:\\ALI\\SWU\\3.semester\\GIT\\ThesisBank\\Shared\\ThesisBank.Shared.csproj"
+            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
+              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
             }
           }
         }
@@ -1864,7 +1857,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
