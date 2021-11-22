@@ -9,8 +9,13 @@ public class ThesisRepository : IThesisRepository{
         _context = context;
     }
 
-    public ThesisDTO ReadThesis(int id){
-        throw new NotImplementedException();
+    public ThesisDTO ReadThesis(int ThesisID){
+
+        var Thesis = from t in _context.Theses
+        where t.Id == ThesisID
+        select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email)); //Should use some create method from Teacher?? 
+
+            return Thesis.FirstOrDefault();
     }
 
     public IReadOnlyCollection<ThesisDTO> ReadlAll(){

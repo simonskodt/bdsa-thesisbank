@@ -1921,10 +1921,21 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Core": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.0",
           "Microsoft.EntityframeworkCore.SqlServer": "6.0.0",
           "Microsoft.Extensions.Configuration": "6.0.0",
@@ -6763,6 +6774,11 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
+    },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
@@ -6771,6 +6787,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Core >= 1.0.0",
       "Entities >= 1.0.0",
       "Microsoft.Data.Sqlite >= 6.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 6.0.0",
@@ -6805,6 +6822,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
+            },
             "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
               "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
             }
