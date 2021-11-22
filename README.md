@@ -4,10 +4,8 @@
 
 Starting from the Project bank description which involves teachers and students. Students find a thesis to apply, and teachers confirm or reject the given student. 
 
-<details><summary>Information on how to `run project`</summary>
+<details><summary>Information on how to run project</summary>
 <p>
-
-#### We can hide anything, even code!
 
   **DOCKER START COMMAND** 
   ```
