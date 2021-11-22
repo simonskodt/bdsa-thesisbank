@@ -1,0 +1,73 @@
+<div class="card bg-grey mb-4 mt-3 border-0 radius-5">
+    <div class="row thesis mb-4">
+        <div class="col-sm-12">
+            <h2 class="headline">@title</h2>
+            <h3>Professor @teacher</h3>
+            <h4 class="text-muted h6">@keywords</h4>
+            <div class="excerpt">
+                <p>@excerpt</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .yellow {
+        background: #FFD639;
+    }
+    .btn {
+        padding: 12px 0;
+        border-radius: 10px;
+    }
+    .btn-apply {
+        background: #0095068A;
+        color: white;
+    }
+    .btn-cancel {
+        background: #E45A5A;
+        color: white;
+    }
+    .top-btn {
+        padding: 15px 10px;
+        text-align: center;
+        color: black;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .top-btn:hover {
+        text-decoration: none;
+        color: black;
+    }
+    .bg-grey {
+        background: #F0F0F0;
+        border-radius: 5px;
+    }
+    .excerpt {
+        border-left: 2px solid black;
+        padding: 10px;
+    }
+    .card {
+        padding: 20px 30px;
+    }
+</style>
+
+@code {
+
+    // TODO: Parameters must be replaced with Thesis object over time
+    
+    [Parameter]
+    public string title { get; set; } = "Human cognition and outer impact";
+
+    [Parameter]
+    public string teacher { get; set; } = "Stella Bony";
+
+    [Parameter]
+    public string keywords { get; set; } = "cognition, iq, social pshycology";
+
+    [Parameter]
+    public string excerpt { get; set; } = "Coginition has now become a more important factor when discussing solutions in IT. Seeking to find out how the outer impact influences this area.";
+    
+}

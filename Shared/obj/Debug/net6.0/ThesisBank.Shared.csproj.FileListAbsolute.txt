@@ -22,3 +22,15 @@ C:/ALI/SWU/3.semester/GIT/ThesisBank/Shared/obj/Debug/net6.0/ThesisBank.Shared.p
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.dll
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ref/ThesisBank.Shared.dll
 /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.pdb
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.deps.json
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.dll
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/bin/Debug/net6.0/ref/ThesisBank.Shared.dll
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.pdb
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.csproj.AssemblyReference.cache
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.AssemblyInfoInputs.cache
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.AssemblyInfo.cs
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.csproj.CoreCompileInputs.cache
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.dll
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ref/ThesisBank.Shared.dll
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.pdb
