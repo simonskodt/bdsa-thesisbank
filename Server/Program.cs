@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.ResponseCompression;
+using Entities;
 using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,22 @@ else
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+
+var configuration = LoadConfiguration();
+var connectionString = configuration.GetConnectionString("ThesisBank");
+
+var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
+using var context = new ThesisBankContext(optionsBuilder.Options);
+
+static IConfiguration LoadConfiguration()
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json")
+        .AddUserSecrets<Program>();
+
+    return builder.Build();
 }
 
 app.UseHttpsRedirection();
