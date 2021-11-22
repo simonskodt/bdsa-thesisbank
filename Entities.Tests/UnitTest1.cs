@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Tests;
+namespace Entities.Tests;
 
 public class UnitTest1
 {

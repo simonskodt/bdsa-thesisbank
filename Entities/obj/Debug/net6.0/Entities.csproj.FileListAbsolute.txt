@@ -1,0 +1,14 @@
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/bin/Debug/net6.0/Entities.deps.json
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/bin/Debug/net6.0/Entities.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/bin/Debug/net6.0/ref/Entities.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/bin/Debug/net6.0/Entities.pdb
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.AssemblyInfoInputs.cache
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.AssemblyInfo.cs
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.csproj.CoreCompileInputs.cache
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/ref/Entities.dll
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.pdb
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.csproj.AssemblyReference.cache
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/bin/Debug/net6.0/Entities.runtimeconfig.json
+/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.genruntimeconfig.cache

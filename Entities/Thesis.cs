@@ -1,10 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Entities;
 
 public class Thesis
 {
-    public int ID {get; set;}
+    public int Id {get; set;}
 
     [StringLength(20)]
     public string? name {get; set;}

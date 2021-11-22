@@ -1,6 +1,5 @@
-﻿namespace Core;
+namespace Core;
 
-
-    public class ThesisDTO
-    {
-    }
+public class ThesisDTO
+{
+}

@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{0BFFFD80-DEB2-45D6-93B3-4B5D581F9CC2}|Default">
+  <MonoDevelop.Ide.ItemProperties.ThesisBank PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ThesisBank/Data/Core/IStudentRepository.cs">
+    <Files>
+      <File FileName="ThesisBank/Data/Core/ITeacherRepository.cs" Line="1" Column="1" />
+      <File FileName="ThesisBank/Data/Core/IStudentRepository.cs" Line="7" Column="1" />
+      <File FileName="ThesisBank/Data/Core/IThesisRepository.cs" Line="1" Column="1" />
+      <File FileName="ThesisBank/Data/Core/test.cs" Line="1" Column="1" />
+      <File FileName="ThesisBank/Data/Entities/GlobalUsings.cs" Line="2" Column="1" />
+      <File FileName="ThesisBank/Data/Entities/Thesis.cs" Line="1" Column="1" />
+      <File FileName="ThesisBank/Data/Core/Response.cs" Line="1" Column="1" />
+      <File FileName="ThesisBank/Data/Core/ThesisDTO.cs" Line="4" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ThesisBank" expanded="True">
+            <Node name="ThesisBank" expanded="True">
+              <Node name="Data" expanded="True">
+                <Node name="Core" expanded="True" />
+                <Node name="Entities" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
