@@ -1,11 +1,12 @@
 # ThesisBank
 
-> ThesisBank project in BSDA 3. semester. 
+> ThesisBank project in BSDA 3. semester.
+
+<br />
 
 Starting from the Project bank description which involves teachers and students. Students find a thesis to apply, and teachers confirm or reject the given student. 
 
-<details><summary>Information on how to run project</summary>
-<p>
+## How to run
 
   **DOCKER START COMMAND** 
   ```powershell
@@ -16,6 +17,3 @@ Starting from the Project bank description which involves teachers and students.
   ```powershell
   localhost:5077
   ```
-
-</p>
-</details
