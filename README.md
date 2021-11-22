@@ -8,12 +8,12 @@ Starting from the Project bank description which involves teachers and students.
 <p>
 
   **DOCKER START COMMAND** 
-  ```
+  ```powershell
   docker-compose up --build
   ```
 
   **OPEN IN WEBBROWSER**
-  ``` 
+  ```powershell
   localhost:5077
   ```
 
