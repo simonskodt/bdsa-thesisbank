@@ -202,15 +202,25 @@
       "mscorlib.dll": "sha256-tlYWYAypJO+6gsCjV734iAJn8xcZYhUjM7vgxDLJluE=",
       "netstandard.dll": "sha256-E48Na3ZQWKExltzTwgP0Ao+UqWhiVYeerXfUL9lEc+c=",
       "System.Private.CoreLib.dll": "sha256-J85Z1XnwapHef31sR58JFq+0HrFP5BjOoObPKjdFHCw=",
+<<<<<<< HEAD
+      "ThesisBank.Shared.dll": "sha256-H6Q1uPBaHdHqTG40aFUujdm\/YqQHGkjz+Ll\/EwOFD7E=",
+      "ThesisBank.Client.dll": "sha256-luFq16g+JOLVgDxmq1EcHFOMAlB0Rhny8CmAR4f7y1Y="
+=======
       "ThesisBank.Shared.dll": "sha256-4kOEqyaOafkQyGWgHKACEceUTsXkJ4TgzwMSHfH68Aw=",
       "ThesisBank.Client.dll": "sha256-tdxuOk1nSYagLQ4lpIrPcqV2vf+hJ8Mpfcn6LIqTObE="
+>>>>>>> main
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
+<<<<<<< HEAD
+      "ThesisBank.Shared.pdb": "sha256-D+rTsS9EwZLKHte3A\/WJu2cTBYlfHGxViSsqnPRi2eU=",
+      "ThesisBank.Client.pdb": "sha256-Io7cmdWzV\/ZPJ4McGeCnn0rU0lQ\/lu0umHKD5Ax2P+c="
+=======
       "ThesisBank.Shared.pdb": "sha256-lQg17fek+PqXsIBusAzkg8dbf3rzEjtuxxTY5LEbsSI=",
       "ThesisBank.Client.pdb": "sha256-MU883SiOaOWveb6naPAO+Zn6bxiQP2upJyxhFtyJ+TM="
+>>>>>>> main
     },
     "runtime": {
       "dotnet.6.0.0.p8ojqpuusc.js": "sha256-LOq52qjRa3+zt3w4UL10rS3UdwHxVQxW0JAsMPO9QAM=",
