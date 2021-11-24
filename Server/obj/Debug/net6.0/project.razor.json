@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
+  "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -18476,7 +18476,7 @@
   "RootNamespace": "ThesisBank.Server",
   "Documents": [
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/Pages/Error.cshtml",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Server/Pages/Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     }

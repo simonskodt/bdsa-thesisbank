@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
+  "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
   "Configuration": {
     "ConfigurationName": "Default",
     "LanguageVersion": "6.0",
@@ -16277,73 +16277,73 @@
   "RootNamespace": "ThesisBank.Client",
   "Documents": [
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/App.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/App.razor",
       "TargetPath": "App.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/RedirectToLogin.razor",
-      "TargetPath": "Shared\\RedirectToLogin.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Application.razor",
-      "TargetPath": "Pages\\Application.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/LoginDisplay.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/LoginDisplay.razor",
       "TargetPath": "Shared\\LoginDisplay.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Index.razor",
-      "TargetPath": "Pages\\Index.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/ThesisApplication.razor",
+      "TargetPath": "Shared\\ThesisApplication.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/SurveyPrompt.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/RedirectToLogin.razor",
+      "TargetPath": "Shared\\RedirectToLogin.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Application.razor",
+      "TargetPath": "Pages\\Application.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/SurveyPrompt.razor",
       "TargetPath": "Shared\\SurveyPrompt.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/_Imports.razor",
-      "TargetPath": "_Imports.razor",
-      "FileKind": "componentImport"
-    },
-    {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/NavMenu.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Counter.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Counter.razor",
       "TargetPath": "Pages\\Counter.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/Thesis.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/Thesis.razor",
       "TargetPath": "Shared\\Thesis.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/MainLayout.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/MainLayout.razor",
       "TargetPath": "Shared\\MainLayout.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/FetchData.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/_Imports.razor",
+      "TargetPath": "_Imports.razor",
+      "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Authentication.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Authentication.razor",
       "TargetPath": "Pages\\Authentication.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisApplication.razor",
-      "TargetPath": "Shared\\ThesisApplication.razor",
+      "FilePath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Index.razor",
+      "TargetPath": "Pages\\Index.razor",
       "FileKind": "component"
     }
   ],
