@@ -4,7 +4,7 @@ namespace Core;
 {
     public ThesisDTO ReadThesis(int id);
 
-    public IReadOnlyCollection<ThesisDTO> ReadlAll();
+    public IReadOnlyCollection<MinimalThesisDTO> ReadlAll();
 
     //Maybe this method should be in the StudentRep ? 
     public IReadOnlyCollection<ThesisDTO> ReadRequested(); 

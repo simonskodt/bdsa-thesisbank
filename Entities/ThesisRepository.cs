@@ -12,13 +12,13 @@ public class ThesisRepository : IThesisRepository{
     public ThesisDTO ReadThesis(int ThesisID){
 
         var Thesis = from t in _context.Theses
-        where t.Id == ThesisID
-        select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email)); //Should use some create method from Teacher?? 
+                     where t.Id == ThesisID
+                     select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email));
 
             return Thesis.FirstOrDefault();
     }
 
-    public IReadOnlyCollection<ThesisDTO> ReadlAll(){
+    public IReadOnlyCollection<MinimalThesisDTO> ReadlAll(){
         throw new NotImplementedException();
     }
 

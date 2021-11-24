@@ -6086,154 +6086,35 @@
         }
       },
       {
-        "HashCode": -594705733,
+        "HashCode": -419910304,
         "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Authentication",
+        "Name": "ThesisBank.Client.Shared.RedirectToLogin",
         "AssemblyName": "ThesisBank.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Authentication"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Action",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Action"
-            }
+            "TagName": "RedirectToLogin"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Authentication"
+          "Common.TypeName": "ThesisBank.Client.Shared.RedirectToLogin"
         }
       },
       {
-        "HashCode": 1873689570,
+        "HashCode": 682285886,
         "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Authentication",
+        "Name": "ThesisBank.Client.Shared.RedirectToLogin",
         "AssemblyName": "ThesisBank.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ThesisBank.Client.Pages.Authentication"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Action",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Action"
-            }
+            "TagName": "ThesisBank.Client.Shared.RedirectToLogin"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Authentication",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 585187880,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Counter",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": -1052257492,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Counter",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ThesisBank.Client.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2032166786,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.FetchData",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": -976148630,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.FetchData",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ThesisBank.Client.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2043744580,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Index",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -444347607,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Index",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ThesisBank.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Index",
+          "Common.TypeName": "ThesisBank.Client.Shared.RedirectToLogin",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -6267,39 +6148,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ThesisBank.Client.Shared.LoginDisplay",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -419910304,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Shared.RedirectToLogin",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "RedirectToLogin"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Shared.RedirectToLogin"
-        }
-      },
-      {
-        "HashCode": 682285886,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Shared.RedirectToLogin",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ThesisBank.Client.Shared.RedirectToLogin"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Shared.RedirectToLogin",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -6353,6 +6201,140 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ThesisBank.Client.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 604945946,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.NavMenu",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.NavMenu"
+        }
+      },
+      {
+        "HashCode": 31345653,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.NavMenu",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1339909402,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.Thesis",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Thesis"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.Thesis"
+        }
+      },
+      {
+        "HashCode": 1758219744,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.Thesis",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Shared.Thesis"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.Thesis",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -6453,35 +6435,304 @@
         }
       },
       {
-        "HashCode": 604945946,
+        "HashCode": -226146163,
         "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Shared.NavMenu",
+        "Name": "ThesisBank.Client.Shared.ThesisApplication",
         "AssemblyName": "ThesisBank.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "NavMenu"
+            "TagName": "ThesisApplication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "accepted",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "accepted"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Shared.NavMenu"
+          "Common.TypeName": "ThesisBank.Client.Shared.ThesisApplication"
         }
       },
       {
-        "HashCode": 31345653,
+        "HashCode": 329058710,
         "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Shared.NavMenu",
+        "Name": "ThesisBank.Client.Shared.ThesisApplication",
         "AssemblyName": "ThesisBank.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ThesisBank.Client.Shared.NavMenu"
+            "TagName": "ThesisBank.Client.Shared.ThesisApplication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "accepted",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "accepted"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Shared.NavMenu",
+          "Common.TypeName": "ThesisBank.Client.Shared.ThesisApplication",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1678220516,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Application",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Application"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Application"
+        }
+      },
+      {
+        "HashCode": 1063259780,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Application",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Application"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Application",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2043744580,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Index",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -444347607,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Index",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 585187880,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Counter",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Counter"
+        }
+      },
+      {
+        "HashCode": -1052257492,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Counter",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2032166786,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.FetchData",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.FetchData"
+        }
+      },
+      {
+        "HashCode": -976148630,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.FetchData",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -594705733,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Authentication",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Authentication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Action",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Action"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Authentication"
+        }
+      },
+      {
+        "HashCode": 1873689570,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Authentication",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Authentication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Action",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Action"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Authentication",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

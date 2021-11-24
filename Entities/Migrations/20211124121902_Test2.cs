@@ -4,7 +4,7 @@
 
 namespace Entities.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Test2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,17 +44,17 @@ namespace Entities.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ownerTID = table.Column<int>(type: "int", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: true)
+                    teacherId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Theses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Theses_Teachers_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_Theses_Teachers_teacherId",
+                        column: x => x.teacherId,
                         principalTable: "Teachers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,9 +87,9 @@ namespace Entities.Migrations
                 column: "appliedThesesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Theses_TeacherId",
+                name: "IX_Theses_teacherId",
                 table: "Theses",
-                column: "TeacherId");
+                column: "teacherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
