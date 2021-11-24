@@ -2,8 +2,8 @@
 
 public class ThesisRepositoryTest : IDisposable
 {
-    private readonly ThesisBankContext _context;
-    private readonly ThesisRepository _repo;
+    readonly ThesisBankContext _context;
+    readonly ThesisRepository _repo;
 
     public ThesisRepositoryTest()
     {
@@ -15,8 +15,16 @@ public class ThesisRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher Thore = new Teacher { Id = 1, name = "Thore", email = "Thore@itu.dk"};
-        context.Teachers.Add(Thore);
+        Teacher thore = new Teacher { Id = 1, name = "Thore", email = "thore@itu.dk"};
+        Teacher niels = new Teacher { Id = 2, name = "Niels", email = "nija@itu.dk"};
+        
+        foreach (var teacher in context.Teachers)
+            context.Teachers.Add(teacher);
+
+        foreach (var thesis in context.Theses)
+        {
+            context.Thesis.A
+        }
         context.Theses.Add(new Thesis { Id = 1, name = "WildAlgorithms", teacher = Thore });
 
 
@@ -30,12 +38,19 @@ public class ThesisRepositoryTest : IDisposable
     [Fact]
     public void Read_Thesis_given_ThesisID()
     {
-        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
-        var Thesis = _repo.ReadThesis(1);
+        TeacherDTO teacher = new TeacherDTO(1, "Thore", "thore@itu.dk");
+        var thesis = _repo.ReadThesis(1);
 
-        Assert.Equal(new ThesisDTO(1, "WildAlgorithms", Thore), Thesis);
+        Assert.Equal(new ThesisDTO(1, "WildAlgorithms", teacher), thesis);
+    }
 
+    [Fact]
+    public void Read_Thesis_given_incorrect_ThesisID_Returns_false()
+    {
+        TeacherDTO teacher = new TeacherDTO(2, "Niels", "nija@itu.dk");
+        var thesis = _repo.ReadThesis(3);
 
+        Assert.NotEqual(new ThesisDTO)
     }
 
     public void Dispose()

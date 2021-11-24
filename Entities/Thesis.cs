@@ -11,7 +11,5 @@ public class Thesis
     public string? description {get; set;}
 
     public Teacher teacher {get; set;}
-
-    public ICollection<Student>? appliedStudents {get; set;}
-
+    
 }
