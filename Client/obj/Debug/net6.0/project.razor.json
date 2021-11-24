@@ -41,6 +41,39 @@
         }
       },
       {
+        "HashCode": -1678220516,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Application",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Application"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Application"
+        }
+      },
+      {
+        "HashCode": 1063259780,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Application",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Application"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Application",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -594705733,
         "Kind": "Components.Component",
         "Name": "ThesisBank.Client.Pages.Authentication",
@@ -308,6 +341,224 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ThesisBank.Client.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1339909402,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.Thesis",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Thesis"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.Thesis"
+        }
+      },
+      {
+        "HashCode": 1758219744,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.Thesis",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Shared.Thesis"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.Thesis",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -226146163,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.ThesisApplication",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisApplication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "accepted",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "accepted"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.ThesisApplication"
+        }
+      },
+      {
+        "HashCode": 329058710,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Shared.ThesisApplication",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Shared.ThesisApplication"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "title"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "teacher",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "teacher"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "keywords",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "keywords"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "excerpt",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "excerpt"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "accepted",
+            "TypeName": "System.Boolean",
+            "Metadata": {
+              "Common.PropertyName": "accepted"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Shared.ThesisApplication",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16036,6 +16287,11 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Application.razor",
+      "TargetPath": "Pages\\Application.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/LoginDisplay.razor",
       "TargetPath": "Shared\\LoginDisplay.razor",
       "FileKind": "component"
@@ -16066,6 +16322,11 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/Thesis.razor",
+      "TargetPath": "Shared\\Thesis.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/MainLayout.razor",
       "TargetPath": "Shared\\MainLayout.razor",
       "FileKind": "component"
@@ -16078,6 +16339,11 @@
     {
       "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Authentication.razor",
       "TargetPath": "Pages\\Authentication.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisApplication.razor",
+      "TargetPath": "Shared\\ThesisApplication.razor",
       "FileKind": "component"
     }
   ],

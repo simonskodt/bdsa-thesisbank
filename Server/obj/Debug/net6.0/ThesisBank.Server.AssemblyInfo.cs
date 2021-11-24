@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("29ac46f2-fcd3-474d-b3c6-837aeebd9611")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("2e87e268-bdbd-40c7-b376-661f5b769413")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThesisBank.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
