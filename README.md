@@ -1,19 +1,19 @@
 # ThesisBank
 
-> ThesisBank project in BSDA 3. semester.
+_ThesisBank_ project in Analysis, Design, and Software Architecture (BSDA) 3. semester at IT University of Copenhagen.
 
-<br />
+## Project description
 
 Starting from the Project bank description which involves teachers and students. Students find a thesis to apply, and teachers confirm or reject the given student. 
 
-## How to run
+## Commands to run project
 
-  **DOCKER START COMMAND** 
+  **`Docker` start command** 
   ```powershell
   docker-compose up --build
   ```
 
-  **OPEN IN WEBBROWSER**
+  **Open in webbrowser**
   ```powershell
   localhost:5077
   ```
