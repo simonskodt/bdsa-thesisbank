@@ -25,7 +25,7 @@ public class TeacherRepositoryTest : IDisposable
     public void Accept_Thesis_given_ThesisID()
     {
         // public record TeacherDTO(int Id, string Name, string Email);
-        TeacherDTO 
+        //TeacherDTO 
     }
 
     public void Dispose(){

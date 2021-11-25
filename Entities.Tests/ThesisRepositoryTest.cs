@@ -23,9 +23,9 @@ public class ThesisRepositoryTest : IDisposable
 
         foreach (var thesis in context.Theses)
         {
-            context.Thesis.A
+            //context.Thesis.A
         }
-        context.Theses.Add(new Thesis { Id = 1, name = "WildAlgorithms", teacher = Thore });
+        //context.Theses.Add(new Thesis { Id = 1, name = "WildAlgorithms", teacher = Thore });
 
 
         context.SaveChanges();
@@ -50,7 +50,7 @@ public class ThesisRepositoryTest : IDisposable
         TeacherDTO teacher = new TeacherDTO(2, "Niels", "nija@itu.dk");
         var thesis = _repo.ReadThesis(3);
 
-        Assert.NotEqual(new ThesisDTO)
+        //Assert.NotEqual(new ThesisDTO)
     }
 
     public void Dispose()

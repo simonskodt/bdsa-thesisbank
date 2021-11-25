@@ -7,9 +7,10 @@ public class Thesis
     [StringLength(20)]
     public string? name {get; set;}
 
-    
     public string? description {get; set;}
 
     public Teacher teacher {get; set;}
+
+    public ICollection<Apply>? applies { get; set; } 
     
 }
