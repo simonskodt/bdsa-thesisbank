@@ -4,7 +4,7 @@
 
 namespace Entities.Migrations
 {
-    public partial class Test2 : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,60 +42,68 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    teacherId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeacherId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Theses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Theses_Teachers_teacherId",
-                        column: x => x.teacherId,
+                        name: "FK_Theses_Teachers_TeacherId",
+                        column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentThesis",
+                name: "Applies",
                 columns: table => new
                 {
-                    appliedStudentsId = table.Column<int>(type: "int", nullable: false),
-                    appliedThesesId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ThesisID = table.Column<int>(type: "int", nullable: false),
+                    StudentID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentThesis", x => new { x.appliedStudentsId, x.appliedThesesId });
+                    table.PrimaryKey("PK_Applies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentThesis_Students_appliedStudentsId",
-                        column: x => x.appliedStudentsId,
+                        name: "FK_Applies_Students_StudentID",
+                        column: x => x.StudentID,
                         principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentThesis_Theses_appliedThesesId",
-                        column: x => x.appliedThesesId,
+                        name: "FK_Applies_Theses_ThesisID",
+                        column: x => x.ThesisID,
                         principalTable: "Theses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentThesis_appliedThesesId",
-                table: "StudentThesis",
-                column: "appliedThesesId");
+                name: "IX_Applies_StudentID",
+                table: "Applies",
+                column: "StudentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Theses_teacherId",
+                name: "IX_Applies_ThesisID",
+                table: "Applies",
+                column: "ThesisID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Theses_TeacherId",
                 table: "Theses",
-                column: "teacherId");
+                column: "TeacherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StudentThesis");
+                name: "Applies");
 
             migrationBuilder.DropTable(
                 name: "Students");

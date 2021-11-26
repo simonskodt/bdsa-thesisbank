@@ -5,12 +5,12 @@ public class Thesis
     public int Id {get; set;}
 
     [StringLength(20)]
-    public string? name {get; set;}
+    public string? Name {get; set;}
 
-    public string? description {get; set;}
+    public string? Description {get; set;}
 
-    public Teacher teacher {get; set;}
+    public Teacher Teacher {get; set;}
 
-    public ICollection<Apply>? applies { get; set; } 
+    public ICollection<Apply>? Applies { get; set; } 
     
 }

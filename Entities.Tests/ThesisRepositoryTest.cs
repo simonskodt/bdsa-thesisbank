@@ -15,8 +15,8 @@ public class ThesisRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher thore = new Teacher { Id = 1, name = "Thore", email = "thore@itu.dk"};
-        Teacher niels = new Teacher { Id = 2, name = "Niels", email = "nija@itu.dk"};
+        Teacher thore = new Teacher { Id = 1, Name = "Thore", Email = "thore@itu.dk"};
+        Teacher niels = new Teacher { Id = 2, Name = "Niels", Email = "nija@itu.dk"};
         
         foreach (var teacher in context.Teachers)
             context.Teachers.Add(teacher);

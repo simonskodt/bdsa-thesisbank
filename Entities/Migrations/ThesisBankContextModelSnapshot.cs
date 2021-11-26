@@ -21,6 +21,32 @@ namespace Entities.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Entities.Apply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThesisID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentID");
+
+                    b.HasIndex("ThesisID");
+
+                    b.ToTable("Applies");
+                });
+
             modelBuilder.Entity("Entities.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -29,10 +55,10 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("email")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -49,10 +75,10 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("email")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -69,67 +95,66 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("teacherId")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("teacherId");
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Theses");
                 });
 
-            modelBuilder.Entity("StudentThesis", b =>
+            modelBuilder.Entity("Entities.Apply", b =>
                 {
-                    b.Property<int>("appliedStudentsId")
-                        .HasColumnType("int");
+                    b.HasOne("Entities.Student", "Student")
+                        .WithMany("Applies")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("appliedThesesId")
-                        .HasColumnType("int");
+                    b.HasOne("Entities.Thesis", "Thesis")
+                        .WithMany("Applies")
+                        .HasForeignKey("ThesisID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasKey("appliedStudentsId", "appliedThesesId");
+                    b.Navigation("Student");
 
-                    b.HasIndex("appliedThesesId");
-
-                    b.ToTable("StudentThesis");
+                    b.Navigation("Thesis");
                 });
 
             modelBuilder.Entity("Entities.Thesis", b =>
                 {
-                    b.HasOne("Entities.Teacher", "teacher")
-                        .WithMany("ownedTheses")
-                        .HasForeignKey("teacherId")
+                    b.HasOne("Entities.Teacher", "Teacher")
+                        .WithMany("OwnedTheses")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("teacher");
+                    b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("StudentThesis", b =>
+            modelBuilder.Entity("Entities.Student", b =>
                 {
-                    b.HasOne("Entities.Student", null)
-                        .WithMany()
-                        .HasForeignKey("appliedStudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Thesis", null)
-                        .WithMany()
-                        .HasForeignKey("appliedThesesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Applies");
                 });
 
             modelBuilder.Entity("Entities.Teacher", b =>
                 {
-                    b.Navigation("ownedTheses");
+                    b.Navigation("OwnedTheses");
+                });
+
+            modelBuilder.Entity("Entities.Thesis", b =>
+                {
+                    b.Navigation("Applies");
                 });
 #pragma warning restore 612, 618
         }

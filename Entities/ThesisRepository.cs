@@ -13,7 +13,7 @@ public class ThesisRepository : IThesisRepository{
 
         var Thesis = from t in _context.Theses
                      where t.Id == ThesisID
-                     select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email));
+                     select new ThesisDTO(t.Id, t.Name, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email));
 
             return Thesis.FirstOrDefault();
     }

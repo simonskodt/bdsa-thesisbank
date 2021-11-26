@@ -13,10 +13,8 @@ public DbSet<Apply>? Applies {get ; set;}
 
     public ThesisBankContext(DbContextOptions<ThesisBankContext> options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+/*         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-        modelBuilder.Entity<Apply>().HasKey( a => new {a.student, a.thesis});
-
-    }  
+    }   */
 }
