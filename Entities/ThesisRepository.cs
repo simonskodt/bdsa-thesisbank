@@ -35,7 +35,7 @@ public class ThesisRepository : IThesisRepository{
             return Theses;
     }
 
-    public async Task<IReadOnlyCollection<ThesisDTO>> ReadAppliedThesis(int StudentID){
+    public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int StudentID){
         var ThesesID = (await _context.Applies
                        .Where(a => a.StudentID == StudentID)
                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
@@ -49,7 +49,7 @@ public class ThesisRepository : IThesisRepository{
         //                .AsReadOnly();
         
         return ThesesID;
-        //throw new NotImplementedException();
+        
     }
 
 }

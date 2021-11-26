@@ -34,19 +34,27 @@ public class StudentRepositoryTest : IDisposable
 
 
     [Fact]
-    public async Task Sudent_Apply_For_Thesis(){
+    public async Task ReadStudent_GivenStudent1_ReturnResonseSuccessAndStudent1DTO(){
+        
+        var actual = await _repo_Stud.ReadStudent(1);
+
+        var expectedStudentDTO = new StudentDTO{Id = 1, Name = "Victor", Email = "Vibr@itu.dk"};
+
+        Assert.Equal((Response.Success, expectedStudentDTO), actual);
+    }
+
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent1_ReturnResonseSuccessAndAppliedDTO(){
         
         var student = await _repo_Stud.ReadStudent(1);
 
         var thesis = await _repo_Thesis.ReadThesis(1);
 
-        var ExpectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
+        var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
 
-        var ReadApplied = await _repo_Stud.ApplyForThesis(1, 1);
+        var readApplied = await _repo_Stud.ApplyForThesis(1, 1);
 
-        Assert.Equal((Response.Success, ExpectedApplied), ReadApplied);
-
-
+        Assert.Equal((Response.Success, expectedApplied), readApplied);
     }
 
     public void Dispose(){

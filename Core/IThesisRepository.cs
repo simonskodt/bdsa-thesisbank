@@ -6,6 +6,6 @@ namespace Core;
 
     public Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll();
 
-   public Task<IReadOnlyCollection<ThesisDTO>> ReadAppliedThesis(int StudentID); 
+   public Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int StudentID); 
     
 }  
