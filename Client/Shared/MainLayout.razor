@@ -1,11 +1,24 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager _navManager
 
 <PageTitle>ThesisBank</PageTitle>
 
-<div class="top-row px-4 auth">
-    <LoginDisplay />
-    <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+@if (!_navManager.Uri.Contains("/login")) {
+<div class="top-row-loggedin d-flex align-items-center" style="margin-bottom: 100px">
+    <div class="container">
+        <div class="row flex-direction-row justify-content-space">
+            <div class="col align-items-center d-flex">
+                <NavLink href="/">
+                    <h1 class="h4" style="margin-bottom: 0;">Thesis<span style="font-weight: 700">Bank</span></h1>
+                </NavLink>
+            </div>
+            <div class="col justify-content-end align-items-center d-flex">
+                <LoginDisplay />
+            </div>
+        </div>
+    </div>
 </div>
+}
 <div class="row">
     <main>
         <div class="container">

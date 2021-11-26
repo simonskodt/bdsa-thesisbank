@@ -1,0 +1,42 @@
+h1[b-tshmvo15pj] { 
+    font-family: Jost, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-wrapper[b-tshmvo15pj] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+}
+
+.yellow-bg[b-tshmvo15pj] {
+    background-color: #FFD639;
+    padding: 75px 50px;
+    position: absolute;
+    right: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.yellow-bg .content[b-tshmvo15pj] {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grey-bg[b-tshmvo15pj] {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #CBCFD1;
+    width: 65vw;
+    height: 80vh;
+    z-index: -1;
+    display: flex;
+}
+
+.grey-content[b-tshmvo15pj] {
+    width: 100%;
+    display: flex;
+}
