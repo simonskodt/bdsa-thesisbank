@@ -1,6 +1,6 @@
 ﻿namespace Entities.Tests;
 
-using System.Threading.Tasks;
+
 
 
 public class ThesisRepositoryTest : IDisposable
@@ -42,8 +42,6 @@ public class ThesisRepositoryTest : IDisposable
         var ReadThesisResponse = await _repo.ReadThesis(1);
 
         Assert.Equal((Response.Success,new ThesisDTO(1, "WildAlgorithms", Thore)), ReadThesisResponse);
-
-
     }
 
     [Fact] 

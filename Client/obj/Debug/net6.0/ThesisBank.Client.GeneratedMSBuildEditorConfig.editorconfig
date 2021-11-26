@@ -11,65 +11,65 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = ThesisBank.Client
 build_property.RootNamespace = ThesisBank.Client
-build_property.ProjectDir = /Users/malitheoret/Desktop/bdsa-thesisbank/Client/
+build_property.ProjectDir = /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/malitheoret/Desktop/bdsa-thesisbank/Client
+build_property.MSBuildProjectDirectory = /Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/App.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Application.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Application.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Authentication.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Counter.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/FetchData.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Pages/Index.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/LoginDisplay.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/LoginDisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/RedirectToLogin.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1JlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/SurveyPrompt.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/Thesis.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/Thesis.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/ThesisApplication.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisApplication.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpc0FwcGxpY2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/_Imports.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/MainLayout.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-1yzoyz6jqs
 
-[/Users/malitheoret/Desktop/bdsa-thesisbank/Client/Shared/NavMenu.razor]
+[/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-oqdjrf1utl

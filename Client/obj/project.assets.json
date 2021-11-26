@@ -1778,19 +1778,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/malitheoret/.nuget/packages/": {}
+    "/Users/victorbrorson/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
+      "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
       "projectName": "ThesisBank.Client",
-      "projectPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
-      "packagesPath": "/Users/malitheoret/.nuget/packages/",
-      "outputPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Client/obj/",
+      "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
+      "packagesPath": "/Users/victorbrorson/.nuget/packages/",
+      "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/malitheoret/.nuget/NuGet/NuGet.Config"
+        "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1802,8 +1802,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/malitheoret/Desktop/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
-              "projectPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
+            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
+              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
             }
           }
         }

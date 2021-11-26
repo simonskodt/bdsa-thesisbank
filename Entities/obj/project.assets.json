@@ -2648,19 +2648,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/malitheoret/.nuget/packages/": {}
+    "/Users/victorbrorson/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/malitheoret/Desktop/bdsa-thesisbank/Entities/Entities.csproj",
+      "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Entities/Entities.csproj",
-      "packagesPath": "/Users/malitheoret/.nuget/packages/",
-      "outputPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Entities/obj/",
+      "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
+      "packagesPath": "/Users/victorbrorson/.nuget/packages/",
+      "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/malitheoret/.nuget/NuGet/NuGet.Config"
+        "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -2672,8 +2672,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/malitheoret/Desktop/bdsa-thesisbank/Core/Core.csproj": {
-              "projectPath": "/Users/malitheoret/Desktop/bdsa-thesisbank/Core/Core.csproj"
+            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
             }
           }
         }
