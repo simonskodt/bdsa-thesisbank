@@ -43,6 +43,12 @@ public class ThesisRepositoryTest : IDisposable
         _repo_Thesis = new ThesisRepository(_context);
     }
 
+    /*
+
+    TESTS FOR METHODE ReadThesis
+
+    */
+
     
     [Fact]
     public async Task ReadThesis_GivenID1_ReturnWildAlgorithmsByThore()
@@ -62,6 +68,12 @@ public class ThesisRepositoryTest : IDisposable
         Assert.Equal((Response.NotFound,null), ReadThesisResponse);
 
     }
+
+    /*
+
+    TESTS FOR METHODE ReadAllTheses
+
+    */
 
     [Fact]
     public async Task ReadAllTheses_GivenNoParameter_ReturnAllTheses()
@@ -84,6 +96,12 @@ public class ThesisRepositoryTest : IDisposable
             thesis => Assert.Equal(t4, thesis)
         );
     }
+
+    /*
+
+    TESTS FOR METHODE ReadAppliedThesis
+
+    */
 
 
 

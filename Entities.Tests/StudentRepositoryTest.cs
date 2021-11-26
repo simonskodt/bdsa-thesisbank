@@ -22,6 +22,7 @@ public class StudentRepositoryTest : IDisposable
         Student Victor = new Student{Id = 1, Name = "Victor", Email = "Vibr@itu.dk"};
         Student Alyson = new Student{Id = 2, Name = "Alyson", Email = "Alyson@itu.dk"};
         context.Students.Add(Victor);
+        context.Students.Add(Alyson);
         context.Theses.Add(new Thesis { Id = 1, Name = "WildAlgorithms", Teacher = Thore });
         context.Theses.Add(new Thesis { Id = 2, Name = "GraphAlgorithms", Teacher = Thore });
 
@@ -33,6 +34,12 @@ public class StudentRepositoryTest : IDisposable
         _repo_Thesis = new ThesisRepository(_context);
     }
 
+
+    /*
+
+    TESTS FOR METHODE ReadStudent
+
+    */
 
     [Fact]
     public async Task ReadStudent_GivenStudent1_ReturnResonseSuccessAndStudent1DTO(){
@@ -51,6 +58,12 @@ public class StudentRepositoryTest : IDisposable
 
         Assert.Equal((Response.NotFound, null), actual);
     }
+
+    /*
+
+    TESTS FOR METHODE ApplyForThesis
+
+    */
 
     [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO(){
@@ -71,16 +84,49 @@ public class StudentRepositoryTest : IDisposable
 
         var readApplied = await _repo_Stud.ApplyForThesis(3, 1);
 
-        Assert.Equal((Response.Success, null), readApplied);
+        Assert.Equal((Response.NotFound, null), readApplied);
     }
+
 
     [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis3_ReturnResonseNotFoundAndNull(){
 
         var readApplied = await _repo_Stud.ApplyForThesis(1, 3);
 
-        Assert.Equal((Response.Success, null), readApplied);
+        Assert.Equal((Response.NotFound, null), readApplied);
     }
+
+    // to check that it is posible for two different students to apply for the same thesis
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO(){
+        
+        var student = await _repo_Stud.ReadStudent(2);
+        var thesis = await _repo_Thesis.ReadThesis(1);
+        var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
+
+        var readApplied = await _repo_Stud.ApplyForThesis(2, 1);
+
+        Assert.Equal((Response.Success, expectedApplied), readApplied);
+    }
+
+     // to check that a student can not apply for the same thesis again, when it is pending
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseConflictAndNull(){
+        
+        var student = await _repo_Stud.ReadStudent(2);
+        var thesis = await _repo_Thesis.ReadThesis(1);
+
+        var readApplied1 = await _repo_Stud.ApplyForThesis(2, 1);
+        var readApplied2 = await _repo_Stud.ApplyForThesis(2, 1);
+
+        Assert.Equal((Response.Conflict, null), readApplied2);
+    }
+
+    /*
+
+    TESTS FOR METHODE Accept
+
+    */
 
 
     [Fact]
@@ -96,6 +142,13 @@ public class StudentRepositoryTest : IDisposable
 
     }
 
+    /*
+
+    TESTS FOR METHODE RemoveAllPendings
+
+    */
+
+
     [Fact]
     public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted(){
         
@@ -105,6 +158,12 @@ public class StudentRepositoryTest : IDisposable
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
         
     }
+
+    /*
+
+    TESTS FOR METHODE RemoveRequest
+
+    */
 
     [Fact]
     public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1(){
