@@ -41,13 +41,6 @@ public class ThesisRepository : IThesisRepository{
                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
                        .ToListAsync())
                        .AsReadOnly();
-
-        // var Theses = (await _context.Theses
-        //                .Where(t => t.Id IN ThesesID)
-        //                .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
-        //                 .ToListAsync())
-        //                .AsReadOnly();
-        
         return ThesesID;
         
     }

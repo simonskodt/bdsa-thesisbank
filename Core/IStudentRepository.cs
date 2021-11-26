@@ -7,9 +7,9 @@ public interface IStudentRepository
 
     public Task <(Response, ApplyDTO)> ApplyForThesis(int StudentID, int ThesisID);
 
-    public Response Accept(int ThesisID);
+    public Task <(Response, ApplyDTO)> Accept(int studentID, int ThesisID);
 
-    public void RemoveAllPendings();
-    public Response RemoveRequest(int ThesisID);
+    public Task <Response> RemoveAllPendings(int StudentID);
+    public Task <(Response, ThesisDTO)> RemoveRequest(int studentID, int ThesisID);
     
 }

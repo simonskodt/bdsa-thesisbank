@@ -59,15 +59,15 @@ public class StudentRepository : IStudentRepository
 
             return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
     }
-    public Response Accept(int ThesisID){
+    public async Task<(Response, ApplyDTO)> Accept(int ThesisID, int StudentID){
         throw new NotImplementedException();
     }
 
-    public void RemoveAllPendings(){
+    public async Task<Response> RemoveAllPendings(int StudentID){
         throw new NotImplementedException();
     }
 
-    public Response RemoveRequest(int ThesisID){
+    public async Task<(Response, ThesisDTO)> RemoveRequest(int ThesisID, int StudentID){
         throw new NotImplementedException();
     }
 }
