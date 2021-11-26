@@ -6,7 +6,6 @@ namespace Core;
 
     public Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll();
 
-    //Maybe this method should be in the StudentRep ? 
-    public Task<IReadOnlyCollection<ThesisDTO>> ReadRequested(); 
+   public Task<IReadOnlyCollection<ThesisDTO>> ReadAppliedThesis(int StudentID); 
     
-} 
+}  

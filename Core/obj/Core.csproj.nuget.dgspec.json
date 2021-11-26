@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {}
+    "/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Core/Core.csproj": {}
   },
   "projects": {
-    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+    "/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
+        "projectUniqueName": "/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
-        "packagesPath": "/Users/philip/.nuget/packages/",
-        "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/obj/",
+        "projectPath": "/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Core/Core.csproj",
+        "packagesPath": "/Users/malitheoret/.nuget/packages/",
+        "outputPath": "/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/philip/.nuget/NuGet/NuGet.Config"
+          "/Users/malitheoret/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

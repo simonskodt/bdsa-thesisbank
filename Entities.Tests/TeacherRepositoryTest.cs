@@ -1,4 +1,3 @@
-
 namespace Entities.Tests;
 
 public class TeacherRepositoryTest : IDisposable

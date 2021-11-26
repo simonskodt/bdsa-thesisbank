@@ -2,7 +2,10 @@
 
 public interface IStudentRepository
 {
-    public Response Apply(int ThesisID);
+
+    public Task<(Response, StudentDTO)> ReadStudent(int StudentID);
+
+    public Task <(Response, ApplyDTO)> ApplyForThesis(int StudentID, int ThesisID);
 
     public Response Accept(int ThesisID);
 

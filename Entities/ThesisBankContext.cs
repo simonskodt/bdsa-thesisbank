@@ -15,6 +15,5 @@ public DbSet<Apply>? Applies {get ; set;}
 
 /*         protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
     }   */
 }

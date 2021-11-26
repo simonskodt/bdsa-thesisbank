@@ -34,3 +34,15 @@ C:/ALI/SWU/3.semester/GIT/ThesisBank/Shared/obj/Debug/net6.0/ThesisBank.Shared.p
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ref/ThesisBank.Shared.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.pdb
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.deps.json
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.dll
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/bin/Debug/net6.0/ref/ThesisBank.Shared.dll
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/bin/Debug/net6.0/ThesisBank.Shared.pdb
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.csproj.AssemblyReference.cache
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.AssemblyInfoInputs.cache
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.AssemblyInfo.cs
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.csproj.CoreCompileInputs.cache
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.dll
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ref/ThesisBank.Shared.dll
+/Users/malitheoret/Desktop/thesisbanktestmappe/bdsa-thesisbank/Shared/obj/Debug/net6.0/ThesisBank.Shared.pdb
