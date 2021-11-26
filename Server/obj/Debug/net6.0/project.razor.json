@@ -6053,6 +6053,7 @@
         }
       },
       {
+<<<<<<< HEAD
         "HashCode": 1054959809,
         "Kind": "Components.Component",
         "Name": "ThesisBank.Client.App",
@@ -6737,6 +6738,8 @@
         }
       },
       {
+=======
+>>>>>>> LeoRepository
         "HashCode": -644107692,
         "Kind": "Components.EventHandler",
         "Name": "onfocus",

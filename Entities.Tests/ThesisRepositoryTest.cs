@@ -1,5 +1,4 @@
-﻿namespace Entities.Tests;
-
+﻿ namespace Entities.Tests;
 public class ThesisRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
@@ -7,7 +6,6 @@ public class ThesisRepositoryTest : IDisposable
 
     public ThesisRepositoryTest()
     {
-
         var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
         var builder = new DbContextOptionsBuilder<ThesisBankContext>();
@@ -15,20 +13,17 @@ public class ThesisRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher thore = new Teacher { Id = 1, Name = "Thore", Email = "thore@itu.dk"};
-        Teacher niels = new Teacher { Id = 2, Name = "Niels", Email = "nija@itu.dk"};
-        
-        foreach (var teacher in context.Teachers)
-            context.Teachers.Add(teacher);
-
-        foreach (var thesis in context.Theses)
-        {
-            //context.Thesis.A
-        }
-        //context.Theses.Add(new Thesis { Id = 1, name = "WildAlgorithms", teacher = Thore });
+        Teacher Thore = new Teacher { Id = 1, Name = "Thore", Email = "Thore@itu.dk"};
+        context.Teachers.Add(Thore);
+        Teacher Rasmus = new Teacher{Id = 2, Name = "Rasmus", Email = "Rasmus@itu.dk"};
+        context.Teachers.Add(Rasmus);
+        context.Theses.Add(new Thesis { Id = 1, Name = "WildAlgorithms", Teacher = Thore });
+        context.Theses.Add(new Thesis { Id = 2, Name = "GraphAlgorithms", Teacher = Thore });
+        context.Theses.Add(new Thesis { Id = 3, Name = "Linq", Teacher = Rasmus });
+        context.Theses.Add(new Thesis { Id = 4, Name = "Migration", Teacher = Rasmus });
 
 
-        context.SaveChanges();
+        context.SaveChangesAsync();
 
         _context = context;
         _repo = new ThesisRepository(_context);
@@ -36,27 +31,51 @@ public class ThesisRepositoryTest : IDisposable
 
     
     [Fact]
-    public void Read_Thesis_given_ThesisID()
+    public async Task ReadThesis_GivenID1_ReturnWildAlgorithmsByThore()
     {
-        TeacherDTO teacher = new TeacherDTO(1, "Thore", "thore@itu.dk");
-        var thesis = _repo.ReadThesis(1);
+        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var ReadThesisResponse = await _repo.ReadThesis(1);
 
-        Assert.Equal(new ThesisDTO(1, "WildAlgorithms", teacher), thesis);
+        Assert.Equal((Response.Success,new ThesisDTO(1, "WildAlgorithms", Thore)), ReadThesisResponse);
     }
 
-    [Fact]
-    public void Read_Thesis_given_incorrect_ThesisID_Returns_false()
+    [Fact] 
+    public async Task ReadThesis_GivenNonExisitingID_ReturnEmpty()
     {
-        TeacherDTO teacher = new TeacherDTO(2, "Niels", "nija@itu.dk");
-        var thesis = _repo.ReadThesis(3);
+        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var ReadThesisResponse = await _repo.ReadThesis(8);
+
+        Assert.Equal((Response.NotFound,null), ReadThesisResponse);
 
         //Assert.NotEqual(new ThesisDTO)
     }
 
+    // [Fact]
+    // public async Task ReadAllTheses_GivenNoParameter_ReturnAllTheses()
+    // {
+        
+    //     MinimalThesisDTO t1 = new MinimalThesisDTO(1, "WildAlgorithms", "Thore");
+    //     MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", "Thore");
+    //     MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq", "Rasmus");
+    //     MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration", "Rasmus");
+    //     var ExpectedList = new List<MinimalThesisDTO>(){t1,t2,t3,t4}.AsReadOnly();
+        
+        
+    //     IReadOnlyCollection<MinimalThesisDTO> ReadThesisResponse = _repo.ReadAll();
+
+    //     // Assert.Collection(ReadThesisResponse,
+    //     //     thesis => Assert.Equal((Response.Success, t1), thesis),
+    //     //     thesis => Assert.Equal((Response.Success, t2), thesis),
+    //     //     thesis => Assert.Equal((Response.Success, t3), thesis),
+    //     //     thesis => Assert.Equal((Response.Success, t4), thesis)
+    //     // );
+    // }
+
+
+
+
     public void Dispose()
     {
-
         _context.Dispose();
-
     }
 }

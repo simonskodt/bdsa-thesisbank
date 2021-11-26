@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entities;
 
-public class ThesisBankContext : DbContext
+public class ThesisBankContext : DbContext, IThesisBankContext
 {
 public DbSet<Student>? Students { get; set; }
 public DbSet<Teacher>? Teachers { get; set; }

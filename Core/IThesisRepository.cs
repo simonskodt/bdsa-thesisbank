@@ -2,11 +2,11 @@ namespace Core;
 
     public interface IThesisRepository
 {
-    public ThesisDTO ReadThesis(int id);
+    public Task<(Response, ThesisDTO)> ReadThesis(int ThesisId);
 
-    public IReadOnlyCollection<MinimalThesisDTO> ReadlAll();
+    public Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll();
 
     //Maybe this method should be in the StudentRep ? 
-    public IReadOnlyCollection<ThesisDTO> ReadRequested(); 
+    public Task<IReadOnlyCollection<ThesisDTO>> ReadRequested(); 
     
 } 

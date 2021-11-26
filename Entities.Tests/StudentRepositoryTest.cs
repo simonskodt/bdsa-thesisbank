@@ -22,7 +22,7 @@ public class StudentRepositoryTest : IDisposable
 
 
     [Fact]
-    public void test(){
+    public async Task test(){
 
     }
 

@@ -9,21 +9,34 @@ public class ThesisRepository : IThesisRepository{
         _context = context;
     }
 
-    public ThesisDTO ReadThesis(int ThesisID){
+    public async Task<(Response, ThesisDTO)> ReadThesis(int ThesisID){
 
-        var Thesis = from t in _context.Theses
-                     where t.Id == ThesisID
-                     select new ThesisDTO(t.Id, t.Name, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email));
 
-            return Thesis.FirstOrDefault();
+        var Thesis = await _context.Theses
+                                   .Where(t => t.Id == ThesisID)
+                                   .Select(t => new ThesisDTO(t.Id, t.Name, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
+                                   .FirstOrDefaultAsync();
+        
+        if(Thesis == null){
+            return (Response.NotFound, Thesis);
+        }
+
+        return (Response.Success, Thesis);
+            
     }
 
-    public IReadOnlyCollection<MinimalThesisDTO> ReadlAll(){
-        throw new NotImplementedException();
+    public async Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll(){
+
+        var Theses = (await _context.Theses
+                       .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Teacher.Name))
+                       .ToListAsync())
+                       .AsReadOnly();
+
+            return Theses;
     }
 
     //Maybe this method should be in the StudentRep ? 
-    public IReadOnlyCollection<ThesisDTO> ReadRequested(){
+    public Task<IReadOnlyCollection<ThesisDTO>> ReadRequested(){
         throw new NotImplementedException();
     }
 

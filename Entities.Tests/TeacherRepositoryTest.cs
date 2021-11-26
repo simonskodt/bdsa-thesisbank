@@ -22,7 +22,7 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public void Accept_Thesis_given_ThesisID()
+    public async Task Accept_Thesis_given_ThesisID()
     {
         // public record TeacherDTO(int Id, string Name, string Email);
         //TeacherDTO 
