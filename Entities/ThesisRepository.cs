@@ -9,28 +9,44 @@ public class ThesisRepository : IThesisRepository{
         _context = context;
     }
 
-    public (Response, ThesisDTO) ReadThesis(int ThesisID){
 
-        var Thesis = from t in _context.Theses
-                     where t.Id == ThesisID
-                     select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email));
+
+    public async Task<(Response, ThesisDTO)> ReadThesis(int ThesisID){
+
+        // var Thesis = await from t in _context.Theses
+        //              where t.Id == ThesisID
+        //              select new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email));
         
-        if(Thesis.FirstOrDefault() != null){
-                return (Response.Success, Thesis.FirstOrDefault());
-        } 
-        return (Response.NotFound, null);
+        // if(Thesis.FirstOrDefault() != null){
+        //         return (Response.Success, Thesis.FirstOrDefaultAsync());
+        // } 
+        // return (Response.NotFound, null);
+
+        var Thesis = await _context.Theses
+                                   .Where(t => t.Id == ThesisID)
+                                   .Select(t => new ThesisDTO(t.Id, t.name, new TeacherDTO(t.teacher.Id, t.teacher.name, t.teacher.email)))
+                                   .FirstOrDefaultAsync();
+        
+        if(Thesis == null){
+            return (Response.NotFound, Thesis);
+        }
+
+        return (Response.Success, Thesis);
             
     }
 
-    public (Response, IReadOnlyCollection<MinimalThesisDTO>) ReadAll(){
-        var Theses = from t in _context.Theses
-                     select new MinimalThesisDTO(t.Id, t.name, t.teacher.name);
+    public async Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll(){
 
-            return (Response.Success, Theses.ToList().AsReadOnly());
+        var Theses = (await _context.Theses
+                       .Select(t => new MinimalThesisDTO(t.Id, t.name, t.teacher.name))
+                       .ToListAsync())
+                       .AsReadOnly();
+
+            return Theses;
     }
 
     //Maybe this method should be in the StudentRep ? 
-    public IReadOnlyCollection<ThesisDTO> ReadRequested(){
+    public Task<IReadOnlyCollection<ThesisDTO>> ReadRequested(){
         throw new NotImplementedException();
     }
 
