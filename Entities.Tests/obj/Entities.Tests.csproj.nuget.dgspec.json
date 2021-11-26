@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj": {}
+    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj": {}
   },
   "projects": {
-    "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
+        "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
-        "packagesPath": "/Users/victorbrorson/.nuget/packages/",
-        "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/obj/",
+        "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj",
+        "packagesPath": "/Users/philip/.nuget/packages/",
+        "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
+          "/Users/philip/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -56,17 +56,17 @@
         }
       }
     },
-    "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj": {
+    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj",
+        "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj",
         "projectName": "Entities.Tests",
-        "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj",
-        "packagesPath": "/Users/victorbrorson/.nuget/packages/",
-        "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities.Tests/obj/",
+        "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities.Tests/Entities.Tests.csproj",
+        "packagesPath": "/Users/philip/.nuget/packages/",
+        "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
+          "/Users/philip/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -78,11 +78,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
-                "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
+              "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+                "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
               },
-              "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
-                "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
+              "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
+                "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
               }
             }
           }
@@ -145,17 +145,17 @@
         }
       }
     },
-    "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
+    "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
+        "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
-        "packagesPath": "/Users/victorbrorson/.nuget/packages/",
-        "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/obj/",
+        "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj",
+        "packagesPath": "/Users/philip/.nuget/packages/",
+        "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
+          "/Users/philip/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -167,8 +167,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
-                "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
+              "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj": {
+                "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Core/Core.csproj"
               }
             }
           }

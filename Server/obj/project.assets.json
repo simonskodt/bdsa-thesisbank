@@ -3970,19 +3970,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/victorbrorson/.nuget/packages/": {}
+    "/Users/philip/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
+      "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
       "projectName": "ThesisBank.Server",
-      "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
-      "packagesPath": "/Users/victorbrorson/.nuget/packages/",
-      "outputPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Server/obj/",
+      "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Server/ThesisBank.Server.csproj",
+      "packagesPath": "/Users/philip/.nuget/packages/",
+      "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/victorbrorson/.nuget/NuGet/NuGet.Config"
+        "/Users/philip/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3994,14 +3994,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj": {
-              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj"
+            "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj": {
+              "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj"
             },
-            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
-              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
+            "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
+              "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
             },
-            "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
-              "projectPath": "/Users/victorbrorson/Third_Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
+            "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
+              "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
             }
           }
         }
