@@ -1778,32 +1778,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/philip/.nuget/packages/": {}
+    "C:\\Users\\Viridian\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
+      "projectUniqueName": "c:\\Users\\Viridian\\Desktop\\BDSA\\bdsa-thesisbank\\Client\\ThesisBank.Client.csproj",
       "projectName": "ThesisBank.Client",
-      "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/ThesisBank.Client.csproj",
-      "packagesPath": "/Users/philip/.nuget/packages/",
-      "outputPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/",
+      "projectPath": "c:\\Users\\Viridian\\Desktop\\BDSA\\bdsa-thesisbank\\Client\\ThesisBank.Client.csproj",
+      "packagesPath": "C:\\Users\\Viridian\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Viridian\\Desktop\\BDSA\\bdsa-thesisbank\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/philip/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Viridian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
-              "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
+            "c:\\Users\\Viridian\\Desktop\\BDSA\\bdsa-thesisbank\\Shared\\ThesisBank.Shared.csproj": {
+              "projectPath": "c:\\Users\\Viridian\\Desktop\\BDSA\\bdsa-thesisbank\\Shared\\ThesisBank.Shared.csproj"
             }
           }
         }
@@ -1857,7 +1859,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

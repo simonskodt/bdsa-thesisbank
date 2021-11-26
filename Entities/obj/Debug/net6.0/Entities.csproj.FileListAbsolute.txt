@@ -49,3 +49,20 @@
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/ref/Entities.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.pdb
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/obj/Debug/net6.0/Entities.genruntimeconfig.cache
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Entities.deps.json
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Entities.runtimeconfig.json
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Entities.dll
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\ref\Entities.dll
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Entities.pdb
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Core.dll
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\bin\Debug\net6.0\Core.pdb
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.AssemblyInfo.cs
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.csproj.CopyComplete
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.dll
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\ref\Entities.dll
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.pdb
+c:\Users\Viridian\Desktop\BDSA\bdsa-thesisbank\Entities\obj\Debug\net6.0\Entities.genruntimeconfig.cache
