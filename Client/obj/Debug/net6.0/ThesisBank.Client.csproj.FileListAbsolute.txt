@@ -2508,10 +2508,10 @@ C:/ALI/SWU/3.semester/GIT/ThesisBank/Client/obj/Debug/net6.0/ThesisBank.Client.p
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/staticwebassets.build.json
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/staticwebassets.development.json
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Shared/MainLayout.razor.rz.scp.css
-/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Shared/NavMenu.razor.rz.scp.css
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/bundle/ThesisBank.Client.styles.css
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/projectbundle/ThesisBank.Client.bundle.scp.css
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ThesisBank.Client.csproj.CopyComplete
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ThesisBank.Client.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ref/ThesisBank.Client.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ThesisBank.Client.pdb
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Pages/Login.razor.rz.scp.css

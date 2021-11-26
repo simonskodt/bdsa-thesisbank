@@ -1,15 +1,16 @@
 ﻿@page "/"
+@attribute [Authorize]
 
 <div>
     <div class="row mb-5">
         <h1 class="mb-5">Find a thesis</h1>
-        <NavLink href="/applications" class="top-btn yellow">
+        <NavLink href="/applications" class="top-btn bg-yellow">
             Go to applied theses
         </NavLink>
     </div>
     <div class="row">
-        <Thesis />
-        <Thesis />
-        <Thesis />
+        <ThesisComponent Id="1" />
+        <ThesisComponent Id="2" />
+        <ThesisComponent Id="3" />
     </div>
 </div>

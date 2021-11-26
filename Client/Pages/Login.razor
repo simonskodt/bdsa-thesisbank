@@ -1,0 +1,43 @@
+@page "/login"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<PageTitle>Login page</PageTitle>
+
+<div class="content-wrapper">
+    <div class="grey-bg">
+        <div class="grey-content">
+            <div class="row justify-content-center d-flex" style>
+                <div class="col-sm-6">
+                    <h2 class="h1">About</h2>
+                    <h3 class="h1">Thesis<span style="font-weight: 800">Bank</span></h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel totam cupiditate dolor quo magni laudantium in perspiciatis voluptatem eligendi, mollitia esse aut magnam itaque molestiae temporibus sint, voluptas saepe tempora?</p>
+                    <img src="https://www.sodapdf.com/blog/wp-content/uploads/2019/07/1-image-placeholder-how-to-wireframe-pdf.png" alt="" class="img-fluid mb-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, excepturi praesentium eos ut autem, et, tenetur a magnam omnis obcaecati earum. Aliquid et voluptatum aperiam itaque nemo, beatae ea ducimus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="yellow-bg">
+            <div class="content">
+                <form>
+                    <h1 class="mb-4">Login</h1>
+                    <div class="row">
+                        <a class="btn btn-primary" href="authentication/login">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private async Task BeginLogout(MouseEventArgs args){
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("/login");
+    }
+}
