@@ -7,7 +7,6 @@ public class TeacherRepositoryTest : IDisposable
     private readonly TeacherRepository _repo;
 
     public TeacherRepositoryTest(){
-
         var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
         var builder = new DbContextOptionsBuilder<ThesisBankContext>();
@@ -16,14 +15,17 @@ public class TeacherRepositoryTest : IDisposable
         context.Database.EnsureCreated();
         context.SaveChanges();
 
+
+
         _context = context;
         _repo = new TeacherRepository(_context);
     }
 
-
     [Fact]
-    public void test(){
-
+    public void Accept_Thesis_given_ThesisID()
+    {
+        // public record TeacherDTO(int Id, string Name, string Email);
+        //TeacherDTO 
     }
 
     public void Dispose(){
