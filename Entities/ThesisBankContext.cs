@@ -37,7 +37,7 @@ public DbSet<Apply>? Applies {get ; set;}
         var Simon = new Student("Simon Skødt");
 
         var Thore = new Teacher("Thore");
-        var Rasmus = new Teacher("Rasmus");
+        var Rasmus = new Teacher("Raasmus");
 
         var Thesis1 = new Thesis("How ITU mentally ruin students") { Teacher = Thore};
         var Thesis2 = new Thesis("Why singletons are an anti-pattern") { Teacher = Rasmus};
@@ -46,7 +46,7 @@ public DbSet<Apply>? Applies {get ; set;}
         var Applies1= new Apply{
             Status = Status.Accepted,
             Thesis = Thesis1,
-            Student =Ahmed
+            Student = Ahmed
         };
         
         var Applies2= new Apply{
