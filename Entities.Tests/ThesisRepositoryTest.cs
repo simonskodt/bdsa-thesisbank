@@ -6,7 +6,7 @@ public class ThesisRepositoryTest : IDisposable
 
     public ThesisRepositoryTest()
     {
-        var connection = new SqliteConnection("Filename=:memory:");
+       /* var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
         var builder = new DbContextOptionsBuilder<ThesisBankContext>();
         builder.UseSqlite(connection);
@@ -26,7 +26,7 @@ public class ThesisRepositoryTest : IDisposable
         context.SaveChangesAsync();
 
         _context = context;
-        _repo = new ThesisRepository(_context);
+        _repo = new ThesisRepository(_context);*/
     }
 
     
