@@ -8,8 +8,13 @@ a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
     padding-right: 0;
 }
 
+.thesis .card {
+    padding: 20px 50px;
+}
+
 .thesis .headline {
     font-size: 34px;
+    margin-bottom: 10px;
 }
 
 .thesis .professor {
@@ -21,12 +26,12 @@ a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
 }
 
 .thesis .excerpt {
-    
+    margin-top: 20px;
 }
 
-.thesis:first-child > div{
+/* .thesis:first-child > div{
     margin-top: 0 !important;
-}
+} */
 
 .thesis > div {
     box-shadow: 0 0 0 rgba(255,255,255,0);

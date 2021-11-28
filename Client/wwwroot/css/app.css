@@ -69,7 +69,7 @@ a, .btn-link {
     background: #6A736F;
 }
 .top-btn {
-    padding: 15px 10px;
+    padding: 20px 10px;
     text-align: center;
     color: #fff;
     font-weight: 500;
@@ -98,6 +98,11 @@ a, .btn-link {
 
 .bg-yellow {
     background: #FFD639;
+    color: #000;
+}
+
+.bg-yellow:hover {
+    color: #000;
 }
 
 a, a:not(.top-btn):hover, a:focus, a:active {

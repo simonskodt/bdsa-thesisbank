@@ -160,6 +160,39 @@
         }
       },
       {
+        "HashCode": 1642067993,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Login",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Login"
+        }
+      },
+      {
+        "HashCode": -1103920321,
+        "Kind": "Components.Component",
+        "Name": "ThesisBank.Client.Pages.Login",
+        "AssemblyName": "ThesisBank.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ThesisBank.Client.Pages.Login"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ThesisBank.Client.Pages.Login",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1536020771,
         "Kind": "Components.Component",
         "Name": "ThesisBank.Client.Pages.ThesisPage",
@@ -209,39 +242,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ThesisBank.Client.Pages.ThesisPage",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1642067993,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Login",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Login"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Login"
-        }
-      },
-      {
-        "HashCode": -1103920321,
-        "Kind": "Components.Component",
-        "Name": "ThesisBank.Client.Pages.Login",
-        "AssemblyName": "ThesisBank.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ThesisBank.Client.Pages.Login"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ThesisBank.Client.Pages.Login",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

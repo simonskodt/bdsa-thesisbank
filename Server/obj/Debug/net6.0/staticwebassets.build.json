@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UyxumCr61sQI2X36rD6+lqHoEZ666FoFE+B4919p7Is=",
+  "Hash": "BQbfXbtWMQMwhsGG1oFyDZF2qrMsB8h2WyN5KFHdqro=",
   "Source": "ThesisBank.Server",
   "BasePath": "_content/ThesisBank.Server",
   "Mode": "Default",
@@ -7354,6 +7354,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/icon-192.png"
+    },
+    {
+      "Identity": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/images/wireframe-image-icon.png",
+      "SourceId": "ThesisBank.Client",
+      "SourceType": "Project",
+      "ContentRoot": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "images/wireframe-image-icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/wireframe-image-icon.png"
     },
     {
       "Identity": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/index.html",

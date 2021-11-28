@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Roboto:wght@100;400;500;700&display=swap');
 
  .h1, h1 {
-    font-size: 45px;
+    font-size: 65px;
+    padding-left: 0 !important;
 }
