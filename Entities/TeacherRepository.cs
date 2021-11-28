@@ -9,7 +9,6 @@ public class TeacherRepository : ITeacherRepository{
 
     public async Task<(Response, TeacherDTO)> ReadTeacher(int TeacherID){
 
-
     var Teacher = await _context.Teachers
                                 .Where(t => t.Id == TeacherID)
                                 .Select(t => new TeacherDTO(t.Id, t.Name, t.Email))
@@ -22,13 +21,16 @@ public class TeacherRepository : ITeacherRepository{
     return (Response.Success, Teacher);     
 }
 
-
-    public Response Accept(int ThesisID){
+    public async Task<Response> Accept(int StudentID, int ThesisID){
         throw new NotImplementedException();
     }
 
-    public Response Reject(int ThesisID){
+    public async Task<Response> Reject(int StudentID, int ThesisID){
         throw new NotImplementedException();
+    }
+
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID){
+            throw new NotImplementedException();
     }
 
 }

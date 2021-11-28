@@ -4,9 +4,11 @@ public interface ITeacherRepository
 {
 
     public Task<(Response, TeacherDTO)> ReadTeacher(int TeacherID);
-
-    public Response Accept(int ThesisID);
-
-    public Response Reject(int ThesisID);
+    public Task<Response> Accept(int StudentID, int ThesisID);
+    public Task<Response> Reject(int StudentID, int ThesisID);
+    
+    /*Returns a list of ApplyDTO that shows all the students that
+     have applied to thesis by the given Teacher (applies with status pending)*/
+    public Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID); 
     
 }

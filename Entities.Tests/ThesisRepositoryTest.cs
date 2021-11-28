@@ -83,8 +83,6 @@ public class ThesisRepositoryTest : IDisposable
         MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", "Thore");
         MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq","This is a Thesis about a very interesting linq", "Rasmus");
         MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration","This is a Thesis about a very interesting Migration", "Rasmus");
-
-        var ExpectedList = new List<MinimalThesisDTO>(){t1,t2,t3,t4}.AsReadOnly();
         
         
         IReadOnlyCollection<MinimalThesisDTO> ReadThesisResponse = await _repo_Thesis.ReadAll();
