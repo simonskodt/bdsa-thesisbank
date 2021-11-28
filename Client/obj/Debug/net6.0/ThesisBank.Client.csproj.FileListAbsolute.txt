@@ -2515,3 +2515,8 @@ C:/ALI/SWU/3.semester/GIT/ThesisBank/Client/obj/Debug/net6.0/ThesisBank.Client.p
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ref/ThesisBank.Client.dll
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/ThesisBank.Client.pdb
 /Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Pages/Login.razor.rz.scp.css
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Pages/Applications.razor.rz.scp.css
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Pages/ThesisPage.razor.rz.scp.css
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Shared/ThesisApplication.razor.rz.scp.css
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Shared/ThesisComponent.razor.rz.scp.css
+/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/obj/Debug/net6.0/scopedcss/Pages/index.razor.rz.scp.css

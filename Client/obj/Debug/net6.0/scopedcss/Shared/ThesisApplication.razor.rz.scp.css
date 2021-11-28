@@ -1,0 +1,54 @@
+.card[b-u9iq8wx9o4] {
+    border-radius: 10px !important;
+}
+
+.yellow[b-u9iq8wx9o4] {
+    background: #FFD639;
+}
+
+.btn[b-u9iq8wx9o4] {
+    padding: 12px 0;
+    border-radius: 10px;
+}
+
+.btn-accept[b-u9iq8wx9o4] {
+    background: #0095068A;
+    color: white;
+}
+
+.btn-cancel[b-u9iq8wx9o4] {
+    background: #E45A5A;
+    color: white;
+}
+
+.btn-cancel[b-u9iq8wx9o4] {
+    width: 100%;
+}
+
+.top-btn[b-u9iq8wx9o4] {
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.top-btn:hover[b-u9iq8wx9o4] {
+    text-decoration: none;
+    color: black;
+}
+
+.bg-grey[b-u9iq8wx9o4] {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+
+.excerpt[b-u9iq8wx9o4] {
+    border-left: 2px solid black;
+    padding: 10px;
+}
+
+.card[b-u9iq8wx9o4] {
+    padding: 20px 30px;
+}

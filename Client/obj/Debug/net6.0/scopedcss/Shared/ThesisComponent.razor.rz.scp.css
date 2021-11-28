@@ -1,0 +1,38 @@
+.yellow[b-gj8prw9vx3] {
+    background: #FFD639;
+}
+.btn[b-gj8prw9vx3] {
+    padding: 12px 0;
+    border-radius: 10px;
+}
+.btn-apply[b-gj8prw9vx3] {
+    background: #0095068A;
+    color: white;
+}
+.btn-cancel[b-gj8prw9vx3] {
+    background: #E45A5A;
+    color: white;
+}
+.top-btn[b-gj8prw9vx3] {
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.top-btn:hover[b-gj8prw9vx3] {
+    text-decoration: none;
+    color: black;
+}
+.bg-grey[b-gj8prw9vx3] {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+.excerpt[b-gj8prw9vx3] {
+    border-left: 2px solid black;
+    padding: 10px;
+}
+.card[b-gj8prw9vx3] {
+    padding: 20px 30px;
+}

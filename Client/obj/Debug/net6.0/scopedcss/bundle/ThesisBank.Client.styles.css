@@ -1,6 +1,50 @@
+/* /Pages/Applications.razor.rz.scp.css */
+.bg-dark-grey[b-u44xv73ieq] {
+    background: #6A736F;
+}
+.top-btn[b-u44xv73ieq] {
+    padding: 15px 10px;
+    text-align: center;
+    color: #ffffff !important;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.top-btn:hover[b-u44xv73ieq] {
+    text-decoration: none;
+    color: #ffffff !important;
+}
+.bg-grey[b-u44xv73ieq] {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+.excerpt[b-u44xv73ieq] {
+    border-left: 2px solid black;
+    padding: 10px;
+}
+.card[b-u44xv73ieq] {
+    padding: 20px 30px;
+}
+/* /Pages/index.razor.rz.scp.css */
+.top-btn[b-qhngt446eb] {
+    color: #000000 I !important;
+}
+
+.top-btn:hover[b-qhngt446eb] {
+    color: #000000 !important;
+    text-decoration: underline;
+}
 /* /Pages/Login.razor.rz.scp.css */
 h1[b-tshmvo15pj] { 
     font-family: Jost, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about[b-tshmvo15pj] {
+    font-size: 45px;
+}
+
+.headline[b-tshmvo15pj] {
+    font-size: 90px;
 }
 
 .content-wrapper[b-tshmvo15pj] {
@@ -12,7 +56,7 @@ h1[b-tshmvo15pj] {
 
 .yellow-bg[b-tshmvo15pj] {
     background-color: #FFD639;
-    padding: 75px 50px;
+    padding: 105px 65px;
     position: absolute;
     right: 55%;
     top: 50%;
@@ -40,6 +84,30 @@ h1[b-tshmvo15pj] {
 .grey-content[b-tshmvo15pj] {
     width: 100%;
     display: flex;
+}
+
+.login[b-tshmvo15pj] {
+    font-size: 55px !important;
+}
+
+.btn[b-tshmvo15pj] {
+    background: #6A736F;
+    border: 1px solid #000;
+    color: #fff;
+    border-radius: 10px;
+}
+/* /Pages/ThesisPage.razor.rz.scp.css */
+.btn[b-45ccykq1tg] {
+    padding: 20px 85px;
+}
+.top-box[b-45ccykq1tg] {
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 40px;
+}
+.content-grey[b-45ccykq1tg] {
+    background: #F0F0F0;
+    padding: 50px 70px;
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-jyuqzccoeo] {
@@ -122,4 +190,98 @@ main[b-jyuqzccoeo] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+}
+/* /Shared/ThesisApplication.razor.rz.scp.css */
+.card[b-u9iq8wx9o4] {
+    border-radius: 10px !important;
+}
+
+.yellow[b-u9iq8wx9o4] {
+    background: #FFD639;
+}
+
+.btn[b-u9iq8wx9o4] {
+    padding: 12px 0;
+    border-radius: 10px;
+}
+
+.btn-accept[b-u9iq8wx9o4] {
+    background: #0095068A;
+    color: white;
+}
+
+.btn-cancel[b-u9iq8wx9o4] {
+    background: #E45A5A;
+    color: white;
+}
+
+.btn-cancel[b-u9iq8wx9o4] {
+    width: 100%;
+}
+
+.top-btn[b-u9iq8wx9o4] {
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.top-btn:hover[b-u9iq8wx9o4] {
+    text-decoration: none;
+    color: black;
+}
+
+.bg-grey[b-u9iq8wx9o4] {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+
+.excerpt[b-u9iq8wx9o4] {
+    border-left: 2px solid black;
+    padding: 10px;
+}
+
+.card[b-u9iq8wx9o4] {
+    padding: 20px 30px;
+}
+/* /Shared/ThesisComponent.razor.rz.scp.css */
+.yellow[b-gj8prw9vx3] {
+    background: #FFD639;
+}
+.btn[b-gj8prw9vx3] {
+    padding: 12px 0;
+    border-radius: 10px;
+}
+.btn-apply[b-gj8prw9vx3] {
+    background: #0095068A;
+    color: white;
+}
+.btn-cancel[b-gj8prw9vx3] {
+    background: #E45A5A;
+    color: white;
+}
+.top-btn[b-gj8prw9vx3] {
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.top-btn:hover[b-gj8prw9vx3] {
+    text-decoration: none;
+    color: black;
+}
+.bg-grey[b-gj8prw9vx3] {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+.excerpt[b-gj8prw9vx3] {
+    border-left: 2px solid black;
+    padding: 10px;
+}
+.card[b-gj8prw9vx3] {
+    padding: 20px 30px;
 }

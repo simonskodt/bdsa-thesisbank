@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6H5OWu/qgrAx72TZGsyO8YCJWhYdbP6k1qi0Kln0SU0=",
+  "Hash": "X+B0GG6UQ0P/rdGyLoHU2KLA92x0B152h8sZlgk1cZw=",
   "Source": "ThesisBank.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -7291,6 +7291,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/open-iconic/README.md"
+    },
+    {
+      "Identity": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/css/thesis.css",
+      "SourceId": "ThesisBank.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "css/thesis.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/thesis.css"
+    },
+    {
+      "Identity": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/css/typography.css",
+      "SourceId": "ThesisBank.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "css/typography.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/typography.css"
     },
     {
       "Identity": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/wwwroot/favicon.ico",

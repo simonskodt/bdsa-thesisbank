@@ -2,6 +2,14 @@ h1[b-tshmvo15pj] {
     font-family: Jost, Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.about[b-tshmvo15pj] {
+    font-size: 45px;
+}
+
+.headline[b-tshmvo15pj] {
+    font-size: 90px;
+}
+
 .content-wrapper[b-tshmvo15pj] {
     display: flex;
     flex-direction: row;
@@ -11,7 +19,7 @@ h1[b-tshmvo15pj] {
 
 .yellow-bg[b-tshmvo15pj] {
     background-color: #FFD639;
-    padding: 75px 50px;
+    padding: 105px 65px;
     position: absolute;
     right: 55%;
     top: 50%;
@@ -39,4 +47,15 @@ h1[b-tshmvo15pj] {
 .grey-content[b-tshmvo15pj] {
     width: 100%;
     display: flex;
+}
+
+.login[b-tshmvo15pj] {
+    font-size: 55px !important;
+}
+
+.btn[b-tshmvo15pj] {
+    background: #6A736F;
+    border: 1px solid #000;
+    color: #fff;
+    border-radius: 10px;
 }

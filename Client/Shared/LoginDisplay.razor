@@ -6,8 +6,8 @@
 
 <AuthorizeView>
     <Authorized>
-        Hello @context.User.Identity?.Name
-        <button class="btn btn-login" @onclick="BeginLogout">Log out</button>
+        <span class="roboto-500">Hello @context.User.Identity?.Name</span>
+        <button class="btn btn-login shadow" @onclick="BeginLogout">Log out</button>
     </Authorized>
     <NotAuthorized>
         <a href="login">Log in</a>

@@ -1,17 +1,24 @@
-<div class="card bg-grey mb-4 mt-3 border-0 radius-5">
-    <div class="row thesis mb-4">
-        <div class="col-sm-12">
-            <h2 class="headline">@title</h2>
-            <h3>Professor @teacher</h3>
-            <h4 class="text-muted h6">@keywords</h4>
-            <div class="excerpt">
-                <p>@excerpt</p>
+<NavLink href=@ThesisLink class="thesis">
+    <div class="card bg-grey mb-4 mt-3 border-0 radius-5">
+        <div class="row mb-4">
+            <div class="col-sm-12">
+                <h2 class="headline jost-500">@title</h2>
+                <h3 class="professor">Professor @teacher</h3>
+                <h4 class="h6 keywords roboto-300">@keywords</h4>
+                <div class="excerpt">
+                    <p>@excerpt</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</NavLink>
 
 @code {
+
+    public string ThesisLink = "";
+
+    [Parameter]
+    public int Id { get; set; } = 0;
 
     // TODO: Parameters must be replaced with Thesis object over time
     
@@ -25,6 +32,11 @@
     public string keywords { get; set; } = "cognition, iq, social pshycology";
 
     [Parameter]
-    public string excerpt { get; set; } = "Coginition has now become a more important factor when discussing solutions in IT. Seeking to find out how the outer impact influences this area.";
-    
+    public string excerpt { get; set; } = "Coginition has now become a more important factor when discussing solutions in IT. Seeking to find out how the outer impact influences this area.";    
+
+        protected override void OnParametersSet()
+        {
+            ThesisLink = $"/thesis/{Id}";
+        }
+
 }

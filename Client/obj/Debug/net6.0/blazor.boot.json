@@ -203,14 +203,14 @@
       "netstandard.dll": "sha256-E48Na3ZQWKExltzTwgP0Ao+UqWhiVYeerXfUL9lEc+c=",
       "System.Private.CoreLib.dll": "sha256-J85Z1XnwapHef31sR58JFq+0HrFP5BjOoObPKjdFHCw=",
       "ThesisBank.Shared.dll": "sha256-K52WvBHuiG6z3QZTUbgFeQWu5M57GSATDgmVEbGdR1Q=",
-      "ThesisBank.Client.dll": "sha256-uT24W5yoVLP3XxVZ4vffJtS42ceHoZj0aeau73R8kmA="
+      "ThesisBank.Client.dll": "sha256-6XPk9zBT7cVC692oIX6YXIihX\/HLrN2FvyCCA9pZtWU="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "ThesisBank.Shared.pdb": "sha256-Z4rRw1q9VBM0QyV3XJQ1PpVpen233+vSVAU3pa8rBLA=",
-      "ThesisBank.Client.pdb": "sha256-MXKkNevpmPAgoapNlqpft47a\/RNXSgo+yoAsn+9NArk="
+      "ThesisBank.Client.pdb": "sha256-RKmKOqyeFHtOdv0Ih8vn2C13K\/5LHIJ2YhzO+YfT324="
     },
     "runtime": {
       "dotnet.6.0.0.lfb2m42b5g.js": "sha256-LOq52qjRa3+zt3w4UL10rS3UdwHxVQxW0JAsMPO9QAM=",

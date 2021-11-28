@@ -22,20 +22,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Applications.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb25zLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXV0aGVudGljYXRpb24ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/ThesisPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGhlc2lzUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/LoginDisplay.razor]
@@ -50,22 +38,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisApplication.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpc0FwcGxpY2F0aW9uLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisComponent.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpc0NvbXBvbmVudC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Applications.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwbGljYXRpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-u44xv73ieq
+
+[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-qhngt446eb
 
 [/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-tshmvo15pj
 
+[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Pages/ThesisPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGhlc2lzUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-45ccykq1tg
+
 [/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-1yzoyz6jqs
+
+[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisApplication.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpc0FwcGxpY2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-u9iq8wx9o4
+
+[/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Client/Shared/ThesisComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1RoZXNpc0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gj8prw9vx3
