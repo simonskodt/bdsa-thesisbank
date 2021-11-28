@@ -1,5 +1,5 @@
-namespace Client.Service;
-public interface IThesisService
+namespace ThesisBank.Client.Service;
+public interface IThesesService
 {
     // Ought to be ThesisDTO I guess
         Task<List<Thesis>> GetAllTheses();

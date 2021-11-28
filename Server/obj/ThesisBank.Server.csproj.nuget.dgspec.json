@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj": {
-                "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Shared/ThesisBank.Shared.csproj"
+              "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj": {
+                "projectPath": "/Users/philip/My Drive/ITU/3. Semester/BDSA/bdsa-thesisbank/Entities/Entities.csproj"
               }
             }
           }

@@ -773,10 +773,10 @@
       },
       "ThesisBank.Client/1.0.0": {
         "dependencies": {
+          "Entities": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "6.0.0",
           "Microsoft.Authentication.WebAssembly.Msal": "6.0.0",
-          "Microsoft.Extensions.Http": "6.0.0",
-          "ThesisBank.Shared": "1.0.0"
+          "Microsoft.Extensions.Http": "6.0.0"
         },
         "runtime": {
           "ThesisBank.Client.dll": {}

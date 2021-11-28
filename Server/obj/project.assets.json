@@ -1386,10 +1386,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Entities": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "6.0.0",
           "Microsoft.Authentication.WebAssembly.Msal": "6.0.0",
-          "Microsoft.Extensions.Http": "6.0.0",
-          "ThesisBank.Shared": "1.0.0"
+          "Microsoft.Extensions.Http": "6.0.0"
         },
         "compile": {
           "bin/placeholder/ThesisBank.Client.dll": {}

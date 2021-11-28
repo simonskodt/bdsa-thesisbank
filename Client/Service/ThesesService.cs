@@ -1,8 +1,8 @@
 using System.Net.Http.Json;
 
-namespace Client.Service;
+namespace ThesisBank.Client.Service;
 
-public class ThesesService : IThesisService
+public class ThesesService : IThesesService
 {
 
     private readonly HttpClient _http;
@@ -13,7 +13,7 @@ public class ThesesService : IThesisService
     
     public async Task<List<Thesis>> GetAllTheses()
     {
-        return await _http.GetFromJsonAsync<List<Thesis>>("api/Theses");
+        return await _http.GetFromJsonAsync<List<Thesis>>("api/controller");
     }
 
     public Task<Thesis> GetThesis(int id)
