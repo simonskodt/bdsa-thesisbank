@@ -1,6 +1,6 @@
 ﻿@page "/"
-@inject Client.Service.IThesesService ThesesService
-@* @attribute [Authorize] *@
+@* @inject Client.Service.IThesesService ThesesService *@
+@attribute [Authorize]
 
 <div>
     <div class="row pb-4">
@@ -15,14 +15,3 @@
         <ThesisComponent Id="3" />
     </div>
 </div>
-
-@code {
-
-    private List<Thesis> theses = new List<Thesis>();
-
-    @* protected override async Task OnInitializedAsync() 
-    {
-        theses = await ThesesService.GetAllTheses();
-    } *@
-    
-}

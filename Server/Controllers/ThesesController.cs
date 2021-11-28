@@ -6,7 +6,7 @@ using ThesisBank.Server.Data;
 
 namespace ThesisBank.Server.Controllers;
 
-// [Authorize]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ThesesController : ControllerBase {
