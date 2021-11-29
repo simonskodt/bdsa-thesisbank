@@ -63,9 +63,6 @@ public class TeacherRepository : ITeacherRepository
     }
 
     public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID){
-
-        var Applications = _context.Applies
-                                .Where()
-
+        throw new NotImplementedException();
     }
 }
