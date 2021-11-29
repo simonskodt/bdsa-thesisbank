@@ -9,5 +9,5 @@ public class Teacher
     [EmailAddress]
     public string Email { get; set; }
 
-    public ICollection<Thesis>? OwnedTheses { get; set; } 
+    public ICollection<Thesis>? OwnedTheses { get; set; }
 }

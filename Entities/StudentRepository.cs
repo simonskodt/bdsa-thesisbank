@@ -8,7 +8,6 @@ public class StudentRepository : IStudentRepository
         _context = context;
     }
 
-
     public async Task<(Response, StudentDTO)> ReadStudent(int StudentID)
     {
         var student = await _context.Students
