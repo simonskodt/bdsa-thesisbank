@@ -35,9 +35,9 @@ public class ThesisRepository : IThesisRepository{
             return Theses;
     }
 
-    public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int StudentID){
+    public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int studentID){
         var ThesesID = (await _context.Applies
-                       .Where(a => a.StudentID == StudentID)
+                       .Where(a => a.StudentID == studentID)
                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
                        .ToListAsync())
                        .AsReadOnly();

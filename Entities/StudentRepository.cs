@@ -3,71 +3,79 @@ public class StudentRepository : IStudentRepository
 {
     ThesisBankContext _context;
 
-    public StudentRepository(ThesisBankContext context){
+    public StudentRepository(ThesisBankContext context)
+    {
         _context = context;
     }
 
 
-    public async Task<(Response, StudentDTO)> ReadStudent(int StudentID){
-
-        var Student = await _context.Students
+    public async Task<(Response, StudentDTO)> ReadStudent(int StudentID)
+    {
+        var student = await _context.Students
                                    .Where(s => s.Id == StudentID)
-                                   .Select(s => new StudentDTO{Id = s.Id, Name = s.Name, Email = s.Email})
+                                   .Select(s => new StudentDTO { Id = s.Id, Name = s.Name, Email = s.Email })
                                    .FirstOrDefaultAsync();
-        
-        if(Student == null){
-            return (Response.NotFound, Student);
+
+        if (student == null)
+        {
+            return (Response.NotFound, student);
         }
 
-        return (Response.Success, Student);     
+        return (Response.Success, student);
     }
 
-    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID) 
+    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID)
     {
-            var student = _context.Students
-                            .Where(s => s.Id == studentID)
-                            .FirstOrDefault();
+        var student = _context.Students
+                        .Where(s => s.Id == studentID)
+                        .FirstOrDefault();
 
-            var thesis = _context.Theses
-                            .Where(t => t.Id == ThesisID)
-                            .FirstOrDefault();
-
-
-            var entity = new Apply{
-                Status = Status.Pending,
-                Student = student,
-                Thesis = thesis
-            };
-
-            var StudentDTO = new StudentDTO{
-                Id = student.Id,
-                Name = student.Name,
-                Email = student.Email
-            };
+        var thesis = _context.Theses
+                        .Where(t => t.Id == ThesisID)
+                        .FirstOrDefault();
 
 
-            var ThesisDTO = new ThesisDTO(
-                thesis.Id,
-                thesis.Name,
-                thesis.Description,
-                new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-            );
+        var entity = new Apply
+        {
+            Status = Status.Pending,
+            Student = student,
+            Thesis = thesis
+        };
 
-            _context.Applies.Add(entity);
+        var StudentDTO = new StudentDTO
+        {
+            Id = student.Id,
+            Name = student.Name,
+            Email = student.Email
+        };
 
-            await _context.SaveChangesAsync();
 
-            return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
+        var ThesisDTO = new ThesisDTO(
+            thesis.Id,
+            thesis.Name,
+            thesis.Description,
+            new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        );
+
+        _context.Applies.Add(entity);
+
+        await _context.SaveChangesAsync();
+
+        return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
     }
-    public async Task<(Response, ApplyDTO)> Accept(int ThesisID, int StudentID){
+
+    public async Task<(Response, ApplyDTO)> Accept(int ThesisID, int StudentID)
+    {
         throw new NotImplementedException();
     }
 
-    public async Task<Response> RemoveAllPendings(int StudentID){
+    public async Task<Response> RemoveAllPendings(int StudentID)
+    {
         throw new NotImplementedException();
     }
 
-    public async Task<(Response, ThesisDTO)> RemoveRequest(int ThesisID, int StudentID){
+    public async Task<(Response, ThesisDTO)> RemoveRequest(int ThesisID, int StudentID)
+    {
         throw new NotImplementedException();
     }
 }
