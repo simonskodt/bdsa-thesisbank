@@ -4,7 +4,7 @@ public class Thesis
 {
     public int Id {get; set;}
 
-    [StringLength(20)]
+    [StringLength(60)]
     public string? Name {get; set;}
 
     public string? Description {get; set;}
@@ -12,5 +12,9 @@ public class Thesis
     public Teacher Teacher {get; set;}
 
     public ICollection<Apply>? Applies { get; set; } 
+
+     public Thesis(string name){
+        Name = name;
+    }
     
 }
