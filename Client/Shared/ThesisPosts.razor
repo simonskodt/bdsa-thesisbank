@@ -1,19 +1,4 @@
 @using Entities
 @inject Client.Service.IThesesService ThesisService
 
-@foreach (var thesis in Theses) {
-    <div>
-        <h3>@thesis.Name</h3>
-    </div>
-}
-
-@code {
-
-    private List<Thesis> Theses = new List<Thesis>();
-
-    protected async Task OnIntializedAsync()
-    {
-        Theses = await ThesesService.GetThesesPosts();
-    }
-    
-}
+<div>Hola!</div>
