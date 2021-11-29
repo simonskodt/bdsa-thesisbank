@@ -326,6 +326,10 @@ __pycache__/
 # Tabs Studio
 *.tss
 
+#added clientObjectfiles 
+Client/obj/Debug/net6.0/
+
+
 # Telerik's JustMock configuration file
 *.jmconfig
 
