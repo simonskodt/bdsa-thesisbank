@@ -6,36 +6,27 @@ using ThesisBank.Server.Data;
 
 namespace ThesisBank.Server.Controllers;
 
-[Authorize]
+// [Authorize]
+// [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 [ApiController]
-[Route("[controller]")]
-[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
+[Route("api/[controller]")]
 public class ThesesController : ControllerBase {
-
-    private readonly DataContext _context;
-
-    public ThesesController(DataContext context) {
-        _context = context;
-    }
-
-    // [HttpGet]
-    // public ActionResult<List<Thesis>> GetAllThesesPosts() {
-    //     Teacher Rasmus = new Teacher{Id = 2, Name = "Rasmus", Email = "Rasmus@itu.dk"};
-        
-    //     // return Ok(_context.ThesesPosts);
-    //     return new List<Thesis> { 
-    //         new Thesis { Id = 1, Name = "Linq", Teacher = Rasmus }
-    //      };
-    // }
+    public List<Thesis> Theses { get; set; } = new List<Thesis> {
+        new Thesis {
+            new Thesis { Id = 1, Name = "WildAlgorithms", Teacher = new Teacher {
+                Id = 1, Name = "Rasmus", Email = "Rasmus@itu.dk"
+            } },
+            new Thesis { Id = 2, Name = "GraphAlgorithms", Teacher = new Teacher {
+                Id = 1, Name = "Rasmus", Email = "Rasmus@itu.dk"
+            } },
+            new Thesis { Id = 2, Name = "Linq", Teacher = new Teacher {
+                Id = 1, Name = "Rasmus", Email = "Rasmus@itu.dk"
+            } },
+        }
+    };
 
     [HttpGet]
-    public IEnumerable<Thesis> GetAllThesesPosts() {        
-        
-        Teacher Rasmus = new Teacher{Id = 2, Name = "Rasmus", Email = "Rasmus@itu.dk"};
-
-        return Enumerable.Range(5).Select(thesis => new Thesis {
-            Id = 1, Name = "Linq", Teacher = Rasmus
-        }).ToArray();
+    public ActionResult<List<Thesis>> GetAllTheses() {
+        return Ok(Theses);
     }
-    
 }
