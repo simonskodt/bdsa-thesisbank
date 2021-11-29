@@ -1,6 +1,5 @@
-
 namespace Core;
 
-public record ThesisDTO(int Id, string Name, TeacherDTO Teacher); //Mangler description
+public record ThesisDTO(int Id, string Name, string Description, TeacherDTO Teacher);
 
-public record MinimalThesisDTO(int ID, string Name, string TeacherName);
+public record MinimalThesisDTO(int Id, string Name,string Description, string TeacherName);
