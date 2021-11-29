@@ -7,6 +7,9 @@ public class TeacherRepositoryTest : IDisposable
     private readonly ThesisRepository? _repo_Thesis;
     private readonly TeacherRepository? _repo_Teacher;
 
+    private readonly ApplyRepository? _repo_Apply;
+
+
     public TeacherRepositoryTest(){
         var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
@@ -45,6 +48,8 @@ public class TeacherRepositoryTest : IDisposable
         _repo_Student = new StudentRepository(_context);
         _repo_Thesis = new ThesisRepository(_context);
         _repo_Teacher = new TeacherRepository(_context);
+        _repo_Apply = new ApplyRepository(_context);
+
 
     }
 
@@ -74,37 +79,41 @@ public class TeacherRepositoryTest : IDisposable
         
     }
 
-    /*
 
-    TESTS FOR METHODE Accept
-
-    */
     [Fact]
     public async Task Accept(){
 
-        var listofApllication = await _repo_Teacher.ReadStudentApplication(1);
+        //var listofApllication = await _repo_Teacher.ReadStudentApplication(1);
         //længden af den gemmest
 
-        var AcceptedResponse = await _repo_Teacher.Accept(1,1);
+        //var AcceptedResponse = await _repo_Teacher.Accept(1,1);
 
-        Assert.Equal(Response.Success, AcceptedResponse);
+        //Assert.Equal(Response.Success, AcceptedResponse);
 
         // længden der var gemt skal nu være en mindre.
+
+        var ApplyEntryTest = await _repo_Apply.ReadApplied(1, 1);
+        var testStatus = ApplyEntryTest.Item2.Status;
+
+        var ApplyEntryUpdate = await _repo_Teacher.Accept(1,1);
+        var UpdateStatus = ApplyEntryUpdate.Item2.Status;
+
+        Assert.Equal(Status.Pending, testStatus);
+        Assert.Equal(Status.Accepted, UpdateStatus);
        
     }
-
-    /*
-
-    TESTS FOR METHODE Reject
-
-    */
     
     [Fact]
     public async Task Reject(){
 
-        var AcceptedResponse = await _repo_Teacher.Accept(1,1);
+        var ApplyEntryTest = await _repo_Apply.ReadApplied(1, 1);
+        var testStatus = ApplyEntryTest.Item2.Status;
 
-        Assert.Equal(Response.Success, AcceptedResponse);
+        var ApplyEntryUpdate = await _repo_Teacher.Reject(1,1);
+        var UpdateStatus = ApplyEntryUpdate.Item2.Status;
+
+        Assert.Equal(Status.Pending, testStatus);
+        Assert.Equal(Status.Denied, UpdateStatus);
 
     }
 

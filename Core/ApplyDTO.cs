@@ -3,6 +3,9 @@ namespace Core;
 
 public record ApplyDTO (Status Status, StudentDTO Student, ThesisDTO Thesis);
 
+public record ApplyWithIDDTO (int Id, Status Status, StudentDTO Student, ThesisDTO Thesis);
+
+
 public record ApplyCreateDTO(StudentDTO StudentID, ThesisDTO ThesisID);
 public record ApplyDTOTemp
 
