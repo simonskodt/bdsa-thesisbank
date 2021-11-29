@@ -14,27 +14,27 @@ public class TeacherRepository : ITeacherRepository
 
     public async Task<(Response, TeacherDTO)> ReadTeacher(int TeacherID)
     {
-        var Teacher = await _context.Teachers
+        var teacher = await _context.Teachers
                                     .Where(t => t.Id == TeacherID)
                                     .Select(t => new TeacherDTO(t.Id, t.Name, t.Email))
                                     .FirstOrDefaultAsync();
 
-        if (Teacher == null)
+        if (teacher == null)
         {
-            return (Response.NotFound, Teacher);
+            return (Response.NotFound, teacher);
         }
 
-        return (Response.Success, Teacher);
+        return (Response.Success, teacher);
     }
 
-    public async Task<(Response, ApplyDTO)> Accept(int StudentID, int ThesisID)
+    public async Task<(Response, ApplyDTO)> Accept(int studentID, int thesisID)
     {
-        return await ChangeStatus(StudentID, ThesisID, Status.Accepted);
+        return await ChangeStatus(studentID, thesisID, Status.Accepted);
     }
 
-    public async Task<(Response, ApplyDTO)> Reject(int StudentID, int ThesisID)
+    public async Task<(Response, ApplyDTO)> Reject(int studentID, int thesisID)
     {
-        return await ChangeStatus(StudentID, ThesisID, Status.Denied);
+        return await ChangeStatus(studentID, thesisID, Status.Denied);
     }
 
     private async Task<(Response, ApplyDTO)> ChangeStatus(int studentID, int thesisID, Status status)
@@ -62,10 +62,8 @@ public class TeacherRepository : ITeacherRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID){
-
-        var Applications = _context.Applies
-                                .Where()
-
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int teacherID)
+    {
+        throw new NotImplementedException();
     }
 }
