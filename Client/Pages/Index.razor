@@ -1,6 +1,6 @@
 ﻿@page "/"
-@* @inject Client.Service.IThesesService ThesesService *@
 @attribute [Authorize]
+@inject HttpClient Http
 
 <div>
     <div class="row pb-4">
@@ -14,4 +14,18 @@
         <ThesisComponent Id="2" />
         <ThesisComponent Id="3" />
     </div>
+
+    @foreach (var Thesis in thesisList) {
+        <p>@Thesis.Name</p>
+    }
+    
 </div>
+
+@code {
+    private Thesis[]? thesisList;
+
+    protected override async Task onInitializedAsync()
+    {
+        thesisList = await Http.GetFromJsonAsync<Thesis[]>("api/Thesis");
+    }
+}
