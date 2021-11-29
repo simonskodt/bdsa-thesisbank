@@ -2,7 +2,6 @@ namespace Entities;
 public class TeacherRepository : ITeacherRepository{
 
     ThesisBankContext _context;
-
     public TeacherRepository(ThesisBankContext context){
         _context = context;
     }
@@ -21,12 +20,60 @@ public class TeacherRepository : ITeacherRepository{
     return (Response.Success, Teacher);     
 }
 
-    public async Task<Response> Accept(int StudentID, int ThesisID){
-        throw new NotImplementedException();
+    public async Task<(Response, ApplyDTO)> Accept(int StudentID, int ThesisID){
+        
+        var stud_repo = new StudentRepository(_context);
+        var thesis_repo = new ThesisRepository(_context);
+
+
+        var appliesThesis = await _context.Applies
+                                .Where(s => s.Id == StudentID)
+                                .Where(t => t.Id == ThesisID)
+                                .Where(a => a.Status == Status.Pending)
+                                .FirstOrDefaultAsync();
+
+        if (appliesThesis == null){
+            return (Response.NotFound, null);
+        }
+
+        appliesThesis.Status = Status.Accepted;
+
+        await _context.SaveChangesAsync();
+
+        var getStudent = await stud_repo.ReadStudent(StudentID);
+        var getThesis = await thesis_repo.ReadThesis(ThesisID);
+
+        var appliedThesisDTO = new ApplyDTO(appliesThesis.Status, getStudent.Item2, getThesis.Item2);
+
+        return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<Response> Reject(int StudentID, int ThesisID){
-        throw new NotImplementedException();
+    public async Task<(Response, ApplyDTO)> Reject(int StudentID, int ThesisID){
+
+        var stud_repo = new StudentRepository(_context);
+        var thesis_repo = new ThesisRepository(_context);
+
+
+        var appliesThesis = await _context.Applies
+                                .Where(s => s.Id == StudentID)
+                                .Where(t => t.Id == ThesisID)
+                                .Where(a => a.Status == Status.Pending)
+                                .FirstOrDefaultAsync();
+
+        if (appliesThesis == null){
+            return (Response.NotFound, null);
+        }
+
+        appliesThesis.Status = Status.Denied;
+
+        await _context.SaveChangesAsync();
+
+        var getStudent = await stud_repo.ReadStudent(StudentID);
+        var getThesis = await thesis_repo.ReadThesis(ThesisID);
+
+        var appliedThesisDTO = new ApplyDTO(appliesThesis.Status, getStudent.Item2, getThesis.Item2);
+
+        return (Response.Success, appliedThesisDTO);
     }
 
     public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID){
