@@ -2,7 +2,7 @@ namespace ThesisBank.Client.Service;
 public interface IThesesService
 {
     // Ought to be ThesisDTO I guess
-        Task<List<Thesis>> GetAllTheses();
+        // Task<List<Thesis>> GetAllTheses();
         Task<Thesis> GetThesis(int id);
 
     /**

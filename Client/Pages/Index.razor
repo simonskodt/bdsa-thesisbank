@@ -1,6 +1,7 @@
 ﻿@page "/"
 @attribute [Authorize]
 @inject HttpClient Http
+@inject ThesisBank.Client.Service.ThesesService ThesesService
 
 <div>
     <div class="row pb-4">
@@ -24,8 +25,9 @@
 @code {
     private Thesis[]? thesisList;
 
-    protected override async Task onInitializedAsync()
+    protected async Task onInitializedAsync()
     {
-        thesisList = await Http.GetFromJsonAsync<Thesis[]>("api/Thesis");
+        @* thesisList = await Http.GetFromJsonAsync<Thesis[]>("api/Thesis"); *@
+        thesisList = await ThesesService.GetAllTheses();
     }
 }
