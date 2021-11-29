@@ -73,11 +73,18 @@ public DbSet<Apply>? Applies {get ; set;}
             Student = Victor
         };
 
-        context.Theses.AddRange(
+         context.Teachers.AddRange(
+            Rasmus,
+            Thore
+        ); 
+
+        context.SaveChanges();
+
+         context.Theses.AddRange(
             Thesis1,
             Thesis2,
             Thesis3
-        );
+        ); 
 
         context.Students.AddRange(
             Ahmed,
@@ -86,6 +93,7 @@ public DbSet<Apply>? Applies {get ; set;}
             Victor,
             Simon
         );
+         context.SaveChanges();
 
         context.Applies.AddRange(
             Applies1,
@@ -94,7 +102,7 @@ public DbSet<Apply>? Applies {get ; set;}
             Applies4,
             Applies5
         );
-
+ 
         context.SaveChanges();
     }
 }
