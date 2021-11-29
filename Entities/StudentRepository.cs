@@ -22,8 +22,8 @@ public class StudentRepository : IStudentRepository
         return (Response.Success, Student);     
     }
 
-    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID) {
-
+    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID) 
+    {
             var student = _context.Students
                             .Where(s => s.Id == studentID)
                             .FirstOrDefault();
