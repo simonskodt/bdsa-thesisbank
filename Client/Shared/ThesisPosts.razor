@@ -1,5 +1,5 @@
-@using ThesisBank.Entities
-@inject ThesisBank.Client.Service.IThesesService ThesisService
+@using Entities
+@inject Client.Service.IThesesService ThesisService
 
 @foreach (var thesis in Theses) {
     <div>
@@ -11,7 +11,7 @@
 
     private List<Thesis> Theses = new List<Thesis>();
 
-    private override async Task OnIntializedAsync()
+    protected async Task OnIntializedAsync()
     {
         Theses = await ThesesService.GetThesesPosts();
     }

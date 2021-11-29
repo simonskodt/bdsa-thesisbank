@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ThesisBank.Server.Data;
+using Server.Data;
 
-namespace ThesisBank.Server.Controllers;
+namespace Server.Controllers;
 
 // [Authorize]
 // [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
@@ -26,7 +26,7 @@ public class ThesesController : ControllerBase {
     };
 
     [HttpGet]
-    public ActionResult<List<Thesis>> GetAllTheses() {
+    public ActionResult<List<Thesis>> Get() {
         return Ok(Theses);
     }
 }

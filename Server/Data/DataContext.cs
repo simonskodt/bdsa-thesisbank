@@ -1,7 +1,7 @@
 using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ThesisBank.Server.Data;
+namespace Server.Data;
 
 public class DataContext : DbContext {
 

@@ -1,12 +1,12 @@
 using System.Net.Http.Json;
 
-namespace ThesisBank.Client.Service;
+namespace Client.Service;
 
 public class ThesesService : IThesesService
 {
     private readonly HttpClient _http;
 
-    public BlogService(HttpClient http)
+    public ThesesService(HttpClient http)
     {
         _http = http;
     }
