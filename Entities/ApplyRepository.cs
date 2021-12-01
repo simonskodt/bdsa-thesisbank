@@ -15,8 +15,8 @@ public class ApplyRepository : IApplyRepository
 
 
         var appliesThesis = await _context.Applies
-                        .Where(s => s.Id == studentID)
-                        .Where(t => t.Id == thesisID)
+                        .Where(s => s.Student.Id == studentID)
+                        .Where(t => t.Thesis.Id == thesisID)
                         .FirstOrDefaultAsync();
 
         if (appliesThesis == null)
@@ -32,17 +32,14 @@ public class ApplyRepository : IApplyRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<ICollection<ApplyDTO>> ReadApplicationsByTeacherID(int TeacherID)
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadApplicationsByTeacherID(int TeacherID)
     {
-
         var stud_repo = new StudentRepository(_context);
         var thesis_repo = new ThesisRepository(_context);
 
         var thesesWithCurrentTeacherID = await _context.Theses
                                                 .Where(t => t.Teacher.Id == TeacherID)
                                                 .ToListAsync();
-
-
         var ThesesIDs = new List<int>();
 
         var Applies = new List<Apply>();
@@ -51,17 +48,8 @@ public class ApplyRepository : IApplyRepository
         {
             ThesesIDs.Add(item.Id);
         }
-
-        /*  foreach (var item in ThesesIDs){
-             var Applyes = await _context.Applies
-                                 .Where(s => s.Id == item)
-                                 .FirstOrDefaultAsync();
-             Applies.Add(Applyes);
-
-         } */
-
         var Applications = await _context.Applies
-                                .Where(s => ThesesIDs.Contains(s.Id))
+                                .Where(s => ThesesIDs.Contains(s.ThesisID))
                                 .ToListAsync();
 
         var ApplyDTOList = new List<ApplyDTO>();
@@ -73,7 +61,6 @@ public class ApplyRepository : IApplyRepository
             var DTO = new ApplyDTO(item.Status, student.Item2, thesis.Item2);
             ApplyDTOList.Add(DTO);
         }
-
         return ApplyDTOList.AsReadOnly();
     }
 }

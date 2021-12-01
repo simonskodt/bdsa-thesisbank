@@ -101,8 +101,6 @@ public class ThesisRepositoryTest : IDisposable
 
     */
 
-
-
     [Fact]
     public async Task ReadAppliedThesis_GivenStudentId1_ReturnAppliedThesis()
     {
