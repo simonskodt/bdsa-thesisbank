@@ -1,8 +1,7 @@
 namespace Entities;
 
 public class ThesisRepository : IThesisRepository{
-
-
+    
     ThesisBankContext _context;
 
     public ThesisRepository(ThesisBankContext context){
@@ -35,9 +34,14 @@ public class ThesisRepository : IThesisRepository{
             return Theses;
     }
 
+
+    //TODO: LAV EN NY METODE SÅ DER ER FORSKEL PÅ AT LÆSE PENDING OG ACCEPTETETETE;
+    // RET OGSÅ NEDESTÅENDE METODE
+
     public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int StudentID){
         var ThesesID = (await _context.Applies
                        .Where(a => a.StudentID == StudentID)
+                       .Where(a => a.Status == Status.Pending)
                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
                        .ToListAsync())
                        .AsReadOnly();

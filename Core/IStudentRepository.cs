@@ -10,6 +10,6 @@ public interface IStudentRepository
     public Task <(Response, ApplyDTO)> Accept(int studentID, int ThesisID);
 
     public Task <Response> RemoveAllPendings(int StudentID);
-    public Task <(Response, ThesisDTO)> RemoveRequest(int studentID, int ThesisID);
+    public Task <Response> RemoveRequest(int studentID, int ThesisID);
     
 }
