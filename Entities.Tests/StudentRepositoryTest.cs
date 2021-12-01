@@ -67,9 +67,9 @@ public class StudentRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadStudent_GivenStudent3_ReturnResonseNotFoundAndNull(){
+    public async Task ReadStudent_GivenStudent9_ReturnResonseNotFoundAndNull(){
         
-        var actual = await _repo_Stud.ReadStudent(3);
+        var actual = await _repo_Stud.ReadStudent(9);
 
         Assert.Equal((Response.NotFound, null), actual);
     }
@@ -94,18 +94,18 @@ public class StudentRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent3AndThesis1_ReturnResonseNotFoundAndNull(){
+    public async Task ApplyForThesis_GivenAppliedStudent9AndThesis1_ReturnResonseNotFoundAndNull(){
 
-        var readApplied = await _repo_Stud.ApplyForThesis(3, 1);
+        var readApplied = await _repo_Stud.ApplyForThesis(9, 1);
 
         Assert.Equal((Response.NotFound, null), readApplied);
     }
 
 
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis3_ReturnResonseNotFoundAndNull(){
+    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis9_ReturnResonseNotFoundAndNull(){
 
-        var readApplied = await _repo_Stud.ApplyForThesis(1, 3);
+        var readApplied = await _repo_Stud.ApplyForThesis(1, 9);
 
         Assert.Equal((Response.NotFound, null), readApplied);
     }
@@ -166,8 +166,17 @@ public class StudentRepositoryTest : IDisposable
         var readResponse = await _repo_Stud.RemoveAllPendings(1);
 
         Assert.Equal(Response.Deleted, readResponse);
-        Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
+        //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
         
+    }
+
+    [Fact]
+    public async Task RemoveAllPendings_GivenStudentId3_ReturnDeleted(){
+
+        var readAllRemoved = await _repo_Stud.RemoveAllPendings(3);
+
+        Assert.Equal(Response.Deleted, readAllRemoved);
+        Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
     }
 
     /*
@@ -182,16 +191,7 @@ public class StudentRepositoryTest : IDisposable
         var readRemoved = await _repo_Stud.RemoveRequest(1,1);
 
         Assert.Equal(Response.Deleted, readRemoved);
-        Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
-    }
-
-    [Fact]
-    public async Task RemoveAllPendings_GivenStudentId1_ReturnDeleted(){
-
-        var readAllRemoved = await _repo_Stud.RemoveAllPendings(3);
-
-        Assert.Equal(Response.Deleted, readAllRemoved);
-        Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
+        //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
     }
 
     public void Dispose(){

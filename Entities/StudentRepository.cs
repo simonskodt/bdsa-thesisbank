@@ -114,6 +114,6 @@ public class StudentRepository : IStudentRepository
         _context.Applies.RemoveRange(allPending);
 
         await _context.SaveChangesAsync(); 
-        return Response.Deleted;    }
+        return Response.Deleted;   }
 
 }
