@@ -10,4 +10,10 @@ public class Teacher
     public string Email { get; set; }
 
     public ICollection<Thesis>? OwnedTheses { get; set; }
+
+    public Teacher(string name, string email)
+    {
+        Name = name;
+        Email = email;
+    }
 }

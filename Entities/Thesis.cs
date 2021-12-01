@@ -13,4 +13,9 @@ public class Thesis
 
     public ICollection<Apply>? Applies { get; set; }
 
+    public Thesis(string name, Teacher teacher)
+    {
+        Name = name;
+        Teacher = teacher;
+    }
 }

@@ -12,6 +12,12 @@ public class Apply
 
     public int StudentID { get; set; }
 
-    public Student? Student { get; set; }
+    public Student Student { get; set; }
 
+    public Apply(Thesis thesis, Student student)
+    {
+        Status = Status.Pending;
+        Thesis = thesis;
+        Student = student;
+    }
 }

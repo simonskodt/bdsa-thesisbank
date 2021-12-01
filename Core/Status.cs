@@ -6,6 +6,4 @@ public enum Status
     Accepted,
     Denied, 
     Archived,
-
-
 }
