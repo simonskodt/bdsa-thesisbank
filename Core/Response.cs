@@ -9,5 +9,4 @@ public enum Response
     BadRequest,
     Conflict,
     Success
-    
 }

@@ -4,28 +4,30 @@ public class StudentRepository : IStudentRepository
     ThesisBankContext _context;
     ThesisRepository _repo_Thesis;
 
-    public StudentRepository(ThesisBankContext context){
+    public StudentRepository(ThesisBankContext context)
+    {
         _context = context;
         _repo_Thesis = new ThesisRepository(_context);
     }
 
-    public async Task<(Response, StudentDTO)> ReadStudent(int StudentID){
-
-        var Student = await _context.Students
+    public async Task<(Response, StudentDTO)> ReadStudent(int StudentID)
+    {
+        var student = await _context.Students
                                    .Where(s => s.Id == StudentID)
-                                   .Select(s => new StudentDTO{Id = s.Id, Name = s.Name, Email = s.Email})
+                                   .Select(s => new StudentDTO { Id = s.Id, Name = s.Name, Email = s.Email })
                                    .FirstOrDefaultAsync();
-        
-        if(Student == null){
-            return (Response.NotFound, Student);
+
+        if (student == null)
+        {
+            return (Response.NotFound, student);
         }
 
-        return (Response.Success, Student);     
+        return (Response.Success, student);
     }
-
-    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID) {
-            
-            var student = await _context.Students
+             
+    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID)
+    {
+         var student = await _context.Students
                             .Where(s => s.Id == studentID)
                             .FirstOrDefaultAsync();
 
@@ -36,33 +38,35 @@ public class StudentRepository : IStudentRepository
 
             if(student == null || thesis == null){
                 return (Response.NotFound, null);
-            }               
+            }   
 
-            var entity = new Apply{
-                Status = Status.Pending,
-                Student = student,
-                Thesis = thesis
-            };
+        var entity = new Apply
+        {
+            Status = Status.Pending,
+            Student = student,
+            Thesis = thesis
+        };
 
-            var StudentDTO = new StudentDTO{
-                Id = student.Id,
-                Name = student.Name,
-                Email = student.Email
-            };
+        var StudentDTO = new StudentDTO
+        {
+            Id = student.Id,
+            Name = student.Name,
+            Email = student.Email
+        };
 
 
-            var ThesisDTO = new ThesisDTO(
-                thesis.Id,
-                thesis.Name,
-                thesis.Description,
-                new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-            );
+        var ThesisDTO = new ThesisDTO(
+            thesis.Id,
+            thesis.Name,
+            thesis.Description,
+            new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        );
 
-            _context.Applies.Add(entity);
+        _context.Applies.Add(entity);
 
-            await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
-            return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
+        return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
     }
 
     public async Task<(Response, ApplyDTO)> Accept(int ThesisID, int StudentID){
