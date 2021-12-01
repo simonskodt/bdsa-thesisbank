@@ -4,6 +4,6 @@ public interface IApplyRepository
 {
     public Task<(Response, ApplyDTO)> ReadApplied(int StudentID, int ThesisID);
 
-    public Task<ICollection<ApplyDTO>> ReadApplicationsByTeacherID(int TeacherID);
+    public Task<IReadOnlyCollection<ApplyDTO>> ReadApplicationsByTeacherID(int TeacherID);
     
 }

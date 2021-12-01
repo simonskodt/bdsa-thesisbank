@@ -34,14 +34,18 @@ public class TeacherRepositoryTest : IDisposable
         Apply applies1 = new Apply { Id = 4, Status = Status.Pending, ThesisID = 1, StudentID = 1 };
         Apply applies2 = new Apply { Id = 5, Status = Status.Pending, ThesisID = 2, StudentID = 1 };
         Apply applies3 = new Apply { Id = 3, Status = Status.Pending, ThesisID = 2, StudentID = 2 };
+        Apply applies4 = new Apply { Id = 6, Status = Status.Accepted, ThesisID = 5, StudentID = 1 };
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
+        context.Applies.Add(applies4);
+
 
         context.Theses.Add(new Thesis { Id = 1, Name = "WildAlgorithms", Description = "This is a Thesis about a very interesting topic", Teacher = Thore });
         context.Theses.Add(new Thesis { Id = 2, Name = "GraphAlgorithms", Description = "This is a Thesis about a very interesting algorithm", Teacher = Thore });
         context.Theses.Add(new Thesis { Id = 3, Name = "Linq", Description = "This is a Thesis about a very interesting linq", Teacher = Rasmus });
         context.Theses.Add(new Thesis { Id = 4, Name = "Migration", Description = "This is a Thesis about a very interesting Migration", Teacher = Rasmus });
+        context.Theses.Add(new Thesis { Id = 5, Name = "CSharp", Description = "This is a Thesis about a very interesting programming language", Teacher = Thore });
 
         context.SaveChangesAsync();
 
@@ -51,9 +55,8 @@ public class TeacherRepositoryTest : IDisposable
         _repo_Teacher = new TeacherRepository(_context);
         _repo_Apply = new ApplyRepository(_context);
     }
-
     [Fact]
-    public async Task ReadTeacher_GivenTeacher1_Returns_ResponseSuccessAndTeacher1DTO()
+    public async Task ReadTeacher_GivenTeacher1_ReturnsResponseSuccessAndTeacher1DTO()
     {
         var actual = await _repo_Teacher.ReadTeacher(1);
 
@@ -63,15 +66,16 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadTeacher_GivenTeacher3_Returns_RepsonseNotFoundAndNull()
+    public async Task ReadTeacher_GivenTeacher3_ReturnsRepsonseNotFoundAndNull()
     {
         var actual = await _repo_Teacher.ReadTeacher(3);
 
         Assert.Equal((Response.NotFound, null), actual);
     }
 
+
     [Fact]
-    public async Task Accept_Given_studentID_and_thesisID_finds_correct_Status()
+    public async Task Accept_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToAccepted()
     {
         var applyEntry = await _repo_Apply.ReadApplied(1, 1);
         var status = applyEntry.Item2.Status;
@@ -84,20 +88,16 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task Accept_Given_studentID_and_thesisID_Returns_Response_Succes()
+    public async Task Accept_GivenStudentID1AndThesisID1_ReturnsResponceSucces()
     {
-        var applied = await _repo_Apply.ReadApplied(1, 1);
-        var response = applied.Item1;
-
         var appliedChange = await _repo_Teacher.Accept(1, 1);
         var responseNotChanged = appliedChange.Item1;
 
-        Assert.Equal(Response.Success, response);
         Assert.Equal(Response.Success, responseNotChanged);
     }
 
     [Fact]
-    public async Task Accept_Given_incorrect_studentID_and_thesisID_Returns_Response_NotFound()
+    public async Task Accept_GivenNonExistingStudentIDAndNonExistingThesisID_ReturnsResponseNotFound()
     {
         var applied = await _repo_Apply.ReadApplied(10, 10);
         var response = applied.Item1;
@@ -110,10 +110,10 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task Reject()
+    public async Task Reject_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToDenied()
     {
-        var ApplyEntryTest = await _repo_Apply.ReadApplied(1, 1);
-        var testStatus = ApplyEntryTest.Item2.Status;
+        var ApplyEntry = await _repo_Apply.ReadApplied(1, 1);
+        var testStatus = ApplyEntry.Item2.Status;
 
         var ApplyEntryUpdate = await _repo_Teacher.Reject(1, 1);
         var UpdateStatus = ApplyEntryUpdate.Item2.Status;
@@ -123,32 +123,37 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadStudentApplication_GivenTeacher1_ReturnListWith3Applications()
+    public async Task ReadStudentApplication_GivenTeacher2_ReturnEmptyList()
     {
-        var student1 = (await _repo_Student.ReadStudent(1)).Item2;
-        var student2 = (await _repo_Student.ReadStudent(2)).Item2;
-        var thesis1 = (await _repo_Thesis.ReadThesis(1)).Item2;
-        var thesis2 = (await _repo_Thesis.ReadThesis(2)).Item2;
+        var actual = await _repo_Teacher.ReadPendingStudentApplication(2);
 
-        var expectedApplyDTO1 = new ApplyDTO(Status.Pending, student1, thesis1);
-        var expectedApplyDTO2 = new ApplyDTO(Status.Pending, student1, thesis2);
-        var expectedApplyDTO3 = new ApplyDTO(Status.Pending, student2, thesis2);
-
-        var actual = await _repo_Teacher.ReadStudentApplication(1);
-
-        Assert.Collection(actual,
-            apply => Assert.Equal(expectedApplyDTO1, apply),
-            apply => Assert.Equal(expectedApplyDTO2, apply),
-            apply => Assert.Equal(expectedApplyDTO3, apply)
-        );
+        Assert.Empty(actual);
     }
 
     [Fact]
-    public async Task ReadStudentApplication_GivenTeacher2_ReturnEmptyList()
-    {
-        var actual = await _repo_Teacher.ReadStudentApplication(2);
+    public async Task ReadPendingStudentApplication_GivenTeahcerID1_ReturnListOfPendingApplyDTOs(){
 
-        Assert.Empty(actual);
+        //Arrange
+        var teacher = await _repo_Teacher.ReadTeacher(1);
+        var student = await _repo_Student.ReadStudent(1);
+        var student_2 = await _repo_Student.ReadStudent(2);
+        var thesis1 = await _repo_Thesis.ReadThesis(1);
+        var thesis2 = await _repo_Thesis.ReadThesis(2);
+
+
+        var readList = await _repo_Teacher.ReadPendingStudentApplication(1);
+
+        var DTO_1 = await _repo_Apply.ReadApplied(student.Item2.Id, thesis1.Item2.Id);
+        var DTO_2 = await _repo_Apply.ReadApplied(student.Item2.Id, thesis2.Item2.Id);
+        var DTO_3 = await _repo_Apply.ReadApplied(student_2.Item2.Id, thesis2.Item2.Id);
+
+
+        //Assert
+        Assert.Collection(readList,
+        thesis => Assert.Equal(DTO_1.Item2, thesis),
+        thesis => Assert.Equal(DTO_3.Item2, thesis),
+        thesis => Assert.Equal(DTO_2.Item2, thesis));
+
     }
 
     public void Dispose()
