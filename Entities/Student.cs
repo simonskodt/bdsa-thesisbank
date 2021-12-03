@@ -4,15 +4,16 @@ public class Student
     public int Id { get; set; }
 
     [StringLength(20)]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [EmailAddress]
-    public string? Email { get; set; }
+    public string Email { get; set; }
 
-    public ICollection<Apply>? Applies { get; set; } 
+    public ICollection<Apply>? Applies { get; set; }
 
-     public Student(string name){
+    public Student(string name, string email)
+    {
         Name = name;
-     }
-
+        Email = email;
+    }
 }

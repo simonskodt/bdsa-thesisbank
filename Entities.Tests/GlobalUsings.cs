@@ -5,3 +5,4 @@ global using Microsoft.Data.Sqlite;
 global using Microsoft.EntityFrameworkCore;
 global using Core;
 global using System.Threading.Tasks;
+global using System.Collections.Generic;
