@@ -5,11 +5,16 @@ public class TeacherRepository : ITeacherRepository
     StudentRepository _studentRepository;
     ThesisRepository _thesisRepository;
 
+    ApplyRepository _ApplyRepository;
+
+
     public TeacherRepository(ThesisBankContext context)
     {
         _context = context;
         _studentRepository = new StudentRepository(_context);
         _thesisRepository = new ThesisRepository(_context);
+        _ApplyRepository = new ApplyRepository(_context);
+
     }
 
     public async Task<(Response, TeacherDTO)> ReadTeacher(int TeacherID)
@@ -40,8 +45,8 @@ public class TeacherRepository : ITeacherRepository
     private async Task<(Response, ApplyDTO)> ChangeStatus(int studentID, int thesisID, Status status)
     {
         var appliesThesis = await _context.Applies
-                                .Where(s => s.Id == studentID)
-                                .Where(t => t.Id == thesisID)
+                                .Where(s => s.StudentID == studentID)
+                                .Where(t => t.ThesisID == thesisID)
                                 .Where(a => a.Status == Status.Pending)
                                 .FirstOrDefaultAsync();
 
@@ -62,8 +67,27 @@ public class TeacherRepository : ITeacherRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int teacherID)
-    {
-        throw new NotImplementedException();
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadPendingStudentApplication(int teacherID)
+    {   
+        
+        var ownedAppliedEntries = await _ApplyRepository.ReadApplicationsByTeacherID(teacherID);
+
+        if (ownedAppliedEntries == null)
+        {
+            return null;
+        }
+
+        var ApplyDTOList = new List<ApplyDTO>();
+
+        foreach (var item in ownedAppliedEntries)
+        {
+            if (item.Status == Status.Pending){
+
+                ApplyDTOList.Add(item);
+
+            }
+        }
+
+        return ApplyDTOList.AsReadOnly();
     }
 }

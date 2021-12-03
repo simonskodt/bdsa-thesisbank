@@ -8,6 +8,6 @@ public interface ITeacherRepository
 
     /*Returns a list of ApplyDTO that shows all the students that
      have applied to thesis by the given Teacher (applies with status pending)*/
-    public Task<IReadOnlyCollection<ApplyDTO>> ReadStudentApplication(int TeacherID);
+    public Task<IReadOnlyCollection<ApplyDTO>> ReadPendingStudentApplication(int TeacherID);
 
 }
