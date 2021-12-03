@@ -1,1 +1,45 @@
-<div>Hej</div>
+@page "/temp"
+@using Entities
+@using Core
+@* @inject Client.Service.IThesesService ThesesService *@
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h1>Theses</h1>
+
+@if (Theses == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Teacher</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Thesis in Theses)
+            {
+                <tr>
+                    <td>@Thesis.ID</td>
+                    <td>@Thesis.Name</td>
+                    <td>@Thesis.TeacherName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private MinimalThesisDTO[]? Theses;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis");
+    }
+}
