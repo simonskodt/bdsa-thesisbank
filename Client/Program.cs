@@ -1,3 +1,5 @@
+using ThesisBank.Client.Service;
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -7,6 +9,7 @@ builder.Services.AddHttpClient("ThesisBank.ServerAPI", client => client.BaseAddr
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ThesisBank.ServerAPI"));
+builder.Services.AddScoped<IThesesService, ThesesService>();
 
 builder.Services.AddMsalAuthentication(options =>
 {

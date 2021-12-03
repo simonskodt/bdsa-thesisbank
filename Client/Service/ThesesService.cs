@@ -1,6 +1,6 @@
 using System.Net.Http.Json;
 
-namespace Client.Service;
+namespace ThesisBank.Client.Service;
 
 public class ThesesService : IThesesService
 {

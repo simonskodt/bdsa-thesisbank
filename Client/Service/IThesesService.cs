@@ -1,4 +1,4 @@
-namespace Client.Service;
+namespace ThesisBank.Client.Service;
 public interface IThesesService
 {
     // Ought to be ThesisDTO I guess
