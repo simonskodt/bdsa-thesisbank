@@ -10,4 +10,10 @@ public class Student
     public string Email { get; set; }
 
     public ICollection<Apply>? Applies { get; set; }
+  
+     public Student(string name){
+        Name = name;
+     }
+
+
 }

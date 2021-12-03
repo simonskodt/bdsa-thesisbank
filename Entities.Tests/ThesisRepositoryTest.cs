@@ -1,4 +1,6 @@
-﻿namespace Entities.Tests;
+
+namespace Entities.Tests;
+
 public class ThesisRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
@@ -67,6 +69,7 @@ public class ThesisRepositoryTest : IDisposable
 
         Assert.Equal((Response.NotFound,null), ReadThesisResponse);
 
+
     }
 
     /*
@@ -133,8 +136,10 @@ public class ThesisRepositoryTest : IDisposable
         Assert.Empty(ReadAppliedThesisResponse);
     } 
 
-    public void Dispose()
+     public void Dispose()
     {
         _context.Dispose();
     }
+
 }
+

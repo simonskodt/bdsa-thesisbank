@@ -8,10 +8,18 @@ Starting from the Project bank description which involves teachers and students.
 
 ## Commands to run project
 
-  **`Docker` start command** 
+
+  **`Powershell` setup script** 
+  First kill/stop any docker containers running on port 1433:1433.
+  Then run `setup_script_arm64` if you're on mac, or `setup_script_x64` if you're on windows.
   ```powershell
-  docker-compose up --build
+  setup_script_arm64
   ```
+
+  ```powershell
+  setup_script_x64
+  ``` 
+
 
   **Open in webbrowser**
   ```powershell

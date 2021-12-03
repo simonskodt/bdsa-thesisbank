@@ -1,6 +1,7 @@
 namespace Entities;
 public class Teacher
 {
+    
     public int Id { get; set; }
 
     [StringLength(20)]
@@ -9,5 +10,10 @@ public class Teacher
     [EmailAddress]
     public string Email { get; set; }
 
-    public ICollection<Thesis>? OwnedTheses { get; set; }
+
+    public ICollection<Thesis>? OwnedTheses { get; set; } 
+
+     public Teacher(string name){
+        Name = name;
+    }
 }
