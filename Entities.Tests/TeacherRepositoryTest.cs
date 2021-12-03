@@ -28,12 +28,12 @@ public class TeacherRepositoryTest : IDisposable
 
         context.Students.Add(alyson);
         context.Students.Add(victor);
-        
-        Thesis wildAlgorithms = new Thesis("WildAlgorithms", thore) { Id = 1, Description = "This is a Thesis about a very interesting topic"};
-        Thesis graphAlgorithms = new Thesis("GraphAlgorithms", thore) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
-        Thesis linq = new Thesis("Linq", rasmus) { Id = 3, Description = "This is a Thesis about a very interesting linq" };
-        Thesis migration = new Thesis("Migration", rasmus) { Id = 4, Description = "This is a Thesis about a very interesting migration" };
-        Thesis cSharp = new Thesis("CSharp", thore) { Id = 5, Description = "This is a Thesis about a very interesting programming language" };
+
+        Thesis wildAlgorithms = new Thesis("WildAlgorithms", 1) { Id = 1, Description = "This is a Thesis about a very interesting topic" };
+        Thesis graphAlgorithms = new Thesis("GraphAlgorithms", 1) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
+        Thesis linq = new Thesis("Linq", 2) { Id = 3, Description = "This is a Thesis about a very interesting linq" };
+        Thesis migration = new Thesis("Migration", 2) { Id = 4, Description = "This is a Thesis about a very interesting migration" };
+        Thesis cSharp = new Thesis("CSharp", 1) { Id = 5, Description = "This is a Thesis about a very interesting programming language" };
 
         context.Theses.Add(wildAlgorithms);
         context.Theses.Add(graphAlgorithms);
@@ -65,7 +65,7 @@ public class TeacherRepositoryTest : IDisposable
     {
         var actual = await _repo_Teacher.ReadTeacher(1);
 
-        var expectedTeacherDTO = new TeacherDTO(1, "thore", "thore@itu.dk");
+        var expectedTeacherDTO = new TeacherDTO(1, "Thore", "thore@itu.dk");
 
         Assert.Equal((Response.Success, expectedTeacherDTO), actual);
     }

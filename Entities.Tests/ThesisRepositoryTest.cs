@@ -1,5 +1,4 @@
-
-namespace Entities.Tests;
+﻿namespace Entities.Tests;
 
 public class ThesisRepositoryTest : IDisposable
 {
@@ -16,56 +15,35 @@ public class ThesisRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
-        Thore.Id = 1;
+        Teacher thore = new Teacher("Thore", "Thore@itu.dk") { Id = 1 };
+        Teacher rasmus = new Teacher("Rasmus", "Rasmus@itu.dk") { Id = 2 };
 
-        Teacher Rasmus = new Teacher("Rasmus");
-        Rasmus.Email = "Rasmus@itu.dk";
-        Rasmus.Id = 2;
+        context.Teachers.Add(thore);
+        context.Teachers.Add(rasmus);
 
-        context.Teachers.Add(Thore);
-        context.Teachers.Add(Rasmus);
+        Student alyson = new Student("Alyson", "Alyson@mail.dk") { Id = 1 };
+        Student victor = new Student("Victor", "Victor@mail.dk") { Id = 2 };
 
-        Student Alyson = new Student("Alyson");
-        Alyson.Email = "Alyson@mail.dk";
-        Alyson.Id = 1;
+        context.Students.Add(alyson);
+        context.Students.Add(victor);
 
-        Student Victor = new Student("Victor");
-        Victor.Email = "Victor@mail.dk";
-        Victor.Id = 2;
+        Thesis wildAlgorithms = new Thesis("WildAlgorithms", 1) { Id = 1, Description = "This is a Thesis about a very interesting topic" };
+        Thesis graphAlgorithms = new Thesis("GraphAlgorithms", 1) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
+        Thesis linq = new Thesis("Linq", 2) { Id = 3, Description = "This is a Thesis about a very interesting linq" };
+        Thesis migration = new Thesis("Migration", 2) { Id = 4, Description = "This is a Thesis about a very interesting Migration" };
 
-        context.Students.Add(Alyson);
-        context.Students.Add(Victor);
+        context.Theses.Add(wildAlgorithms);
+        context.Theses.Add(graphAlgorithms);
+        context.Theses.Add(linq);
+        context.Theses.Add(migration);
 
+        Apply applies1 = new Apply(1, 1) { Id = 1 };
+        Apply applies2 = new Apply(2, 1) { Id = 2 };
+        Apply applies3 = new Apply(3, 1) { Id = 3 };
 
-        Apply applies1 = new Apply{Id =1, ThesisID = 1, StudentID = 1}; 
-        Apply applies2 = new Apply{Id =2, ThesisID = 2, StudentID = 1}; 
-        Apply applies3 = new Apply{Id =3, ThesisID = 3, StudentID = 1}; 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
-
-        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
-        WildAlgorithms.Id = 1;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
-
-        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
-        WildAlgorithms.Id = 2;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
-
-        Thesis Linq = new Thesis("Linq", Rasmus);
-        WildAlgorithms.Id = 3;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting linq";
-
-        Thesis Migration = new Thesis("Migration", Rasmus);
-        WildAlgorithms.Id = 4;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting Migration";
-
-        context.Theses.Add(WildAlgorithms);
-        context.Theses.Add(GraphAlgorithms);
-        context.Theses.Add(Linq);
-        context.Theses.Add(Migration);
 
         context.SaveChangesAsync();
 
@@ -74,49 +52,32 @@ public class ThesisRepositoryTest : IDisposable
         _repo_Thesis = new ThesisRepository(_context);
     }
 
-    /*
-
-    TESTS FOR METHODE ReadThesis
-
-    */
-
-    
     [Fact]
     public async Task ReadThesis_GivenID1_ReturnWildAlgorithmsByThore()
     {
         TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
         var ReadThesisResponse = await _repo_Thesis.ReadThesis(1);
 
-        Assert.Equal((Response.Success,new ThesisDTO(1,"WildAlgorithms", "This is a Thesis about a very interesting topic", Thore)), ReadThesisResponse);
+        Assert.Equal((Response.Success, new ThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", Thore)), ReadThesisResponse);
     }
 
-    [Fact] 
+    [Fact]
     public async Task ReadThesis_GivenNonExisitingID_ReturnEmpty()
     {
         TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
         var ReadThesisResponse = await _repo_Thesis.ReadThesis(8);
 
-        Assert.Equal((Response.NotFound,null), ReadThesisResponse);
-
-
+        Assert.Equal((Response.NotFound, null), ReadThesisResponse);
     }
-
-    /*
-
-    TESTS FOR METHODE ReadAllTheses
-
-    */
 
     [Fact]
     public async Task ReadAllTheses_GivenNoParameter_ReturnAllTheses()
     {
-        
         MinimalThesisDTO t1 = new MinimalThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", "Thore");
         MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", "Thore");
-        MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq","This is a Thesis about a very interesting linq", "Rasmus");
-        MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration","This is a Thesis about a very interesting Migration", "Rasmus");
-        
-        
+        MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq", "This is a Thesis about a very interesting linq", "Rasmus");
+        MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration", "This is a Thesis about a very interesting Migration", "Rasmus");
+
         IReadOnlyCollection<MinimalThesisDTO> ReadThesisResponse = await _repo_Thesis.ReadAll();
 
         Assert.Collection(ReadThesisResponse,
@@ -126,12 +87,6 @@ public class ThesisRepositoryTest : IDisposable
             thesis => Assert.Equal(t4, thesis)
         );
     }
-
-    /*
-
-    TESTS FOR METHODE ReadAppliedThesis
-
-    */
 
     [Fact]
     public async Task ReadAppliedThesis_GivenStudentId1_ReturnAppliedThesis()
@@ -145,30 +100,28 @@ public class ThesisRepositoryTest : IDisposable
         ApplyDTO a2 = new ApplyDTO(Status.Pending, student1, thesis2);
         ApplyDTO a3 = new ApplyDTO(Status.Pending, student1, thesis3);
 
-        
         IReadOnlyCollection<ThesisDTO> ReadAppliedThesisResponse = await _repo_Thesis.ReadPendingThesis(1);
-        
+
         Assert.Collection(ReadAppliedThesisResponse,
             thesis => Assert.Equal(thesis1, thesis),
             thesis => Assert.Equal(thesis2, thesis),
             thesis => Assert.Equal(thesis3, thesis)
         );
-    } 
+    }
 
     [Fact]
     public async Task ReadAppliedThesis_GivenStudentId2_ReturnEmptyList()
     {
         var student1 = (await _repo_Stud.ReadStudent(2)).Item2;
-        
-        IReadOnlyCollection<ThesisDTO> ReadAppliedThesisResponse = await _repo_Thesis.ReadPendingThesis(2);
-        
-        Assert.Empty(ReadAppliedThesisResponse);
-    } 
 
-     public void Dispose()
+        IReadOnlyCollection<ThesisDTO> ReadAppliedThesisResponse = await _repo_Thesis.ReadPendingThesis(2);
+
+        Assert.Empty(ReadAppliedThesisResponse);
+    }
+
+    public void Dispose()
     {
         _context.Dispose();
     }
-
 }
 

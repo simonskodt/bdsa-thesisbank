@@ -4,9 +4,7 @@ public class TeacherRepository : ITeacherRepository
     ThesisBankContext _context;
     StudentRepository _studentRepository;
     ThesisRepository _thesisRepository;
-
     ApplyRepository _ApplyRepository;
-
 
     public TeacherRepository(ThesisBankContext context)
     {
@@ -68,8 +66,7 @@ public class TeacherRepository : ITeacherRepository
     }
 
     public async Task<IReadOnlyCollection<ApplyDTO>> ReadPendingStudentApplication(int teacherID)
-    {   
-        
+    {
         var ownedAppliedEntries = await _ApplyRepository.ReadApplicationsByTeacherID(teacherID);
 
         if (ownedAppliedEntries == null)
@@ -81,7 +78,8 @@ public class TeacherRepository : ITeacherRepository
 
         foreach (var item in ownedAppliedEntries)
         {
-            if (item.Status == Status.Pending){
+            if (item.Status == Status.Pending)
+            {
 
                 ApplyDTOList.Add(item);
 

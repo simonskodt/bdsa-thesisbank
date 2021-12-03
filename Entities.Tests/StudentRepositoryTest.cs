@@ -21,26 +21,26 @@ public class StudentRepositoryTest : IDisposable
 
         Student alyson = new Student("Alyson", "alyson@mail.dk") { Id = 1 };
         Student victor = new Student("Victor", "victor@mail.dk") { Id = 2 };
-        Student leonora = new Student("Leonora", "leonora@itu.dk") { Id = 3};
+        Student leonora = new Student("Leonora", "leonora@itu.dk") { Id = 3 };
         context.Students.Add(alyson);
         context.Students.Add(victor);
         context.Students.Add(leonora);
 
-        Thesis wildAlgorithms = new Thesis("wildAlgorithms", thore) { Id = 1, Description = "This is a Thesis about a very interesting topic" };
-        Thesis graphAlgorithms = new Thesis("graphAlgorithms", thore) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
-        Thesis designingUI = new Thesis("designingUI", thore) { Id = 3 };
+        Thesis wildAlgorithms = new Thesis("WildAlgorithms", 1) { Id = 1, Description = "This is a Thesis about a very interesting topic" };
+        Thesis graphAlgorithms = new Thesis("GraphAlgorithms", 1) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
+        Thesis designingUI = new Thesis("DesigningUI", 1) { Id = 3 };
 
         context.Theses.Add(wildAlgorithms);
         context.Theses.Add(graphAlgorithms);
         context.Theses.Add(designingUI);
 
-        context.Applies.Add(new Apply(wildAlgorithms, alyson) { Id = 1 });
-        context.Applies.Add(new Apply(graphAlgorithms, victor) { Id = 2 });
-        context.Applies.Add(new Apply(designingUI, victor) { Id = 3 });
-        context.Applies.Add(new Apply(graphAlgorithms, alyson) { Id = 4 });
-        context.Applies.Add(new Apply(wildAlgorithms, leonora) { Id = 5 });
-        context.Applies.Add(new Apply(graphAlgorithms, leonora) { Id = 6 });
-        context.Applies.Add(new Apply(designingUI, leonora) { Id = 7 });
+        context.Applies.Add(new Apply(1, 1) { Id = 1 });
+        context.Applies.Add(new Apply(2, 2) { Id = 2, Status = Status.Accepted });
+        context.Applies.Add(new Apply(3, 2) { Id = 3, Status = Status.Denied });
+        context.Applies.Add(new Apply(2, 1) { Id = 4, Status = Status.Archived });
+        context.Applies.Add(new Apply(1, 3) { Id = 5 });
+        context.Applies.Add(new Apply(2, 3) { Id = 6 });
+        context.Applies.Add(new Apply(3, 3) { Id = 7 });
 
         context.SaveChangesAsync();
 
@@ -54,7 +54,7 @@ public class StudentRepositoryTest : IDisposable
     {
         var actual = await _repo_Stud.ReadStudent(1);
 
-        var expectedStudentDTO = new StudentDTO(1, "Victor", "victor@mail.dk");
+        var expectedStudentDTO = new StudentDTO(1, "Alyson", "alyson@mail.dk");
 
         Assert.Equal((Response.Success, expectedStudentDTO), actual);
     }
@@ -66,12 +66,6 @@ public class StudentRepositoryTest : IDisposable
 
         Assert.Equal((Response.NotFound, null), actual);
     }
-
-    /*
-
-    TESTS FOR METHODE ApplyForThesis
-
-    */
 
     [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
@@ -115,13 +109,6 @@ public class StudentRepositoryTest : IDisposable
         Assert.Equal((Response.Success, expectedApplied), readApplied);
     }
 
-
-    /*
-
-    TESTS FOR METHODE Accept
-
-    */
-
     [Theory]
     [InlineData(false, Response.Updated, Status.Archived, 2, 2)]
     [InlineData(true, Response.NotFound, Status.Pending, 1, 1)]
@@ -133,6 +120,7 @@ public class StudentRepositoryTest : IDisposable
         var thesis = await _repo_Thesis.ReadThesis(expectedThesisID);
 
         ApplyDTO? expectedApplied;
+
         if (isNullDTO)
         {
             expectedApplied = null;
@@ -144,16 +132,8 @@ public class StudentRepositoryTest : IDisposable
 
         var readApplied = await _repo_Stud.Accept(expectedStudentID, expectedThesisID);
 
-
         Assert.Equal((expectedResponse, expectedApplied), readApplied);
     }
-
-    /*
-
-    TESTS FOR METHODE RemoveAllPendings
-
-    */
-
 
     [Fact]
     public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted()
@@ -161,8 +141,6 @@ public class StudentRepositoryTest : IDisposable
         var readResponse = await _repo_Stud.RemoveAllPendings(1);
 
         Assert.Equal(Response.Deleted, readResponse);
-        //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
-
     }
 
     [Fact]
@@ -174,19 +152,12 @@ public class StudentRepositoryTest : IDisposable
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
     }
 
-    /*
-
-    TESTS FOR METHODE RemoveRequest
-
-    */
-
     [Fact]
     public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1()
     {
         var readRemoved = await _repo_Stud.RemoveRequest(1, 1);
 
         Assert.Equal(Response.Deleted, readRemoved);
-        //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
     }
 
     public void Dispose()

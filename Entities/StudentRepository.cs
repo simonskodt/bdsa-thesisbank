@@ -97,7 +97,6 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
         return Response.Deleted;
     }
-
     public async Task<Response> RemoveAllPendings(int StudentID)
     {
         var allPending = await _context.Applies
@@ -110,5 +109,4 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
         return Response.Deleted;
     }
-
 }

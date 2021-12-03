@@ -20,4 +20,11 @@ public class Apply
         Thesis = thesis;
         Student = student;
     }
+
+    public Apply(int thesisID, int studentID)
+    {
+        Status = Status.Pending;
+        ThesisID = thesisID;
+        StudentID = studentID;
+    }
 }

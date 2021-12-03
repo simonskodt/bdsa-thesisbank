@@ -61,6 +61,7 @@ public class ApplyRepository : IApplyRepository
             var DTO = new ApplyDTO(item.Status, student.Item2, thesis.Item2);
             ApplyDTOList.Add(DTO);
         }
+        
         return ApplyDTOList.AsReadOnly();
     }
 }
