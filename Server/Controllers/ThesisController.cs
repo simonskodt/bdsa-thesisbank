@@ -3,26 +3,24 @@ using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Entities;
-using Core;
 
-namespace ThesisBank.Server.Controllers;
+namespace Server.Controllers;
+
 
 [Authorize]
-// [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
-[AllowAnonymous]
 [ApiController]
+// [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 [Route("api/[controller]")]
-public class ThesesController : ControllerBase {
-
+public class ThesisController : ControllerBase {
     private readonly IThesisRepository _repository;
 
-    public ThesesController(IThesisRepository repository)
+    public ThesisController(IThesisRepository repository)
     {
         _repository = repository;
     }
 
-    [AllowAnonymous]
     [HttpGet]
     public async Task<IReadOnlyCollection<MinimalThesisDTO>> Get()
         => await _repository.ReadAll();
+    
 }
