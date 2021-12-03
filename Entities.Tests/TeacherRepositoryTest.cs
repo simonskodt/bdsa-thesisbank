@@ -6,9 +6,7 @@ public class TeacherRepositoryTest : IDisposable
     private readonly StudentRepository? _repo_Student;
     private readonly ThesisRepository? _repo_Thesis;
     private readonly TeacherRepository? _repo_Teacher;
-
     private readonly ApplyRepository? _repo_Apply;
-
 
     public TeacherRepositoryTest()
     {
@@ -19,64 +17,39 @@ public class TeacherRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
+        Teacher thore = new Teacher("Thore", "thore@itu.dk") { Id = 1 };
+        Teacher rasmus = new Teacher("Rasmus", "ramu@itu.dk") { Id = 2 };
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
-        Thore.Id = 1;
+        context.Teachers.Add(thore);
+        context.Teachers.Add(rasmus);
 
-        Teacher Rasmus = new Teacher("Rasmus");
-        Rasmus.Email = "Rasmus@itu.dk";
-        Rasmus.Id = 2;
+        Student alyson = new Student("Alyson", "alyson@mail.dk") { Id = 1 };
+        Student victor = new Student("Victor", "victor@mail.dk") { Id = 2 };
 
-        context.Teachers.Add(Thore);
-        context.Teachers.Add(Rasmus);
+        context.Students.Add(alyson);
+        context.Students.Add(victor);
+        
+        Thesis wildAlgorithms = new Thesis("WildAlgorithms", thore) { Id = 1, Description = "This is a Thesis about a very interesting topic"};
+        Thesis graphAlgorithms = new Thesis("GraphAlgorithms", thore) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
+        Thesis linq = new Thesis("Linq", rasmus) { Id = 3, Description = "This is a Thesis about a very interesting linq" };
+        Thesis migration = new Thesis("Migration", rasmus) { Id = 4, Description = "This is a Thesis about a very interesting migration" };
+        Thesis cSharp = new Thesis("CSharp", thore) { Id = 5, Description = "This is a Thesis about a very interesting programming language" };
 
-        Student Alyson = new Student("Alyson");
-        Alyson.Email = "Alyson@mail.dk";
-        Alyson.Id = 1;
+        context.Theses.Add(wildAlgorithms);
+        context.Theses.Add(graphAlgorithms);
+        context.Theses.Add(linq);
+        context.Theses.Add(migration);
+        context.Theses.Add(cSharp);
 
-        Student Victor = new Student("Victor");
-        Victor.Email = "Victor@mail.dk";
-        Victor.Id = 2;
+        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 4 };
+        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 5 };
+        Apply applies3 = new Apply(graphAlgorithms, victor) { Id = 3 };
+        Apply applies4 = new Apply(cSharp, alyson) { Id = 6, Status = Status.Accepted };
 
-        context.Students.Add(Alyson);
-        context.Students.Add(Victor);
-
-        Apply applies1 = new Apply { Id = 4, Status = Status.Pending, ThesisID = 1, StudentID = 1 };
-        Apply applies2 = new Apply { Id = 5, Status = Status.Pending, ThesisID = 2, StudentID = 1 };
-        Apply applies3 = new Apply { Id = 3, Status = Status.Pending, ThesisID = 2, StudentID = 2 };
-        Apply applies4 = new Apply { Id = 6, Status = Status.Accepted, ThesisID = 5, StudentID = 1 };
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
         context.Applies.Add(applies4);
-
-
-        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
-        WildAlgorithms.Id = 1;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
-
-        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
-        WildAlgorithms.Id = 2;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
-
-        Thesis Linq = new Thesis("Linq", Rasmus);
-        WildAlgorithms.Id = 3;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting linq";
-
-        Thesis Migration = new Thesis("Migration", Rasmus);
-        WildAlgorithms.Id = 4;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting Migration";
-
-        Thesis CSharp = new Thesis("CSharp", Thore);
-        WildAlgorithms.Id = 5;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting programming language";
-
-        context.Theses.Add(WildAlgorithms);
-        context.Theses.Add(GraphAlgorithms);
-        context.Theses.Add(Linq);
-        context.Theses.Add(Migration);
-        context.Theses.Add(CSharp);
 
         context.SaveChangesAsync();
 
@@ -86,12 +59,13 @@ public class TeacherRepositoryTest : IDisposable
         _repo_Teacher = new TeacherRepository(_context);
         _repo_Apply = new ApplyRepository(_context);
     }
+
     [Fact]
     public async Task ReadTeacher_GivenTeacher1_ReturnsResponseSuccessAndTeacher1DTO()
     {
         var actual = await _repo_Teacher.ReadTeacher(1);
 
-        var expectedTeacherDTO = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var expectedTeacherDTO = new TeacherDTO(1, "thore", "thore@itu.dk");
 
         Assert.Equal((Response.Success, expectedTeacherDTO), actual);
     }
@@ -162,8 +136,8 @@ public class TeacherRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadPendingStudentApplication_GivenTeahcerID1_ReturnListOfPendingApplyDTOs(){
-
+    public async Task ReadPendingStudentApplication_GivenTeahcerID1_ReturnListOfPendingApplyDTOs()
+    {
         //Arrange
         var teacher = await _repo_Teacher.ReadTeacher(1);
         var student = await _repo_Student.ReadStudent(1);
@@ -178,13 +152,11 @@ public class TeacherRepositoryTest : IDisposable
         var DTO_2 = await _repo_Apply.ReadApplied(student.Item2.Id, thesis2.Item2.Id);
         var DTO_3 = await _repo_Apply.ReadApplied(student_2.Item2.Id, thesis2.Item2.Id);
 
-
         //Assert
         Assert.Collection(readList,
         thesis => Assert.Equal(DTO_1.Item2, thesis),
         thesis => Assert.Equal(DTO_3.Item2, thesis),
         thesis => Assert.Equal(DTO_2.Item2, thesis));
-
     }
 
     public void Dispose()

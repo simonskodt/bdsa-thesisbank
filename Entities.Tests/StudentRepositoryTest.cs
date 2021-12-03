@@ -6,9 +6,8 @@ public class StudentRepositoryTest : IDisposable
     private readonly StudentRepository? _repo_Stud;
     private readonly ThesisRepository? _repo_Thesis;
 
-
-    public StudentRepositoryTest(){
-
+    public StudentRepositoryTest()
+    {
         var connection = new SqliteConnection("Filename=:memory:");
         connection.Open();
         var builder = new DbContextOptionsBuilder<ThesisBankContext>();
@@ -17,84 +16,52 @@ public class StudentRepositoryTest : IDisposable
         context.Database.EnsureCreated();
         context.SaveChanges();
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
-        Thore.Id = 1;
-        context.Teachers.Add(Thore);
+        Teacher thore = new Teacher("Thore", "thore@itu.dk") { Id = 1 };
+        context.Teachers.Add(thore);
 
+        Student alyson = new Student("Alyson", "alyson@mail.dk") { Id = 1 };
+        Student victor = new Student("Victor", "victor@mail.dk") { Id = 2 };
+        Student leonora = new Student("Leonora", "leonora@itu.dk") { Id = 3};
+        context.Students.Add(alyson);
+        context.Students.Add(victor);
+        context.Students.Add(leonora);
 
-        Student Alyson = new Student("Alyson");
-        Alyson.Email = "Alyson@mail.dk";
-        Alyson.Id = 1;
+        Thesis wildAlgorithms = new Thesis("wildAlgorithms", thore) { Id = 1, Description = "This is a Thesis about a very interesting topic" };
+        Thesis graphAlgorithms = new Thesis("graphAlgorithms", thore) { Id = 2, Description = "This is a Thesis about a very interesting algorithm" };
+        Thesis designingUI = new Thesis("designingUI", thore) { Id = 3 };
 
-        Student Victor = new Student("Victor");
-        Victor.Email = "Victor@mail.dk";
-        Victor.Id = 2;
-
-        Student Leonora = new Student("Leonora");
-        Leonora.Email = "Leonora@itu.dk";
-        Leonora.Id = 3;
-
-        context.Students.Add(Alyson);
-        context.Students.Add(Victor);
-        context.Students.Add(Leonora);
-
-
-        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
-        WildAlgorithms.Id = 1;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
-
-        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
-        WildAlgorithms.Id = 2;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
-
-        Thesis designingUI = new Thesis("designingUI", Thore);
-        WildAlgorithms.Id = 3;
-       
-        context.Theses.Add(WildAlgorithms);
-        context.Theses.Add(GraphAlgorithms);
+        context.Theses.Add(wildAlgorithms);
+        context.Theses.Add(graphAlgorithms);
         context.Theses.Add(designingUI);
 
-
-        context.Applies.Add(new Apply { Id = 1, Status = Status.Pending, ThesisID = 1, StudentID = 1});
-        context.Applies.Add(new Apply { Id = 2, Status = Status.Accepted, ThesisID = 2, StudentID = 2});
-        context.Applies.Add(new Apply { Id = 3, Status = Status.Denied, ThesisID = 1, StudentID = 2});
-        context.Applies.Add(new Apply { Id = 4, Status = Status.Archived, ThesisID = 2, StudentID = 1});
-        
-        context.Applies.Add(new Apply { Id = 5, Status = Status.Pending, ThesisID = 1, StudentID = 3});
-        context.Applies.Add(new Apply { Id = 6, Status = Status.Pending, ThesisID = 2, StudentID = 3});
-        context.Applies.Add(new Apply { Id = 7, Status = Status.Pending, ThesisID = 3, StudentID = 3});
-
-
+        context.Applies.Add(new Apply(wildAlgorithms, alyson) { Id = 1 });
+        context.Applies.Add(new Apply(graphAlgorithms, victor) { Id = 2 });
+        context.Applies.Add(new Apply(designingUI, victor) { Id = 3 });
+        context.Applies.Add(new Apply(graphAlgorithms, alyson) { Id = 4 });
+        context.Applies.Add(new Apply(wildAlgorithms, leonora) { Id = 5 });
+        context.Applies.Add(new Apply(graphAlgorithms, leonora) { Id = 6 });
+        context.Applies.Add(new Apply(designingUI, leonora) { Id = 7 });
 
         context.SaveChangesAsync();
-
 
         _context = context;
         _repo_Stud = new StudentRepository(_context);
         _repo_Thesis = new ThesisRepository(_context);
     }
 
-
-    /*
-
-    TESTS FOR METHODE ReadStudent
-
-    */
-
     [Fact]
-    public async Task ReadStudent_GivenStudent1_ReturnResonseSuccessAndStudent1DTO(){
-        
+    public async Task ReadStudent_GivenStudent1_ReturnResonseSuccessAndStudent1DTO()
+    {
         var actual = await _repo_Stud.ReadStudent(1);
 
-        var expectedStudentDTO = new StudentDTO{Id = 1, Name = "Victor", Email = "Vibr@itu.dk"};
+        var expectedStudentDTO = new StudentDTO(1, "Victor", "victor@mail.dk");
 
         Assert.Equal((Response.Success, expectedStudentDTO), actual);
     }
 
     [Fact]
-    public async Task ReadStudent_GivenStudent9_ReturnResonseNotFoundAndNull(){
-        
+    public async Task ReadStudent_GivenStudent9_ReturnResonseNotFoundAndNull()
+    {
         var actual = await _repo_Stud.ReadStudent(9);
 
         Assert.Equal((Response.NotFound, null), actual);
@@ -107,8 +74,8 @@ public class StudentRepositoryTest : IDisposable
     */
 
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO(){
-        
+    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
+    {
         var student = await _repo_Stud.ReadStudent(1);
         var thesis = await _repo_Thesis.ReadThesis(1);
         var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
@@ -116,12 +83,11 @@ public class StudentRepositoryTest : IDisposable
         var readApplied = await _repo_Stud.ApplyForThesis(1, 1);
 
         Assert.Equal((Response.Success, expectedApplied), readApplied);
-       
     }
 
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent9AndThesis1_ReturnResonseNotFoundAndNull(){
-
+    public async Task ApplyForThesis_GivenAppliedStudent9AndThesis1_ReturnResonseNotFoundAndNull()
+    {
         var readApplied = await _repo_Stud.ApplyForThesis(9, 1);
 
         Assert.Equal((Response.NotFound, null), readApplied);
@@ -129,8 +95,8 @@ public class StudentRepositoryTest : IDisposable
 
 
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis9_ReturnResonseNotFoundAndNull(){
-
+    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis9_ReturnResonseNotFoundAndNull()
+    {
         var readApplied = await _repo_Stud.ApplyForThesis(1, 9);
 
         Assert.Equal((Response.NotFound, null), readApplied);
@@ -138,8 +104,8 @@ public class StudentRepositoryTest : IDisposable
 
     // to check that it is posible for two different students to apply for the same thesis
     [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO(){
-        
+    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO()
+    {
         var student = await _repo_Stud.ReadStudent(2);
         var thesis = await _repo_Thesis.ReadThesis(1);
         var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
@@ -161,21 +127,24 @@ public class StudentRepositoryTest : IDisposable
     [InlineData(true, Response.NotFound, Status.Pending, 1, 1)]
     [InlineData(true, Response.NotFound, Status.Pending, 1, 1)]
     [InlineData(true, Response.NotFound, Status.Pending, 1, 1)]
-    public async Task Accept_GivenStudentThesis_ReturnStatus(Boolean isNullDTO, Response expectedResponse, Status expectedStatus, int expectedStudentID, int expectedThesisID){
-        
+    public async Task Accept_GivenStudentThesis_ReturnStatus(Boolean isNullDTO, Response expectedResponse, Status expectedStatus, int expectedStudentID, int expectedThesisID)
+    {
         var student = await _repo_Stud.ReadStudent(expectedStudentID);
         var thesis = await _repo_Thesis.ReadThesis(expectedThesisID);
 
         ApplyDTO? expectedApplied;
-        if(isNullDTO){
+        if (isNullDTO)
+        {
             expectedApplied = null;
-        } else {
-           expectedApplied = new ApplyDTO(expectedStatus, student.Item2, thesis.Item2);
+        }
+        else
+        {
+            expectedApplied = new ApplyDTO(expectedStatus, student.Item2, thesis.Item2);
         }
 
         var readApplied = await _repo_Stud.Accept(expectedStudentID, expectedThesisID);
 
-        
+
         Assert.Equal((expectedResponse, expectedApplied), readApplied);
     }
 
@@ -187,18 +156,18 @@ public class StudentRepositoryTest : IDisposable
 
 
     [Fact]
-    public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted(){
-        
+    public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted()
+    {
         var readResponse = await _repo_Stud.RemoveAllPendings(1);
 
         Assert.Equal(Response.Deleted, readResponse);
         //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
-        
+
     }
 
     [Fact]
-    public async Task RemoveAllPendings_GivenStudentId3_ReturnDeleted(){
-
+    public async Task RemoveAllPendings_GivenStudentId3_ReturnDeleted()
+    {
         var readAllRemoved = await _repo_Stud.RemoveAllPendings(3);
 
         Assert.Equal(Response.Deleted, readAllRemoved);
@@ -212,17 +181,16 @@ public class StudentRepositoryTest : IDisposable
     */
 
     [Fact]
-    public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1(){
-
-        var readRemoved = await _repo_Stud.RemoveRequest(1,1);
+    public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1()
+    {
+        var readRemoved = await _repo_Stud.RemoveRequest(1, 1);
 
         Assert.Equal(Response.Deleted, readRemoved);
         //Assert.Empty((await _repo_Thesis.ReadPendingThesis(1)));
     }
 
-    public void Dispose(){
-
+    public void Dispose()
+    {
         _context.Dispose();
-
     }
 }
