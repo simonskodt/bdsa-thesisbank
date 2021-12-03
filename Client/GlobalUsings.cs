@@ -4,3 +4,4 @@ global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 global using Microsoft.AspNetCore.Authorization;
 
 global using ThesisBank.Client;
+global using Entities;
