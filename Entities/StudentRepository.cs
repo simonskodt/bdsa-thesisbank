@@ -10,10 +10,10 @@ public class StudentRepository : IStudentRepository
         _repo_Thesis = new ThesisRepository(_context);
     }
 
-    public async Task<(Response, StudentDTO)> ReadStudent(int StudentID)
+    public async Task<(Response, StudentDTO?)> ReadStudent(int studentID)
     {
         var student = await _context.Students
-                                   .Where(s => s.Id == StudentID)
+                                   .Where(s => s.Id == studentID)
                                    .Select(s => new StudentDTO(s.Id, s.Name, s.Email))
                                    .FirstOrDefaultAsync();
 
@@ -25,7 +25,7 @@ public class StudentRepository : IStudentRepository
         return (Response.Success, student);
     }
 
-    public async Task<(Response, ApplyDTO)> ApplyForThesis(int studentID, int ThesisID)
+    public async Task<(Response, ApplyDTO?)> ApplyForThesis(int studentID, int ThesisID)
     {
         var student = await _context.Students
                            .Where(s => s.Id == studentID)
@@ -56,12 +56,12 @@ public class StudentRepository : IStudentRepository
         return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
     }
 
-    public async Task<(Response, ApplyDTO)> Accept(int ThesisID, int StudentID)
+    public async Task<(Response, ApplyDTO?)> Accept(int thesisID, int studentID)
     {
 
         var applies = await _context.Applies
-                        .Where(a => a.StudentID == StudentID)
-                        .Where(a => a.ThesisID == StudentID)
+                        .Where(a => a.StudentID == studentID)
+                        .Where(a => a.ThesisID == studentID)
                         .Where(a => a.Status == Status.Accepted)
                         .FirstOrDefaultAsync();
 
@@ -72,18 +72,18 @@ public class StudentRepository : IStudentRepository
         applies.Status = Status.Archived;
 
         await _context.SaveChangesAsync();
-        var resp_stud = await ReadStudent(StudentID);
-        var resp_thes = await _repo_Thesis.ReadThesis(ThesisID);
+        var resp_stud = await ReadStudent(studentID);
+        var resp_thes = await _repo_Thesis.ReadThesis(thesisID);
         var apply_dto = new ApplyDTO(Status.Archived, resp_stud.Item2, resp_thes.Item2);
 
         return (Response.Updated, apply_dto);
     }
 
-    public async Task<Response> RemoveRequest(int ThesisID, int StudentID)
+    public async Task<Response> RemoveRequest(int thesisID, int studentID)
     {
         Apply? pending = await _context.Applies
-                        .Where(p => p.StudentID == StudentID)
-                        .Where(p => p.ThesisID == ThesisID)
+                        .Where(p => p.StudentID == studentID)
+                        .Where(p => p.ThesisID == thesisID)
                         .Where(p => p.Status == Status.Pending)
                         .FirstOrDefaultAsync();
 
@@ -97,10 +97,10 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
         return Response.Deleted;
     }
-    public async Task<Response> RemoveAllPendings(int StudentID)
+    public async Task<Response> RemoveAllPendings(int studentID)
     {
         var allPending = await _context.Applies
-                        .Where(p => p.StudentID == StudentID)
+                        .Where(p => p.StudentID == studentID)
                         .Where(p => p.Status == Status.Pending)
                         .ToListAsync();
 

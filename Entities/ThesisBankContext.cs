@@ -5,16 +5,15 @@ namespace Entities;
 
 public class ThesisBankContext : DbContext, IThesisBankContext
 {
-    public DbSet<Student>? Students { get; set; }
-    public DbSet<Teacher>? Teachers { get; set; }
-    public DbSet<Thesis>? Theses { get; set; }
-
-    public DbSet<Apply>? Applies { get; set; }
+    public DbSet<Student> Students => Set<Student>();
+    public DbSet<Teacher> Teachers => Set<Teacher>();
+    public DbSet<Thesis> Theses => Set<Thesis>();
+    public DbSet<Apply> Applies => Set<Apply>();
 
     public ThesisBankContext(DbContextOptions<ThesisBankContext> options) : base(options) { }
 
 
-    //protected override void OnModelCreating(ModelBuilder modelBuilder) { }
+    // protected override void OnModelCreating(ModelBuilder modelBuilder) { }
 
     public static void Seed(ThesisBankContext context)
     {
@@ -46,7 +45,6 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         var Applies3 = new Apply(Thesis2, Simon);
         var Applies4 = new Apply(Thesis2, Alyson) { Status = Status.Denied };
         var Applies5 = new Apply(Thesis2, Victor) { Status = Status.Denied };
-
 
         context.Teachers.AddRange(
            Rasmus,

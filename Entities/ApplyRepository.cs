@@ -8,7 +8,7 @@ public class ApplyRepository : IApplyRepository
         _context = context;
     }
 
-    public async Task<(Response, ApplyDTO)> ReadApplied(int studentID, int thesisID)
+    public async Task<(Response, ApplyDTO?)> ReadApplied(int studentID, int thesisID)
     {
         var stud_repo = new StudentRepository(_context);
         var thesis_repo = new ThesisRepository(_context);
@@ -32,13 +32,13 @@ public class ApplyRepository : IApplyRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadApplicationsByTeacherID(int TeacherID)
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadApplicationsByTeacherID(int teacherID)
     {
         var stud_repo = new StudentRepository(_context);
         var thesis_repo = new ThesisRepository(_context);
 
         var thesesWithCurrentTeacherID = await _context.Theses
-                                                .Where(t => t.Teacher.Id == TeacherID)
+                                                .Where(t => t.Teacher.Id == teacherID)
                                                 .ToListAsync();
         var ThesesIDs = new List<int>();
 
@@ -61,7 +61,7 @@ public class ApplyRepository : IApplyRepository
             var DTO = new ApplyDTO(item.Status, student.Item2, thesis.Item2);
             ApplyDTOList.Add(DTO);
         }
-        
+
         return ApplyDTOList.AsReadOnly();
     }
 }

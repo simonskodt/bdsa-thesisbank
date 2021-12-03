@@ -2,14 +2,14 @@
 
 public interface IStudentRepository
 {
-    public Task<(Response, StudentDTO)> ReadStudent(int StudentID);
+    public Task<(Response, StudentDTO?)> ReadStudent(int studentID);
 
-    public Task<(Response, ApplyDTO)> ApplyForThesis(int StudentID, int ThesisID);
+    public Task<(Response, ApplyDTO?)> ApplyForThesis(int studentID, int thesisID);
 
-    public Task<(Response, ApplyDTO)> Accept(int studentID, int ThesisID);
+    public Task<(Response, ApplyDTO?)> Accept(int studentID, int thesisID);
 
-    public Task<Response> RemoveAllPendings(int StudentID);
+    public Task<Response> RemoveAllPendings(int studentID);
 
-    public Task<Response> RemoveRequest(int ThesisID, int StudentID);
+    public Task<Response> RemoveRequest(int thesisID, int studentID);
     
 }
