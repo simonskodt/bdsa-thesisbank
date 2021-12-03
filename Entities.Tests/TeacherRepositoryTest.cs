@@ -20,14 +20,25 @@ public class TeacherRepositoryTest : IDisposable
         context.Database.EnsureCreated();
 
 
-        Teacher Thore = new Teacher { Id = 1, Name = "Thore", Email = "Thore@itu.dk" };
-        Teacher Rasmus = new Teacher { Id = 2, Name = "Rasmus", Email = "Rasmus@itu.dk" };
-        
+        Teacher Thore = new Teacher("Thore");
+        Thore.Email = "Thore@itu.dk";
+        Thore.Id = 1;
+
+        Teacher Rasmus = new Teacher("Rasmus");
+        Rasmus.Email = "Rasmus@itu.dk";
+        Rasmus.Id = 2;
+
         context.Teachers.Add(Thore);
         context.Teachers.Add(Rasmus);
 
-        Student Alyson = new Student { Id = 1, Name = "Alyson", Email = "Alyson@mail.dk" };
-        Student Victor = new Student { Id = 2, Name = "Victor", Email = "Victor@mail.dk" };
+        Student Alyson = new Student("Alyson");
+        Alyson.Email = "Alyson@mail.dk";
+        Alyson.Id = 1;
+
+        Student Victor = new Student("Victor");
+        Victor.Email = "Victor@mail.dk";
+        Victor.Id = 2;
+
         context.Students.Add(Alyson);
         context.Students.Add(Victor);
 
@@ -41,11 +52,31 @@ public class TeacherRepositoryTest : IDisposable
         context.Applies.Add(applies4);
 
 
-        context.Theses.Add(new Thesis { Id = 1, Name = "WildAlgorithms", Description = "This is a Thesis about a very interesting topic", Teacher = Thore });
-        context.Theses.Add(new Thesis { Id = 2, Name = "GraphAlgorithms", Description = "This is a Thesis about a very interesting algorithm", Teacher = Thore });
-        context.Theses.Add(new Thesis { Id = 3, Name = "Linq", Description = "This is a Thesis about a very interesting linq", Teacher = Rasmus });
-        context.Theses.Add(new Thesis { Id = 4, Name = "Migration", Description = "This is a Thesis about a very interesting Migration", Teacher = Rasmus });
-        context.Theses.Add(new Thesis { Id = 5, Name = "CSharp", Description = "This is a Thesis about a very interesting programming language", Teacher = Thore });
+        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
+        WildAlgorithms.Id = 1;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
+
+        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
+        WildAlgorithms.Id = 2;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
+
+        Thesis Linq = new Thesis("Linq", Rasmus);
+        WildAlgorithms.Id = 3;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting linq";
+
+        Thesis Migration = new Thesis("Migration", Rasmus);
+        WildAlgorithms.Id = 4;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting Migration";
+
+        Thesis CSharp = new Thesis("CSharp", Thore);
+        WildAlgorithms.Id = 5;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting programming language";
+
+        context.Theses.Add(WildAlgorithms);
+        context.Theses.Add(GraphAlgorithms);
+        context.Theses.Add(Linq);
+        context.Theses.Add(Migration);
+        context.Theses.Add(CSharp);
 
         context.SaveChangesAsync();
 

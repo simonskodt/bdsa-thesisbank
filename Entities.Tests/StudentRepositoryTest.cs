@@ -17,17 +17,43 @@ public class StudentRepositoryTest : IDisposable
         context.Database.EnsureCreated();
         context.SaveChanges();
 
-        Teacher Thore = new Teacher { Id = 1, Name = "Thore", Email = "Thore@itu.dk"};
+        Teacher Thore = new Teacher("Thore");
+        Thore.Email = "Thore@itu.dk";
+        Thore.Id = 1;
         context.Teachers.Add(Thore);
-        Student Victor = new Student{Id = 1, Name = "Victor", Email = "Vibr@itu.dk"};
-        Student Alyson = new Student{Id = 2, Name = "Alyson", Email = "Alyson@itu.dk"};
-        Student Leonora = new Student{Id = 3, Name = "Leonora", Email = "Leonora@itu.dk"};
-        context.Students.Add(Victor);
+
+
+        Student Alyson = new Student("Alyson");
+        Alyson.Email = "Alyson@mail.dk";
+        Alyson.Id = 1;
+
+        Student Victor = new Student("Victor");
+        Victor.Email = "Victor@mail.dk";
+        Victor.Id = 2;
+
+        Student Leonora = new Student("Leonora");
+        Leonora.Email = "Leonora@itu.dk";
+        Leonora.Id = 3;
+
         context.Students.Add(Alyson);
+        context.Students.Add(Victor);
         context.Students.Add(Leonora);
-        context.Theses.Add(new Thesis { Id = 1, Name = "WildAlgorithms", Teacher = Thore });
-        context.Theses.Add(new Thesis { Id = 2, Name = "GraphAlgorithms", Teacher = Thore });
-        context.Theses.Add(new Thesis { Id = 3, Name = "designingUI", Teacher = Thore});
+
+
+        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
+        WildAlgorithms.Id = 1;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
+
+        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
+        WildAlgorithms.Id = 2;
+        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
+
+        Thesis designingUI = new Thesis("designingUI", Thore);
+        WildAlgorithms.Id = 3;
+       
+        context.Theses.Add(WildAlgorithms);
+        context.Theses.Add(GraphAlgorithms);
+        context.Theses.Add(designingUI);
 
 
         context.Applies.Add(new Apply { Id = 1, Status = Status.Pending, ThesisID = 1, StudentID = 1});
