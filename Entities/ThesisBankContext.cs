@@ -31,55 +31,30 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Teachers', RESEED, 0)");
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
-        var Ahmed = new Student("Ahmed Galal");
-        var Leonora = new Student("Léonora Théorêt");
-        var Alyson = new Student("Alyson D'Souza ");
-        var Victor = new Student("Victor Brorson");
-        var Simon = new Student("Simon Skødt");
+        var Ahmed = new Student("Ahmed Galal", "Ahmed@itu.dk");
+        var Leonora = new Student("Léonora Théorêt", "Leonora@itu.dk");
+        var Alyson = new Student("Alyson D'Souza", "Alyson@itu.dk");
+        var Victor = new Student("Victor Brorson", "Victor@itu.dk");
+        var Simon = new Student("Simon Skødt", "Simon@itu.dk");
 
-        var Thore = new Teacher("Thore");
-        var Rasmus = new Teacher("Raasmus");
+        var Thore = new Teacher("Thore", "Thore@itu.dk");
+        var Rasmus = new Teacher("Rasmus", "Rasmus@itu.dk");
 
-        var Thesis1 = new Thesis("How ITU mentally ruin students") { Teacher = Thore};
-        var Thesis2 = new Thesis("Why singletons are an anti-pattern") { Teacher = Rasmus};
-        var Thesis3 = new Thesis("A study on why notepad is the best IDE") { Teacher = Thore};
+        var Thesis1 = new Thesis("How ITU mentally ruin students", Thore);
+        var Thesis2 = new Thesis("Why singletons are an anti-pattern", Rasmus);
+        var Thesis3 = new Thesis("A study on why notepad is the best IDE", Thore);
 
-        var Applies1= new Apply{
-            Status = Status.Accepted,
-            Thesis = Thesis1,
-            Student = Ahmed
-        };
-        
-        var Applies2= new Apply{
-            Status = Status.Denied,
-            Thesis = Thesis2,
-            Student = Leonora
-        };
+        var Applies1 = new Apply(Thesis1, Ahmed);
+        var Applies2 = new Apply(Thesis2, Leonora) {Status = Status.Denied};
+        var Applies3 = new Apply(Thesis2, Simon);
+        var Applies4 = new Apply(Thesis2, Alyson) {Status = Status.Denied};
+        var Applies5 = new Apply(Thesis2, Victor) {Status = Status.Denied};
 
-        var Applies3= new Apply{
-            Status = Status.Pending,
-            Thesis = Thesis2,
-            Student = Simon
-        };
-
-        var Applies4= new Apply{
-            Status = Status.Denied,
-            Thesis = Thesis2,
-            Student = Alyson
-        };
-
-        var Applies5= new Apply{
-            Status = Status.Denied,
-            Thesis = Thesis2,
-            Student = Victor
-        };
 
          context.Teachers.AddRange(
             Rasmus,
             Thore
         ); 
-
-        context.SaveChanges();
 
          context.Theses.AddRange(
             Thesis1,
@@ -94,7 +69,6 @@ public class ThesisBankContext : DbContext, IThesisBankContext
             Victor,
             Simon
         );
-         context.SaveChanges();
 
         context.Applies.AddRange(
             Applies1,
@@ -104,6 +78,6 @@ public class ThesisBankContext : DbContext, IThesisBankContext
             Applies5
         );
  
-        context.SaveChanges();
+        context.SaveChangesAsync();
     }
 }

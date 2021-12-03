@@ -1,4 +1,4 @@
-
+﻿
 namespace Entities.Tests;
 
 public class ThesisRepositoryTest : IDisposable
@@ -16,56 +16,35 @@ public class ThesisRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
-        Thore.Id = 1;
-
-        Teacher Rasmus = new Teacher("Rasmus");
-        Rasmus.Email = "Rasmus@itu.dk";
-        Rasmus.Id = 2;
-
+        Teacher Thore = new Teacher("Thore","Thore@itu.dk"){Id = 1};
+        Teacher Rasmus = new Teacher("Rasmus", "Rasmus@itu.dk"){Id = 2};
         context.Teachers.Add(Thore);
         context.Teachers.Add(Rasmus);
 
-        Student Alyson = new Student("Alyson");
-        Alyson.Email = "Alyson@mail.dk";
-        Alyson.Id = 1;
-
-        Student Victor = new Student("Victor");
-        Victor.Email = "Victor@mail.dk";
-        Victor.Id = 2;
-
+        Student Alyson = new Student("Alyson", "Alyson@mail.dk"){Id = 1};
+        Student Victor = new Student("Victor", "Victor@mail.dk"){Id = 2};
         context.Students.Add(Alyson);
         context.Students.Add(Victor);
 
+        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore) {Id = 1, Description = "This is a Thesis about a very interesting topic"};
+        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore){Id = 2, Description = "This is a Thesis about a very interesting algorithm"};
+        Thesis Linq = new Thesis("Linq", Rasmus){Id = 3, Description = "This is a Thesis about a very interesting linq"};
+        Thesis Migration = new Thesis("Migration", Rasmus){Id = 4, Description = "This is a Thesis about a very interesting Migration"};
 
-        Apply applies1 = new Apply{Id =1, ThesisID = 1, StudentID = 1}; 
-        Apply applies2 = new Apply{Id =2, ThesisID = 2, StudentID = 1}; 
-        Apply applies3 = new Apply{Id =3, ThesisID = 3, StudentID = 1}; 
-        context.Applies.Add(applies1);
-        context.Applies.Add(applies2);
-        context.Applies.Add(applies3);
-
-        Thesis WildAlgorithms = new Thesis("WildAlgorithms", Thore);
-        WildAlgorithms.Id = 1;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting topic";
-
-        Thesis GraphAlgorithms = new Thesis("GraphAlgorithms", Thore);
-        WildAlgorithms.Id = 2;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting algorithm";
-
-        Thesis Linq = new Thesis("Linq", Rasmus);
-        WildAlgorithms.Id = 3;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting linq";
-
-        Thesis Migration = new Thesis("Migration", Rasmus);
-        WildAlgorithms.Id = 4;
-        WildAlgorithms.Description = "This is a Thesis about a very interesting Migration";
 
         context.Theses.Add(WildAlgorithms);
         context.Theses.Add(GraphAlgorithms);
         context.Theses.Add(Linq);
         context.Theses.Add(Migration);
+
+
+        Apply applies1 = new Apply(WildAlgorithms, Alyson){Id =1}; 
+        Apply applies2 = new Apply(GraphAlgorithms, Alyson){Id =2}; 
+        Apply applies3 = new Apply(Linq, Alyson){Id =3}; 
+        context.Applies.Add(applies1);
+        context.Applies.Add(applies2);
+        context.Applies.Add(applies3);
+
 
         context.SaveChangesAsync();
 

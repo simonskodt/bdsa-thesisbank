@@ -17,8 +17,7 @@ public class StudentRepositoryTest : IDisposable
         context.Database.EnsureCreated();
         context.SaveChanges();
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
+        Teacher Thore = new Teacher("Thore", "Thore@itu.dk");
         Thore.Id = 1;
         context.Teachers.Add(Thore);
 

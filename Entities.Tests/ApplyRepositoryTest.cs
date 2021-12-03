@@ -19,24 +19,14 @@ public class ApplyRepositoryTest : IDisposable
         var context = new ThesisBankContext(builder.Options);
         context.Database.EnsureCreated();
 
-        Teacher Thore = new Teacher("Thore");
-        Thore.Email = "Thore@itu.dk";
-        Thore.Id = 1;
-
-        Teacher Rasmus = new Teacher("Rasmus");
-        Rasmus.Email = "Rasmus@itu.dk";
-        Rasmus.Id = 2;
+        Teacher Thore = new Teacher("Thore", "Thore@itu.dk") {Id = 1};
+        Teacher Rasmus = new Teacher("Rasmus", "Rasmus@itu.dk"){Id = 2};
 
         context.Teachers.Add(Thore);
         context.Teachers.Add(Rasmus);
 
-        Student Alyson = new Student("Alyson");
-        Alyson.Email = "Alyson@mail.dk";
-        Alyson.Id = 1;
-
-        Student Victor = new Student("Victor");
-        Victor.Email = "Victor@mail.dk";
-        Victor.Id = 2;
+        Student Alyson = new Student("Alyson", "Alyson@mail.dk") {Id = 1};
+        Student Victor = new Student("Victor", "Victor@mail.dk"){Id = 2};
 
         context.Students.Add(Alyson);
         context.Students.Add(Victor);
@@ -67,11 +57,11 @@ public class ApplyRepositoryTest : IDisposable
         context.Theses.Add(Migration);
         context.Theses.Add(CSharp);
 
+        Apply applies1 = new Apply(WildAlgorithms, Alyson) {Id =1};
+        Apply applies2 = new Apply(GraphAlgorithms, Alyson) {Id =2};
+        Apply applies3 = new Apply(Linq, Alyson) {Id =3};
+        Apply applies4 = new Apply(CSharp, Alyson) {Id =4};
         
-        Apply applies1 = new Apply{Id =1, Status = Status.Pending, ThesisID = 1, StudentID = 1};
-        Apply applies2 = new Apply{Id =2, Status = Status.Pending, ThesisID = 2, StudentID = 1}; 
-        Apply applies3 = new Apply{Id =3, Status = Status.Pending, ThesisID = 3, StudentID = 1};
-        Apply applies4 = new Apply{Id =4, Status = Status.Pending, ThesisID = 5, StudentID = 1};
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
@@ -119,7 +109,7 @@ public class ApplyRepositoryTest : IDisposable
     public async Task ReadApplied_GivenStudentID1AndThesisID2_ReturnsResponseSuccesAndApplyDTO(){
         
         TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
-        StudentDTO Alyson = new StudentDTO{Id = 1, Name = "Alyson", Email ="Alyson@mail.dk"};
+        StudentDTO Alyson = new StudentDTO(1, "Alyson", "Alyson@mail.dk");
         ThesisDTO Thesis2 = new ThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", Thore);
 
         var ExpectedDTO = new ApplyDTO(Status.Pending, Alyson, Thesis2);
