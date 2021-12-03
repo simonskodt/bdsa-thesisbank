@@ -1,9 +1,10 @@
 @using Entities
 @* @inject Client.Service.IThesesService ThesesService *@
-@inject HttpClient http
+@inject HttpClient Http
 
 
 
+<p>List of thesis</p>
 @foreach (var thesis in Theses) {
     <div>
         <h3>@thesis.Name</h3>
@@ -16,7 +17,6 @@
 
     protected async Task OnIntializedAsync()
     {
-        @* Theses = await ThesesService.GetThesesPosts(); *@
-        Theses = await Http.GetFromJsonAsync<Thesis>
+        Theses = await Http.GetFromJsonAsync<List<Thesis>>("api/Thesis");
     }
 }
