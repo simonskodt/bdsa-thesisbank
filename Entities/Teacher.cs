@@ -12,7 +12,9 @@ public class Teacher
 
     public ICollection<Thesis>? OwnedTheses { get; set; }
 
-     public Teacher(string name){
+    public Teacher(string name, string email)
+    {
         Name = name;
+        Email = email;
     }
 }

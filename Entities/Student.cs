@@ -11,8 +11,9 @@ public class Student
 
     public ICollection<Apply>? Applies { get; set; }
 
-    public Student(string name){
+    public Student(string name, string email)
+    {
         Name = name;
+        Email = email;
     }
-
 }

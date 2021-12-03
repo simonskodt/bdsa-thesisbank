@@ -26,4 +26,9 @@ public class Thesis
     }
     public Thesis(){}
 
+    public Thesis(string name, Teacher teacher)
+    {
+        Name = name;
+        Teacher = teacher;
+    }
 }
