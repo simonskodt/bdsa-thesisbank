@@ -9,6 +9,7 @@ namespace ThesisBank.Server.Controllers;
 
 [Authorize]
 // [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
+[AllowAnonymous]
 [ApiController]
 [Route("api/[controller]")]
 public class ThesesController : ControllerBase {

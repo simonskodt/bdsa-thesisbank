@@ -1,14 +1,9 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web.Resource;
-using ThesisBank.Shared;
 
-namespace ThesisBank.Server.Controllers;
+namespace Server.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("[controller]")]
-[RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -23,7 +18,7 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
