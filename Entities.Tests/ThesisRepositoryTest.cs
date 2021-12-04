@@ -3,8 +3,8 @@
 public class ThesisRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
-    private readonly StudentRepository? _repo_Stud;
-    private readonly ThesisRepository? _repo_Thesis;
+    private readonly StudentRepository _repo_Stud;
+    private readonly ThesisRepository _repo_Thesis;
 
     public ThesisRepositoryTest()
     {
@@ -55,7 +55,7 @@ public class ThesisRepositoryTest : IDisposable
     [Fact]
     public async Task ReadThesis_GivenID1_ReturnWildAlgorithmsByThore()
     {
-        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
         var ReadThesisResponse = await _repo_Thesis.ReadThesis(1);
 
         Assert.Equal((Response.Success, new ThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", Thore)), ReadThesisResponse);
@@ -64,7 +64,7 @@ public class ThesisRepositoryTest : IDisposable
     [Fact]
     public async Task ReadThesis_GivenNonExisitingID_ReturnEmpty()
     {
-        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
         var ReadThesisResponse = await _repo_Thesis.ReadThesis(8);
 
         Assert.Equal((Response.NotFound, null), ReadThesisResponse);

@@ -3,10 +3,10 @@ namespace Entities.Tests;
 public class TeacherRepositoryTest : IDisposable
 {
     private readonly ThesisBankContext _context;
-    private readonly StudentRepository? _repo_Student;
-    private readonly ThesisRepository? _repo_Thesis;
-    private readonly TeacherRepository? _repo_Teacher;
-    private readonly ApplyRepository? _repo_Apply;
+    private readonly StudentRepository _repo_Student;
+    private readonly ThesisRepository _repo_Thesis;
+    private readonly TeacherRepository _repo_Teacher;
+    private readonly ApplyRepository _repo_Apply;
 
     public TeacherRepositoryTest()
     {

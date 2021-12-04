@@ -9,38 +9,39 @@ public class ThesisRepository : IThesisRepository
         _context = context;
     }
 
-    public async Task<(Response, ThesisDTO)> ReadThesis(int ThesisID)
+    public async Task<(Response, ThesisDTO?)> ReadThesis(int ThesisID)
     {
-        var Thesis = await _context.Theses
+        var thesis = await _context.Theses
                                    .Where(t => t.Id == ThesisID)
                                    .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
                                    .FirstOrDefaultAsync();
 
-        if (Thesis == null)
+        if (thesis == null)
         {
-            return (Response.NotFound, Thesis);
+            return (Response.NotFound, null);
         }
 
-        return (Response.Success, Thesis);
+        return (Response.Success, thesis);
     }
 
     public async Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll()
     {
-        var Theses = (await _context.Theses
+        var theses = (await _context.Theses
                        .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Description, t.Teacher.Name))
                        .ToListAsync())
                        .AsReadOnly();
 
-        return Theses;
+        return theses;
     }
 
     public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int studentID)
     {
-        var ThesesID = (await _context.Applies
+        var thesesID = (await _context.Applies
                        .Where(a => a.StudentID == studentID)
                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
                        .ToListAsync())
                        .AsReadOnly();
-        return ThesesID;
+
+        return thesesID;
     }
 }

@@ -2,9 +2,9 @@ namespace Entities.Tests;
 
 public class StudentRepositoryTest : IDisposable
 {
-    private readonly ThesisBankContext? _context;
-    private readonly StudentRepository? _repo_Stud;
-    private readonly ThesisRepository? _repo_Thesis;
+    private readonly ThesisBankContext _context;
+    private readonly StudentRepository _repo_Stud;
+    private readonly ThesisRepository _repo_Thesis;
 
     public StudentRepositoryTest()
     {
