@@ -13,26 +13,15 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Teacher</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Thesis in Theses)
-            {
-                <tr>
-                    <td>@Thesis.ID</td>
-                    <td>@Thesis.Name</td>
-                    <td>@Thesis.TeacherName</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    
+    @foreach (var Thesis in Theses)
+    {
+        <tr>
+            <td>@Thesis.ID</td>
+            <td>@Thesis.Name</td>
+            <td>@Thesis.TeacherName</td>
+        </tr>
+    }
 }
 
 @code {
