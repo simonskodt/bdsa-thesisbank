@@ -32,7 +32,7 @@ services:
       - source: connection_string
         target: ConnectionStrings__ThesisBank
     volumes:
-      - '../../../../.aspnet/https:/https/'
+      - '../../../../../Users/Alyson/.aspnet/https:/https/'
 
 secrets:
   db_password:

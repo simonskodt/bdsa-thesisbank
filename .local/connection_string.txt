@@ -1,0 +1,1 @@
+Server=localhost;Database=ThesisBank;User Id=sa;Password=7ea5029d-2247-417c-a2e7-b310adf011b9
