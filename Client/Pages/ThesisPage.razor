@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="content content-grey mt-5">
-           @Thesis.Description 
+           @Thesis.Description
         </div>
     </div>
 </div>
@@ -36,5 +36,6 @@
     protected override async Task OnInitializedAsync()
     {
         Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
+        
     }
 }
