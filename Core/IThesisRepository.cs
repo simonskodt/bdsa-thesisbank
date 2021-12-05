@@ -2,7 +2,7 @@ namespace Core;
 
     public interface IThesisRepository
 {
-    public Task<(Response, ThesisDTO)> ReadThesis(int ThesisId);
+    public Task<ThesisDTO> ReadThesis(int ThesisId);
 
     public Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll();
 

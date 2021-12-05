@@ -9,19 +9,21 @@ public class ThesisRepository : IThesisRepository{
         _context = context;
     }
 
-    public async Task<(Response, ThesisDTO)> ReadThesis(int ThesisID){
+    public async Task<ThesisDTO> ReadThesis(int ThesisID){
 
 
         var Thesis = await _context.Theses
                                    .Where(t => t.Id == ThesisID)
-                                   .Select(t => new ThesisDTO(t.Id, t.Name, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
+                                   .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
                                    .FirstOrDefaultAsync();
         
-        if(Thesis == null){
-            return (Response.NotFound, Thesis);
-        }
+        // if(Thesis == null){
+        //     return (Response.NotFound, Thesis);
+        // }
 
-        return (Response.Success, Thesis);
+        // return (Response.Success, Thesis);
+
+        return Thesis == null ? null : Thesis;
             
     }
 
