@@ -23,4 +23,13 @@ public class ThesisController : ControllerBase {
     public async Task<IReadOnlyCollection<MinimalThesisDTO>> Get()
         => await _repository.ReadAll();
     
+
+    [AllowAnonymous]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(typeof(ThesisDTO), 200)]
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ThesisDTO>> Get(int id) 
+        => await _repository.ReadThesis(id);
+
+    
 }

@@ -1,9 +1,12 @@
 @page "/thesis/{id:int?}"
+@using Entities
+@using Core
+@inject HttpClient Http
 @attribute [Authorize]
 
 <div class="row justify-content-center">
     <div class="col-sm-10">
-        <h1>Human cognition and outer impact</h1>
+        <h1>Human cognition and outer impact - @Id</h1>
         <div class="top-box mt-5">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-space">
@@ -25,11 +28,13 @@
 
 @code {
 
+    private ThesisDTO? Thesis;
+
     [Parameter]
     public int? Id { get; set; } = 0;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Id = Id ?? 0;
-    }   
+        Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
+    }
 }

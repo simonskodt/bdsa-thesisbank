@@ -9,6 +9,12 @@ public class Thesis
 
     public string? Description {get; set;}
 
+    // // todo: Keywords
+    // public string[]? Keywords { get; set; }
+
+    // // TODO: Excerpt
+    // public string? excerpt { get; set; }
+
     public Teacher Teacher {get; set;}
 
     public ICollection<Apply>? Applies { get; set; } 
