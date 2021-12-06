@@ -1,12 +1,10 @@
-
-   
 <NavLink href=@ThesisLink class="thesis">
-    <div class="card bg-grey mb-4 mt-3 border-0 radius-5">
-        <div class="row mb-4">
+    <div class="card bg-grey mb-4 mt-4 border-0 radius-5">
+        <div class="row mb-3">
             <div class="col-sm-12">
-                <h2 class="headline">@title</h2>
-                <h3>Professor @teacher</h3>
-                <h4 class="text-muted h6">@keywords</h4>
+                <h2 class="headline jost-500">@title</h2>
+                <h3 class="professor">Professor @teacher</h3>
+                <h4 class="h6 keywords roboto-400">@keywords</h4>
                 <div class="excerpt">
                     <p>@excerpt</p>
                 </div>
@@ -14,46 +12,6 @@
         </div>
     </div>
 </NavLink>
-
-
-
-<style>
-    .btn {
-        padding: 12px 0;
-        border-radius: 10px;
-    }
-    .btn-apply {
-        background: #0095068A;
-        color: white;
-    }
-    .btn-cancel {
-        background: #E45A5A;
-        color: white;
-    }
-    .top-btn {
-        padding: 15px 10px;
-        text-align: center;
-        color: black;
-        font-weight: 700;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .top-btn:hover {
-        text-decoration: none;
-        color: black;
-    }
-    .bg-grey {
-        background: #F0F0F0;
-        border-radius: 5px;
-    }
-    .excerpt {
-        border-left: 2px solid black;
-        padding: 10px;
-    }
-    .card {
-        padding: 20px 30px;
-    }
-</style>
 
 @code {
 

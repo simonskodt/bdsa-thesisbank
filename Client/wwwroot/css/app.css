@@ -1,7 +1,8 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1:focus {
@@ -59,24 +60,26 @@ a, .btn-link {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
 
-      
-a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
+
+.bg-dark-grey {
+    background: #6A736F;
+}
+.top-btn {
+    padding: 20px 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
     text-decoration: none;
-    color: black;
+    border-radius: 5px;
 }
-
-.thesis > div {
-    box-shadow: 0 0 0 rgba(255,255,255,0);
-    transition: .25s ease all;
-}
-
-.thesis > div:hover {
-    box-shadow: 3px 3px 10px 0px rgba(123, 123, 123, 0.25)
-}
+.top-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}   
 
 .top-row-loggedin {
     background: #ffffff !important;
@@ -93,11 +96,60 @@ a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
     transition: .25s ease all;
 }
 
-.bg-yellow {
-    background: #FFD639;
+.bg-red {
+    background: #E45A5A;
+    color: #ffffff;
 }
 
-a, a:hover, a:focus, a:active {
+.bg-yellow {
+    background: #FFD639;
+    color: #000;
+}
+
+.bg-yellow:hover {
+    color: #000;
+}
+
+a, a:not(.top-btn):hover, a:focus, a:active {
     text-decoration: none;
     color: #000;
+}
+
+.jost-500 {
+    font-family: 'jost';
+    font-weight: 500;
+}
+
+.jost-300 {
+    font-family: 'jost';
+    font-weight: 300;
+}
+
+.roboto-700 {
+    font-family: 'Roboto';
+    font-weight: 700;
+}
+
+.roboto-500 {
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.roboto-300 {
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+.roboto-100 {
+    font-family: 'Roboto';
+    font-weight: 100;
+}
+
+.shadow {
+    box-shadow: 0 0 0 rgba(255,255,255,0) !important;
+    transition: .25s ease all !important;
+}
+
+.shadow:hover {
+    box-shadow: 3px 3px 10px 0px rgba(123, 123, 123, 0.25) !important;
 }

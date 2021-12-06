@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities;
@@ -9,6 +9,8 @@ public class ThesisBankContext : DbContext, IThesisBankContext
     public DbSet<Teacher> Teachers => Set<Teacher>();
     public DbSet<Thesis> Theses => Set<Thesis>();
     public DbSet<Apply> Applies => Set<Apply>();
+
+    private static string descriptionTemplate = "<p>Aliquam vestibulum morbi blandit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis cras sed felis. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Non odio euismod lacinia at quis. Risus viverra adipiscing at in tellus. Vel pretium lectus quam id leo in. <br /> Ipsum dolor sit amet consectetur adipiscing. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Nibh tellus molestie nunc non blandit massa enim nec dui. Ut tortor pretium viverra suspendisse potenti nullam. Orci sagittis eu volutpat odio facilisis mauris sit amet. Pharetra magna ac placerat vestibulum lectus mauris. <br /> Blandit cursus risus at ultrices mi tempus imperdiet nulla. Egestas diam in arcu cursus. Ante metus dictum at tempor commodo. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Morbi blandit cursus risus at ultrices mi. Nam at lectus urna duis convallis convallis. Vel turpis nunc eget lorem. Quis hendrerit dolor magna eget. Libero id faucibus nisl tincidunt eget nullam.</p>";
 
     public ThesisBankContext(DbContextOptions<ThesisBankContext> options) : base(options) { }
 
@@ -27,7 +29,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Teachers', RESEED, 0)");
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
-        var ahmed = new Student("Ahmed Galal", "ahmed@itu.dk");
+        var ahmed = new Student("Philip August Hyltoft", "phhy@itu.dk");
         var leonora = new Student("Léonora Théorêt", "leonora@itu.dk");
         var alyson = new Student("Alyson D'Souza", "alyson@itu.dk");
         var victor = new Student("Victor Brorson", "victor@itu.dk");
