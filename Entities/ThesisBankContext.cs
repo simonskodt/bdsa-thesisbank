@@ -38,7 +38,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         var thore = new Teacher("Thore", "thore@itu.dk");
         var rasmus = new Teacher("Rasmus", "rasmus@itu.dk");
 
-        var thesis1 = new Thesis("How ITU mentally ruin students", thore);
+        var thesis1 = new Thesis("How ITU mentally ruin students", thore) { Description = descriptionTemplate };
         var thesis2 = new Thesis("Why singletons are an anti-pattern", rasmus);
         var thesis3 = new Thesis("A study on why notepad is the best IDE", thore);
 

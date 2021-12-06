@@ -4,6 +4,7 @@
 @inject HttpClient Http
 @attribute [Authorize]
 
+@if (Thesis != null) {
 <div class="row justify-content-center">
     <div class="col-sm-10">
         <h1>@Thesis.Name</h1>
@@ -35,7 +36,16 @@
         </div>
     </div>
 </div>
-
+} else if (Thesis == null && returned) {
+    <div>
+        <h1>Nothing found</h1>
+    </div>
+} else {
+    <div>
+        <h1>Loading...</h1>
+    </div>
+}
+ 
 @code {
 
     @*
@@ -45,6 +55,8 @@
 
     @* private Status status = null; *@
     private bool status = false;
+
+    private bool returned = false;
 
     private ThesisDTO? Thesis;
 
@@ -56,17 +68,15 @@
         status = !status;
         @* status = status.Pending;
             var StudentId = 0;
-            Http.PostAsync("/api/student", (StudentId, Thesis.Id, status)); *@
+            Http.PostAsync("/api/student/{StudentId}", (StudentId, Thesis.Id, status)); *@
     }
 
 
     protected override async Task OnInitializedAsync()
     {
+        returned = false;
         Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
-
-        @* if (getresponse.Item1 == Response.Success){
-            Thesis = getresponse.Item2;
-            } *@
+        returned = true;
     }
 
 }
