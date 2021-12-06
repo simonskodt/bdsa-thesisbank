@@ -12,4 +12,8 @@ global using System.Net;
 global using System.Net.Http.Json;
 global using System.Security.Claims;
 global using System.Text.Encodings.Web;
+global using Microsoft.AspNetCore.SpaServices;
+global using Microsoft.AspNetCore.SpaServices.Extensions;
 global using Xunit;
+global using Entities;
+global using Core;

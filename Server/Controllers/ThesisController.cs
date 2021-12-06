@@ -30,7 +30,7 @@ public class ThesisController : ControllerBase
     [ProducesResponseType(typeof(ThesisDTO), 200)]
     [HttpGet("{id}")]
     public async Task<ThesisDTO> Get(int id)
-        => await _repository.ReadThesis(id).Item2;
+        => (await _repository.ReadThesis(id)).Item2;
 
     // [Authorize]
     // [HttpPost]
