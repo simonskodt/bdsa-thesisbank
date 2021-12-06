@@ -11,14 +11,18 @@
             <div class="row">
                 <div class="col d-flex flex-column justify-content-space">
                     <h2 class="h3">Professor @Thesis.Teacher.Name</h2>
-                    <h3 class="h5 fw-light" style="margin-bottom: 0; padding-top: 7px">cognition, iq, social pshycology</h3>
+                    <h3 class="h5 fw-light" style="margin-bottom: 0; padding-top: 7px">cognition, iq, social pshycology
+                    </h3>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    @if (status) {
+                    @if (status)
+                    {
                         <div>
                             <button class="btn btn-lg bg-yellow" @onclick="Apply">Apply</button>
                         </div>
-                    } else {
+                    }
+                    else
+                    {
                         <div>
                             <button class="btn btn-lg bg-red" @onclick="Apply">Cancel</button>
                         </div>
@@ -27,19 +31,19 @@
             </div>
         </div>
         <div class="content content-grey mt-5">
-           @Thesis.Description
+            @Thesis.Description
         </div>
     </div>
 </div>
 
 @code {
 
-    @* 
-    * TODO: 1) Check current student has Isapplied for this thesis
-    * TODO: 2) Make the student capable of applying, cancelling or accepting the status of the thesis for the student
-     *@
+    @*
+        * TODO: 1) Check current student has Isapplied for this thesis
+        * TODO: 2) Make the student capable of applying, cancelling or accepting the status of the thesis for the student
+    *@
 
-    @* private Status status = null;  *@
+    @* private Status status = null; *@
     private bool status = false;
 
     private ThesisDTO? Thesis;
@@ -47,16 +51,22 @@
     [Parameter]
     public int? Id { get; set; } = 0;
 
-    private void Apply() {
+    private void Apply()
+    {
         status = !status;
         @* status = status.Pending;
-        var StudentId = 0;
-        Http.PostAsync("/api/student", (StudentId, Thesis.Id, status)); *@
+            var StudentId = 0;
+            Http.PostAsync("/api/student", (StudentId, Thesis.Id, status)); *@
     }
+
 
     protected override async Task OnInitializedAsync()
     {
         Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
+
+        @* if (getresponse.Item1 == Response.Success){
+            Thesis = getresponse.Item2;
+            } *@
     }
 
 }

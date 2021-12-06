@@ -29,7 +29,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Teachers', RESEED, 0)");
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
-        var ahmed = new Student("Philip August Hyltoft", "phhy@itu.dk");
+        var ahmed = new Student("Philip Ahmed", "phhy@itu.dk");
         var leonora = new Student("Léonora Théorêt", "leonora@itu.dk");
         var alyson = new Student("Alyson D'Souza", "alyson@itu.dk");
         var victor = new Student("Victor Brorson", "victor@itu.dk");

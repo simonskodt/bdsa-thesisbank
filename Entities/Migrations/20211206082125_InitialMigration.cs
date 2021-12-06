@@ -14,8 +14,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,8 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,16 +42,16 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TeacherId = table.Column<int>(type: "int", nullable: false)
+                    TeacherID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Theses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Theses_Teachers_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_Theses_Teachers_TeacherID",
+                        column: x => x.TeacherID,
                         principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -95,9 +95,9 @@ namespace Entities.Migrations
                 column: "ThesisID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Theses_TeacherId",
+                name: "IX_Theses_TeacherID",
                 table: "Theses",
-                column: "TeacherId");
+                column: "TeacherID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
