@@ -45,7 +45,7 @@ var connectionString = configuration.GetConnectionString("ThesisBank");
 
 var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
 using var context = new ThesisBankContext(optionsBuilder.Options);
-ThesisBankContext.Seed(context);
+// ThesisBankContext.Seed(context);
 
 
 static IConfiguration LoadConfiguration()

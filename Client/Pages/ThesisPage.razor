@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="content content-grey mt-5">
-            @Thesis.Description
+            @((MarkupString)Thesis.Description)
         </div>
     </div>
 </div>
@@ -56,7 +56,7 @@
     @* private Status status = null; *@
     private bool status = false;
 
-    private bool returned = false;
+    private bool returned;
 
     private ThesisDTO? Thesis;
 
