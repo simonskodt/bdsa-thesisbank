@@ -27,9 +27,28 @@ public class StudentController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet("{name}")]
-    public async Task<(Response, int?)> Get(string name){
+    public async Task<int?> Get(string name){
         var item = await _repository.ReadStudentIDByName(name);
         Console.WriteLine("HALLOOOO::::: " + item.Item2);
-        return item;
+        return item.Item2;
     }
+
+    [AllowAnonymous]
+    [HttpPost]
+    public async Task<ActionResult<ApplyDTO>> Post(ApplyDTO applyDTO){
+        var created = await _repository.ApplyForThesis(applyDTO.Student.Id, applyDTO.Thesis.Id);
+        Console.WriteLine("ITEM2 ::: " + created.Item2);
+        Console.WriteLine("Student ::: " + applyDTO.Student.Id);
+        Console.WriteLine("Thesis ::: " + applyDTO.Thesis.Id);
+
+
+
+        return CreatedAtAction(nameof(Get),
+            new {id = created}, created);
+
+        //return new CreatedResult(created);
+    }
+
+    
+
 }

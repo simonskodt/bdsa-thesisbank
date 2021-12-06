@@ -2,6 +2,7 @@
 @using Entities
 @using Core
 @inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @attribute [Authorize]
 
 @if (Thesis != null) {
@@ -16,7 +17,7 @@
                     </h3>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    @if (status)
+                    @if (!appliedFor)
                     {
                         <div>
                             <button class="btn btn-lg bg-yellow" @onclick="Apply">Apply</button>
@@ -54,7 +55,7 @@
     *@
 
     @* private Status status = null; *@
-    private bool status = false;
+    private bool appliedFor = false;
 
     private bool returned;
 
@@ -63,12 +64,20 @@
     [Parameter]
     public int? Id { get; set; } = 0;
 
-    private void Apply()
+
+
+    private async Task Apply()
     {
-        status = !status;
-        @* status = status.Pending;
-            var StudentId = 0;
-            Http.PostAsync("/api/student/{StudentId}", (StudentId, Thesis.Id, status)); *@
+        appliedFor = !appliedFor;
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+        
+        var studentDTO = new StudentDTO(usernameInt, "Viggo", "vibr@itu.dk");
+        var createDTO = new ApplyDTO(Status.Pending, studentDTO, Thesis);
+
+        var apply = await Http.PostAsJsonAsync("/api/student", createDTO);
+        Console.WriteLine("APPLYIED::: " + apply.StatusCode + "THESIS ID ::: " + Thesis.Id);
     }
 
 

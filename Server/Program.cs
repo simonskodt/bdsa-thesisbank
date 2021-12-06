@@ -24,6 +24,8 @@ builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer
 builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
 builder.Services.AddScoped<IThesisRepository, ThesisRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<IApplyRepository, ApplyRepository>();
 
 var app = builder.Build();
 
@@ -47,9 +49,6 @@ var connectionString = configuration.GetConnectionString("ThesisBank");
 
 var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
 using var context = new ThesisBankContext(optionsBuilder.Options);
-public static useContext(context){
-
-}
 ThesisBankContext.Seed(context);
 
 

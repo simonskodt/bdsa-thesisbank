@@ -44,13 +44,11 @@
     
     Console.WriteLine("BEFORE ID ::: " + user.Identity.Name);
 
-    var _rep_stud = new IStudentRepository();
-
     var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
 
     Console.WriteLine("AFTER ID ::: " + StudentID);
 
-    await localStore.SetItemAsync(user.Identity.Name, StudentID);
+    await localStore.SetItemAsync("user", StudentID);
 
     }
 

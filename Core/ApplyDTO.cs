@@ -6,4 +6,5 @@ public record ApplyWithIDDTO(int Id, Status Status, StudentDTO Student, ThesisDT
 
 public record ApplyMinimalDTO(int id, ThesisDTO thesis);
 
-public record ApplyCreateDTO(StudentDTO StudentID, ThesisDTO ThesisID);
+public record ApplyCreateDTO();
+
