@@ -26,6 +26,7 @@ public class ThesisTests : IClassFixture<CustomWebApplicationFactory>
     public async Task Get_Returns_correct_Thesis_from_name()
     {
         var theses = await _client.GetFromJsonAsync<ThesisDTO[]>("api/Thesis");
+        
         Assert.Equal("A study on why notepad is the best IDE", theses[theses.Length - 1].Name);
         Assert.DoesNotContain(theses, t => t.Name == ".NET framework");
     }
