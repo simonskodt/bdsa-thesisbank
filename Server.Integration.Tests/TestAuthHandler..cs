@@ -7,8 +7,7 @@ internal sealed class TestAuthHandler : AuthenticationHandler<AuthenticationSche
         ILoggerFactory logger,
         UrlEncoder encoder,
         ISystemClock clock) : base(options, logger, encoder, clock)
-    {
-    }
+    { }
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {

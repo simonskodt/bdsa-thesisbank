@@ -16,7 +16,7 @@ public class ThesisTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task Get_Returns_theses()
     {
-        var theses = await _client.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis");
+        var theses = await _client.GetFromJsonAsync<ThesisDTO[]>("api/Thesis");
 
         Assert.NotNull(theses);
         Assert.False(theses.Length < 3);
