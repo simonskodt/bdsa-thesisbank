@@ -31,5 +31,11 @@ public class ThesisController : ControllerBase {
     public async Task<ActionResult<ThesisDTO>> Get(int id) 
         => await _repository.ReadThesis(id);
 
+    // [Authorize]
+    // [HttpPost]
+    // [ProducesResponseType(typeof(bool), 201)]
+    // public async Task<IActionResult> Post(int studentId, int thesisId, bool isApplied) {
+    //     var applied = await _repository.CreateAsync()
+    // }
     
 }
