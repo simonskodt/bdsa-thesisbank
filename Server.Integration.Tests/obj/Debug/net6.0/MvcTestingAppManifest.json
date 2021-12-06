@@ -1,0 +1,7 @@
+{
+  "Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\simon\\OneDrive\\Skrivebord\\3_semester\\SeSkarpt\\bdsa-thesisbank\\Core",
+  "Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\simon\\OneDrive\\Skrivebord\\3_semester\\SeSkarpt\\bdsa-thesisbank\\Entities",
+  "ThesisBank.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\simon\\OneDrive\\Skrivebord\\3_semester\\SeSkarpt\\bdsa-thesisbank\\Client",
+  "ThesisBank.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\simon\\OneDrive\\Skrivebord\\3_semester\\SeSkarpt\\bdsa-thesisbank\\Server",
+  "ThesisBank.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\simon\\OneDrive\\Skrivebord\\3_semester\\SeSkarpt\\bdsa-thesisbank\\Shared"
+}
