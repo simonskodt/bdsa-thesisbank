@@ -32,7 +32,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         var ahmed = new Student("Philip Ahmed", "phhy@itu.dk");
         var leonora = new Student("Léonora Théorêt", "leonora@itu.dk");
         var alyson = new Student("Alyson D'Souza", "alyson@itu.dk");
-        var victor = new Student("Victor Brorson", "victor@itu.dk");
+        var victor = new Student("Viggo", "victor@itu.dk");
         var simon = new Student("Simon Skødt", "simon@itu.dk");
 
         var thore = new Teacher("Thore", "thore@itu.dk");

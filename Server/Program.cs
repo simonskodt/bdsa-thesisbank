@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Entities;
 using Microsoft.Identity.Web;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ThesisBank")));
 builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
 builder.Services.AddScoped<IThesisRepository, ThesisRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 var app = builder.Build();
 
@@ -45,7 +47,10 @@ var connectionString = configuration.GetConnectionString("ThesisBank");
 
 var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
 using var context = new ThesisBankContext(optionsBuilder.Options);
-// ThesisBankContext.Seed(context);
+public static useContext(context){
+
+}
+ThesisBankContext.Seed(context);
 
 
 static IConfiguration LoadConfiguration()

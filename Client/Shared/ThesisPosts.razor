@@ -1,9 +1,13 @@
+
 @page "/temp"
 @using Entities
 @using Core
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
 @* @inject Client.Service.IThesesService ThesesService *@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject SignOutSessionStateManager SignOutManager
 
 <h1>Theses</h1>
 

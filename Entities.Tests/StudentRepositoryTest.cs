@@ -68,6 +68,15 @@ public class StudentRepositoryTest : IDisposable
     }
 
     [Fact]
+    public async Task ReadStudentIDByName_GivenAlyson_ReturnsId1(){
+
+        var actual = await _repo_Stud.ReadStudentIDByName("Alyson");
+
+        Assert.Equal((Response.Success, 1), actual);
+
+    }
+
+    [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
     {
         var student = await _repo_Stud.ReadStudent(1);

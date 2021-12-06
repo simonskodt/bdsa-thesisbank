@@ -25,13 +25,13 @@ public class ThesisController : ControllerBase
         => await _repository.ReadAll();
 
 
-    [AllowAnonymous]
+  /*   [AllowAnonymous]
     [ProducesResponseType(404)]
     [ProducesResponseType(typeof(ThesisDTO), 200)]
-    [HttpGet("{id}")]
-    public async Task<ThesisDTO> Get(int id)
-        => await _repository.ReadThesis(id).Item2;
-
+    [HttpGet("{id}")] */
+/*     public async Task<ThesisDTO> Get(int id)
+        => await _repository.ReadThesis(id)
+ */
     // [Authorize]
     // [HttpPost]
     // [ProducesResponseType(typeof(bool), 201)]

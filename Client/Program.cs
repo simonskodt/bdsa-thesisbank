@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using ThesisBank.Client;
+using Blazored.LocalStorage;
+
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -12,6 +14,8 @@ builder.Services.AddHttpClient("ThesisBank.Server", client => client.BaseAddress
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ThesisBank.Server"));
+
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddMsalAuthentication(options =>
 {
