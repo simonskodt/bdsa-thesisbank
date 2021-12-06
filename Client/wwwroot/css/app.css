@@ -96,6 +96,11 @@ a, .btn-link {
     transition: .25s ease all;
 }
 
+.bg-red {
+    background: #E45A5A;
+    color: #ffffff;
+}
+
 .bg-yellow {
     background: #FFD639;
     color: #000;
