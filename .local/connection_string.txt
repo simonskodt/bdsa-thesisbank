@@ -1,1 +1,1 @@
-Server=db;Port=1433;Database=ThesisBank;User Id=sa;Password=localhost
+Server=db;Port=1434;Database=ThesisBank;User Id=sa;Password=A1trab1290!
