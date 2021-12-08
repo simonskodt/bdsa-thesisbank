@@ -5,10 +5,18 @@ namespace Server.Integration.Tests;
 public class ThesisTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _client;
+
+    private readonly string _key;
     private readonly CustomWebApplicationFactory _factory;
 
     public ThesisTests(CustomWebApplicationFactory factory)
     {
+         var configuration = new ConfigurationBuilder()
+            .AddUserSecrets<Program>()
+            .Build();
+
+        _key = configuration.GetValue<string>("ThesisBank");
+
         _factory = factory;
         _client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
     }
