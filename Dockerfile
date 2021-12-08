@@ -1,8 +1,8 @@
 # https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
-COPY . /source
-WORKDIR /source/Server
+COPY ../ /source
+WORKDIR /source
 
 
 RUN dotnet restore

@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.local",
+    "\\Client",
+    "\\Client\\Pages",
+    "\\Client\\Shared",
+    "\\Server",
+    "\\Server1",
+    "\\Shared"
   ],
-  "SelectedNode": "\\ThesisBank.sln",
+  "SelectedNode": "\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }
