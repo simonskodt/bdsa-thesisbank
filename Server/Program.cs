@@ -43,9 +43,9 @@ else
 var configuration = LoadConfiguration();
 var connectionString = configuration.GetConnectionString("ThesisBank");
 
-var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
+var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString, options => options.EnableRetryOnFailure(5));
 using var context = new ThesisBankContext(optionsBuilder.Options);
-// ThesisBankContext.Seed(context);
+ThesisBankContext.Seed(context);
 
 
 static IConfiguration LoadConfiguration()
@@ -53,7 +53,7 @@ static IConfiguration LoadConfiguration()
     var builder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json")
-        .AddUserSecrets<Program>();
+        .AddUserSecrets<Program>(true);
 
     return builder.Build();
 }
