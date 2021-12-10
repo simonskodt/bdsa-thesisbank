@@ -25,7 +25,7 @@ namespace Server.Controllers;
 
 [   AllowAnonymous]
     [HttpPost]
-    [ProducesResponseType(typeof(ApplyDTOid), 201)]
+    [ProducesResponseType(typeof(ApplyDTO), 201)]
     public async Task<IActionResult> Post(ApplyDTO applyDTO)
     {
         
@@ -39,7 +39,7 @@ namespace Server.Controllers;
         Console.WriteLine("ITEM2 ::: " + created.Item2);
         Console.WriteLine("Hello world");
 
-        return CreatedAtAction(nameof(Get), new {id = 8}, created.Item2); 
+        return CreatedAtAction(nameof(Get), new {Id = created.Item2.Id}, created.Item2); 
 
 
         // return new CreatedResult(created);
