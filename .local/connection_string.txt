@@ -1,1 +1,0 @@
-Server=db;Database=ThesisBank;User Id=sa;Password=4de97ff6-26e1-43d0-a695-64e2f84e64c4
