@@ -1,8 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Entities;
-using Microsoft.Identity.Web;
+
 
 
 
@@ -19,6 +15,9 @@ builder.Services.AddRazorPages();
 
 var connectionString = builder.Configuration.GetConnectionString("ThesisBank");
 builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString));
+builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
+
+
 
 //using var context = new ThesisBankContext(optionsBuilder.Options);
 
@@ -66,5 +65,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+await app.SeedAsync();
 
 app.Run();
