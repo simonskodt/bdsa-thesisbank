@@ -4,6 +4,7 @@
             <div class="col-sm-8">
                 <h2 class="headline">@title</h2>
                 <h3>Professor @teacher</h3>
+                <h3>Student @student</h3>
                 <h4 class="text-muted h6">@keywords</h4>
                 <div class="excerpt">
                     @((MarkupString)excerpt)
@@ -40,6 +41,9 @@
 
     [Parameter]
     public string keywords { get; set; } = "";
+
+    [Parameter]
+    public string student { get; set;} = "";
 
     [Parameter]
     public string excerpt { get; set; } = "";    

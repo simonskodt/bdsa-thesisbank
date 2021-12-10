@@ -13,7 +13,7 @@ namespace Server.Controllers;
         _repository = repository;
     }
 
-
+    [Authorize(Roles = "Student")]
     [HttpGet("{studentID}")]
     public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
     => await _repository.ReadAppliedByStudentAndStatus(studentID);

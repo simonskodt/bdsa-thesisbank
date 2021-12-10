@@ -1,4 +1,9 @@
 @page "/teacher"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @attribute [Authorize]
 
 <div>
@@ -9,11 +14,30 @@
         </NavLink>
     </div>
     <div class="row">
-        <ThesisApplication accepted=true />
-        <ThesisApplication accepted=true/>
-        <ThesisApplication accepted=true/>
+    @foreach (var Apply in applies){
+        <ApplicationComponent 
+            Id="@Apply.Thesis.Id"
+            title="@Apply.Thesis.Name"
+            student="@Apply.Student.Name"
+            excerpt="@Apply.Thesis.Description"
+        />
+    }
     </div>
 </div>
+
+@code {
+    private ApplyDTO[]? applies;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    var username = await localStorage.GetItemAsync<string>("user"); 
+    var usernameInt = Int32.Parse(username);
+    
+
+    applies = await Http.GetFromJsonAsync<ApplyDTO[]>("api/Teacher/" + 1);
+    }
+}
 
 
 <style>
