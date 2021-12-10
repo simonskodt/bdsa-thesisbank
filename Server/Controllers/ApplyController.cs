@@ -13,19 +13,19 @@ namespace Server.Controllers;
         _repository = repository;
     }
 
+    [AllowAnonymous]
+    [HttpGet]
+    public async Task<IReadOnlyCollection<ApplyDTOid>> Get()
+        => await _repository.ReadApplied();
 
+    [AllowAnonymous]
     [HttpGet("{studentID}")]
     public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
     => await _repository.ReadAppliedByStudentAndStatus(studentID);
 
-    /*[AllowAnonymous]
-    [HttpGet]
-    public async Task<IReadOnlyCollection<ApplyDTOid>> Get()
-        => await _repository.ReadApply(); */
-
-[   AllowAnonymous]
+     [AllowAnonymous]
     [HttpPost]
-    [ProducesResponseType(typeof(ApplyDTO), 201)]
+    [ProducesResponseType(typeof(ApplyDTOid), 201)]
     public async Task<IActionResult> Post(ApplyDTO applyDTO)
     {
         

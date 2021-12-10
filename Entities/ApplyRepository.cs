@@ -65,6 +65,12 @@ public class ApplyRepository : IApplyRepository
         return ApplyDTOList.AsReadOnly();
     }
 
+       public async Task<IReadOnlyCollection<ApplyDTOid>> ReadApplied() =>
+        (await _context.Applies
+                       .Select(c => new ApplyDTOid(c.Id, c.Status, c.StudentID, c.ThesisID))
+                       .ToListAsync())
+                       .AsReadOnly();
+
     public async Task<IReadOnlyCollection<ApplyDTO>> ReadAppliedByStudentAndStatus(int StudentID)
     {
         var stud_repo = new StudentRepository(_context);
@@ -162,7 +168,7 @@ public class ApplyRepository : IApplyRepository
         await _context.SaveChangesAsync();
 
         // return (Response.Success, new ApplyWithIDDTO(entity.Id, entity.Status, StudentDTO, ThesisDTO));
-        return (Response.Success, new ApplyDTOid(entity.Status, studentID, ThesisID));
+        return (Response.Success, new ApplyDTOid(entity.Id, entity.Status, studentID, ThesisID));
     }
 
 }
