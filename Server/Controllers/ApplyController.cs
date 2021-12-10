@@ -18,12 +18,12 @@ namespace Server.Controllers;
     public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
     => await _repository.ReadAppliedByStudentAndStatus(studentID);
 
-/*     [AllowAnonymous]
+    /*[AllowAnonymous]
     [HttpGet]
     public async Task<IReadOnlyCollection<ApplyDTOid>> Get()
         => await _repository.ReadApply(); */
 
-/*     [AllowAnonymous]
+[   AllowAnonymous]
     [HttpPost]
     [ProducesResponseType(typeof(ApplyDTOid), 201)]
     public async Task<IActionResult> Post(ApplyDTO applyDTO)
@@ -36,14 +36,13 @@ namespace Server.Controllers;
         Console.WriteLine("Student ::: " + applyDTO.Student.Id);
         Console.WriteLine("Thesis ::: " + applyDTO.Thesis.Id);
         var created = await _repository.ApplyForThesis(applyDTO.Student.Id, applyDTO.Thesis.Id);
-        Console.WriteLine("ITEM2 ::: " + created.Item2.studentID);
+        Console.WriteLine("ITEM2 ::: " + created.Item2);
         Console.WriteLine("Hello world");
 
-
-
-        return CreatedAtAction(nameof(Get), new {id = 1}, created.Item2); */
+        return CreatedAtAction(nameof(Get), new {id = 8}, created.Item2); 
 
 
         // return new CreatedResult(created);
     
+}
 }

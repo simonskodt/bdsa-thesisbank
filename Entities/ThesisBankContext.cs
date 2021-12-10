@@ -15,7 +15,9 @@ public class ThesisBankContext : DbContext, IThesisBankContext
     public ThesisBankContext(DbContextOptions<ThesisBankContext> options) : base(options) { }
 
 
-    // protected override void OnModelCreating(ModelBuilder modelBuilder) { }
+    //  protected override void OnModelCreating(ModelBuilder modelBuilder) { 
+       
+    //  }
 
     public static void Seed(ThesisBankContext context)
     {

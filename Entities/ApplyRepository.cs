@@ -145,17 +145,17 @@ public class ApplyRepository : IApplyRepository
 
         var entity = new Apply(thesis, student);
 
-        Console.WriteLine(entity.Id);
+        //Console.WriteLine(entity.Id);
         Console.WriteLine(entity.Status);
         Console.WriteLine(entity.ThesisID);
         Console.WriteLine(entity.StudentID);
         
 
-        var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
+        // var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
 
-        var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
-                                    new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-        );
+        // var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
+        //                             new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        // );
 
         _context.Applies.Add(entity);
 
