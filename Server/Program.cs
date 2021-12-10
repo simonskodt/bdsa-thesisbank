@@ -39,7 +39,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var connectionString = builder.Configuration.GetConnectionString("ThesisBank");
-builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString,options => options.EnableRetryOnFailure(5)));
 //builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ThesisBank")));
 builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
 builder.Services.AddScoped<IThesisRepository, ThesisRepository>();
