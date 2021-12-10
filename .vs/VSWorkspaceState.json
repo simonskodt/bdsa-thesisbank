@@ -7,8 +7,9 @@
     "\\Client\\Shared",
     "\\Server",
     "\\Server1",
+    "\\Server\\Controllers",
     "\\Shared"
   ],
-  "SelectedNode": "\\docker-compose.yml",
+  "SelectedNode": "\\Server\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
