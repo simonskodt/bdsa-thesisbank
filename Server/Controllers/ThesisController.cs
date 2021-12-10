@@ -32,7 +32,7 @@ public class ThesisController : ControllerBase
 /*     public async Task<ThesisDTO> Get(int id)
         => await _repository.ReadThesis(id)
  */
-    [Authorize(Roles = "Student")]
+    //[Authorize(Roles = "Student")]
     [HttpGet("{id}")]
     public async Task<ThesisDTO> Get(int id)
         => (await _repository.ReadThesis(id)).Item2;
