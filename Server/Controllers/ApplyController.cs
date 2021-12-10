@@ -15,8 +15,8 @@ namespace Server.Controllers;
 
 
     [HttpGet("{studentID}")]
-    public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID, Status status)
-    => await _repository.ReadAppliedByStudentAndStatus(studentID, Status.Accepted);
+    public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
+    => await _repository.ReadAppliedByStudentAndStatus(studentID);
 
 /*     [AllowAnonymous]
     [HttpGet]
