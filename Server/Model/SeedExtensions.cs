@@ -17,6 +17,9 @@ public static class SeedExtensions
 
     private static async Task Seed(ThesisBankContext context)
     {
+        await context.Database.MigrateAsync();
+
+        if(!await context.Students.AnyAsync() && !await context.Teachers.AnyAsync() && !await context.Theses.AnyAsync() && !await context.Applies.AnyAsync()){
         context.Database.EnsureCreated();
         context.Database.ExecuteSqlRaw("DELETE dbo.Applies");
         context.Database.ExecuteSqlRaw("DELETE dbo.Students");
@@ -51,11 +54,15 @@ public static class SeedExtensions
            Thore
        );
 
+        await context.SaveChangesAsync();
+
         context.Theses.AddRange(
            Thesis1,
            Thesis2,
            Thesis3
        );
+
+        await context.SaveChangesAsync();
 
         context.Students.AddRange(
             Ahmed,
@@ -65,6 +72,8 @@ public static class SeedExtensions
             Simon
         );
 
+        await context.SaveChangesAsync();
+        
         context.Applies.AddRange(
             Applies1,
             Applies2,
@@ -74,5 +83,6 @@ public static class SeedExtensions
         );
 
         await context.SaveChangesAsync();
+        }
     }
 }

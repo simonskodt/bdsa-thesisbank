@@ -15,6 +15,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
 
     // protected override void OnModelCreating(ModelBuilder modelBuilder) { }
 
+    /*
     public static void Seed(ThesisBankContext context)
     {
         context.Database.EnsureCreated();
@@ -75,4 +76,5 @@ public class ThesisBankContext : DbContext, IThesisBankContext
 
         context.SaveChangesAsync();
     }
+    */
 }
