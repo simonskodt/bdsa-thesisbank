@@ -1,11 +1,11 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Entities;
-using Microsoft.Identity.Web;
+
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddKeyPerFile("/run/secrets", optional: true);
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -29,7 +29,7 @@ builder.Services.Configure<JwtBearerOptions>(
 
 builder.Services.AddRazorPages();
 
-
+//using var context = new ThesisBankContext(optionsBuilder.Options);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -38,12 +38,15 @@ builder.Services.AddSwaggerGen(c =>
     c.UseInlineDefinitionsForEnums();
 });
 
-builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ThesisBank")));
+var connectionString = builder.Configuration.GetConnectionString("ThesisBank");
+builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ThesisBank")));
 builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
 builder.Services.AddScoped<IThesisRepository, ThesisRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 builder.Services.AddScoped<IApplyRepository, ApplyRepository>();
+
 
 var app = builder.Build();
 
@@ -62,12 +65,13 @@ else
     app.UseHsts();
 }
 
-var configuration = LoadConfiguration();
-var connectionString = configuration.GetConnectionString("ThesisBank");
+//var configuration = LoadConfiguration();
 
-var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
-using var context = new ThesisBankContext(optionsBuilder.Options);
-ThesisBankContext.Seed(context);
+//ThesisBankContext.Seed(context); //Seed Extension IHost repo SeedExtensions
+
+
+/*
+
 
 
 static IConfiguration LoadConfiguration()
@@ -79,6 +83,7 @@ static IConfiguration LoadConfiguration()
 
     return builder.Build();
 }
+*/
 
 
 // Configure the HTTP request pipeline.
@@ -104,6 +109,8 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
+await app.SeedAsync();
 
 app.Run();
 

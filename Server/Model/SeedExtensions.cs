@@ -1,26 +1,25 @@
-
-﻿﻿using System;
+namespace Server.Model;
+using Entities;
 using Microsoft.EntityFrameworkCore;
+using Core;
 
-namespace Entities;
-
-public class ThesisBankContext : DbContext, IThesisBankContext
+public static class SeedExtensions
 {
-    public DbSet<Student> Students => Set<Student>();
-    public DbSet<Teacher> Teachers => Set<Teacher>();
-    public DbSet<Thesis> Theses => Set<Thesis>();
-    public DbSet<Apply> Applies => Set<Apply>();
-    
-    private static string descriptionTemplate = "<p>Aliquam vestibulum morbi blandit Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor consequat id porta nibh venenatis cras sed felis. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Non odio euismod lacinia at quis. Risus viverra adipiscing at in tellus. Vel pretium lectus quam id leo in. <br /> Ipsum dolor sit amet consectetur adipiscing. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Nibh tellus molestie nunc non blandit massa enim nec dui. Ut tortor pretium viverra suspendisse potenti nullam. Orci sagittis eu volutpat odio facilisis mauris sit amet. Pharetra magna ac placerat vestibulum lectus mauris. <br /> Blandit cursus risus at ultrices mi tempus imperdiet nulla. Egestas diam in arcu cursus. Ante metus dictum at tempor commodo. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Morbi blandit cursus risus at ultrices mi. Nam at lectus urna duis convallis convallis. Vel turpis nunc eget lorem. Quis hendrerit dolor magna eget. Libero id faucibus nisl tincidunt eget nullam.</p>";
-
-    public ThesisBankContext(DbContextOptions<ThesisBankContext> options) : base(options) { }
-
-
-    // protected override void OnModelCreating(ModelBuilder modelBuilder) { }
-
-    /*
-    public static void Seed(ThesisBankContext context)
+    public static async Task<IHost> SeedAsync(this IHost host)
     {
+        using (var scope = host.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<ThesisBankContext>();
+            await Seed(context);
+        }
+        return host;
+    }
+
+    private static async Task Seed(ThesisBankContext context)
+    {
+        await context.Database.MigrateAsync();
+
+        if(!await context.Students.AnyAsync() && !await context.Teachers.AnyAsync() && !await context.Theses.AnyAsync() && !await context.Applies.AnyAsync()){
         context.Database.EnsureCreated();
         context.Database.ExecuteSqlRaw("DELETE dbo.Applies");
         context.Database.ExecuteSqlRaw("DELETE dbo.Students");
@@ -55,11 +54,15 @@ public class ThesisBankContext : DbContext, IThesisBankContext
            Thore
        );
 
+        await context.SaveChangesAsync();
+
         context.Theses.AddRange(
            Thesis1,
            Thesis2,
            Thesis3
        );
+
+        await context.SaveChangesAsync();
 
         context.Students.AddRange(
             Ahmed,
@@ -69,6 +72,8 @@ public class ThesisBankContext : DbContext, IThesisBankContext
             Simon
         );
 
+        await context.SaveChangesAsync();
+        
         context.Applies.AddRange(
             Applies1,
             Applies2,
@@ -77,7 +82,7 @@ public class ThesisBankContext : DbContext, IThesisBankContext
             Applies5
         );
 
-        context.SaveChangesAsync();
+        await context.SaveChangesAsync();
+        }
     }
-    */
-    }
+}

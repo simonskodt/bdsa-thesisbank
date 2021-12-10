@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
+	</ItemGroup>
+
 </Project>
