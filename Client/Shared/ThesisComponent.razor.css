@@ -1,0 +1,41 @@
+.yellow {
+    background: #FFD639;
+}
+.btn {
+    padding: 12px 0;
+    border-radius: 10px;
+}
+.btn-apply {
+    background: #0095068A;
+    color: white;
+}
+.btn-cancel {
+    background: #E45A5A;
+    color: white;
+}
+.top-btn {
+    padding: 15px 10px;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.top-btn:hover {
+    text-decoration: none;
+    color: black;
+}
+.bg-grey {
+    background: #F0F0F0;
+    border-radius: 5px;
+}
+.excerpt {
+    border-left: 2px solid black;
+    padding: 10px;
+    margin-left: 40px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.card {
+    padding: 20px 30px;
+}

@@ -24,6 +24,19 @@ public class StudentRepository : IStudentRepository
 
         return (Response.Success, student);
     }
+    
+    public async Task<(Response, int?)> ReadStudentIDByName(string studentName){
+        var student = await _context.Students
+                                   .Where(s => s.Name == studentName)
+                                   .FirstOrDefaultAsync();
+
+        if (student == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        return (Response.Success, student.Id);
+    }
 
     public async Task<(Response, ApplyDTO?)> ApplyForThesis(int studentID, int ThesisID)
     {

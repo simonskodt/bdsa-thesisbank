@@ -1,7 +1,15 @@
 ﻿@page "/"
+@using Entities
+@using Core
+@* @inject Client.Service.IThesesService ThesesService *@
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @attribute [Authorize]
 
 <div>
+    
     <div class="row mb-5">
         <h1 class="mb-5">Find a thesis</h1>
         <NavLink href="/applications" class="top-btn bg-yellow">
@@ -9,8 +17,25 @@
         </NavLink>
     </div>
     <div class="row">
-        <ThesisComponent Id="1" />
-        <ThesisComponent Id="2" />
-        <ThesisComponent Id="3" />
+    @foreach (var Thesis in Theses)
+    {
+        <ThesisComponent 
+            Id="@Thesis.Id"
+            Title="@Thesis.Name"
+            Teacher="@Thesis.TeacherName"
+            Excerpt="@Thesis.Description"
+        />
+    }
     </div>
 </div>
+
+
+
+@code {
+    private MinimalThesisDTO[]? Theses;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis");
+    }
+}

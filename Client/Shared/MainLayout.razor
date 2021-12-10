@@ -4,12 +4,17 @@
 <PageTitle>ThesisBank</PageTitle>
 
 @if (!_navManager.Uri.Contains("/login")) {
+        <div class="teacherOverviewBtn">
+            <NavLink href="/teacher" class="btn btn-login">
+                Teacher
+            </NavLink>
+        </div>
 <div class="top-row-loggedin d-flex align-items-center" style="margin-bottom: 100px">
     <div class="container">
         <div class="row flex-direction-row justify-content-space">
             <div class="col align-items-center d-flex">
                 <NavLink href="/">
-                    <h1 class="h4" style="margin-bottom: 0;">Thesis<span style="font-weight: 700">Bank</span></h1>
+                    <h3 class="h4 roboto-100" style="margin-bottom: 0;">Thesis<span style="font-weight: 700">Bank</span></h3>
                 </NavLink>
             </div>
             <div class="col justify-content-end align-items-center d-flex">
@@ -32,3 +37,9 @@
         </div>
     </main>
 </div>
+
+
+@code {
+    private bool isTeacher { get; set; } = true;
+    
+}

@@ -1,0 +1,38 @@
+
+@page "/temp"
+@using Entities
+@using Core
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@* @inject Client.Service.IThesesService ThesesService *@
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject SignOutSessionStateManager SignOutManager
+
+<h1>Theses</h1>
+
+@if (Theses == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    
+    @foreach (var Thesis in Theses)
+    {
+        <tr>
+            <td>@Thesis.Id</td>
+            <td>@Thesis.Name</td>
+            <td>@Thesis.TeacherName</td>
+        </tr>
+    }
+}
+
+@code {
+    private MinimalThesisDTO[]? Theses;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis");
+    }
+}

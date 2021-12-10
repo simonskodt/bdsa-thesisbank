@@ -2,10 +2,10 @@ namespace Entities.Tests;
 public class ApplyRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
-    private readonly ApplyRepository? _repo_apply;
-    private readonly StudentRepository? _repo_Stud;
-    private readonly ThesisRepository? _repo_Thesis;
-    private readonly TeacherRepository? _repo_Teacher;
+    private readonly ApplyRepository _repo_apply;
+    private readonly StudentRepository _repo_Stud;
+    private readonly ThesisRepository _repo_Thesis;
+    private readonly TeacherRepository _repo_Teacher;
 
     public ApplyRepositoryTest()
     {
@@ -66,12 +66,11 @@ public class ApplyRepositoryTest : IDisposable
         var student = await _repo_Stud.ReadStudent(1);
         var thesis1 = await _repo_Thesis.ReadThesis(1);
 
-        var ExpectedDTO = new ApplyDTO(Status.Pending, student.Item2, thesis1.Item2);
+        var expectedDTO = new ApplyDTO(Status.Pending, student.Item2, thesis1.Item2);
 
-        var AppliedEntry = await _repo_apply.ReadApplied(1, 1);
+        var appliedEntry = await _repo_apply.ReadApplied(1, 1);
 
-        Assert.Equal((Response.Success, ExpectedDTO), AppliedEntry);
-
+        Assert.Equal((Response.Success, expectedDTO), appliedEntry);
     }
 
     [Fact]

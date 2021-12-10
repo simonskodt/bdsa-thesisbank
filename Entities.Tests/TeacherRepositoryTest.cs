@@ -3,10 +3,10 @@ namespace Entities.Tests;
 public class TeacherRepositoryTest : IDisposable
 {
     private readonly ThesisBankContext _context;
-    private readonly StudentRepository? _repo_Student;
-    private readonly ThesisRepository? _repo_Thesis;
-    private readonly TeacherRepository? _repo_Teacher;
-    private readonly ApplyRepository? _repo_Apply;
+    private readonly StudentRepository _repo_Student;
+    private readonly ThesisRepository _repo_Thesis;
+    private readonly TeacherRepository _repo_Teacher;
+    private readonly ApplyRepository _repo_Apply;
 
     public TeacherRepositoryTest()
     {
@@ -117,14 +117,15 @@ public class TeacherRepositoryTest : IDisposable
     [Fact]
     public async Task Reject_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToDenied()
     {
-        var ApplyEntry = await _repo_Apply.ReadApplied(1, 1);
-        var testStatus = ApplyEntry.Item2.Status;
+        var applyEntry = await _repo_Apply.ReadApplied(1, 1);
 
-        var ApplyEntryUpdate = await _repo_Teacher.Reject(1, 1);
-        var UpdateStatus = ApplyEntryUpdate.Item2.Status;
+        var testStatus = applyEntry.Item2.Status;
+
+        var applyEntryUpdate = await _repo_Teacher.Reject(1, 1);
+        var updateStatus = applyEntryUpdate.Item2.Status;
 
         Assert.Equal(Status.Pending, testStatus);
-        Assert.Equal(Status.Denied, UpdateStatus);
+        Assert.Equal(Status.Denied, updateStatus);
     }
 
     [Fact]

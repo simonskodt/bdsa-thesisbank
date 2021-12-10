@@ -1,7 +1,7 @@
 namespace Entities;
+
 public class Teacher
 {
-    
     public int Id { get; set; }
 
     [StringLength(20)]

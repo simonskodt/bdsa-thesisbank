@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
-    <UserSecretsId>ba28b586-5a6f-45f8-85b5-a36b6552cbdf</UserSecretsId>
+    <UserSecretsId>aab068f5-dcae-4394-b552-a14a0779606b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +15,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
