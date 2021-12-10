@@ -65,6 +65,12 @@ public class ApplyRepository : IApplyRepository
         return ApplyDTOList.AsReadOnly();
     }
 
+       public async Task<IReadOnlyCollection<ApplyDTOid>> ReadApplied() =>
+        (await _context.Applies
+                       .Select(c => new ApplyDTOid(c.Id, c.Status, c.StudentID, c.ThesisID))
+                       .ToListAsync())
+                       .AsReadOnly();
+
     public async Task<IReadOnlyCollection<ApplyDTO>> ReadAppliedByStudentAndStatus(int StudentID)
     {
         var stud_repo = new StudentRepository(_context);
@@ -145,24 +151,24 @@ public class ApplyRepository : IApplyRepository
 
         var entity = new Apply(thesis, student);
 
-        Console.WriteLine(entity.Id);
+        //Console.WriteLine(entity.Id);
         Console.WriteLine(entity.Status);
         Console.WriteLine(entity.ThesisID);
         Console.WriteLine(entity.StudentID);
         
 
-        var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
+        // var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
 
-        var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
-                                    new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-        );
+        // var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
+        //                             new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        // );
 
         _context.Applies.Add(entity);
 
         await _context.SaveChangesAsync();
 
         // return (Response.Success, new ApplyWithIDDTO(entity.Id, entity.Status, StudentDTO, ThesisDTO));
-        return (Response.Success, new ApplyDTOid(entity.Status, studentID, ThesisID));
+        return (Response.Success, new ApplyDTOid(entity.Id, entity.Status, studentID, ThesisID));
     }
 
 }

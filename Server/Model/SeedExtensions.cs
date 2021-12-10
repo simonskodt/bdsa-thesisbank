@@ -31,10 +31,10 @@ public static class SeedExtensions
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
         var Ahmed = new Student("Ahmed Galal", "Ahmed@itu.dk");
-        var Leonora = new Student("Léonora Théorêt", "Leonora@itu.dk");
-        var Alyson = new Student("Alyson D'Souza", "Alyson@itu.dk");
-        var Victor = new Student("Victor Brorson", "Victor@itu.dk");
-        var Simon = new Student("Simon Skødt", "Simon@itu.dk");
+        var Leonora = new Student("Leo", "Leonora@itu.dk");
+        var Alyson = new Student("Alyson De Souza", "Alyson@itu.dk");
+        var Victor = new Student("Viggo", "Victor@itu.dk");
+        var Simon = new Student("Simon Johann Skødt", "Simon@itu.dk");
 
         var Thore = new Teacher("Thore", "Thore@itu.dk");
         var Rasmus = new Teacher("Rasmus", "Rasmus@itu.dk");
@@ -44,7 +44,7 @@ public static class SeedExtensions
         var Thesis3 = new Thesis("A study on why notepad is the best IDE", Thore);
 
         var Applies1 = new Apply(Thesis1, Ahmed);
-        var Applies2 = new Apply(Thesis2, Leonora) { Status = Status.Denied };
+        var Applies2 = new Apply(Thesis2, Leonora);
         var Applies3 = new Apply(Thesis2, Simon);
         var Applies4 = new Apply(Thesis2, Alyson) { Status = Status.Denied };
         var Applies5 = new Apply(Thesis2, Victor) { Status = Status.Denied };
