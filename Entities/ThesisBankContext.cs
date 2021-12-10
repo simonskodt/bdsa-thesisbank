@@ -29,11 +29,12 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Teachers', RESEED, 0)");
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
-        var ahmed = new Student("Philip Ahmed", "phhy@itu.dk");
-        var leonora = new Student("Léonora Théorêt", "leonora@itu.dk");
+        var ahmed = new Student("Ahmed Galal", "ahga@itu.dk");
+        var leonora = new Student("Leo", "leonora@itu.dk");
         var alyson = new Student("Alyson D'Souza", "alyson@itu.dk");
         var victor = new Student("Viggo", "victor@itu.dk");
         var simon = new Student("Simon Skødt", "simon@itu.dk");
+        var philip = new Student("Philip Hyltoft", "hyltoft@live.com");
 
         var thore = new Teacher("Thore", "thore@itu.dk");
         var rasmus = new Teacher("Rasmus", "rasmus@itu.dk");
@@ -42,11 +43,11 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         var thesis2 = new Thesis("Why singletons are an anti-pattern", rasmus);
         var thesis3 = new Thesis("A study on why notepad is the best IDE", thore);
 
-  /*       var applies1 = new Apply(thesis1, ahmed);
+       var applies1 = new Apply(thesis1, ahmed);
         var applies2 = new Apply(thesis2, leonora) { Status = Status.Denied };
         var applies3 = new Apply(thesis2, simon);
         var applies4 = new Apply(thesis2, alyson) { Status = Status.Denied };
-        var applies5 = new Apply(thesis2, victor) { Status = Status.Denied }; */
+        var applies5 = new Apply(thesis2, victor) { Status = Status.Denied };
 
         context.Teachers.AddRange(
            rasmus,
@@ -64,16 +65,17 @@ public class ThesisBankContext : DbContext, IThesisBankContext
             leonora,
             alyson,
             victor,
-            simon
+            simon,
+            philip
         );
 
-/*         context.Applies.AddRange(
+        context.Applies.AddRange(
             applies1,
             applies2,
             applies3,
             applies4,
             applies5
-        ); */
+        );
 
         context.SaveChangesAsync();
     }

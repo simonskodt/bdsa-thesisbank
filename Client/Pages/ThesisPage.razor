@@ -76,7 +76,7 @@
         var studentDTO = new StudentDTO(usernameInt, "Viggo", "vibr@itu.dk");
         var createDTO = new ApplyDTO(Status.Pending, studentDTO, Thesis);
 
-        var apply = await Http.PostAsJsonAsync("/api/student", createDTO);
+        var apply = await Http.PostAsJsonAsync("/api/apply", createDTO);
         Console.WriteLine("APPLYIED::: " + apply.StatusCode + "THESIS ID ::: " + Thesis.Id);
     }
 
