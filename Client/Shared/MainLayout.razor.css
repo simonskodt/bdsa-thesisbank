@@ -79,3 +79,15 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+
+
+.teacherOverviewBtn {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.teacherOverviewBtn .btn {
+    margin-left: 0;
+}
