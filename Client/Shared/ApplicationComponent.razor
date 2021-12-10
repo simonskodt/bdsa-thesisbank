@@ -1,15 +1,15 @@
-<NavLink href="" class="thesis">
-    <div class="card mb-4 mt-3 border-0 @(accepted ? "yellow" : "bg-grey")">
+
+    <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
         <div class="row mb-4">
             <div class="col-sm-8">
                 <h2 class="headline">@title</h2>
                 <h3>Professor @teacher</h3>
                 <h4 class="text-muted h6">@keywords</h4>
                 <div class="excerpt">
-                    <p>@excerpt</p>
+                    @((MarkupString)excerpt)
                 </div>
             </div>
-                @if (accepted) {
+                @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
                             <button class="btn btn-accept">Accept</button>
@@ -25,26 +25,26 @@
                 }
         </div>
     </div>
-</NavLink>
 
 
 @code {
 
-    // TODO: Parameters must be replaced with Thesis object over time
+    [Parameter]
+    public int Id { get; set; } = 0;
     
     [Parameter]
-    public string title { get; set; } = "Human cognition and outer impact";
+    public string title { get; set; } = "";
 
     [Parameter]
-    public string teacher { get; set; } = "Stella Bony";
+    public string teacher { get; set; } = "";
 
     [Parameter]
-    public string keywords { get; set; } = "cognition, iq, social pshycology";
+    public string keywords { get; set; } = "";
 
     [Parameter]
-    public string excerpt { get; set; } = "Coginition has now become a more important factor when discussing solutions in IT. Seeking to find out how the outer impact influences this area.";
+    public string excerpt { get; set; } = "";    
 
     [Parameter]
-    public bool accepted { get; set; } = false;
-    
+    public Status accepted { get; set; } = 0;
+
 }

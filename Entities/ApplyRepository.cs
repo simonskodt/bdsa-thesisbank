@@ -65,8 +65,30 @@ public class ApplyRepository : IApplyRepository
         return ApplyDTOList.AsReadOnly();
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTOid>> ReadApply()
+    public async Task<IReadOnlyCollection<ApplyDTO>> ReadAppliedByStudentAndStatus(int StudentID)
     {
+        var stud_repo = new StudentRepository(_context);
+
+        var studentDTO = await stud_repo.ReadStudent(StudentID);
+                            
+        var Applications = await _context.Applies
+                        .Where(a => a.Status != Status.Archived)
+                        .Where(a => a.StudentID == studentDTO.Item2.Id)
+                        .Select(a => new ThesisWithStatusDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status))
+                        .ToListAsync();
+
+
+        var ApplyDTOs = new List<ApplyDTO>();
+
+
+        foreach (var thesis in Applications)
+        {
+            var DTO = new ApplyDTO(thesis.status, studentDTO.Item2, new ThesisDTO(thesis.Id, thesis.Name, thesis.Description, thesis.Teacher));
+            ApplyDTOs.Add(DTO);
+        }
+
+        return ApplyDTOs.AsReadOnly();
+
         // var student = await _context.Students
         //                    .Where(s => s.Id == studentID)
         //                    .FirstOrDefaultAsync();
@@ -94,10 +116,7 @@ public class ApplyRepository : IApplyRepository
         // await _context.SaveChangesAsync();
 
         // return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
-        return (await _context.Applies
-            .Select(a => new ApplyDTOid(a.Status, a.Student.Id, a.Thesis.Id))
-            .ToListAsync()
-        ).AsReadOnly();
+
     }
 
     public async Task<(Response, ApplyDTOid?)> ApplyForThesis(int studentID, int ThesisID)

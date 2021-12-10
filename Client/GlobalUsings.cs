@@ -5,3 +5,4 @@ global using Microsoft.AspNetCore.Authorization;
 
 global using ThesisBank.Client;
 global using Entities;
+global using Core;

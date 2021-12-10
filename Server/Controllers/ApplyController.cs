@@ -14,12 +14,16 @@ namespace Server.Controllers;
     }
 
 
-    [AllowAnonymous]
+    [HttpGet("{studentID}")]
+    public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
+    => await _repository.ReadAppliedByStudentAndStatus(studentID);
+
+/*     [AllowAnonymous]
     [HttpGet]
     public async Task<IReadOnlyCollection<ApplyDTOid>> Get()
-        => await _repository.ReadApply();
+        => await _repository.ReadApply(); */
 
-    [AllowAnonymous]
+/*     [AllowAnonymous]
     [HttpPost]
     [ProducesResponseType(typeof(ApplyDTOid), 201)]
     public async Task<IActionResult> Post(ApplyDTO applyDTO)
@@ -37,9 +41,9 @@ namespace Server.Controllers;
 
 
 
-        return CreatedAtAction(nameof(Get), new {id = 1}, created.Item2);
+        return CreatedAtAction(nameof(Get), new {id = 1}, created.Item2); */
 
 
         // return new CreatedResult(created);
-    }
+    
 }

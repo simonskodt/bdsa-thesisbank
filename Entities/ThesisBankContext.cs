@@ -43,11 +43,11 @@ public class ThesisBankContext : DbContext, IThesisBankContext
         var thesis2 = new Thesis("Why singletons are an anti-pattern", rasmus);
         var thesis3 = new Thesis("A study on why notepad is the best IDE", thore);
 
-       var applies1 = new Apply(thesis1, ahmed);
+        var applies1 = new Apply(thesis1, ahmed);
         var applies2 = new Apply(thesis2, leonora) { Status = Status.Denied };
         var applies3 = new Apply(thesis2, simon);
         var applies4 = new Apply(thesis2, alyson) { Status = Status.Denied };
-        var applies5 = new Apply(thesis2, victor) { Status = Status.Denied };
+        var applies5 = new Apply(thesis2, victor) { Status = Status.Accepted };
 
         context.Teachers.AddRange(
            rasmus,
