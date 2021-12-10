@@ -64,5 +64,87 @@ public class ApplyRepository : IApplyRepository
 
         return ApplyDTOList.AsReadOnly();
     }
+
+    public async Task<IReadOnlyCollection<ApplyDTOid>> ReadApply()
+    {
+        // var student = await _context.Students
+        //                    .Where(s => s.Id == studentID)
+        //                    .FirstOrDefaultAsync();
+
+        // var thesis = await _context.Theses
+        //                 .Where(t => t.Id == ThesisID)
+        //                 .FirstOrDefaultAsync();
+
+
+        // if (student == null || thesis == null)
+        // {
+        //     return (Response.NotFound, null);
+        // }
+
+        // var entity = new Apply(thesis, student);
+
+        // var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
+
+        // var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
+        //                             new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        // );
+
+        // _context.Applies.Add(entity);
+
+        // await _context.SaveChangesAsync();
+
+        // return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
+        return (await _context.Applies
+            .Select(a => new ApplyDTOid(a.Status, a.Student.Id, a.Thesis.Id))
+            .ToListAsync()
+        ).AsReadOnly();
+    }
+
+    public async Task<(Response, ApplyDTOid?)> ApplyForThesis(int studentID, int ThesisID)
+    {
+        Console.WriteLine("Student: " + studentID);
+        Console.WriteLine("Thesis: " + ThesisID);
+
+        var student = await _context.Students
+                           .Where(s => s.Id == studentID)
+                           .FirstOrDefaultAsync();
+
+
+        var thesis = await _context.Theses
+                        .Where(t => t.Id == ThesisID)
+                        .FirstOrDefaultAsync();
+
+        Console.WriteLine("StudentID: " + student.Id);
+        Console.WriteLine("ThesisID: " + thesis.Id);
+
+        if (student == null || thesis == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        Console.WriteLine("Student ID" + student.Id);
+
+        var entity = new Apply(thesis, student);
+
+        Console.WriteLine(entity.Id);
+        Console.WriteLine(entity.Status);
+        Console.WriteLine(entity.ThesisID);
+        Console.WriteLine(entity.StudentID);
+        
+
+        var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
+
+        var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
+                                    new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
+        );
+
+        _context.Applies.Add(entity);
+
+        await _context.SaveChangesAsync();
+
+        // return (Response.Success, new ApplyWithIDDTO(entity.Id, entity.Status, StudentDTO, ThesisDTO));
+        return (Response.Success, new ApplyDTOid(entity.Status, studentID, ThesisID));
+    }
+
 }
 

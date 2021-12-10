@@ -8,3 +8,5 @@ public record ApplyMinimalDTO(int id, ThesisDTO thesis);
 
 public record ApplyCreateDTO();
 
+public record ApplyDTOid(Status Status, int studentID, int thesisID);
+
