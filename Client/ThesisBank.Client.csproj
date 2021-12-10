@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Shared\ThesisBank.Shared.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
+	</ItemGroup>
+
 </Project>

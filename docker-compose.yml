@@ -1,10 +1,41 @@
-version: '3.4'
+version: '3.9'
 
 services:
-  blazorserver:
-    image: blazorserver
+  db:
+    image: 'mcr.microsoft.com/mssql/server:2019-latest'
+    ports:
+      - '1433:1434'
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+
+  server:
+    image: server
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
+    environment:
+      ConnectionStrings__ThesisBank:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443/;http://+:80
+      ASPNETCORE_HTTPS_PORT: '7207'
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+      ASPNETCORE_Kestrel__Certificates__Default__Password: localhost
     ports:
-    - 5077:5077
+      - 5077:80
+      - 7207:443
+    depends_on:
+      - db
+    secrets:
+      - source: connection_string
+        target: ConnectionStrings__ThesisBank
+    volumes:
+      - '~/.aspnet/https/:/https/'
+
+secrets:
+  db_password:
+    file: ./.local/db_password.txt
+  connection_string:
+    file: ./.local/connection_string.txt

@@ -1,0 +1,1 @@
+Server=db;Port=1434;Database=ThesisBank;User Id=sa;Password=ITUswu2021!

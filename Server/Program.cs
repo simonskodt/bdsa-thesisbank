@@ -4,7 +4,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Entities;
 using Microsoft.Identity.Web;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddKeyPerFile("/run/secrets", optional: true);
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -12,6 +16,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+var connectionString = builder.Configuration.GetConnectionString("ThesisBank");
+builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString));
+
+//using var context = new ThesisBankContext(optionsBuilder.Options);
 
 var app = builder.Build();
 
@@ -27,13 +36,11 @@ else
     app.UseHsts();
 }
 
-var configuration = LoadConfiguration();
-var connectionString = configuration.GetConnectionString("ThesisBank");
+//var configuration = LoadConfiguration();
 
-var optionsBuilder = new DbContextOptionsBuilder<ThesisBankContext>().UseSqlServer(connectionString);
-using var context = new ThesisBankContext(optionsBuilder.Options);
-ThesisBankContext.Seed(context);
+//ThesisBankContext.Seed(context); //Seed Extension IHost repo SeedExtensions
 
+/*
 static IConfiguration LoadConfiguration()
 {
     var builder = new ConfigurationBuilder()
@@ -43,6 +50,7 @@ static IConfiguration LoadConfiguration()
 
     return builder.Build();
 }
+*/
 
 app.UseHttpsRedirection();
 
