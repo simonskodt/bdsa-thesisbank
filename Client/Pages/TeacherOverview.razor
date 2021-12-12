@@ -15,15 +15,16 @@
     </div>
     <div class="row">
     @foreach (var Apply in applies){
-        <ApplicationComponent 
-            Id="@Apply.Thesis.Id"
+        <TeacherComponent 
+            thesisID="@Apply.Thesis.Id"
             title="@Apply.Thesis.Name"
             student="@Apply.Student.Name"
-            excerpt="@Apply.Thesis.Description"
+            studentID="@Apply.Student.Id"
         />
     }
     </div>
 </div>
+
 
 @code {
     private ApplyDTO[]? applies;
@@ -38,34 +39,3 @@
     applies = await Http.GetFromJsonAsync<ApplyDTO[]>("api/Teacher/" + 1);
     }
 }
-
-
-<style>
-    .bg-dark-grey {
-        background: #6A736F;
-    }
-    .top-btn {
-        padding: 15px 10px;
-        text-align: center;
-        color: #ffffff;
-        font-weight: 500;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .top-btn:hover {
-        text-decoration: none;
-        color: black;
-    }
-    .bg-grey {
-        background: #F0F0F0;
-        border-radius: 5px;
-    }
-    .excerpt {
-        border-left: 2px solid black;
-        padding: 10px;
-    }
-    .card {
-        padding: 20px 30px;
-    }
-</style>
-

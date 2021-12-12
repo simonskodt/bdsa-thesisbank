@@ -1,7 +1,3 @@
-@using Core
-@inject HttpClient Http
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-@attribute [Authorize]
 
     <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
         <div class="row mb-4">
@@ -14,12 +10,20 @@
                     @((MarkupString)excerpt)
                 </div>
             </div>
-                <div class="col d-flex flex-row justify-content-center">
-                    <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                        <button class="btn btn-accept" @onclick="Accept" >Accept</button>
-                        <button class="btn btn-cancel">Decline</button>
+                @if (accepted == Status.Accepted) {
+                    <div class="col d-flex flex-row justify-content-center">
+                        <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
+                            <button class="btn btn-accept">Accept</button>
+                            <button class="btn btn-cancel">Decline</button>
+                        </div>
                     </div>
-                </div>
+                } else {
+                    <div class="col d-flex justify-content-center">
+                        <div class="not-accepted-btn d-flex align-items-center" style="width: 80%">
+                            <button class="btn btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                }
         </div>
     </div>
 
@@ -46,5 +50,5 @@
 
     [Parameter]
     public Status accepted { get; set; } = 0;
- 
+
 }
