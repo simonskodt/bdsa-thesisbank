@@ -25,6 +25,11 @@ public class TeacherController : ControllerBase
     [HttpGet("{teahcerID}")]
     public async Task<IReadOnlyCollection<ApplyDTO>> Get(int teahcerID)
     => await _apply_repository.ReadApplicationsByTeacherID(teahcerID);
-
-
+    
+    [AllowAnonymous]
+    [HttpPut("{StudentID}/{ThesisID}")]
+    public async Task<ApplyDTO> Update (int StudentID, int ThesisID){
+        var respone = await _teacher_repository.Accept(StudentID, ThesisID);
+        return respone.Item2;
+    }
 }
