@@ -40,10 +40,10 @@ public class ApplyRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(1, 1) { Id = 1 };
-        Apply applies2 = new Apply(2, 1) { Id = 2 };
-        Apply applies3 = new Apply(3, 1) { Id = 3 };
-        Apply applies4 = new Apply(5, 1) { Id = 4 };
+        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 1 };
+        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 2 };
+        Apply applies3 = new Apply(linq, alyson) { Id = 3 };
+        Apply applies4 = new Apply(cSharp, alyson) { Id = 4 };
 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
@@ -100,25 +100,35 @@ public class ApplyRepositoryTest : IDisposable
         Assert.Equal((Response.Success, ExpectedDTO), AppliedEntry);
     }
 
+
     [Fact]
     public async Task ReadApplicationsByTeacherID_GivenTeacherID1_ReturnsListOfApplyDTO()
     {
-        var teacher = await _repo_Teacher.ReadTeacher(1);
+        
         var student = await _repo_Stud.ReadStudent(1);
         var thesis1 = await _repo_Thesis.ReadThesis(1);
         var thesis2 = await _repo_Thesis.ReadThesis(2);
         var thesis3 = await _repo_Thesis.ReadThesis(5);
 
-        var readList = await _repo_apply.ReadApplicationsByTeacherID(teacher.Item2.Id);
+        var readList = await _repo_apply.ReadApplicationsByTeacherID(1);
 
-        var DTO_1 = await _repo_apply.ReadApplied(student.Item2.Id, thesis1.Item2.Id);
-        var DTO_2 = await _repo_apply.ReadApplied(student.Item2.Id, thesis2.Item2.Id);
-        var DTO_3 = await _repo_apply.ReadApplied(student.Item2.Id, thesis3.Item2.Id);
+        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1.Item2);
+        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2.Item2);
+        var expected_DTO_3 = new ApplyWithIDDTO(4, Status.Pending, student.Item2, thesis3.Item2);
 
         Assert.Collection(readList,
-        thesis => Assert.Equal(DTO_1.Item2, thesis),
-        thesis => Assert.Equal(DTO_2.Item2, thesis),
-        thesis => Assert.Equal(DTO_3.Item2, thesis));
+        thesis => Assert.Equal(expected_DTO_1, thesis),
+        thesis => Assert.Equal(expected_DTO_2, thesis),
+        thesis => Assert.Equal(expected_DTO_3, thesis));
+    }
+
+
+    [Fact]
+    public async Task RemoveRequest_Givenapplyid1_Returndeleted()
+    {
+        var readRemoved = await _repo_apply.RemoveRequest(1);
+
+        Assert.Equal(Response.Deleted, readRemoved);
     }
 
     public void Dispose()

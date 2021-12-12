@@ -20,6 +20,8 @@
             title="@Apply.Thesis.Name"
             student="@Apply.Student.Name"
             studentID="@Apply.Student.Id"
+            applyId = "@Apply.Id"
+            status = "@Apply.Status"
         />
     }
     </div>
@@ -27,7 +29,7 @@
 
 
 @code {
-    private ApplyDTO[]? applies;
+    private ApplyWithIDDTO[]? applies;
 
     protected override async Task OnInitializedAsync()
     {
@@ -36,6 +38,12 @@
     var usernameInt = Int32.Parse(username);
     
 
-    applies = await Http.GetFromJsonAsync<ApplyDTO[]>("api/Teacher/" + 1);
+// her skal man så være teaher før det fungere:
+// for testning kan man vælge denne hvis altså ikke man er teacher i databasen.
+    applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + 1);
+
+      //applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + usernameInt);
+
+   
     }
 }

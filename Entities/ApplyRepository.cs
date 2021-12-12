@@ -32,7 +32,7 @@ public class ApplyRepository : IApplyRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadApplicationsByTeacherID(int teacherID)
+    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadApplicationsByTeacherID(int teacherID)
     {
         var stud_repo = new StudentRepository(_context);
         var thesis_repo = new ThesisRepository(_context);
@@ -52,13 +52,13 @@ public class ApplyRepository : IApplyRepository
                                 .Where(s => ThesesIDs.Contains(s.ThesisID))
                                 .ToListAsync();
 
-        var ApplyDTOList = new List<ApplyDTO>();
+        var ApplyDTOList = new List<ApplyWithIDDTO>();
 
         foreach (var item in Applications)
         {
             var student = await stud_repo.ReadStudent(item.StudentID);
             var thesis = await thesis_repo.ReadThesis(item.ThesisID);
-            var DTO = new ApplyDTO(item.Status, student.Item2, thesis.Item2);
+            var DTO = new ApplyWithIDDTO(item.Id, item.Status, student.Item2, thesis.Item2);
             ApplyDTOList.Add(DTO);
         }
 
@@ -71,7 +71,7 @@ public class ApplyRepository : IApplyRepository
                        .ToListAsync())
                        .AsReadOnly();
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadAppliedByStudentAndStatus(int StudentID)
+    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadAppliedByStudentAndStatus(int StudentID)
     {
         var stud_repo = new StudentRepository(_context);
 
@@ -80,16 +80,16 @@ public class ApplyRepository : IApplyRepository
         var Applications = await _context.Applies
                         .Where(a => a.Status != Status.Archived)
                         .Where(a => a.StudentID == studentDTO.Item2.Id)
-                        .Select(a => new ThesisWithStatusDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status))
+                        .Select(a => new ThesisWithStatusDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
                         .ToListAsync();
 
 
-        var ApplyDTOs = new List<ApplyDTO>();
+        var ApplyDTOs = new List<ApplyWithIDDTO>();
 
 
         foreach (var thesis in Applications)
         {
-            var DTO = new ApplyDTO(thesis.status, studentDTO.Item2, new ThesisDTO(thesis.Id, thesis.Name, thesis.Description, thesis.Teacher));
+            var DTO = new ApplyWithIDDTO(thesis.ApplyID,thesis.status, studentDTO.Item2, new ThesisDTO(thesis.Id, thesis.Name, thesis.Description, thesis.Teacher));
             ApplyDTOs.Add(DTO);
         }
 
@@ -169,6 +169,24 @@ public class ApplyRepository : IApplyRepository
 
         // return (Response.Success, new ApplyWithIDDTO(entity.Id, entity.Status, StudentDTO, ThesisDTO));
         return (Response.Success, new ApplyDTOid(entity.Id, entity.Status, studentID, ThesisID));
+   }
+
+
+   public async Task<Response> RemoveRequest(int applyId)
+    {
+        Apply? pending = await _context.Applies
+                        .Where(p => p.Id == applyId)
+                        .FirstOrDefaultAsync();
+
+        if (pending == null)
+        {
+            return Response.NotFound;
+        }
+
+        _context.Applies.Remove(pending);
+
+        await _context.SaveChangesAsync();
+        return Response.Deleted;
     }
 
 }

@@ -12,6 +12,5 @@ public interface IStudentRepository
 
     public Task<Response> RemoveAllPendings(int studentID);
 
-    public Task<Response> RemoveRequest(int thesisID, int studentID);
     
 }

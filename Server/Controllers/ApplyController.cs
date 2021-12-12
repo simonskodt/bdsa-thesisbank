@@ -21,8 +21,12 @@ namespace Server.Controllers;
 
     [AllowAnonymous]
     [HttpGet("{studentID}")]
-    public async Task<IReadOnlyCollection<ApplyDTO>> Get(int studentID)
+    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int studentID)
     => await _repository.ReadAppliedByStudentAndStatus(studentID);
+
+    [HttpDelete("{Applyid}")]
+    public async Task<Response> Delete(int applyID)
+        => (await _repository.RemoveRequest(applyID));
 
     [AllowAnonymous]
     [HttpPost]

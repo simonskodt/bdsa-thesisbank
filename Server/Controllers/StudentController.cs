@@ -26,11 +26,11 @@ public class StudentController : ControllerBase
     //     // Must update Applied-table with studentId, thesisId and status
     // }
 
-    // [AllowAnonymous]
-    // [HttpGet()]
-    // public async Task<IReadOnlyCollection<StudentDTO>> Get(string name){
-    //     return await _repository.ReadApply();
-    // }
+    [AllowAnonymous]
+    [HttpGet("{name}")]
+    public async Task<int?> Get(string name){
+        return (await _repository.ReadStudentIDByName(name)).Item2;
+    }
 
     // [AllowAnonymous]
     // [HttpPost]

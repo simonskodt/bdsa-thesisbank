@@ -20,16 +20,24 @@ public class TeacherController : ControllerBase
           _teacher_repository = teacherRepository;
           _apply_repository = applyRepository;
     }
+    
+    // [AllowAnonymous]
+    // [HttpGet("{name}")]
+    // public async Task<int?> Get(string name){
+    //     return (await _teacher_repository.ReadTeacherIDByName(name)).Item2;
+    // }
 
-    [Authorize(Roles = "Student")]
+    //[Authorize(Roles = "Teacher")]
     [HttpGet("{teahcerID}")]
-    public async Task<IReadOnlyCollection<ApplyDTO>> Get(int teahcerID)
+    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int teahcerID)
     => await _apply_repository.ReadApplicationsByTeacherID(teahcerID);
     
+    [Authorize(Roles = "Teacher")]
     [AllowAnonymous]
-    [HttpPut("{StudentID}/{ThesisID}")]
-    public async Task<ApplyDTO> Update (int StudentID, int ThesisID){
-        var respone = await _teacher_repository.Accept(StudentID, ThesisID);
+    [HttpPut("{applyid}")]
+    public async Task<ApplyDTO> Update (int applyid, [FromBody] ApplyDTOid dto){ 
+        var respone = await _teacher_repository.Accept(dto.studentID, dto.thesisID);
         return respone.Item2;
     }
+
 }
