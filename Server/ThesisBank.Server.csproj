@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
 
+    <UserSecretsId>c6bde961-9d53-4a01-9b97-d0b472bbc3de</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

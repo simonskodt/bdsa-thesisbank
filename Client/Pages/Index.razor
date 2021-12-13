@@ -46,8 +46,6 @@
         
         var usernameInt = Int32.Parse(username);
             
-        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis/");
-
 
         Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Theses/" + usernameInt);
 
