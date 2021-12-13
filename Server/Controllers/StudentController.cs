@@ -32,6 +32,7 @@ public class StudentController : ControllerBase
         return (await _repository.ReadStudentIDByName(name)).Item2;
     }
 
+
     // [AllowAnonymous]
     // [HttpPost]
     // public async Task<ActionResult<ApplyDTO>> Post(ApplyDTO applyDTO){
