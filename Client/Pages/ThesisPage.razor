@@ -2,8 +2,10 @@
 @using Entities
 @using Core
 @inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @attribute [Authorize]
 
+@if (Thesis != null) {
 <div class="row justify-content-center">
     <div class="col-sm-10">
         <h1>@Thesis.Name</h1>
@@ -15,7 +17,7 @@
                     </h3>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    @if (status)
+                    @if (!appliedFor)
                     {
                         <div>
                             <button class="btn btn-lg bg-yellow" @onclick="Apply">Apply</button>
@@ -24,18 +26,27 @@
                     else
                     {
                         <div>
-                            <button class="btn btn-lg bg-red" @onclick="Apply">Cancel</button>
+                            <button class="btn btn-lg bg-red">Cancel</button>
                         </div>
                     }
                 </div>
             </div>
         </div>
         <div class="content content-grey mt-5">
-            @Thesis.Description
+            @((MarkupString)Thesis.Description)
         </div>
     </div>
 </div>
-
+} else if (Thesis == null && returned) {
+    <div>
+        <h1>Nothing found</h1>
+    </div>
+} else {
+    <div>
+        <h1>Loading...</h1>
+    </div>
+}
+ 
 @code {
 
     @*
@@ -44,29 +55,37 @@
     *@
 
     @* private Status status = null; *@
-    private bool status = false;
+
+    private bool returned;
 
     private ThesisDTO? Thesis;
 
     [Parameter]
     public int? Id { get; set; } = 0;
+    private bool appliedFor = false;   
 
-    private void Apply()
+
+
+    private async Task Apply()
     {
-        status = !status;
-        @* status = status.Pending;
-            var StudentId = 0;
-            Http.PostAsync("/api/student", (StudentId, Thesis.Id, status)); *@
+        appliedFor = !appliedFor;
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+        
+        var studentDTO = new StudentDTO(usernameInt, "Viggo", "vibr@itu.dk");
+        var createDTO = new ApplyDTO(Status.Pending, studentDTO, Thesis);
+
+        var apply = await Http.PostAsJsonAsync("/api/apply", createDTO);
+        Console.WriteLine("APPLYIED::: " + apply.StatusCode + "THESIS ID ::: " + Thesis.Id);
     }
 
 
     protected override async Task OnInitializedAsync()
     {
+        returned = false;
         Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
-
-        @* if (getresponse.Item1 == Response.Success){
-            Thesis = getresponse.Item2;
-            } *@
+        returned = true;
     }
 
 }

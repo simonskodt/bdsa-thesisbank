@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Client",
+    "\\Client\\Pages",
+    "\\Client\\Shared",
+    "\\Entities",
+    "\\Server",
+    "\\Server\\Controllers",
+    "\\Shared"
   ],
-  "SelectedNode": "\\ThesisBank.sln",
+  "SelectedNode": "\\Client",
   "PreviewInSolutionExplorer": false
 }

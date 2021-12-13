@@ -6,7 +6,7 @@
                 <h3 class="professor">Professor @teacher</h3>
                 <h4 class="h6 keywords roboto-400">@keywords</h4>
                 <div class="excerpt">
-                    <p>@excerpt</p>
+                    @((MarkupString)excerpt)
                 </div>
             </div>
         </div>
@@ -23,20 +23,19 @@
     // TODO: Parameters must be replaced with Thesis object over time
     
     [Parameter]
-    public string title { get; set; } = "Human cognition and outer impact";
+    public string title { get; set; } = "";
 
     [Parameter]
-    public string teacher { get; set; } = "Stella Bony";
+    public string teacher { get; set; } = "";
 
     [Parameter]
-    public string keywords { get; set; } = "cognition, iq, social pshycology";
+    public string keywords { get; set; } = "";
 
     [Parameter]
-    public string excerpt { get; set; } = "Coginition has now become a more important factor when discussing solutions in IT. Seeking to find out how the outer impact influences this area.";    
+    public string excerpt { get; set; } = ""; 
 
-        protected override void OnParametersSet()
-        {
-            ThesisLink = $"/thesis/{Id}";
-        }
-
+    protected override void OnParametersSet()
+    {
+        ThesisLink = $"/thesis/{Id}";
+    }
 }

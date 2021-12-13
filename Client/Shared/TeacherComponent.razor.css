@@ -1,54 +1,27 @@
-.card {
-    border-radius: 10px !important;
-}
 
-.yellow {
-    background: #FFD639;
+.bg-dark-grey {
+    background: #6A736F;
 }
-
-.btn {
-    padding: 12px 0;
-    border-radius: 10px;
-}
-
-.btn-accept {
-    background: #0095068A;
-    color: white;
-}
-
-.btn-cancel {
-    background: #E45A5A;
-    color: white;
-}
-
-.btn-cancel {
-    width: 100%;
-}
-
 .top-btn {
     padding: 15px 10px;
     text-align: center;
-    color: black;
-    font-weight: 700;
+    color: #ffffff;
+    font-weight: 500;
     text-decoration: none;
     border-radius: 5px;
 }
-
 .top-btn:hover {
     text-decoration: none;
     color: black;
 }
-
 .bg-grey {
     background: #F0F0F0;
     border-radius: 5px;
 }
-
 .excerpt {
     border-left: 2px solid black;
     padding: 10px;
 }
-
 .card {
     padding: 20px 30px;
 }
