@@ -37,11 +37,10 @@ public class ThesisRepository : IThesisRepository
     public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int studentID)
     {
         var thesesID = (await _context.Applies
-                       .Where(a => a.StudentID == studentID)
-                       .Where(a => a.Status == Status.Pending)
-                       .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
-                       .ToListAsync())
-                       .AsReadOnly();
+                        .Where(a => a.StudentID == studentID)
+                        .Select(a => new ThesisDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email)))
+                        .ToListAsync())
+                        .AsReadOnly();
 
         return thesesID;
     }
