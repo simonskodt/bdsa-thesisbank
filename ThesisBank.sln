@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entiti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities.Tests", "Entities.Tests\Entities.Tests.csproj", "{7E745C45-7300-4689-A540-559F3406FF3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Integration.Tests", "Server.Integration.Tests\Server.Integration.Tests.csproj", "{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,18 @@ Global
 		{7E745C45-7300-4689-A540-559F3406FF3E}.Release|x64.Build.0 = Release|Any CPU
 		{7E745C45-7300-4689-A540-559F3406FF3E}.Release|x86.ActiveCfg = Release|Any CPU
 		{7E745C45-7300-4689-A540-559F3406FF3E}.Release|x86.Build.0 = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|x64.Build.0 = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Debug|x86.Build.0 = Debug|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|x64.ActiveCfg = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|x64.Build.0 = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|x86.ActiveCfg = Release|Any CPU
+		{3627FDBC-1B25-4EE7-BCC3-589F1CDE800E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

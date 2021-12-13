@@ -1,23 +1,60 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Entities
 
+
+@inject HttpClient Http
 @inject NavigationManager Navigation
 @inject SignOutSessionStateManager SignOutManager
+@inject Blazored.LocalStorage.ILocalStorageService localStore
+
+@attribute [Authorize]
+
 
 <AuthorizeView>
     <Authorized>
-        Hello @context.User.Identity?.Name
-        <button class="btn btn-login" @onclick="BeginLogout">Log out</button>
+        <span class="roboto-500">Hello @context.User.Identity?.Name</span>
+        <button class="btn btn-login shadow" @onclick="BeginLogout">Log out</button>
     </Authorized>
     <NotAuthorized>
         <a href="login">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
 
+
+
 @code{
+
     private async Task BeginLogout(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
     }
+
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private string _authMessage;
+
+    protected override async Task OnInitializedAsync(){
+    var authState = await authenticationStateTask;
+    var user = authState.User;
+    
+    //Console.WriteLine("BEFORE ID ::: " + user.Identity.Name);
+
+    var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
+    var TeacherID = await Http.GetFromJsonAsync<int?>($"api/Teacher/{user.Identity.Name}");
+
+    //Console.WriteLine("AFTER ID ::: " + StudentID);
+
+    await localStore.SetItemAsync("user", StudentID);
+    await localStore.SetItemAsync("userteacher", TeacherID);
+
+    }
+
+
+
+
 }

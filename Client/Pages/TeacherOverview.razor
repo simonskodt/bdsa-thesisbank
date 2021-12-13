@@ -1,0 +1,49 @@
+@page "/teacher"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+
+<div>
+    <div class="row mb-5">
+        <h1 class="mb-5">Your pending applications</h1>
+        <NavLink href="/" class="top-btn bg-dark-grey white">
+            Go to all theses
+        </NavLink>
+    </div>
+    <div class="row">
+    @foreach (var Apply in applies){
+        <TeacherComponent 
+            thesisID="@Apply.Thesis.Id"
+            title="@Apply.Thesis.Name"
+            student="@Apply.Student.Name"
+            studentID="@Apply.Student.Id"
+            applyId = "@Apply.Id"
+            status = "@Apply.Status"
+        />
+    }
+    </div>
+</div>
+
+
+@code {
+    private ApplyWithIDDTO[]? applies;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    var username = await localStorage.GetItemAsync<string>("user"); 
+    var usernameInt = Int32.Parse(username);
+    
+
+// her skal man så være teaher før det fungere:
+// for testning kan man vælge denne hvis altså ikke man er teacher i databasen.
+    applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + 1);
+
+      //applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + usernameInt);
+
+   
+    }
+}

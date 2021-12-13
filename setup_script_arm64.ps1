@@ -9,3 +9,4 @@ Set-Clipboard -Value  $connectionString
 cd ../Entities/
 dotnet ef migrations add InitialMigration -s ../Server/  
 dotnet ef database update -s ../Server/
+cd ../Server/

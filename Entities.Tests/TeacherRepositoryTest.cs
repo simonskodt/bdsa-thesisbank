@@ -3,10 +3,10 @@ namespace Entities.Tests;
 public class TeacherRepositoryTest : IDisposable
 {
     private readonly ThesisBankContext _context;
-    private readonly StudentRepository? _repo_Student;
-    private readonly ThesisRepository? _repo_Thesis;
-    private readonly TeacherRepository? _repo_Teacher;
-    private readonly ApplyRepository? _repo_Apply;
+    private readonly StudentRepository _repo_Student;
+    private readonly ThesisRepository _repo_Thesis;
+    private readonly TeacherRepository _repo_Teacher;
+    private readonly ApplyRepository _repo_Apply;
 
     public TeacherRepositoryTest()
     {
@@ -41,10 +41,10 @@ public class TeacherRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 4 };
-        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 5 };
+        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 1 };   
+        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 2 };
         Apply applies3 = new Apply(graphAlgorithms, victor) { Id = 3 };
-        Apply applies4 = new Apply(cSharp, alyson) { Id = 6, Status = Status.Accepted };
+        Apply applies4 = new Apply(cSharp, alyson) { Id = 4, Status = Status.Accepted };
 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
@@ -117,14 +117,15 @@ public class TeacherRepositoryTest : IDisposable
     [Fact]
     public async Task Reject_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToDenied()
     {
-        var ApplyEntry = await _repo_Apply.ReadApplied(1, 1);
-        var testStatus = ApplyEntry.Item2.Status;
+        var applyEntry = await _repo_Apply.ReadApplied(1, 1);
 
-        var ApplyEntryUpdate = await _repo_Teacher.Reject(1, 1);
-        var UpdateStatus = ApplyEntryUpdate.Item2.Status;
+        var testStatus = applyEntry.Item2.Status;
+
+        var applyEntryUpdate = await _repo_Teacher.Reject(1, 1);
+        var updateStatus = applyEntryUpdate.Item2.Status;
 
         Assert.Equal(Status.Pending, testStatus);
-        Assert.Equal(Status.Denied, UpdateStatus);
+        Assert.Equal(Status.Denied, updateStatus);
     }
 
     [Fact]
@@ -148,15 +149,15 @@ public class TeacherRepositoryTest : IDisposable
 
         var readList = await _repo_Teacher.ReadPendingStudentApplication(1);
 
-        var DTO_1 = await _repo_Apply.ReadApplied(student.Item2.Id, thesis1.Item2.Id);
-        var DTO_2 = await _repo_Apply.ReadApplied(student.Item2.Id, thesis2.Item2.Id);
-        var DTO_3 = await _repo_Apply.ReadApplied(student_2.Item2.Id, thesis2.Item2.Id);
+        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1.Item2);
+        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2.Item2);
+        var expected_DTO_3 = new ApplyWithIDDTO(3, Status.Pending, student_2.Item2, thesis2.Item2);
 
         //Assert
         Assert.Collection(readList,
-        thesis => Assert.Equal(DTO_1.Item2, thesis),
-        thesis => Assert.Equal(DTO_3.Item2, thesis),
-        thesis => Assert.Equal(DTO_2.Item2, thesis));
+        thesis => Assert.Equal(expected_DTO_1, thesis),
+        thesis => Assert.Equal(expected_DTO_2, thesis),
+        thesis => Assert.Equal(expected_DTO_3, thesis));
     }
 
     public void Dispose()

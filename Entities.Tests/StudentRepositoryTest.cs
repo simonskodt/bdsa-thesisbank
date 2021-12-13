@@ -2,9 +2,9 @@ namespace Entities.Tests;
 
 public class StudentRepositoryTest : IDisposable
 {
-    private readonly ThesisBankContext? _context;
-    private readonly StudentRepository? _repo_Stud;
-    private readonly ThesisRepository? _repo_Thesis;
+    private readonly ThesisBankContext _context;
+    private readonly StudentRepository _repo_Stud;
+    private readonly ThesisRepository _repo_Thesis;
 
     public StudentRepositoryTest()
     {
@@ -65,6 +65,15 @@ public class StudentRepositoryTest : IDisposable
         var actual = await _repo_Stud.ReadStudent(9);
 
         Assert.Equal((Response.NotFound, null), actual);
+    }
+
+    [Fact]
+    public async Task ReadStudentIDByName_GivenAlyson_ReturnsId1(){
+
+        var actual = await _repo_Stud.ReadStudentIDByName("Alyson");
+
+        Assert.Equal((Response.Success, 1), actual);
+
     }
 
     [Fact]
@@ -152,13 +161,6 @@ public class StudentRepositoryTest : IDisposable
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
     }
 
-    [Fact]
-    public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1()
-    {
-        var readRemoved = await _repo_Stud.RemoveRequest(1, 1);
-
-        Assert.Equal(Response.Deleted, readRemoved);
-    }
 
     public void Dispose()
     {

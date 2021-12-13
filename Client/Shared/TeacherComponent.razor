@@ -1,0 +1,66 @@
+@using Core
+@inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@attribute [Authorize]
+
+    <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
+        <div class="row mb-4">
+            <div class="col-sm-8">
+                <h2 class="headline">@title</h2>
+                <h3>Applying Student: @student</h3>
+            </div>
+                <div class="col d-flex flex-row justify-content-center">
+                    <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
+                        <button class="btn btn-accept" @onclick="Accept"> Accept</button>
+                        <button class="btn btn-cancel" @onclick="Decline">Decline</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+@code {
+
+    private ApplyDTOid applyDTOid = null;
+
+    [Parameter]
+    public int thesisID { get; set; } = 0;
+
+    [Parameter]
+    public int studentID { get; set;} = 0;
+
+    [Parameter]
+    public string title { get; set; } = "";
+
+    [Parameter]
+    public string student { get; set;} = "";
+
+    [Parameter]
+    public int applyId { get; set;} = 0;
+
+    [Parameter]
+    public Status status { get; set;} = 0;
+
+
+
+
+
+    private async Task Accept()
+    {
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+
+        Console.WriteLine("THESIS:::" + thesisID); //Bliver ikke sat ordentligt
+        Console.WriteLine("STUDENT:::" + studentID); //Bliver ikke sat ordentligt
+
+        applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
+
+        await Http.PutAsJsonAsync($"api/Teacher/0", applyDTOid); 
+    }
+    
+
+    private async Task Decline()
+    {
+        
+    }
+}

@@ -1,4 +1,5 @@
 namespace Entities;
+
 public class TeacherRepository : ITeacherRepository
 {
     ThesisBankContext _context;
@@ -12,10 +13,9 @@ public class TeacherRepository : ITeacherRepository
         _studentRepository = new StudentRepository(_context);
         _thesisRepository = new ThesisRepository(_context);
         _ApplyRepository = new ApplyRepository(_context);
-
     }
 
-    public async Task<(Response, TeacherDTO)> ReadTeacher(int TeacherID)
+    public async Task<(Response, TeacherDTO?)> ReadTeacher(int TeacherID)
     {
         var teacher = await _context.Teachers
                                     .Where(t => t.Id == TeacherID)
@@ -30,17 +30,31 @@ public class TeacherRepository : ITeacherRepository
         return (Response.Success, teacher);
     }
 
-    public async Task<(Response, ApplyDTO)> Accept(int studentID, int thesisID)
+    public async Task<(Response, int?)> ReadTeacherIDByName(string teacherID){
+        var student = await _context.Students
+                                   .Where(s => s.Name == teacherID)
+                                   .FirstOrDefaultAsync();
+
+        if (student == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        return (Response.Success, student.Id);
+    }
+    
+
+    public async Task<(Response, ApplyDTO?)> Accept(int studentID, int thesisID)
     {
         return await ChangeStatus(studentID, thesisID, Status.Accepted);
     }
 
-    public async Task<(Response, ApplyDTO)> Reject(int studentID, int thesisID)
+    public async Task<(Response, ApplyDTO?)> Reject(int studentID, int thesisID)
     {
         return await ChangeStatus(studentID, thesisID, Status.Denied);
     }
 
-    private async Task<(Response, ApplyDTO)> ChangeStatus(int studentID, int thesisID, Status status)
+    private async Task<(Response, ApplyDTO?)> ChangeStatus(int studentID, int thesisID, Status status)
     {
         var appliesThesis = await _context.Applies
                                 .Where(s => s.StudentID == studentID)
@@ -65,7 +79,7 @@ public class TeacherRepository : ITeacherRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyDTO>> ReadPendingStudentApplication(int teacherID)
+    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadPendingStudentApplication(int teacherID)
     {
         var ownedAppliedEntries = await _ApplyRepository.ReadApplicationsByTeacherID(teacherID);
 
@@ -74,15 +88,13 @@ public class TeacherRepository : ITeacherRepository
             return null;
         }
 
-        var ApplyDTOList = new List<ApplyDTO>();
+        var ApplyDTOList = new List<ApplyWithIDDTO>();
 
         foreach (var item in ownedAppliedEntries)
         {
             if (item.Status == Status.Pending)
             {
-
                 ApplyDTOList.Add(item);
-
             }
         }
 
