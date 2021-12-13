@@ -42,18 +42,13 @@
     var authState = await authenticationStateTask;
     var user = authState.User;
     
-    //Console.WriteLine("BEFORE ID ::: " + user.Identity.Name);
-
     var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
-    var TeacherID = await Http.GetFromJsonAsync<int?>($"api/Teacher/{user.Identity.Name}");
 
-    //Console.WriteLine("AFTER ID ::: " + StudentID);
 
     await localStore.SetItemAsync("user", StudentID);
-    await localStore.SetItemAsync("userteacher", TeacherID);
+
 
     }
-
 
 
 

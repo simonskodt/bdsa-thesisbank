@@ -65,25 +65,15 @@ else
     app.UseHsts();
 }
 
-//var configuration = LoadConfiguration();
-
-//ThesisBankContext.Seed(context); //Seed Extension IHost repo SeedExtensions
-
-
-/*
-
-
-
-static IConfiguration LoadConfiguration()
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    var builder = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json")
-        .AddUserSecrets<Program>();
-
-    return builder.Build();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+    app.UseWebAssemblyDebugging();
 }
-*/
+
 
 
 // Configure the HTTP request pipeline.
@@ -110,7 +100,11 @@ app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
-await app.SeedAsync();
+
+if (!app.Environment.IsEnvironment("Integration"))
+{
+    await app.SeedAsync();
+}
 
 app.Run();
 

@@ -40,10 +40,6 @@
     [Parameter]
     public Status status { get; set;} = 0;
 
-
-
-
-
     private async Task Accept()
     {
         var username = await localStorage.GetItemAsync<string>("user");
@@ -55,12 +51,23 @@
 
         applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
 
-        await Http.PutAsJsonAsync($"api/Teacher/0", applyDTOid); 
+        await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
+
     }
     
 
     private async Task Decline()
     {
+        var username = await localStorage.GetItemAsync<string>("user");
         
+        var usernameInt = Int32.Parse(username);
+
+        Console.WriteLine("THESIS:::" + thesisID); //Bliver ikke sat ordentligt
+        Console.WriteLine("STUDENT:::" + studentID); //Bliver ikke sat ordentligt
+
+        applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
+
+        await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
+
     }
 }

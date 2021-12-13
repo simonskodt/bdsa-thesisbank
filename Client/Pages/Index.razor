@@ -1,12 +1,16 @@
-﻿@page "/"
+@page "/"
 @using Entities
 @using Core
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
 @* @inject Client.Service.IThesesService ThesesService *@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
-@using Microsoft.AspNetCore.Components.Authorization
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 @attribute [Authorize]
+
 
 <div>
     
@@ -32,10 +36,21 @@
 
 
 @code {
+
     private MinimalThesisDTO[]? Theses;
 
     protected override async Task OnInitializedAsync()
     {
-        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis");
+
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+            
+        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Thesis/");
+
+
+        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Theses/" + usernameInt);
+
     }
+
 }
