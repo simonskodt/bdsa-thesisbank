@@ -65,25 +65,6 @@ else
     app.UseHsts();
 }
 
-//var configuration = LoadConfiguration();
-
-//ThesisBankContext.Seed(context); //Seed Extension IHost repo SeedExtensions
-
-
-/*
-
-
-
-static IConfiguration LoadConfiguration()
-{
-    var builder = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json")
-        .AddUserSecrets<Program>();
-
-    return builder.Build();
-}
-*/
 
 
 // Configure the HTTP request pipeline.
