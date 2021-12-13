@@ -1,3 +1,4 @@
+@inject HttpClient Http
 
     <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
         <div class="row mb-4">
@@ -20,7 +21,7 @@
                 } else {
                     <div class="col d-flex justify-content-center">
                         <div class="not-accepted-btn d-flex align-items-center" style="width: 80%">
-                            <button class="btn btn-cancel">Cancel</button>
+                            <button class="btn btn-cancel" @onclick="Delete"> Cancel</button>
                         </div>
                     </div>
                 }
@@ -31,7 +32,7 @@
 @code {
 
     [Parameter]
-    public int Id { get; set; } = 0;
+    public int thesisId { get; set; } = 0;
     
     [Parameter]
     public string title { get; set; } = "";
@@ -50,5 +51,14 @@
 
     [Parameter]
     public Status accepted { get; set; } = 0;
+
+    [Parameter]
+    public int applyId { get; set; } = 0;
+
+    private async Task Delete(){
+        await Http.DeleteAsync($"api/Apply/{applyId}");
+    }
+
+
 
 }

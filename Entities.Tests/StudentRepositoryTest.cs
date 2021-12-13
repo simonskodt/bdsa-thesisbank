@@ -161,13 +161,6 @@ public class StudentRepositoryTest : IDisposable
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
     }
 
-    [Fact]
-    public async Task RemoveRequest_GivenThesis1_ReturnResponseSuccessAndThesisDTOWithThesis1()
-    {
-        var readRemoved = await _repo_Stud.RemoveRequest(1, 1);
-
-        Assert.Equal(Response.Deleted, readRemoved);
-    }
 
     public void Dispose()
     {

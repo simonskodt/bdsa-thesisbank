@@ -92,24 +92,6 @@ public class StudentRepository : IStudentRepository
         return (Response.Updated, apply_dto);
     }
 
-    public async Task<Response> RemoveRequest(int thesisID, int studentID)
-    {
-        Apply? pending = await _context.Applies
-                        .Where(p => p.StudentID == studentID)
-                        .Where(p => p.ThesisID == thesisID)
-                        .Where(p => p.Status == Status.Pending)
-                        .FirstOrDefaultAsync();
-
-        if (pending == null)
-        {
-            return Response.NotFound;
-        }
-
-        _context.Applies.Remove(pending);
-
-        await _context.SaveChangesAsync();
-        return Response.Deleted;
-    }
     public async Task<Response> RemoveAllPendings(int studentID)
     {
         var allPending = await _context.Applies

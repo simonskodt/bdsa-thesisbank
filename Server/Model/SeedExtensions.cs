@@ -31,27 +31,25 @@ public static class SeedExtensions
         context.Database.ExecuteSqlRaw("DBCC CHECKIDENT ('dbo.Theses', RESEED, 0)");
 
         var Ahmed = new Student("Ahmed Galal", "Ahmed@itu.dk");
-        var Leonora = new Student("Leo", "Leonora@itu.dk");
         var Alyson = new Student("Alyson De Souza", "Alyson@itu.dk");
         var Victor = new Student("Viggo", "Victor@itu.dk");
         var Simon = new Student("Simon Johann Skødt", "Simon@itu.dk");
 
-        var Thore = new Teacher("Thore", "Thore@itu.dk");
+        var Leo = new Teacher("Leo", "Leonora@itu.dk");
         var Rasmus = new Teacher("Rasmus", "Rasmus@itu.dk");
 
-        var Thesis1 = new Thesis("How ITU mentally ruin students", Thore);
+        var Thesis1 = new Thesis("Why algorithms are brilliant", Leo);
         var Thesis2 = new Thesis("Why singletons are an anti-pattern", Rasmus);
-        var Thesis3 = new Thesis("A study on why notepad is the best IDE", Thore);
+        var Thesis3 = new Thesis("A study on why notepad is the best IDE", Leo);
 
         var Applies1 = new Apply(Thesis1, Ahmed);
-        var Applies2 = new Apply(Thesis2, Leonora);
-        var Applies3 = new Apply(Thesis2, Simon);
-        var Applies4 = new Apply(Thesis2, Alyson) { Status = Status.Denied };
-        var Applies5 = new Apply(Thesis2, Victor) { Status = Status.Denied };
+        var Applies2 = new Apply(Thesis2, Simon);
+        var Applies3 = new Apply(Thesis2, Alyson) { Status = Status.Denied };
+        var Applies4 = new Apply(Thesis2, Victor) { Status = Status.Denied };
 
         context.Teachers.AddRange(
            Rasmus,
-           Thore
+           Leo
        );
 
         await context.SaveChangesAsync();
@@ -66,7 +64,6 @@ public static class SeedExtensions
 
         context.Students.AddRange(
             Ahmed,
-            Leonora,
             Alyson,
             Victor,
             Simon
@@ -78,8 +75,7 @@ public static class SeedExtensions
             Applies1,
             Applies2,
             Applies3,
-            Applies4,
-            Applies5
+            Applies4
         );
 
         await context.SaveChangesAsync();
