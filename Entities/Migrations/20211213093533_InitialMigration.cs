@@ -4,7 +4,7 @@
 
 namespace Entities.Migrations
 {
-    public partial class InitialMigration3 : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
