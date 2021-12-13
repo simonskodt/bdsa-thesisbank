@@ -28,6 +28,7 @@ public class TeacherController : ControllerBase
     // }
 
     //[Authorize(Roles = "Teacher")]
+
     [HttpGet("{teahcerID}")]
     public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int teahcerID)
     => await _teacher_repository.ReadPendingStudentApplication(teahcerID);

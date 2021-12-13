@@ -16,6 +16,7 @@
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
                             <button class="btn btn-accept">Accept</button>
                             <button class="btn btn-cancel"@onclick="Delete">Decline</button>
+
                         </div>
                     </div>
                 } else {
@@ -58,4 +59,5 @@
     private async Task Delete(){
         await Http.DeleteAsync($"api/Apply/{applyId}");
     }
+
 }
