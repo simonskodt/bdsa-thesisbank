@@ -7,4 +7,5 @@ public interface IThesisRepository
     public Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll();
 
     public Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int StudentID);
+    
 }
