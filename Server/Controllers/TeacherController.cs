@@ -27,10 +27,10 @@ public class TeacherController : ControllerBase
     //     return (await _teacher_repository.ReadTeacherIDByName(name)).Item2;
     // }
 
-    //[Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     [HttpGet("{teahcerID}")]
     public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int teahcerID)
-    => await _apply_repository.ReadApplicationsByTeacherID(teahcerID);
+    => await _teacher_repository.ReadPendingStudentApplication(teahcerID);
     
     [Authorize(Roles = "Teacher")]
     [AllowAnonymous]
