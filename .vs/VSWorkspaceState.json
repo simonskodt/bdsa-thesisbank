@@ -7,8 +7,9 @@
     "\\Entities",
     "\\Server",
     "\\Server\\Controllers",
+    "\\Server\\Model",
     "\\Shared"
   ],
-  "SelectedNode": "\\Client",
+  "SelectedNode": "\\run_1.ps1",
   "PreviewInSolutionExplorer": false
 }
