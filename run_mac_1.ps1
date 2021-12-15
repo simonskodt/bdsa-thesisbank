@@ -7,7 +7,7 @@ Set-Clipboard -Value "Server=localhost;Database=ThesisBank;User Id=sa;Password=$
 echo $pw > ./.local/db_password.txt
 cd ./.Server
 dotnet user-secrets init
-dotnet user-secrets set "ConnectionStrings:ThesisBank" "$connectionString"cd Entities
+dotnet user-secrets set "ConnectionStrings:ThesisBank" "$connectionString"
 cd ./.Entities
 dotnet ef migrations add InitialMigration -s ../Server/
 cd ..
