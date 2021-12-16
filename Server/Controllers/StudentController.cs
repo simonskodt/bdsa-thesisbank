@@ -32,6 +32,23 @@ public class StudentController : ControllerBase
         return (await _repository.ReadStudentIDByName(name)).Item2;
     }
 
+    //[Authorize(Roles = "Teacher")]
+    [AllowAnonymous]
+    [HttpPut("{applyid}")]
+    public async Task<ApplyDTO> Update (int applyid, [FromBody] ApplyDTOid dto){
+/*         if (dto.Status == ??){
+            var respone = await _teacher_repository.Accept(dto.studentID, dto.thesisID);
+            return respone.Item2;
+
+        }else{
+            var respone = await _teacher_repository.Reject(dto.studentID, dto.thesisID);
+            return respone.Item2;
+
+        } */
+        var respone = await _repository.Accept(dto.studentID, dto.thesisID);
+        return respone.Item2;
+    }
+
     // [AllowAnonymous]
     // [HttpPost]
     // public async Task<ActionResult<ApplyDTO>> Post(ApplyDTO applyDTO){

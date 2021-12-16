@@ -11,8 +11,8 @@
             </div>
                 <div class="col d-flex flex-row justify-content-center">
                     <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                        <button class="btn btn-accept" @onclick="Accept"> Accept</button>
-                        <button class="btn btn-cancel" @onclick="Decline">Decline</button>
+                        <button class="btn btn-accept"@onclick="Accept"> Accept</button>
+                        <button class="btn btn-cancel"@onclick="Decline"> Delete </button>
                     </div>
                 </div>
         </div>
@@ -52,22 +52,11 @@
         applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
 
         await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
-
     }
-    
 
     private async Task Decline()
     {
-        var username = await localStorage.GetItemAsync<string>("user");
-        
-        var usernameInt = Int32.Parse(username);
-
-        Console.WriteLine("THESIS:::" + thesisID); //Bliver ikke sat ordentligt
-        Console.WriteLine("STUDENT:::" + studentID); //Bliver ikke sat ordentligt
-
-        applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
-
-        await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
-
+        Console.WriteLine("APPLYID :::: " + applyId);
+        await Http.DeleteAsync($"api/Apply/{applyId}");
     }
 }
