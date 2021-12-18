@@ -87,7 +87,7 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
         var resp_stud = await ReadStudent(studentID);
         var resp_thes = await _repo_Thesis.ReadThesis(thesisID);
-        var apply_dto = new ApplyDTO(Status.Archived, resp_stud.Item2, resp_thes.Item2);
+        var apply_dto = new ApplyDTO(applies.Status, resp_stud.Item2, resp_thes.Item2);
 
         return (Response.Updated, apply_dto);
     }
