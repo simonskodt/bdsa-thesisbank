@@ -1,5 +1,6 @@
 @inject HttpClient Http
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject NavigationManager NavigationManager;
 
 
     <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
@@ -16,15 +17,20 @@
                 @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            <button class="btn btn-accept"@onclick="AcceptS">Accept</button>
-                            <button class="btn btn-cancel"@onclick="Delete">Decline</button>
+                            
+@*                            <NavLink href="/applications" @onclick="reload">
+ *@                                <button class="btn btn-accept"@onclick="AcceptS">Accept</button>
+                                <button class="btn btn-cancel"@onclick="Delete">Decline</button>
+                          @*   </NavLink> *@
 
                         </div>
                     </div>
                 } else {
                     <div class="col d-flex justify-content-center">
                         <div class="not-accepted-btn d-flex align-items-center" style="width: 80%">
-                            <button class="btn btn-cancel" @onclick="Delete"> Cancel</button>
+                            <NavLink href="/applications" @onclick="reload">
+                                <button class="btn btn-cancel" @onclick="Delete"> Cancel</button>
+                            </NavLink>
                         </div>
                     </div>
                 }
@@ -77,11 +83,24 @@
 
         applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisId);
 
-        await Http.PutAsJsonAsync($"api/Student/"+ applyId, applyDTOid); 
+        await Http.PutAsJsonAsync($"api/Student/"+ applyId, applyDTOid);
+
+        Console.WriteLine("DID PUT ::::");
+
+        await Http.DeleteAsync($"api/Student/" + studentID);
+
+        Console.WriteLine("DID DELETE ::::" + studentID);
+
+
     }
 
     private async Task Delete(){
         await Http.DeleteAsync($"api/Apply/{applyId}");
+
+    }
+
+    private void reload(){
+        NavigationManager.NavigateTo("applications", true);
     }
 
 }

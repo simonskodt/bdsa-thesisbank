@@ -2,6 +2,8 @@
 @inject HttpClient Http
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @attribute [Authorize]
+@inject NavigationManager NavigationManager;
+
 
 <div class="thesis">
     <div class="card bg-grey mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
@@ -12,8 +14,15 @@
             </div>
                 <div class="col d-flex flex-row justify-content-center">
                     <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
+                        
+                        <NavLink href="/teacher" @onclick="reload">
                         <button class="btn btn-apply"@onclick="Accept"> Accept</button>
+                        </NavLink>
+              
+                        <NavLink href="/teacher" @onclick="reload">
                         <button class="btn btn-cancel"@onclick="Decline"> Delete </button>
+                        </NavLink>
+
                     </div>
                 </div>
         </div>
@@ -62,5 +71,10 @@
     {
         Console.WriteLine("APPLYID :::: " + applyId);
         await Http.DeleteAsync($"api/Apply/{applyId}");
+    }
+
+
+    private void reload(){
+        NavigationManager.NavigateTo("teacher", true);
     }
 }

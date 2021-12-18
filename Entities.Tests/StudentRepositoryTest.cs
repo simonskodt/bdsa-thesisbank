@@ -149,9 +149,7 @@ public class StudentRepositoryTest : IDisposable
     public async Task Accept_Test(){
         var actual = await _repo_Stud.Accept(1, 3);
         Assert.Equal(Status.Archived, actual.Item2.Status);
-
-    
-
+    }
 
 
     [Fact]

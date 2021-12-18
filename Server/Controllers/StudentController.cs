@@ -51,6 +51,10 @@ public class StudentController : ControllerBase
         return respone.Item2;
     }
 
+    [HttpDelete("{studentID}")]
+    public async Task<Response> Delete(int studentID)
+        => (await _repository.RemoveAllPendings(studentID));
+
     // [AllowAnonymous]
     // [HttpPost]
     // public async Task<ActionResult<ApplyDTO>> Post(ApplyDTO applyDTO){

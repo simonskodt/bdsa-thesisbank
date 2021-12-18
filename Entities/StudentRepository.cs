@@ -75,7 +75,7 @@ public class StudentRepository : IStudentRepository
 
         var applies = await _context.Applies
                         .Where(a => a.StudentID == studentID)
-                        .Where(a => a.ThesisID == studentID)
+                        .Where(a => a.ThesisID == thesisID)
                         .Where(a => a.Status == Status.Accepted)
                         .FirstOrDefaultAsync();
 
