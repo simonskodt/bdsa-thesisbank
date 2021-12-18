@@ -45,7 +45,9 @@ public class StudentController : ControllerBase
             return respone.Item2;
 
         } */
+        Console.WriteLine("UPDATECONTROLLER before Accept --  " );
         var respone = await _repository.Accept(dto.studentID, dto.thesisID);
+        Console.WriteLine("UPDATECONTROLLER after Accept --  " );
         return respone.Item2;
     }
 

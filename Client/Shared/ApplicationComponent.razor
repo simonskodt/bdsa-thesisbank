@@ -16,7 +16,7 @@
                 @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            <button class="btn btn-accept"@onclick="Accept">Accept</button>
+                            <button class="btn btn-accept"@onclick="AcceptS">Accept</button>
                             <button class="btn btn-cancel"@onclick="Delete">Decline</button>
 
                         </div>
@@ -66,13 +66,14 @@
     [Parameter]
     public Status status { get; set;} = 0;
 
-    private async Task Accept(){
-        var username = await localStorage.GetItemAsync<string>("user");
+    private async Task AcceptS(){
+        //var username = await localStorage.GetItemAsync<string>("user");
         
-        var usernameInt = Int32.Parse(username);
+        //var usernameInt = Int32.Parse(username);
 
-        Console.WriteLine("THESIS:::" + thesisId); //Bliver ikke sat ordentligt
-        Console.WriteLine("STUDENT:::" + studentID); //Bliver ikke sat ordentligt
+        Console.WriteLine("THESIS:::" + thesisId); 
+        Console.WriteLine("STUDENT:::" + studentID);
+        Console.WriteLine("Status1:::" + status); 
 
         applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisId);
 

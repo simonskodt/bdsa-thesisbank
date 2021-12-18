@@ -41,6 +41,7 @@ public class StudentRepositoryTest : IDisposable
         context.Applies.Add(new Apply(1, 3) { Id = 5 });
         context.Applies.Add(new Apply(2, 3) { Id = 6 });
         context.Applies.Add(new Apply(3, 3) { Id = 7 });
+        context.Applies.Add(new Apply(3,1) {Id = 8, Status = Status.Accepted});
 
         context.SaveChangesAsync();
 
@@ -143,6 +144,15 @@ public class StudentRepositoryTest : IDisposable
 
         Assert.Equal((expectedResponse, expectedApplied), readApplied);
     }
+
+    [Fact]
+    public async Task Accept_Test(){
+        var actual = await _repo_Stud.Accept(1, 3);
+        Assert.Equal(Status.Archived, actual.Item2.Status);
+
+    
+
+
 
     [Fact]
     public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted()
