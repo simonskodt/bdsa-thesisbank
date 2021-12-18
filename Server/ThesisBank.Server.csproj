@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <WebProject_DirectoryAccessLevelKey>0</WebProject_DirectoryAccessLevelKey>
-    <UserSecretsId>02072ee4-9aa6-421f-9534-6e84063b63c5</UserSecretsId>
+    <UserSecretsId>af0efa97-810a-497b-aea0-a465dcdd194f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
