@@ -41,3 +41,13 @@ a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
 .thesis > div:hover {
     box-shadow: 3px 3px 10px 0px rgba(123, 123, 123, 0.25)
 }
+
+
+.btn-apply {
+    background: #0095068A;
+    color: white;
+}
+.btn-cancel {
+    background: #E45A5A;
+    color: white;
+}
