@@ -1,4 +1,4 @@
-namespace Server.Integration.Tests;
+/* namespace Server.Integration.Tests;
 
 // Credit to Rasmus Lystrøm for providing an integration test structure, which is used in this directory
 
@@ -48,4 +48,4 @@ public class ThesisTests : IClassFixture<CustomWebApplicationFactory>
 
         Assert.NotNull(theses[0].Description);
     }
-}
+} */

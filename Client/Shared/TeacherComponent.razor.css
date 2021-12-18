@@ -25,3 +25,12 @@
 .card {
     padding: 20px 30px;
 }
+
+.btn-cancel {
+    background: #E45A5A;
+    color: white;
+}
+
+.btn-cancel {
+    width: 100%;
+}

@@ -1,4 +1,6 @@
 @inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 
     <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
         <div class="row mb-4">
@@ -14,8 +16,9 @@
                 @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            <button class="btn btn-accept">Accept</button>
-                            <button class="btn btn-cancel">Decline</button>
+                            <button class="btn btn-accept"@onclick="Accept">Accept</button>
+                            <button class="btn btn-cancel"@onclick="Delete">Decline</button>
+
                         </div>
                     </div>
                 } else {
@@ -30,6 +33,11 @@
 
 
 @code {
+
+    private ApplyDTOid applyDTOid = null;
+
+    [Parameter]
+    public int studentID { get; set;} = 0;
 
     [Parameter]
     public int thesisId { get; set; } = 0;
@@ -55,10 +63,24 @@
     [Parameter]
     public int applyId { get; set; } = 0;
 
+    [Parameter]
+    public Status status { get; set;} = 0;
+
+    private async Task Accept(){
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+
+        Console.WriteLine("THESIS:::" + thesisId); //Bliver ikke sat ordentligt
+        Console.WriteLine("STUDENT:::" + studentID); //Bliver ikke sat ordentligt
+
+        applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisId);
+
+        await Http.PutAsJsonAsync($"api/Student/"+ applyId, applyDTOid); 
+    }
+
     private async Task Delete(){
         await Http.DeleteAsync($"api/Apply/{applyId}");
     }
-
-
 
 }

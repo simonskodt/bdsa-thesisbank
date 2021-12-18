@@ -65,6 +65,15 @@ else
     app.UseHsts();
 }
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+    app.UseWebAssemblyDebugging();
+}
+
 
 
 // Configure the HTTP request pipeline.
@@ -90,6 +99,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+
 
 if (!app.Environment.IsEnvironment("Integration"))
 {

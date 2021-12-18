@@ -17,3 +17,4 @@ COPY --from=build /app ./
 #ENV ASPNETCORE_URLS http://*:5077
 
 ENTRYPOINT ["dotnet", "ThesisBank.Server.dll"]
+

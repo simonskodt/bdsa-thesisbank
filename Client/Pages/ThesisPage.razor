@@ -26,7 +26,8 @@
                     else
                     {
                         <div>
-                            <button class="btn btn-lg bg-red">Cancel</button>
+                            <button class="btn btn-lg bg-red" @onclick="Delete">Cancel</button>
+
                         </div>
                     }
                 </div>
@@ -62,7 +63,9 @@
 
     [Parameter]
     public int? Id { get; set; } = 0;
+
     private bool appliedFor = false;   
+
 
 
 
@@ -80,12 +83,31 @@
         Console.WriteLine("APPLYIED::: " + apply.StatusCode + "THESIS ID ::: " + Thesis.Id);
     }
 
+    private async Task Delete()
+    {
+        appliedFor = !appliedFor;
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+        
+        var applyDTO= await Http.GetFromJsonAsync<ApplyDTOid?>($"api/Thesis/{usernameInt}/{Thesis.Id}");
+
+        await Http.DeleteAsync($"api/Apply/{applyDTO.Id}");
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
-        returned = false;
-        Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
-        returned = true;
-    }
 
+        var username = await localStorage.GetItemAsync<string>("user");
+        var usernameInt = Int32.Parse(username);
+
+        returned = false;
+
+        Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
+
+        returned = true;
+
+
+    }
 }

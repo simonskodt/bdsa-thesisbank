@@ -69,7 +69,7 @@ public class StudentRepository : IStudentRepository
         return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
     }
 
-    public async Task<(Response, ApplyDTO?)> Accept(int thesisID, int studentID)
+    public async Task<(Response, ApplyDTO?)> Accept(int studentID, int thesisID)
     {
 
         var applies = await _context.Applies

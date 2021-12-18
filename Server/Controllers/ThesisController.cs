@@ -20,10 +20,6 @@ public class ThesisController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet]
-    public async Task<IReadOnlyCollection<MinimalThesisDTO>> Get()
-        => await _repository.ReadAll();
-
 
   /*   [AllowAnonymous]
     [ProducesResponseType(404)]
@@ -36,6 +32,23 @@ public class ThesisController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ThesisDTO> Get(int id)
         => (await _repository.ReadThesis(id)).Item2;
+
+    [HttpGet("{StudentID}/{ThesisID}")]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(typeof(ApplyDTOid), 201)]
+
+    public async Task<ActionResult<ApplyDTOid>> Get(int StudentID, int ThesisID){
+
+        var repsonse = await _repository.FindApplyDTOID(StudentID, ThesisID);
+
+        if(repsonse.Item1 == Core.Response.Success){
+            return repsonse.Item2;
+        }else{
+            return new NotFoundResult();
+        }
+    }
+
+
 
     // [Authorize]
     // [HttpPost]
