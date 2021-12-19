@@ -104,28 +104,6 @@ public class ApplyRepositoryTest : IDisposable
 
 
     [Fact]
-    public async Task ReadApplicationsByTeacherID_GivenTeacherID1_ReturnsListOfApplyDTO()
-    {
-        
-        var student = await _repo_Stud.ReadStudent(1);
-        var thesis1 = await _repo_Thesis.ReadMinimalThesis(1);
-        var thesis2 = await _repo_Thesis.ReadMinimalThesis(2);
-        var thesis3 = await _repo_Thesis.ReadMinimalThesis(5);
-
-        var readList = await _repo_apply.ReadApplicationsByTeacherID(1);
-
-        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1.Item2);
-        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2.Item2);
-        var expected_DTO_3 = new ApplyWithIDDTO(4, Status.Pending, student.Item2, thesis3.Item2);
-
-        Assert.Collection(readList,
-        thesis => Assert.Equal(expected_DTO_1, thesis),
-        thesis => Assert.Equal(expected_DTO_2, thesis),
-        thesis => Assert.Equal(expected_DTO_3, thesis));
-    }
-
-
-    [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
     {
         var expectedApplied = new ApplyDTOid(5, Status.Pending, 1, 1);

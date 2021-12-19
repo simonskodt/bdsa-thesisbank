@@ -2,9 +2,9 @@ namespace Entities;
 
 public class ThesisRepository : IThesisRepository
 {
-    ThesisBankContext _context;
+    IThesisBankContext _context;
 
-    public ThesisRepository(ThesisBankContext context)
+    public ThesisRepository(IThesisBankContext context)
     {
         _context = context;
     }
@@ -24,20 +24,6 @@ public class ThesisRepository : IThesisRepository
         return (Response.Success, thesis);
     }
 
-     public async Task<(Response, MinimalThesisDTO?)> ReadMinimalThesis(int ThesisID)
-    {
-        var thesis = await _context.Theses
-                                   .Where(t => t.Id == ThesisID)
-                                   .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Excerpt, t.Teacher.Name))
-                                   .FirstOrDefaultAsync();
-
-        if (thesis == null)
-        {
-            return (Response.NotFound, null);
-        }
-
-        return (Response.Success, thesis);
-    }
 
     public async Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll()
     {
@@ -83,7 +69,6 @@ public class ThesisRepository : IThesisRepository
 
             foreach (var thesis in appliedThesisList)
             {
-                Console.WriteLine("THESIS:" + thesis);
                 appliedThesisListIDs.Add(thesis.Id);
             }
 
@@ -100,7 +85,6 @@ public class ThesisRepository : IThesisRepository
             {   
                 if (appliedThesisListIDs.Contains(thesis.Id) == false){
                     returnList.Add(thesis);
-                    Console.WriteLine("APPENDING: " + thesis);
 
                 }
             }

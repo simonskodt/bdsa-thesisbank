@@ -123,6 +123,31 @@ public class TeacherRepositoryTest : IDisposable
         Assert.Empty(actual);
     }
 
+      [Fact]
+    public async Task ReadApplicationsByTeacherID_GivenTeacherID1_ReturnsListOfApplyDTO()
+    {
+        
+        var student = await _repo_Student.ReadStudent(1);
+        var student2 = await _repo_Student.ReadStudent(2);
+        
+        var thesis1 = new MinimalThesisDTO(1, "WildAlgorithms", null, "Thore");
+        var thesis2 = new MinimalThesisDTO(2, "GraphAlgorithms", null, "Thore");
+        var thesis4 = new MinimalThesisDTO(5, "CSharp", null, "Thore");
+
+        var readList = await _repo_Teacher.ReadApplicationsByTeacherID(1);
+
+        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1);
+        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2);
+        var expected_DTO_3 = new ApplyWithIDDTO(3, Status.Pending, student2.Item2, thesis2);
+        var expected_DTO_4 = new ApplyWithIDDTO(4, Status.Accepted, student.Item2, thesis4);
+
+        Assert.Collection(readList,
+        thesis => Assert.Equal(expected_DTO_1, thesis),
+        thesis => Assert.Equal(expected_DTO_2, thesis),
+        thesis => Assert.Equal(expected_DTO_3, thesis),
+        thesis => Assert.Equal(expected_DTO_4, thesis));
+    }
+
     [Fact]
     public async Task ReadPendingStudentApplication_GivenTeahcerID1_ReturnListOfPendingApplyDTOs()
     {
@@ -130,15 +155,15 @@ public class TeacherRepositoryTest : IDisposable
         var teacher = await _repo_Teacher.ReadTeacher(1);
         var student = await _repo_Student.ReadStudent(1);
         var student_2 = await _repo_Student.ReadStudent(2);
-        var thesis1 = await _repo_Thesis.ReadMinimalThesis(1);
-        var thesis2 = await _repo_Thesis.ReadMinimalThesis(2);
+        var thesis1 = new MinimalThesisDTO(1, "WildAlgorithms", null, "Thore");
+        var thesis2 = new MinimalThesisDTO(2, "GraphAlgorithms", null, "Thore");
 
 
         var readList = await _repo_Teacher.ReadPendingStudentApplication(1);
 
-        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1.Item2);
-        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2.Item2);
-        var expected_DTO_3 = new ApplyWithIDDTO(3, Status.Pending, student_2.Item2, thesis2.Item2);
+        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1);
+        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2);
+        var expected_DTO_3 = new ApplyWithIDDTO(3, Status.Pending, student_2.Item2, thesis2);
 
         //Assert
         Assert.Collection(readList,
