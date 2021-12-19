@@ -32,41 +32,6 @@ public class ApplyRepository : IApplyRepository
         return (Response.Success, appliedThesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadApplicationsByTeacherID(int teacherID)
-    {
-        var stud_repo = new StudentRepository(_context);
-        var thesis_repo = new ThesisRepository(_context);
-
-        var thesesWithCurrentTeacherID = await _context.Theses
-                                                .Where(t => t.Teacher.Id == teacherID)
-                                                .ToListAsync();
-        var ThesesIDs = new List<int>();
-
-        var Applies = new List<Apply>();
-
-        foreach (var item in thesesWithCurrentTeacherID)
-        {
-            ThesesIDs.Add(item.Id);
-        }
-
-        var Applications = await _context.Applies
-                                .Where(s => ThesesIDs.Contains(s.ThesisID))
-                                .ToListAsync();
-
-        var ApplyDTOList = new List<ApplyWithIDDTO>();
-
-        foreach (var item in Applications)
-        {
-            var student = await stud_repo.ReadStudent(item.StudentID);                
-            var thesis = (await thesis_repo.ReadMinimalThesis(item.ThesisID)).Item2;
-
-            var DTO = new ApplyWithIDDTO(item.Id, item.Status, student.Item2, thesis);
-            ApplyDTOList.Add(DTO);
-        }
-
-        return ApplyDTOList.AsReadOnly();
-    }
-
        public async Task<IReadOnlyCollection<ApplyDTOid>> ReadApplied() =>
         (await _context.Applies
                        .Select(c => new ApplyDTOid(c.Id, c.Status, c.StudentID, c.ThesisID))
