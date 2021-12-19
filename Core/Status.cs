@@ -4,6 +4,7 @@ public enum Status
 {
     Pending,
     Accepted,
-    Denied, 
-    Archived,
+
+    Denied,
+    Archived
 }

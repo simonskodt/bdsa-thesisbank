@@ -27,7 +27,7 @@
             Id="@Thesis.Id"
             Title="@Thesis.Name"
             Teacher="@Thesis.TeacherName"
-            Excerpt="@Thesis.Description"
+            Excerpt="@Thesis.excerpt"
         />
     }
     </div>
@@ -46,7 +46,6 @@
         
         var usernameInt = Int32.Parse(username);
             
-
         Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Theses/" + usernameInt);
 
     }

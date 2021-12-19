@@ -73,10 +73,10 @@ public class ThesisRepositoryTest : IDisposable
     [Fact]
     public async Task ReadAllTheses_GivenNoParameter_ReturnAllTheses()
     {
-        MinimalThesisDTO t1 = new MinimalThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", "Thore");
-        MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", "Thore");
-        MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq", "This is a Thesis about a very interesting linq", "Rasmus");
-        MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration", "This is a Thesis about a very interesting Migration", "Rasmus");
+        MinimalThesisDTO t1 = new MinimalThesisDTO(1, "WildAlgorithms", null, "Thore");
+        MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", null, "Thore");
+        MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq", null, "Rasmus");
+        MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration", null, "Rasmus");
 
         IReadOnlyCollection<MinimalThesisDTO> ReadThesisResponse = await _repo_Thesis.ReadAll();
 

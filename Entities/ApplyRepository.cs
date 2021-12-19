@@ -48,6 +48,7 @@ public class ApplyRepository : IApplyRepository
         {
             ThesesIDs.Add(item.Id);
         }
+
         var Applications = await _context.Applies
                                 .Where(s => ThesesIDs.Contains(s.ThesisID))
                                 .ToListAsync();
@@ -56,9 +57,10 @@ public class ApplyRepository : IApplyRepository
 
         foreach (var item in Applications)
         {
-            var student = await stud_repo.ReadStudent(item.StudentID);
-            var thesis = await thesis_repo.ReadThesis(item.ThesisID);
-            var DTO = new ApplyWithIDDTO(item.Id, item.Status, student.Item2, thesis.Item2);
+            var student = await stud_repo.ReadStudent(item.StudentID);                
+            var thesis = (await thesis_repo.ReadMinimalThesis(item.ThesisID)).Item2;
+            
+            var DTO = new ApplyWithIDDTO(item.Id, item.Status, student.Item2, thesis);
             ApplyDTOList.Add(DTO);
         }
 
@@ -80,7 +82,7 @@ public class ApplyRepository : IApplyRepository
         var Applications = await _context.Applies
                         .Where(a => a.Status != Status.Archived)
                         .Where(a => a.StudentID == studentDTO.Item2.Id)
-                        .Select(a => new ThesisWithStatusDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Description, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
+                        .Select(a => new MaximalisticDTO(a.ThesisID, a.Thesis.Name, a.Thesis.excerpt, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
                         .ToListAsync();
 
 
@@ -89,7 +91,7 @@ public class ApplyRepository : IApplyRepository
 
         foreach (var thesis in Applications)
         {
-            var DTO = new ApplyWithIDDTO(thesis.ApplyID,thesis.status, studentDTO.Item2, new ThesisDTO(thesis.Id, thesis.Name, thesis.Description, thesis.Teacher));
+            var DTO = new ApplyWithIDDTO(thesis.ApplyID,thesis.status, studentDTO.Item2, new MinimalThesisDTO(thesis.Id, thesis.Name, thesis.excerpt, thesis.Teacher.Name));
             ApplyDTOs.Add(DTO);
         }
 

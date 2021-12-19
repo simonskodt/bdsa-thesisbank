@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(ThesisBankContext))]
-    [Migration("20211218154618_InitialMigration")]
+    [Migration("20211219154824_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,6 +111,9 @@ namespace Entities.Migrations
 
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
+
+                    b.Property<string>("excerpt")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

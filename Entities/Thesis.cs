@@ -6,15 +6,9 @@ public class Thesis
 
     [StringLength(60)]
     public string Name { get; set; }
-
     public string? Description { get; set; }
+    public string? excerpt { get; set; }
 
-    // // todo: Keywords
-    // public string[]? Keywords { get; set; }
-
-    // // TODO: Excerpt
-    // public string? excerpt { get; set; }
-    
     public Teacher Teacher { get; set; }
 
     public int TeacherID { get; set; }

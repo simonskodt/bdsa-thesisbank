@@ -110,6 +110,9 @@ namespace Entities.Migrations
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
 
+                    b.Property<string>("excerpt")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TeacherID");

@@ -44,6 +44,7 @@ namespace Entities.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    excerpt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TeacherID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

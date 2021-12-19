@@ -24,10 +24,25 @@ public class ThesisRepository : IThesisRepository
         return (Response.Success, thesis);
     }
 
+     public async Task<(Response, MinimalThesisDTO?)> ReadMinimalThesis(int ThesisID)
+    {
+        var thesis = await _context.Theses
+                                   .Where(t => t.Id == ThesisID)
+                                   .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.excerpt, t.Teacher.Name))
+                                   .FirstOrDefaultAsync();
+
+        if (thesis == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        return (Response.Success, thesis);
+    }
+
     public async Task<IReadOnlyCollection<MinimalThesisDTO>> ReadAll()
     {
         var theses = (await _context.Theses
-                       .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Description, t.Teacher.Name))
+                       .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.excerpt, t.Teacher.Name))
                        .ToListAsync())
                        .AsReadOnly();
 
@@ -74,7 +89,7 @@ public class ThesisRepository : IThesisRepository
 
 
             var allThesis = (await _context.Theses
-                       .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Description, t.Teacher.Name))
+                       .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.excerpt, t.Teacher.Name))
                        .ToListAsync());
 
 
