@@ -6,7 +6,5 @@ public enum Response
     Updated,
     Deleted,
     NotFound,
-    BadRequest,
-    Conflict,
     Success
 }

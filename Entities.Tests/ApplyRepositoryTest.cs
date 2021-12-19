@@ -23,7 +23,8 @@ public class ApplyRepositoryTest : IDisposable
         context.Teachers.Add(rasmus);
 
         Student alyson = new Student("Alyson", "Alyson@mail.dk") { Id = 1 };
-        Student victor = new Student("Victor", "Victor@mail.dk") { Id = 2 };
+        Student victor = new Student("Victor", "victor@mail.dk") { Id = 2 };
+        Student leonora = new Student("Leonora", "leonora@itu.dk") { Id = 3 };
 
         context.Students.Add(alyson);
         context.Students.Add(victor);
@@ -40,15 +41,16 @@ public class ApplyRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 1 };
-        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 2 };
-        Apply applies3 = new Apply(linq, alyson) { Id = 3 };
-        Apply applies4 = new Apply(cSharp, alyson) { Id = 4 };
+        Apply applies1 = new Apply(1, 1) { Id = 1 };
+        Apply applies2 = new Apply(2, 1) { Id = 2 };
+        Apply applies3 = new Apply(3, 1) { Id = 3 };
+        Apply applies4 = new Apply(5, 1) { Id = 4 };
 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
         context.Applies.Add(applies4);
+        
 
         context.SaveChangesAsync();
 
@@ -106,9 +108,9 @@ public class ApplyRepositoryTest : IDisposable
     {
         
         var student = await _repo_Stud.ReadStudent(1);
-        var thesis1 = await _repo_Thesis.ReadThesis(1);
-        var thesis2 = await _repo_Thesis.ReadThesis(2);
-        var thesis3 = await _repo_Thesis.ReadThesis(5);
+        var thesis1 = await _repo_Thesis.ReadMinimalThesis(1);
+        var thesis2 = await _repo_Thesis.ReadMinimalThesis(2);
+        var thesis3 = await _repo_Thesis.ReadMinimalThesis(5);
 
         var readList = await _repo_apply.ReadApplicationsByTeacherID(1);
 
@@ -120,6 +122,45 @@ public class ApplyRepositoryTest : IDisposable
         thesis => Assert.Equal(expected_DTO_1, thesis),
         thesis => Assert.Equal(expected_DTO_2, thesis),
         thesis => Assert.Equal(expected_DTO_3, thesis));
+    }
+
+
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
+    {
+        var expectedApplied = new ApplyDTOid(5, Status.Pending, 1, 1);
+
+        var readApplied = await _repo_apply.ApplyForThesis(1, 1);
+
+        Assert.Equal((Response.Created, expectedApplied), readApplied);
+    }
+
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent9AndThesis1_ReturnResonseNotFoundAndNull()
+    {
+        var readApplied = await _repo_apply.ApplyForThesis(9, 1);
+
+        Assert.Equal((Response.NotFound, null), readApplied);
+    }
+
+
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis9_ReturnResonseNotFoundAndNull()
+    {
+        var readApplied = await _repo_apply.ApplyForThesis(1, 9);
+
+        Assert.Equal((Response.NotFound, null), readApplied);
+    }
+
+    // to check that it is posible for two different students to apply for the same thesis
+    [Fact]
+    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO()
+    {
+        var expectedApplied = new ApplyDTOid(5, Status.Pending, 2, 1);
+
+        var readApplied = await _repo_apply.ApplyForThesis(2, 1);
+
+        Assert.Equal((Response.Created, expectedApplied), readApplied);
     }
 
 

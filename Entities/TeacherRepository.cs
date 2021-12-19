@@ -49,11 +49,6 @@ public class TeacherRepository : ITeacherRepository
         return await ChangeStatus(studentID, thesisID, Status.Accepted);
     }
 
-    public async Task<(Response, ApplyDTO?)> Reject(int studentID, int thesisID)
-    {
-        return await ChangeStatus(studentID, thesisID, Status.Denied);
-    }
-
     private async Task<(Response, ApplyDTO?)> ChangeStatus(int studentID, int thesisID, Status status)
     {
         var appliesThesis = await _context.Applies

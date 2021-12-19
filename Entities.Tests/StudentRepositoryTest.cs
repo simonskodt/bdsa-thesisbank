@@ -36,7 +36,7 @@ public class StudentRepositoryTest : IDisposable
 
         context.Applies.Add(new Apply(1, 1) { Id = 1 });
         context.Applies.Add(new Apply(2, 2) { Id = 2, Status = Status.Accepted });
-        context.Applies.Add(new Apply(3, 2) { Id = 3, Status = Status.Denied });
+        context.Applies.Add(new Apply(3, 2) { Id = 3, Status = Status.Archived });
         context.Applies.Add(new Apply(2, 1) { Id = 4, Status = Status.Archived });
         context.Applies.Add(new Apply(1, 3) { Id = 5 });
         context.Applies.Add(new Apply(2, 3) { Id = 6 });
@@ -75,48 +75,6 @@ public class StudentRepositoryTest : IDisposable
 
         Assert.Equal((Response.Success, 1), actual);
 
-    }
-
-    [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
-    {
-        var student = await _repo_Stud.ReadStudent(1);
-        var thesis = await _repo_Thesis.ReadThesis(1);
-        var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
-
-        var readApplied = await _repo_Stud.ApplyForThesis(1, 1);
-
-        Assert.Equal((Response.Success, expectedApplied), readApplied);
-    }
-
-    [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent9AndThesis1_ReturnResonseNotFoundAndNull()
-    {
-        var readApplied = await _repo_Stud.ApplyForThesis(9, 1);
-
-        Assert.Equal((Response.NotFound, null), readApplied);
-    }
-
-
-    [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent1AndThesis9_ReturnResonseNotFoundAndNull()
-    {
-        var readApplied = await _repo_Stud.ApplyForThesis(1, 9);
-
-        Assert.Equal((Response.NotFound, null), readApplied);
-    }
-
-    // to check that it is posible for two different students to apply for the same thesis
-    [Fact]
-    public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO()
-    {
-        var student = await _repo_Stud.ReadStudent(2);
-        var thesis = await _repo_Thesis.ReadThesis(1);
-        var expectedApplied = new ApplyDTO(Status.Pending, student.Item2, thesis.Item2);
-
-        var readApplied = await _repo_Stud.ApplyForThesis(2, 1);
-
-        Assert.Equal((Response.Success, expectedApplied), readApplied);
     }
 
     [Theory]
@@ -168,7 +126,6 @@ public class StudentRepositoryTest : IDisposable
         Assert.Equal(Response.Deleted, readAllRemoved);
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));
     }
-
 
     public void Dispose()
     {

@@ -41,10 +41,10 @@ public class TeacherRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 1 };   
-        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 2 };
-        Apply applies3 = new Apply(graphAlgorithms, victor) { Id = 3 };
-        Apply applies4 = new Apply(cSharp, alyson) { Id = 4, Status = Status.Accepted };
+        Apply applies1 = new Apply(1, 1) { Id = 1 };   
+        Apply applies2 = new Apply(2, 1) { Id = 2 };
+        Apply applies3 = new Apply(2, 2) { Id = 3 };
+        Apply applies4 = new Apply(5, 1) { Id = 4, Status = Status.Accepted };
 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
@@ -114,19 +114,6 @@ public class TeacherRepositoryTest : IDisposable
         Assert.NotEqual(Response.Success, responseNotChanged);
     }
 
-    [Fact]
-    public async Task Reject_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToDenied()
-    {
-        var applyEntry = await _repo_Apply.ReadApplied(1, 1);
-
-        var testStatus = applyEntry.Item2.Status;
-
-        var applyEntryUpdate = await _repo_Teacher.Reject(1, 1);
-        var updateStatus = applyEntryUpdate.Item2.Status;
-
-        Assert.Equal(Status.Pending, testStatus);
-        Assert.Equal(Status.Denied, updateStatus);
-    }
 
     [Fact]
     public async Task ReadStudentApplication_GivenTeacher2_ReturnEmptyList()
@@ -143,8 +130,8 @@ public class TeacherRepositoryTest : IDisposable
         var teacher = await _repo_Teacher.ReadTeacher(1);
         var student = await _repo_Student.ReadStudent(1);
         var student_2 = await _repo_Student.ReadStudent(2);
-        var thesis1 = await _repo_Thesis.ReadThesis(1);
-        var thesis2 = await _repo_Thesis.ReadThesis(2);
+        var thesis1 = await _repo_Thesis.ReadMinimalThesis(1);
+        var thesis2 = await _repo_Thesis.ReadMinimalThesis(2);
 
 
         var readList = await _repo_Teacher.ReadPendingStudentApplication(1);

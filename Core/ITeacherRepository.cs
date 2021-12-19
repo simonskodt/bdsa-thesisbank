@@ -4,7 +4,6 @@ public interface ITeacherRepository
 {
     public Task<(Response, TeacherDTO?)> ReadTeacher(int TeacherID);
     public Task<(Response, ApplyDTO?)> Accept(int StudentID, int ThesisID);
-    public Task<(Response, ApplyDTO?)> Reject(int StudentID, int ThesisID);
 
     public Task<(Response, int?)> ReadTeacherIDByName(string teacherName);
     /*Returns a list of ApplyDTO that shows all the students that
