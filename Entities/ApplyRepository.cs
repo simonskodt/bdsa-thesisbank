@@ -59,7 +59,7 @@ public class ApplyRepository : IApplyRepository
         {
             var student = await stud_repo.ReadStudent(item.StudentID);                
             var thesis = (await thesis_repo.ReadMinimalThesis(item.ThesisID)).Item2;
-            
+
             var DTO = new ApplyWithIDDTO(item.Id, item.Status, student.Item2, thesis);
             ApplyDTOList.Add(DTO);
         }
@@ -82,7 +82,7 @@ public class ApplyRepository : IApplyRepository
         var Applications = await _context.Applies
                         .Where(a => a.Status != Status.Archived)
                         .Where(a => a.StudentID == studentDTO.Item2.Id)
-                        .Select(a => new MaximalisticDTO(a.ThesisID, a.Thesis.Name, a.Thesis.excerpt, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
+                        .Select(a => new MaximalisticDTO(a.ThesisID, a.Thesis.Name, a.Thesis.Excerpt, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
                         .ToListAsync();
 
 
@@ -91,86 +91,34 @@ public class ApplyRepository : IApplyRepository
 
         foreach (var thesis in Applications)
         {
-            var DTO = new ApplyWithIDDTO(thesis.ApplyID,thesis.status, studentDTO.Item2, new MinimalThesisDTO(thesis.Id, thesis.Name, thesis.excerpt, thesis.Teacher.Name));
+            var DTO = new ApplyWithIDDTO(thesis.ApplyID,thesis.status, studentDTO.Item2, new MinimalThesisDTO(thesis.Id, thesis.Name, thesis.Excerpt, thesis.Teacher.Name));
             ApplyDTOs.Add(DTO);
         }
 
         return ApplyDTOs.AsReadOnly();
 
-        // var student = await _context.Students
-        //                    .Where(s => s.Id == studentID)
-        //                    .FirstOrDefaultAsync();
-
-        // var thesis = await _context.Theses
-        //                 .Where(t => t.Id == ThesisID)
-        //                 .FirstOrDefaultAsync();
-
-
-        // if (student == null || thesis == null)
-        // {
-        //     return (Response.NotFound, null);
-        // }
-
-        // var entity = new Apply(thesis, student);
-
-        // var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
-
-        // var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
-        //                             new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-        // );
-
-        // _context.Applies.Add(entity);
-
-        // await _context.SaveChangesAsync();
-
-        // return (Response.Success, new ApplyDTO(entity.Status, StudentDTO, ThesisDTO));
-
     }
 
     public async Task<(Response, ApplyDTOid?)> ApplyForThesis(int studentID, int ThesisID)
     {
-        Console.WriteLine("Student: " + studentID);
-        Console.WriteLine("Thesis: " + ThesisID);
-
         var student = await _context.Students
                            .Where(s => s.Id == studentID)
                            .FirstOrDefaultAsync();
 
-
         var thesis = await _context.Theses
                         .Where(t => t.Id == ThesisID)
                         .FirstOrDefaultAsync();
-
-        Console.WriteLine("StudentID: " + student.Id);
-        Console.WriteLine("ThesisID: " + thesis.Id);
 
         if (student == null || thesis == null)
         {
             return (Response.NotFound, null);
         }
 
-        Console.WriteLine("Student ID" + student.Id);
-
         var entity = new Apply(thesis, student);
-
-        //Console.WriteLine(entity.Id);
-        Console.WriteLine(entity.Status);
-        Console.WriteLine(entity.ThesisID);
-        Console.WriteLine(entity.StudentID);
-        
-
-        // var StudentDTO = new StudentDTO(student.Id, student.Name, student.Email);
-
-        // var ThesisDTO = new ThesisDTO(thesis.Id, thesis.Name, thesis.Description,
-        //                             new TeacherDTO(thesis.Teacher.Id, thesis.Teacher.Name, thesis.Teacher.Email)
-        // );
-
         _context.Applies.Add(entity);
-
         await _context.SaveChangesAsync();
 
-        // return (Response.Success, new ApplyWithIDDTO(entity.Id, entity.Status, StudentDTO, ThesisDTO));
-        return (Response.Success, new ApplyDTOid(entity.Id, entity.Status, studentID, ThesisID));
+        return (Response.Created, new ApplyDTOid(entity.Id, entity.Status, studentID, ThesisID));
    }
 
 

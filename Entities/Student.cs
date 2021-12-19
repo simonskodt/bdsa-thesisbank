@@ -8,9 +8,7 @@ public class Student
 
     [EmailAddress]
     public string Email { get; set; }
-
     public ICollection<Apply>? Applies { get; set; }
-
     public Student(string name, string email)
     {
         Name = name;

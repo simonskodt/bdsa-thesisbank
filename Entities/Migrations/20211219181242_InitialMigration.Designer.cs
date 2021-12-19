@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(ThesisBankContext))]
-    [Migration("20211219154824_InitialMigration")]
+    [Migration("20211219181242_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,6 +104,9 @@ namespace Entities.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Excerpt")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
@@ -111,9 +114,6 @@ namespace Entities.Migrations
 
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
-
-                    b.Property<string>("excerpt")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

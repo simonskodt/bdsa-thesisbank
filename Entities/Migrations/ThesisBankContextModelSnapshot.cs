@@ -102,6 +102,9 @@ namespace Entities.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Excerpt")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
@@ -109,9 +112,6 @@ namespace Entities.Migrations
 
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
-
-                    b.Property<string>("excerpt")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
