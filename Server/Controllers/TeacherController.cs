@@ -13,12 +13,10 @@ namespace Server.Controllers;
 public class TeacherController : ControllerBase
 {
     private readonly ITeacherRepository _teacher_repository;
-    private readonly IApplyRepository _apply_repository;
 
 
     public TeacherController(ITeacherRepository teacherRepository, IApplyRepository applyRepository) {
           _teacher_repository = teacherRepository;
-          _apply_repository = applyRepository;
     }
     
     // [AllowAnonymous]
@@ -36,7 +34,7 @@ public class TeacherController : ControllerBase
     //[Authorize(Roles = "Teacher")]
     [AllowAnonymous]
     [HttpPut("{applyid}")]
-    public async Task<ApplyDTO> Update (int applyid, [FromBody] ApplyDTOid dto){
+    public async Task<ApplyDTO> Update(int applyid, [FromBody] ApplyDTOid dto){
 /*         if (dto.Status == ??){
             var respone = await _teacher_repository.Accept(dto.studentID, dto.thesisID);
             return respone.Item2;

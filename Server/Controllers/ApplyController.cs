@@ -50,6 +50,4 @@ namespace Server.Controllers;
         // return new CreatedResult(created);
     
     }
-
-    
 }

@@ -71,25 +71,36 @@ public class StudentRepository : IStudentRepository
 
     public async Task<(Response, ApplyDTO?)> Accept(int studentID, int thesisID)
     {
+        Console.WriteLine("ACCEPT METODE BEGYNDER --  ");
 
         var applies = await _context.Applies
                         .Where(a => a.StudentID == studentID)
-                        .Where(a => a.ThesisID == studentID)
+                        .Where(a => a.ThesisID == thesisID)
                         .Where(a => a.Status == Status.Accepted)
                         .FirstOrDefaultAsync();
+
+        Console.WriteLine("ACCEPT METODE 1 --  ");
 
         if (applies == null)
         {
             return (Response.NotFound, null);
         }
+        Console.WriteLine("ACCEPT METODE 2 --  ");
         applies.Status = Status.Archived;
+        Console.WriteLine("ACCEPT METODE 3 --  ");
 
         await _context.SaveChangesAsync();
+
         var resp_stud = await ReadStudent(studentID);
+        Console.WriteLine("ACCEPT METODE 4 --  ");
         var resp_thes = await _repo_Thesis.ReadThesis(thesisID);
-        var apply_dto = new ApplyDTO(Status.Archived, resp_stud.Item2, resp_thes.Item2);
+         Console.WriteLine("ACCEPT METODE 5 --  ");
+
+        var apply_dto = new ApplyDTO(applies.Status, resp_stud.Item2, resp_thes.Item2);
+        Console.WriteLine("STATUSEN PÅ VORES TRYKKEDE THESIS ER   --  " + applies.Status);
 
         return (Response.Updated, apply_dto);
+        
     }
 
     public async Task<Response> RemoveAllPendings(int studentID)
