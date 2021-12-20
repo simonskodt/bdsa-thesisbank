@@ -21,14 +21,16 @@
         </NavLink>
     </div>
     <div class="row">
-    @foreach (var Thesis in Theses)
-    {
-        <ThesisComponent 
-            Id="@Thesis.Id"
-            Title="@Thesis.Name"
-            Teacher="@Thesis.TeacherName"
-            Excerpt="@Thesis.Excerpt"
-        />
+    @if(Theses != null) {
+        @foreach (var Thesis in Theses)
+        {
+            <ThesisComponent 
+                Id="@Thesis.Id"
+                Title="@Thesis.Name"
+                Teacher="@Thesis.TeacherName"
+                Excerpt="@Thesis.Excerpt"
+            />
+        }
     }
     </div>
 </div>

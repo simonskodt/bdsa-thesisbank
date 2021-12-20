@@ -36,13 +36,13 @@
     private string _authMessage;
 
     protected override async Task OnInitializedAsync(){
-    var authState = await authenticationStateTask;
-    var user = authState.User;
-    
-    var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+        
+        var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
 
-
-    await localStore.SetItemAsync("user", StudentID);
-
+        if (StudentID != null) {
+            await localStore.SetItemAsync("user", StudentID);
+        }
     }
 }
