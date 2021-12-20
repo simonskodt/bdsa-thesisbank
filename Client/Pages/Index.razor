@@ -6,8 +6,11 @@
 
 @* @inject Client.Service.IThesesService ThesesService *@
 @inject HttpClient Http
+@inject NavigationManager Navigation
 @inject NavigationManager NavigationManager
+@inject SignOutSessionStateManager SignOutManager
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 
 @attribute [Authorize]
 
@@ -37,6 +40,10 @@
 
 @code {
 
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
     private ThesisDTOMinimal[]? Theses;
 
     protected override async Task OnInitializedAsync()
@@ -47,6 +54,15 @@
         var usernameInt = Int32.Parse(username);
             
         Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
+
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+        
+        var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
+
+        if (StudentID != null) {
+            await localStore.SetItemAsync("user", StudentID);
+        }
 
     }
 
