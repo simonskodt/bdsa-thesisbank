@@ -48,22 +48,19 @@
 
     protected override async Task OnInitializedAsync()
     {
-
-        var username = await localStorage.GetItemAsync<string>("user");
-        
-        var usernameInt = Int32.Parse(username);
-            
-        Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
-
         var authState = await authenticationStateTask;
         var user = authState.User;
         
         var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
 
         if (StudentID != null) {
-            await localStore.SetItemAsync("user", StudentID);
+            await localStorage.SetItemAsync("user", StudentID);
         }
 
+        var username = await localStorage.GetItemAsync<string>("user");
+        
+        var usernameInt = Int32.Parse(username);
+            
+        Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
     }
-
 }
