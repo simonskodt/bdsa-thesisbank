@@ -31,6 +31,10 @@
     color: white;
 }
 
-.btn-cancel {
+.btn-apply:hover {
+    color: #ffffff;
+}
+
+.btn-cancel, .btn-apply {
     width: 100%;
 }

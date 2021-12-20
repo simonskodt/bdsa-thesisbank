@@ -3,6 +3,7 @@
 
 html, body {
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 900px;
 }
 
 h1:focus {
@@ -152,4 +153,25 @@ a, a:not(.top-btn):hover, a:focus, a:active {
 
 .shadow:hover {
     box-shadow: 3px 3px 10px 0px rgba(123, 123, 123, 0.25) !important;
+}
+
+.btn-i-left, .btn-i-right {
+    margin-top: 1px;
+    transition: all .25s ease;
+}
+
+.btn-i-left {
+    margin-right: 5px;
+}
+
+.btn-i-right {
+    margin-left: 5px;
+}
+
+.top-btn:hover .btn-i-left {
+    margin-right: 10px;
+}
+
+.top-btn:hover .btn-i-right {
+    margin-left: 10px;
 }

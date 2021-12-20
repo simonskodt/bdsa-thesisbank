@@ -7,26 +7,27 @@
 
 @if (Thesis != null) {
 <div class="row justify-content-center">
-    <div class="col-sm-10">
+    <div class="col-sm-12 col-lg-10">
+        <div class="col-sm-12 mb-4">
+            <a href="/" class="btn btn-login shadow" style="margin-left: 0">Back</a>
+        </div>
         <h1>@Thesis.Name</h1>
         <div class="top-box mt-5">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-space">
                     <h2 class="h3">Professor @Thesis.Teacher.Name</h2>
-                    <h3 class="h5 fw-light" style="margin-bottom: 0; padding-top: 7px">cognition, iq, social pshycology
-                    </h3>
                 </div>
                 <div class="col d-flex justify-content-end">
                     @if (!appliedFor)
                     {
                         <div>
-                            <button class="btn btn-lg bg-yellow" @onclick="Apply">Apply</button>
+                            <button class="btn btn-lg bg-yellow shadow" @onclick="Apply">Apply</button>
                         </div>
                     }
                     else
                     {
                         <div>
-                            <button class="btn btn-lg bg-red" @onclick="Delete">Cancel</button>
+                            <button class="btn btn-lg bg-red shadow" @onclick="Delete">Cancel</button>
 
                         </div>
                     }
@@ -44,19 +45,11 @@
     </div>
 } else {
     <div>
-        <h1>Loading...</h1>
+        <p>loading</p>
     </div>
 }
  
 @code {
-
-    @*
-        * TODO: 1) Check current student has Isapplied for this thesis
-        * TODO: 2) Make the student capable of applying, cancelling or accepting the status of the thesis for the student
-    *@
-
-    @* private Status status = null; *@
-
     private bool returned;
 
     private ThesisDTO? Thesis;
@@ -66,9 +59,6 @@
 
     private bool appliedFor = false;   
 
-
-
-
     private async Task Apply()
     {
         appliedFor = !appliedFor;
@@ -76,11 +66,9 @@
         
         var usernameInt = Int32.Parse(username);
         
-        var studentDTO = new StudentDTO(usernameInt, "Viggo", "vibr@itu.dk");
-        var createDTO = new ApplyDTO(Status.Pending, studentDTO, Thesis);
+        var createDTO = new ApplyPostDTO(Status.Pending, usernameInt, Thesis);
 
         var apply = await Http.PostAsJsonAsync("/api/apply", createDTO);
-        Console.WriteLine("APPLYIED::: " + apply.StatusCode + "THESIS ID ::: " + Thesis.Id);
     }
 
     private async Task Delete()
@@ -90,15 +78,13 @@
         
         var usernameInt = Int32.Parse(username);
         
-        var applyDTO= await Http.GetFromJsonAsync<ApplyDTOid?>($"api/Thesis/{usernameInt}/{Thesis.Id}");
+        var applyDTO= await Http.GetFromJsonAsync<ApplyDTOids?>($"api/Thesis/{usernameInt}/{Thesis.Id}");
 
         await Http.DeleteAsync($"api/Apply/{applyDTO.Id}");
     }
 
-
     protected override async Task OnInitializedAsync()
     {
-
         var username = await localStorage.GetItemAsync<string>("user");
         var usernameInt = Int32.Parse(username);
 
@@ -107,7 +93,5 @@
         Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
 
         returned = true;
-
-
     }
 }

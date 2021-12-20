@@ -20,26 +20,18 @@ public class ThesisController : ControllerBase
         _repository = repository;
     }
 
-
-  /*   [AllowAnonymous]
-    [ProducesResponseType(404)]
-    [ProducesResponseType(typeof(ThesisDTO), 200)]
-    [HttpGet("{id}")] */
-/*     public async Task<ThesisDTO> Get(int id)
-        => await _repository.ReadThesis(id)
- */
-    //[Authorize(Roles = "Student")]
+    [Authorize(Roles = "Student")]
     [HttpGet("{id}")]
     public async Task<ThesisDTO> Get(int id)
         => (await _repository.ReadThesis(id)).Item2;
 
+    [AllowAnonymous]
     [HttpGet("{StudentID}/{ThesisID}")]
     [ProducesResponseType(404)]
-    [ProducesResponseType(typeof(ApplyDTOid), 201)]
+    [ProducesResponseType(typeof(ApplyDTOids), 201)]
+    public async Task<ActionResult<ApplyDTOids>> Get(int StudentID, int ThesisID){
 
-    public async Task<ActionResult<ApplyDTOid>> Get(int StudentID, int ThesisID){
-
-        var repsonse = await _repository.FindApplyDTOID(StudentID, ThesisID);
+        var repsonse = await _repository.FindApplyDTOid(StudentID, ThesisID);
 
         if(repsonse.Item1 == Core.Response.Success){
             return repsonse.Item2;
@@ -47,14 +39,4 @@ public class ThesisController : ControllerBase
             return new NotFoundResult();
         }
     }
-
-
-
-    // [Authorize]
-    // [HttpPost]
-    // [ProducesResponseType(typeof(bool), 201)]
-    // public async Task<IActionResult> Post(int studentId, int thesisId, bool isApplied) {
-    //     var applied = await _repository.CreateAsync()
-    // }
-
 }

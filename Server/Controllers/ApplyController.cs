@@ -13,41 +13,27 @@ namespace Server.Controllers;
         _repository = repository;
     }
 
-    //[Authorize(Roles = "Student")]
     [AllowAnonymous]
     [HttpGet]
-    public async Task<IReadOnlyCollection<ApplyDTOid>> Get()
+    public async Task<IReadOnlyCollection<ApplyDTOids>> Get()
         => await _repository.ReadApplied();
 
-    [AllowAnonymous]
+    [Authorize(Roles = "Student")]
     [HttpGet("{studentID}")]
-    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int studentID)
-    => await _repository.ReadAppliedByStudentAndStatus(studentID);
+    public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> Get(int studentID)
+    => await _repository.ReadAppliedByStudentID(studentID);
 
+    [AllowAnonymous]
     [HttpDelete("{Applyid}")]
     public async Task<Response> Delete(int applyID)
-        => (await _repository.RemoveRequest(applyID));
+        => (await _repository.DeleteApplied(applyID));
 
-    [AllowAnonymous]
+    [Authorize(Roles = "Student")]
     [HttpPost]
-    [ProducesResponseType(typeof(ApplyDTOid), 201)]
-    public async Task<IActionResult> Post(ApplyDTO applyDTO)
+    [ProducesResponseType(typeof(ApplyPostDTO), 201)]
+    public async Task<IActionResult> Post(ApplyPostDTO applyDTO)
     {
-        
-        // var created = await _repository.CreateAsync(applyDTO.Student.Id, applyDTO.Thesis.Id);
-
-        // return CreatedAtAction(nameof(Get), new { created.Thesis.Id }, created);
-
-        Console.WriteLine("Student ::: " + applyDTO.Student.Id);
-        Console.WriteLine("Thesis ::: " + applyDTO.Thesis.Id);
-        var created = await _repository.ApplyForThesis(applyDTO.Student.Id, applyDTO.Thesis.Id);
-        Console.WriteLine("ITEM2 ::: " + created.Item2);
-        Console.WriteLine("Hello world");
-
+        var created = await _repository.ApplyForThesis(applyDTO.studentID, applyDTO.Thesis.Id);
         return CreatedAtAction(nameof(Get), new {Id = created.Item2.Id}, created.Item2); 
-
-
-        // return new CreatedResult(created);
-    
     }
 }

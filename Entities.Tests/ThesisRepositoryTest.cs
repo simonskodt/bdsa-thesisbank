@@ -70,23 +70,6 @@ public class ThesisRepositoryTest : IDisposable
         Assert.Equal((Response.NotFound, null), ReadThesisResponse);
     }
 
-    [Fact]
-    public async Task ReadAllTheses_GivenNoParameter_ReturnAllTheses()
-    {
-        MinimalThesisDTO t1 = new MinimalThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", "Thore");
-        MinimalThesisDTO t2 = new MinimalThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", "Thore");
-        MinimalThesisDTO t3 = new MinimalThesisDTO(3, "Linq", "This is a Thesis about a very interesting linq", "Rasmus");
-        MinimalThesisDTO t4 = new MinimalThesisDTO(4, "Migration", "This is a Thesis about a very interesting Migration", "Rasmus");
-
-        IReadOnlyCollection<MinimalThesisDTO> ReadThesisResponse = await _repo_Thesis.ReadAll();
-
-        Assert.Collection(ReadThesisResponse,
-            thesis => Assert.Equal(t1, thesis),
-            thesis => Assert.Equal(t2, thesis),
-            thesis => Assert.Equal(t3, thesis),
-            thesis => Assert.Equal(t4, thesis)
-        );
-    }
 
     [Fact]
     public async Task ReadAppliedThesis_GivenStudentId1_ReturnAppliedThesis()

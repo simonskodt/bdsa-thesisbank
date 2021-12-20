@@ -41,10 +41,10 @@ public class TeacherRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(wildAlgorithms, alyson) { Id = 1 };   
-        Apply applies2 = new Apply(graphAlgorithms, alyson) { Id = 2 };
-        Apply applies3 = new Apply(graphAlgorithms, victor) { Id = 3 };
-        Apply applies4 = new Apply(cSharp, alyson) { Id = 4, Status = Status.Accepted };
+        Apply applies1 = new Apply(1, 1) { Id = 1 };   
+        Apply applies2 = new Apply(2, 1) { Id = 2 };
+        Apply applies3 = new Apply(2, 2) { Id = 3 };
+        Apply applies4 = new Apply(5, 1) { Id = 4, Status = Status.Accepted };
 
         context.Applies.Add(applies1);
         context.Applies.Add(applies2);
@@ -114,26 +114,38 @@ public class TeacherRepositoryTest : IDisposable
         Assert.NotEqual(Response.Success, responseNotChanged);
     }
 
-    [Fact]
-    public async Task Reject_GivenStudentID1AndThesisID1_ChangesStatusFromPendingToDenied()
-    {
-        var applyEntry = await _repo_Apply.ReadApplied(1, 1);
-
-        var testStatus = applyEntry.Item2.Status;
-
-        var applyEntryUpdate = await _repo_Teacher.Reject(1, 1);
-        var updateStatus = applyEntryUpdate.Item2.Status;
-
-        Assert.Equal(Status.Pending, testStatus);
-        Assert.Equal(Status.Denied, updateStatus);
-    }
 
     [Fact]
     public async Task ReadStudentApplication_GivenTeacher2_ReturnEmptyList()
     {
-        var actual = await _repo_Teacher.ReadPendingStudentApplication(2);
+        var actual = await _repo_Teacher.ReadPendingApplicationsByTeacherID(2);
 
         Assert.Empty(actual);
+    }
+
+      [Fact]
+    public async Task ReadApplicationsByTeacherID_GivenTeacherID1_ReturnsListOfApplyDTO()
+    {
+        
+        var student = await _repo_Student.ReadStudent(1);
+        var student2 = await _repo_Student.ReadStudent(2);
+        
+        var thesis1 = new ThesisDTOMinimal(1, "WildAlgorithms", null, "Thore");
+        var thesis2 = new ThesisDTOMinimal(2, "GraphAlgorithms", null, "Thore");
+        var thesis4 = new ThesisDTOMinimal(5, "CSharp", null, "Thore");
+
+        var readList = await _repo_Teacher.ReadApplicationsByTeacherID(1);
+
+        var expected_DTO_1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2, thesis1);
+        var expected_DTO_2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2, thesis2);
+        var expected_DTO_3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student2.Item2, thesis2);
+        var expected_DTO_4 = new ApplyDTOWithMinalThesis(4, Status.Accepted, student.Item2, thesis4);
+
+        Assert.Collection(readList,
+        thesis => Assert.Equal(expected_DTO_1, thesis),
+        thesis => Assert.Equal(expected_DTO_2, thesis),
+        thesis => Assert.Equal(expected_DTO_3, thesis),
+        thesis => Assert.Equal(expected_DTO_4, thesis));
     }
 
     [Fact]
@@ -143,15 +155,15 @@ public class TeacherRepositoryTest : IDisposable
         var teacher = await _repo_Teacher.ReadTeacher(1);
         var student = await _repo_Student.ReadStudent(1);
         var student_2 = await _repo_Student.ReadStudent(2);
-        var thesis1 = await _repo_Thesis.ReadThesis(1);
-        var thesis2 = await _repo_Thesis.ReadThesis(2);
+        var thesis1 = new ThesisDTOMinimal(1, "WildAlgorithms", null, "Thore");
+        var thesis2 = new ThesisDTOMinimal(2, "GraphAlgorithms", null, "Thore");
 
 
-        var readList = await _repo_Teacher.ReadPendingStudentApplication(1);
+        var readList = await _repo_Teacher.ReadPendingApplicationsByTeacherID(1);
 
-        var expected_DTO_1 = new ApplyWithIDDTO(1, Status.Pending, student.Item2, thesis1.Item2);
-        var expected_DTO_2 = new ApplyWithIDDTO(2, Status.Pending, student.Item2, thesis2.Item2);
-        var expected_DTO_3 = new ApplyWithIDDTO(3, Status.Pending, student_2.Item2, thesis2.Item2);
+        var expected_DTO_1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2, thesis1);
+        var expected_DTO_2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2, thesis2);
+        var expected_DTO_3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student_2.Item2, thesis2);
 
         //Assert
         Assert.Collection(readList,

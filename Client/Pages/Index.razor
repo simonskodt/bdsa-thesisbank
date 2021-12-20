@@ -6,8 +6,11 @@
 
 @* @inject Client.Service.IThesesService ThesesService *@
 @inject HttpClient Http
+@inject NavigationManager Navigation
 @inject NavigationManager NavigationManager
+@inject SignOutSessionStateManager SignOutManager
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 
 @attribute [Authorize]
 
@@ -17,38 +20,47 @@
     <div class="row mb-5">
         <h1 class="mb-5">Find a thesis</h1>
         <NavLink href="/applications" class="top-btn bg-yellow">
-            Go to applied theses
+            Go to applied theses <i class="btn-i-right fas fa-chevron-right"></i>
         </NavLink>
     </div>
     <div class="row">
-    @foreach (var Thesis in Theses)
-    {
-        <ThesisComponent 
-            Id="@Thesis.Id"
-            Title="@Thesis.Name"
-            Teacher="@Thesis.TeacherName"
-            Excerpt="@Thesis.Description"
-        />
+    @if(Theses != null) {
+        @foreach (var Thesis in Theses)
+        {
+            <ThesisComponent 
+                Id="@Thesis.Id"
+                Title="@Thesis.Name"
+                Teacher="@Thesis.TeacherName"
+                Excerpt="@Thesis.Excerpt"
+            />
+        }
     }
     </div>
 </div>
 
-
-
 @code {
 
-    private MinimalThesisDTO[]? Theses;
+
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    private ThesisDTOMinimal[]? Theses;
 
     protected override async Task OnInitializedAsync()
     {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+        
+        var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
+
+        if (StudentID != null) {
+            await localStorage.SetItemAsync("user", StudentID);
+        }
 
         var username = await localStorage.GetItemAsync<string>("user");
         
         var usernameInt = Int32.Parse(username);
             
-
-        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Theses/" + usernameInt);
-
+        Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
     }
-
 }
