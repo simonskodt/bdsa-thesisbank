@@ -16,12 +16,8 @@
                 @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            
-@*                            <NavLink href="/applications" @onclick="reload">
- *@                                <button class="btn btn-accept"@onclick="AcceptS">Accept</button>
-                                <button class="btn btn-cancel"@onclick="Delete">Decline</button>
-                          @*   </NavLink> *@
-
+                            <button class="btn btn-accept"@onclick="AcceptS">Accept</button>
+                            <button class="btn btn-cancel"@onclick="Delete">Decline</button>
                         </div>
                     </div>
                 } else {

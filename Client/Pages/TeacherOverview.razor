@@ -14,16 +14,18 @@
         </NavLink>
     </div>
     <div class="row">
-    @foreach (var Apply in applies){
-        <TeacherComponent 
-            thesisID="@Apply.Thesis.Id"
-            title="@Apply.Thesis.Name"
-            student="@Apply.Student.Name"
-            studentID="@Apply.Student.Id"
-            applyId = "@Apply.Id"
-            status = "@Apply.Status"
-        />
-    }
+        @if (applies != null) {
+            @foreach (var Apply in applies){
+                <TeacherComponent 
+                    thesisID="@Apply.Thesis.Id"
+                    title="@Apply.Thesis.Name"
+                    student="@Apply.Student.Name"
+                    studentID="@Apply.Student.Id"
+                    applyId = "@Apply.Id"
+                    status = "@Apply.Status"
+                />
+            }
+        }
     </div>
 </div>
 
