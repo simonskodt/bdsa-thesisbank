@@ -20,7 +20,7 @@
                         </NavLink>
               
                         <NavLink href="/teacher" @onclick="reload">
-                            <button class="btn btn-cancel shadow"@onclick="Decline"> Delete </button>
+                            <button class="btn btn-cancel shadow"@onclick="Decline"> Decline </button>
                         </NavLink>
                     </div>
                 </div>
@@ -64,12 +64,14 @@
 
         await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
         Console.WriteLine("Status1:::" + status); 
+        reload();
     }
 
     private async Task Decline()
     {
         Console.WriteLine("APPLYID :::: " + applyId);
         await Http.DeleteAsync($"api/Apply/{applyId}");
+        reload();
     }
 
 
