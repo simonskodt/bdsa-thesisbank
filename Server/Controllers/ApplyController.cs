@@ -23,7 +23,7 @@ namespace Server.Controllers;
     public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> Get(int studentID)
     => await _repository.ReadAppliedByStudentID(studentID);
 
-    [Authorize(Roles = "Student")]
+    [AllowAnonymous]
     [HttpDelete("{Applyid}")]
     public async Task<Response> Delete(int applyID)
         => (await _repository.DeleteApplied(applyID));

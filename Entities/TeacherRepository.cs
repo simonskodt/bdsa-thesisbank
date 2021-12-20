@@ -111,12 +111,13 @@ public class TeacherRepository : ITeacherRepository
     {
         var ownedAppliedEntries = await ReadApplicationsByTeacherID(teacherID);
 
+        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
+
+
         if (ownedAppliedEntries == null)
         {
-            return null;
+            return ApplyDTOList;
         }
-
-        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
 
         foreach (var item in ownedAppliedEntries)
         {
