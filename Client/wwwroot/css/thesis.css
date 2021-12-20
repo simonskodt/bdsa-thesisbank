@@ -46,6 +46,7 @@ a.thesis, a.thesis:hover, a.thesis:active, a.thesis:focus {
 .btn-apply {
     background: #0095068A;
     color: white;
+    width: 100%;
 }
 .btn-cancel {
     background: #E45A5A;

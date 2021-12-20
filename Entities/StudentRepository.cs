@@ -73,9 +73,9 @@ public class StudentRepository : IStudentRepository
 
     public async Task<Response> RemoveAllApplications(int studentID)
     {
+        
         var allPending = await _context.Applies
-                        .Where(p => p.Status == Status.Pending)
-                        .Where(p => p.Status == Status.Accepted)
+                        .Where(p => p.Status == Status.Pending || p.Status == Status.Accepted)
                         .Where(p => p.StudentID == studentID)
                         .ToListAsync();
 
@@ -83,5 +83,6 @@ public class StudentRepository : IStudentRepository
 
         await _context.SaveChangesAsync();
         return Response.Deleted;
+
     }
 }

@@ -16,14 +16,8 @@
                 @if (accepted == Status.Accepted) {
                     <div class="col d-flex flex-row justify-content-center">
                         <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            
-                           <NavLink href="/applications" @onclick="reload">
-                                <button class="btn btn-accept"@onclick="Accept">Accept</button>
-                            </NavLink> 
-                            <NavLink href="/applications" @onclick="reload">
-                                <button class="btn btn-cancel"@onclick="Delete">Decline</button>
-                            </NavLink> 
-
+                            <button class="btn btn-apply"@onclick="Accept">Accept</button>
+                            <button class="btn btn-cancel"@onclick="Delete">Decline</button>
                         </div>
                     </div>
                 } else {
@@ -76,10 +70,12 @@
         applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisId);
         await Http.PutAsJsonAsync($"api/Student/"+ applyId, applyDTOid);
         await Http.DeleteAsync($"api/Student/" + studentID);
+        reload();
     }
 
     private async Task Delete(){
         await Http.DeleteAsync($"api/Apply/{applyId}");
+        reload();
     }
 
     private void reload(){

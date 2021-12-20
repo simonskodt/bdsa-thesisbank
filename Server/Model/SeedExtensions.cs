@@ -55,7 +55,7 @@ public static class SeedExtensions
         var thesis8 = new Thesis("A Study of why Math is Important in Programmimg", albert){Description = discription, Excerpt = "Programming is a language, but a good fundation is to have a mathematical understandig. Math should not be underestimated"};
         var thesis9 = new Thesis("A Comparison of Java and C#", albert){Description =  discription, Excerpt = "Clases, interfaces, records, methodes etc. A deep understandig of the two languages and where to use which"};
         var thesis10 = new Thesis("Golang and Distributed Systems", albert){Description = discription, Excerpt = "Goland, CAP, RAFT etc. This Thesis is a dream for students that liked DISYS"};
-        var thesis11 = new Thesis("The Magic of SQL", albert){Description = discription, Excerpt = "SELECT this thises\nFROM Theses\nWHERE title = 'The magic of SQL'"};
+        var thesis11 = new Thesis("The Magic of SQL", albert){Description = discription, Excerpt = "SELECT this thesis <br /> FROM Theses <br /> WHERE title = 'The magic of SQL'"};
 
         context.Teachers.AddRange(
            anne,
