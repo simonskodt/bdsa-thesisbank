@@ -27,23 +27,11 @@
     </div>
 </div>
 
-
 @code {
-    private ApplyWithIDDTO[]? applies;
+    private ApplyDTOWithMinalThesis[]? applies;
 
     protected override async Task OnInitializedAsync()
     {
-
-    var username = await localStorage.GetItemAsync<string>("user"); 
-    var usernameInt = Int32.Parse(username);
-    
-
-// her skal man så være teaher før det fungere:
-// for testning kan man vælge denne hvis altså ikke man er teacher i databasen.
-    applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + 1);
-
-      //applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Teacher/" + usernameInt);
-
-   
+        applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Teacher/" + 1);
     }
 }

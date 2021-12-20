@@ -22,8 +22,6 @@
     </NotAuthorized>
 </AuthorizeView>
 
-
-
 @code{
 
     private async Task BeginLogout(MouseEventArgs args)
@@ -31,7 +29,6 @@
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
     }
-
 
     [CascadingParameter]
     private Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -48,7 +45,4 @@
     await localStore.SetItemAsync("user", StudentID);
 
     }
-
-
-
 }

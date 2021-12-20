@@ -113,7 +113,7 @@ public class StudentRepositoryTest : IDisposable
     [Fact]
     public async Task RemoveAllPendings_GivenStudent1_ReturnsDeleted()
     {
-        var readResponse = await _repo_Stud.RemoveAllPendings(1);
+        var readResponse = await _repo_Stud.RemoveAllApplications(1);
 
         Assert.Equal(Response.Deleted, readResponse);
     }
@@ -121,7 +121,7 @@ public class StudentRepositoryTest : IDisposable
     [Fact]
     public async Task RemoveAllPendings_GivenStudentId3_ReturnDeleted()
     {
-        var readAllRemoved = await _repo_Stud.RemoveAllPendings(3);
+        var readAllRemoved = await _repo_Stud.RemoveAllApplications(3);
 
         Assert.Equal(Response.Deleted, readAllRemoved);
         Assert.Empty((await _repo_Thesis.ReadPendingThesis(3)));

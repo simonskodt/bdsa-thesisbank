@@ -30,7 +30,7 @@
 
 @code {
 
-    private ApplyDTOid applyDTOid = null;
+    private ApplyDTOids applyDTOid = null;
 
     [Parameter]
     public int thesisID { get; set; } = 0;
@@ -52,28 +52,16 @@
 
     private async Task Accept()
     {
-        //var username = await localStorage.GetItemAsync<string>("user");
-        
-        //var usernameInt = Int32.Parse(username);
-
-        Console.WriteLine("THESIS:::" + thesisID); 
-        Console.WriteLine("STUDENT:::" + studentID); 
-        Console.WriteLine("Status1:::" + status); 
-
-        applyDTOid = new ApplyDTOid(applyId, status, studentID, thesisID);
-
+        applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisID);
         await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
-        Console.WriteLine("Status1:::" + status); 
         reload();
     }
 
     private async Task Decline()
     {
-        Console.WriteLine("APPLYID :::: " + applyId);
         await Http.DeleteAsync($"api/Apply/{applyId}");
         reload();
     }
-
 
     private void reload(){
         NavigationManager.NavigateTo("teacher", true);

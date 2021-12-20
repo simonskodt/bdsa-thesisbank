@@ -11,53 +11,63 @@ public class TeacherRepository : ITeacherRepository
 
     public async Task<(Response, TeacherDTO?)> ReadTeacher(int TeacherID)
     {
-        var teacher = await _context.Teachers
+        var teacherDTO = await _context.Teachers
                                     .Where(t => t.Id == TeacherID)
                                     .Select(t => new TeacherDTO(t.Id, t.Name, t.Email))
                                     .FirstOrDefaultAsync();
 
-        if (teacher == null)
+        if (teacherDTO == null)
         {
-            return (Response.NotFound, teacher);
+            return (Response.NotFound, null);
         }
 
-        return (Response.Success, teacher);
+        return (Response.Success, teacherDTO);
     }
 
     public async Task<(Response, ApplyDTO?)> Accept(int studentID, int thesisID)
     {
-        var appliesThesis = await _context.Applies
+        var apply = await _context.Applies
                                 .Where(s => s.StudentID == studentID)
                                 .Where(t => t.ThesisID == thesisID)
                                 .Where(a => a.Status == Status.Pending)
                                 .FirstOrDefaultAsync();
 
-        if (appliesThesis == null)
+        if (apply == null)
         {
             return (Response.NotFound, null);
         }
 
-        appliesThesis.Status = Status.Accepted;
+        apply.Status = Status.Accepted;
 
         await _context.SaveChangesAsync();
 
-        var getStudent = await _context.Students
+        var studentDTO = await _context.Students
                                    .Where(s => s.Id == studentID)
                                    .Select(s => new StudentDTO(s.Id, s.Name, s.Email))
                                    .FirstOrDefaultAsync();
 
-        var getThesis = await _context.Theses
+        if (studentDTO == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        var thesisDTO = await _context.Theses
                                    .Where(t => t.Id == thesisID)
                                    .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
                                    .FirstOrDefaultAsync();
 
-        var appliedThesisDTO = new ApplyDTO(appliesThesis.Status, getStudent, getThesis);
+        if (thesisDTO == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        var appliedThesisDTO = new ApplyDTO(apply.Status, studentDTO, thesisDTO);
 
         return (Response.Success, appliedThesisDTO);
     
     }
 
-     public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadApplicationsByTeacherID(int teacherID)
+     public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> ReadApplicationsByTeacherID(int teacherID)
     {
 
         var thesesWithCurrentTeacherID = await _context.Theses
@@ -76,28 +86,28 @@ public class TeacherRepository : ITeacherRepository
                                 .Where(s => ThesesIDs.Contains(s.ThesisID))
                                 .ToListAsync();
 
-        var ApplyDTOList = new List<ApplyWithIDDTO>();
+        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
 
         foreach (var item in Applications)
         {
-            var student = await _context.Students
+            var studentDTO = await _context.Students
                                    .Where(s => s.Id == item.StudentID)
                                    .Select(s => new StudentDTO(s.Id, s.Name, s.Email))
                                    .FirstOrDefaultAsync();
 
-            var thesis = await _context.Theses
+            var thesisDTO = await _context.Theses
                                    .Where(t => t.Id == item.ThesisID)
-                                   .Select(t => new MinimalThesisDTO(t.Id, t.Name, t.Excerpt, t.Teacher.Name))
+                                   .Select(t => new ThesisDTOMinimal(t.Id, t.Name, t.Excerpt, t.Teacher.Name))
                                    .FirstOrDefaultAsync();
 
-            var DTO = new ApplyWithIDDTO(item.Id, item.Status, student, thesis);
+            var DTO = new ApplyDTOWithMinalThesis(item.Id, item.Status, studentDTO, thesisDTO);
             ApplyDTOList.Add(DTO);
         }
 
         return ApplyDTOList.AsReadOnly();
     }
 
-    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> ReadPendingStudentApplication(int teacherID)
+    public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>?> ReadPendingApplicationsByTeacherID(int teacherID)
     {
         var ownedAppliedEntries = await ReadApplicationsByTeacherID(teacherID);
 
@@ -106,7 +116,7 @@ public class TeacherRepository : ITeacherRepository
             return null;
         }
 
-        var ApplyDTOList = new List<ApplyWithIDDTO>();
+        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
 
         foreach (var item in ownedAppliedEntries)
         {

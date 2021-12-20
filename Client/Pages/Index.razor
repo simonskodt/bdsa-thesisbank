@@ -33,11 +33,9 @@
     </div>
 </div>
 
-
-
 @code {
 
-    private MinimalThesisDTO[]? Theses;
+    private ThesisDTOMinimal[]? Theses;
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,7 +44,7 @@
         
         var usernameInt = Int32.Parse(username);
             
-        Theses = await Http.GetFromJsonAsync<MinimalThesisDTO[]>("api/Theses/" + usernameInt);
+        Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
 
     }
 

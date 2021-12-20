@@ -33,7 +33,7 @@
 </div>
 
 @code {
-    private ApplyWithIDDTO[]? applies;
+    private ApplyDTOWithMinalThesis[]? applies;
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,8 +41,7 @@
     var username = await localStorage.GetItemAsync<string>("user"); 
     var usernameInt = Int32.Parse(username);
     
-
-    applies = await Http.GetFromJsonAsync<ApplyWithIDDTO[]>("api/Apply/" + usernameInt);
+    applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Apply/" + usernameInt);
     }
 }
 

@@ -106,7 +106,7 @@ public class ApplyRepositoryTest : IDisposable
     [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent1AndThesis1_ReturnResonseSuccessAndAppliedDTO()
     {
-        var expectedApplied = new ApplyDTOid(5, Status.Pending, 1, 1);
+        var expectedApplied = new ApplyDTOids(5, Status.Pending, 1, 1);
 
         var readApplied = await _repo_apply.ApplyForThesis(1, 1);
 
@@ -134,7 +134,7 @@ public class ApplyRepositoryTest : IDisposable
     [Fact]
     public async Task ApplyForThesis_GivenAppliedStudent2AndThesis1_ReturnResonseSuccessAndAppliedDTO()
     {
-        var expectedApplied = new ApplyDTOid(5, Status.Pending, 2, 1);
+        var expectedApplied = new ApplyDTOids(5, Status.Pending, 2, 1);
 
         var readApplied = await _repo_apply.ApplyForThesis(2, 1);
 
@@ -145,7 +145,7 @@ public class ApplyRepositoryTest : IDisposable
     [Fact]
     public async Task RemoveRequest_Givenapplyid1_Returndeleted()
     {
-        var readRemoved = await _repo_apply.RemoveRequest(1);
+        var readRemoved = await _repo_apply.DeleteApplied(1);
 
         Assert.Equal(Response.Deleted, readRemoved);
     }

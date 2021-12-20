@@ -18,34 +18,16 @@ public class TeacherController : ControllerBase
     public TeacherController(ITeacherRepository teacherRepository, IApplyRepository applyRepository) {
           _teacher_repository = teacherRepository;
     }
-    
-    // [AllowAnonymous]
-    // [HttpGet("{name}")]
-    // public async Task<int?> Get(string name){
-    //     return (await _teacher_repository.ReadTeacherIDByName(name)).Item2;
-    // }
 
-    //[Authorize(Roles = "Teacher")]
-
+    [Authorize(Roles = "Teacher")]
     [HttpGet("{teahcerID}")]
-    public async Task<IReadOnlyCollection<ApplyWithIDDTO>> Get(int teahcerID)
-    => await _teacher_repository.ReadPendingStudentApplication(teahcerID);
+    public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> Get(int teahcerID)
+    => await _teacher_repository.ReadPendingApplicationsByTeacherID(teahcerID);
     
-    //[Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     [AllowAnonymous]
     [HttpPut("{applyid}")]
-    public async Task<ApplyDTO> Update(int applyid, [FromBody] ApplyDTOid dto){
-/*         if (dto.Status == ??){
-            var respone = await _teacher_repository.Accept(dto.studentID, dto.thesisID);
-            return respone.Item2;
-
-        }else{
-            var respone = await _teacher_repository.Reject(dto.studentID, dto.thesisID);
-            return respone.Item2;
-
-        } */
-        var respone = await _teacher_repository.Accept(dto.studentID, dto.thesisID);
-        return respone.Item2;
-    }
+    public async Task<ApplyDTO> Update(int applyid, [FromBody] ApplyDTOids dto)
+        => (await _teacher_repository.Accept(dto.studentID, dto.thesisID)).Item2;
 
 }

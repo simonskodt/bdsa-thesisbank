@@ -20,7 +20,8 @@ public class ThesesController : ControllerBase
         _repository = repository;
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
-    public async Task<IReadOnlyCollection<MinimalThesisDTO>> Get(int id)
+    public async Task<IReadOnlyCollection<ThesisDTOMinimal>> Get(int id)
         => await _repository.ReadNonPendingTheses(id);
 }

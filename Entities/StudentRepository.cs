@@ -1,13 +1,11 @@
 namespace Entities;
 public class StudentRepository : IStudentRepository
 {
-    ThesisBankContext _context;
-    ThesisRepository _repo_Thesis;
+    IThesisBankContext _context;
 
-    public StudentRepository(ThesisBankContext context)
+    public StudentRepository(IThesisBankContext context)
     {
         _context = context;
-        _repo_Thesis = new ThesisRepository(_context);
     }
 
     public async Task<(Response, StudentDTO?)> ReadStudent(int studentID)
@@ -19,7 +17,7 @@ public class StudentRepository : IStudentRepository
 
         if (student == null)
         {
-            return (Response.NotFound, student);
+            return (Response.NotFound, null);
         }
 
         return (Response.Success, student);
@@ -56,20 +54,29 @@ public class StudentRepository : IStudentRepository
 
         await _context.SaveChangesAsync();
 
-        var resp_stud = await ReadStudent(studentID);
-        var resp_thes = await _repo_Thesis.ReadThesis(thesisID);
+        var studentDTO = await ReadStudent(studentID);
 
-        var apply_dto = new ApplyDTO(applies.Status, resp_stud.Item2, resp_thes.Item2);
+        var thesisDTO = await _context.Theses
+                            .Where(t => t.Id == thesisID)
+                            .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
+                            .FirstOrDefaultAsync();
 
-        return (Response.Updated, apply_dto);
-        
+        if(thesisDTO == null)
+        {
+            return (Response.NotFound, null);
+        }
+
+        var apply_dto = new ApplyDTO(applies.Status, studentDTO.Item2, thesisDTO);
+
+        return (Response.Updated, apply_dto);  
     }
 
-    public async Task<Response> RemoveAllPendings(int studentID)
+    public async Task<Response> RemoveAllApplications(int studentID)
     {
         var allPending = await _context.Applies
-                        .Where(p => p.StudentID == studentID)
                         .Where(p => p.Status == Status.Pending)
+                        .Where(p => p.Status == Status.Accepted)
+                        .Where(p => p.StudentID == studentID)
                         .ToListAsync();
 
         _context.Applies.RemoveRange(allPending);
