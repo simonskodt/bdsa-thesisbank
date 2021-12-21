@@ -52,6 +52,6 @@ Open a new browser, but make sure it is another browser (or use private browsing
 **Log in as a _Teacher_:** Press log in at the the top right corner.
 
 Enter the e-mail: `TeacherAlbertJones@hotmail.com`.<br> 
-And the password: `SWUITU2021`. Press login. 
+And the password: `SWUITU2021`. 
 
-All featues as a teacher will now be available. By applying for a thesis on the student side, the teacher page can be refreshed and the applicattion is now visisble. Accepting the thesis changes the student point of view and vice versa. 
+Press login. All featues as a teacher will now be available. By applying for a thesis on the student side, the teacher page can be refreshed and the applicattion is now visisble. Accepting the thesis changes the student point of view and vice versa. 
