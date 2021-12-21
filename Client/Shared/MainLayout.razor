@@ -4,31 +4,44 @@
 <PageTitle>ThesisBank</PageTitle>
 
 @if (!_navManager.Uri.Contains("/login")) {
-        <div class="teacherOverviewBtn">
-            <NavLink href="/teacher" class="btn btn-login">
-                Teacher
-            </NavLink>
-        </div>
-<div class="top-row-loggedin d-flex align-items-center" style="margin-bottom: 100px">
-    <div class="container">
-        <div class="row flex-direction-row justify-content-space">
-            <div class="col align-items-center d-flex">
-                <NavLink href="/">
-                    <h3 class="h4 roboto-100" style="margin-bottom: 0;">Thesis<span style="font-weight: 700">Bank</span></h3>
-                </NavLink>
+        <div class="top-row-loggedin d-flex align-items-center" style="margin-bottom: 100px">
+            <div class="container" style="position: relative">
+                <div class="row flex-direction-row justify-content-space align-items-center">
+                    <div class="col align-items-center d-flex">
+                        <NavLink href="/">
+                            <h3 class="h4 roboto-100" style="margin-bottom: 0;">Thesis<span style="font-weight: 700">Bank</span></h3>
+                        </NavLink>
+                    </div>
+                    <div class="col text-center d-none d-lg-block">
+                        <NavLink href="/teacher" class="btn btn-login">
+                            Teacher
+                        </NavLink>
+                    </div>
+                    <div class="col text-right d-none d-lg-block">
+                        <LoginDisplay />
+                    </div>
+                    <nav class="navbar navbar-light d-lg-none col justify-content-end">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                    </nav>
+                    <div class="collapse navdropdown text-end d-lg-none" id="navbarToggleExternalContent">
+                        <div class="p-4 d-flex justify-content-end">
+                            <div class="d-flex flex-column">
+                                <a href="/teacher" class="mb-4">Teacher</a>
+                                <LoginDisplay />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col justify-content-end align-items-center d-flex">
-                <LoginDisplay />
-            </div>
         </div>
-    </div>
-</div>
 }
 <div class="row">
     <main>
         <div class="container">
             <div class="row justify-content-center pt-5">
-                <div class="col-sm-8">
+                <div class="col-sm-8 main-col">
                     <div class="col">
                         @Body
                     </div>

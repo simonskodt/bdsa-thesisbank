@@ -14,8 +14,13 @@
 
 <AuthorizeView>
     <Authorized>
-        <span class="roboto-500">Hello @context.User.Identity?.Name</span>
-        <button class="btn btn-login shadow" @onclick="BeginLogout">Log out</button>
+        <div class="d-flex flex-direction-row align-items-center justify-content-end d-none d-lg-block">
+            <span class="roboto-500">Hello @context.User.Identity?.Name</span>
+            <button class="btn btn-login shadow" @onclick="BeginLogout">Log out</button>
+        </div>
+        <div class="d-lg-none">
+            <a href="" @onclick="BeginLogout">Log out</a>
+        </div>
     </Authorized>
     <NotAuthorized>
         <a href="login">Log in</a>

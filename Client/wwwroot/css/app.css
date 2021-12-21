@@ -175,3 +175,24 @@ a, a:not(.top-btn):hover, a:focus, a:active {
 .top-btn:hover .btn-i-right {
     margin-left: 10px;
 }
+
+.navdropdown {
+    position: absolute; 
+    top: 62px; 
+    background: white;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.navdropdown a {
+    border-bottom: 1px solid rgba(0,0,0,0);
+    transition: .25s ease all;
+}
+
+.navdropdown a:hover {
+    border-bottom: 1px solid rgba(0,0,0, 1);
+}
+
