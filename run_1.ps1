@@ -1,5 +1,7 @@
 mkdir .local
-echo '*' > .local.gitignore
+cd .\.local
+echo '*' > .gitignore
+cd ..
 $pw = New-Guid
 $connectionString = "Server=db;Database=ThesisBank;User Id=sa;Password=$pw"
 echo $connectionString > .local\connection_string.txt
