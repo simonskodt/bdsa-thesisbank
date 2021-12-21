@@ -71,37 +71,6 @@ public class ThesisRepositoryTest : IDisposable
     }
 
 
-    [Fact]
-    public async Task ReadAppliedThesis_GivenStudentId1_ReturnAppliedThesis()
-    {
-        var student1 = (await _repo_Stud.ReadStudent(1)).Item2;
-        var thesis1 = (await _repo_Thesis.ReadThesis(1)).Item2;
-        var thesis2 = (await _repo_Thesis.ReadThesis(2)).Item2;
-        var thesis3 = (await _repo_Thesis.ReadThesis(3)).Item2;
-
-        ApplyDTO a1 = new ApplyDTO(Status.Pending, student1, thesis1);
-        ApplyDTO a2 = new ApplyDTO(Status.Pending, student1, thesis2);
-        ApplyDTO a3 = new ApplyDTO(Status.Pending, student1, thesis3);
-
-        IReadOnlyCollection<ThesisDTO> ReadAppliedThesisResponse = await _repo_Thesis.ReadPendingThesis(1);
-
-        Assert.Collection(ReadAppliedThesisResponse,
-            thesis => Assert.Equal(thesis1, thesis),
-            thesis => Assert.Equal(thesis2, thesis),
-            thesis => Assert.Equal(thesis3, thesis)
-        );
-    }
-
-    [Fact]
-    public async Task ReadAppliedThesis_GivenStudentId2_ReturnEmptyList()
-    {
-        var student1 = (await _repo_Stud.ReadStudent(2)).Item2;
-
-        IReadOnlyCollection<ThesisDTO> ReadAppliedThesisResponse = await _repo_Thesis.ReadPendingThesis(2);
-
-        Assert.Empty(ReadAppliedThesisResponse);
-    }
-
     public void Dispose()
     {
         _context.Dispose();

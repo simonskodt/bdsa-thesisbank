@@ -24,7 +24,7 @@ public class ThesisRepository : IThesisRepository
         return (Response.Success, thesisDTO);
     }
 
-    public async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int studentID)
+    private async Task<IReadOnlyCollection<ThesisDTO>> ReadPendingThesis(int studentID)
     {
         var thesesIDs = (await _context.Applies
                         .Where(a => a.StudentID == studentID)
