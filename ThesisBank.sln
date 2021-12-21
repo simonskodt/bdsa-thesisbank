@@ -6,8 +6,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThesisBank.Server", "Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThesisBank.Client", "Client\ThesisBank.Client.csproj", "{DAC9F158-5CCA-4FC8-BDA0-AE4963657FA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThesisBank.Shared", "Shared\ThesisBank.Shared.csproj", "{338F851B-357C-4DC5-81EA-CFA80CD89006}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E5FD97A2-73F7-4AED-8EF3-0EF9AA5C9CE6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{A498E319-CF93-4E77-8A22-C782420F7E0A}"
