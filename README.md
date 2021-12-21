@@ -33,3 +33,11 @@ Then run the  ```run_2.ps1``` command, and agree to the permissions that are ask
 Dependencies is then be downloaded, and the container created.
 
 The application can be accesed through  ```localhost:5077```.
+
+**3. Log in to the system **<br>
+
+To log in as a _Student_: Press log in in the the top right corner. Enter the E-Mail: StudentPeterSWU@hotmail.com. And the password: SWUITU2021. Press Login. All the features as a student will now be available.
+
+Open a new browser, it can be any browser, however, make sure it is not the same browser (or use incogniti) to esnure the possibily of seeing both a student and teacher point of view. 
+
+Log in as a _Teacher_: Press log in in the the top right corner. Enter the E-Mail: TeacherAlbertJones@hotmail.com. And the password: SWUITU2021. Press Login. All featues as a teacher will now be available. By applying for a thesis on the student side you can refresh the teacher page and the applicattion will be now visisble. Accepting the thesis will change the student point of view and vice versa. 
