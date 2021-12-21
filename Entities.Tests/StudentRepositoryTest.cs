@@ -2,9 +2,9 @@ namespace Entities.Tests;
 
 public class StudentRepositoryTest : IDisposable
 {
-    private readonly ThesisBankContext _context;
-    private readonly StudentRepository _repo_Stud;
-    private readonly ThesisRepository _repo_Thesis;
+    readonly ThesisBankContext _context;
+    readonly StudentRepository _repo_Stud;
+    readonly ThesisRepository _repo_Thesis;
 
     public StudentRepositoryTest()
     {
@@ -41,7 +41,7 @@ public class StudentRepositoryTest : IDisposable
         context.Applies.Add(new Apply(1, 3) { Id = 5 });
         context.Applies.Add(new Apply(2, 3) { Id = 6 });
         context.Applies.Add(new Apply(3, 3) { Id = 7 });
-        context.Applies.Add(new Apply(3,1) {Id = 8, Status = Status.Accepted});
+        context.Applies.Add(new Apply(3, 1) { Id = 8, Status = Status.Accepted });
 
         context.SaveChangesAsync();
 
@@ -69,7 +69,8 @@ public class StudentRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadStudentIDByName_GivenAlyson_ReturnsId1(){
+    public async Task ReadStudentIDByName_GivenAlyson_ReturnsId1()
+    {
 
         var actual = await _repo_Stud.ReadStudentIDByName("Alyson");
 
@@ -104,7 +105,8 @@ public class StudentRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task Accept_Test(){
+    public async Task Accept_Test()
+    {
         var actual = await _repo_Stud.Accept(1, 3);
         Assert.Equal(Status.Archived, actual.Item2.Status);
     }

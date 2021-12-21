@@ -1,15 +1,9 @@
-
-
-
-
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddKeyPerFile("/run/secrets", optional: true);
 builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    //.AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
     .AddMicrosoftIdentityWebApi(options =>
         {
             builder.Configuration.Bind("AzureAd", options);
@@ -29,8 +23,6 @@ builder.Services.Configure<JwtBearerOptions>(
 
 builder.Services.AddRazorPages();
 
-//using var context = new ThesisBankContext(optionsBuilder.Options);
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -39,8 +31,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var connectionString = builder.Configuration.GetConnectionString("ThesisBank");
-builder.Services.AddDbContext<ThesisBankContext>(options=>options.UseSqlServer(connectionString,options => options.EnableRetryOnFailure(5)));
-//builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ThesisBank")));
+builder.Services.AddDbContext<ThesisBankContext>(options => options.UseSqlServer(connectionString, options => options.EnableRetryOnFailure(5)));
 builder.Services.AddScoped<IThesisBankContext, ThesisBankContext>();
 builder.Services.AddScoped<IThesisRepository, ThesisRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
@@ -63,26 +54,6 @@ else
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-}
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
-    app.UseWebAssemblyDebugging();
-}
-
-
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
-    app.UseWebAssemblyDebugging();
 }
 
 app.UseHttpsRedirection();

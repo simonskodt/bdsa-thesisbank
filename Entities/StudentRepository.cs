@@ -22,8 +22,9 @@ public class StudentRepository : IStudentRepository
 
         return (Response.Success, student);
     }
-    
-    public async Task<(Response, int?)> ReadStudentIDByName(string studentName){
+
+    public async Task<(Response, int?)> ReadStudentIDByName(string studentName)
+    {
         var student = await _context.Students
                                    .Where(s => s.Name == studentName)
                                    .FirstOrDefaultAsync();
@@ -61,19 +62,19 @@ public class StudentRepository : IStudentRepository
                             .Select(t => new ThesisDTO(t.Id, t.Name, t.Description, new TeacherDTO(t.Teacher.Id, t.Teacher.Name, t.Teacher.Email)))
                             .FirstOrDefaultAsync();
 
-        if(thesisDTO == null)
+        if (thesisDTO == null)
         {
             return (Response.NotFound, null);
         }
 
         var apply_dto = new ApplyDTO(applies.Status, studentDTO.Item2, thesisDTO);
 
-        return (Response.Updated, apply_dto);  
+        return (Response.Updated, apply_dto);
     }
 
     public async Task<Response> RemoveAllApplications(int studentID)
     {
-        
+
         var allPending = await _context.Applies
                         .Where(p => p.Status == Status.Pending || p.Status == Status.Accepted)
                         .Where(p => p.StudentID == studentID)

@@ -64,24 +64,24 @@ public class ApplyRepository : IApplyRepository
         {
             return null;
         }
-                            
-        var Applications = await _context.Applies
+
+        var applications = await _context.Applies
                         .Where(a => a.Status != Status.Archived)
                         .Where(a => a.StudentID == studentDTO.Id)
                         .Select(a => new ThesisDTODetailed(a.ThesisID, a.Thesis.Name, a.Thesis.Excerpt, new TeacherDTO(a.Thesis.Teacher.Id, a.Thesis.Teacher.Name, a.Thesis.Teacher.Email), a.Status, a.Id))
                         .ToListAsync();
 
 
-        var ApplyDTOs = new List<ApplyDTOWithMinalThesis>();
+        var applyDTOs = new List<ApplyDTOWithMinalThesis>();
 
 
-        foreach (var thesis in Applications)
+        foreach (var thesis in applications)
         {
-            var DTO = new ApplyDTOWithMinalThesis(thesis.ApplyID,thesis.status, studentDTO, new ThesisDTOMinimal(thesis.Id, thesis.Name, thesis.Excerpt, thesis.Teacher.Name));
-            ApplyDTOs.Add(DTO);
+            var DTO = new ApplyDTOWithMinalThesis(thesis.ApplyID, thesis.status, studentDTO, new ThesisDTOMinimal(thesis.Id, thesis.Name, thesis.Excerpt, thesis.Teacher.Name));
+            applyDTOs.Add(DTO);
         }
 
-        return ApplyDTOs.AsReadOnly();
+        return applyDTOs.AsReadOnly();
 
     }
 
@@ -110,10 +110,10 @@ public class ApplyRepository : IApplyRepository
         await _context.SaveChangesAsync();
 
         return (Response.Created, new ApplyDTOids(entity.Id, entity.Status, studentID, ThesisID));
-   }
+    }
 
 
-   public async Task<Response> DeleteApplied(int applyId)
+    public async Task<Response> DeleteApplied(int applyId)
     {
         Apply? pending = await _context.Applies
                         .Where(p => p.Id == applyId)

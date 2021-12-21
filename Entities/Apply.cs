@@ -14,7 +14,7 @@ public class Apply
         Thesis = thesis;
         Student = student;
     }
-    
+
     //This constructor is only used for testing purpose 
     public Apply(int thesisID, int studentID)
     {

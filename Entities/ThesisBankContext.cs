@@ -1,5 +1,5 @@
 ﻿
-﻿﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities;

@@ -36,7 +36,8 @@ public class ThesisRepository : IThesisRepository
     }
 
     //This method is used to find the id of the apply entity that will be deleted.
-    public async Task<(Response, ApplyDTOids)> FindApplyDTOid(int StudentID, int ThesisID){
+    public async Task<(Response, ApplyDTOids)> FindApplyDTOid(int StudentID, int ThesisID)
+    {
         var pending = await _context.Applies
                         .Where(p => p.StudentID == StudentID)
                         .Where(p => p.ThesisID == ThesisID)
@@ -52,7 +53,8 @@ public class ThesisRepository : IThesisRepository
         return (Response.Success, DTO);
     }
 
-    public async Task<IReadOnlyCollection<ThesisDTOMinimal>> ReadNonPendingTheses(int studentID){
+    public async Task<IReadOnlyCollection<ThesisDTOMinimal>> ReadNonPendingTheses(int studentID)
+    {
         var appliedThesisList = await ReadPendingThesis(studentID);
 
         var appliedThesisListIDs = new List<int>();
@@ -70,14 +72,15 @@ public class ThesisRepository : IThesisRepository
         var returnList = new List<ThesisDTOMinimal>();
 
         foreach (var thesis in allTheses)
-        {   
-            if (appliedThesisListIDs.Contains(thesis.Id) == false){
+        {
+            if (appliedThesisListIDs.Contains(thesis.Id) == false)
+            {
                 returnList.Add(thesis);
 
             }
         }
 
         return returnList.AsReadOnly();
-        
+
     }
 }

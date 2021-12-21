@@ -73,22 +73,22 @@ public class TeacherRepository : ITeacherRepository
         var thesesWithCurrentTeacherID = await _context.Theses
                                                 .Where(t => t.Teacher.Id == teacherID)
                                                 .ToListAsync();
-        var ThesesIDs = new List<int>();
+        var thesesIDs = new List<int>();
 
-        var Applies = new List<Apply>();
+        var applies = new List<Apply>();
 
         foreach (var item in thesesWithCurrentTeacherID)
         {
-            ThesesIDs.Add(item.Id);
+            thesesIDs.Add(item.Id);
         }
 
-        var Applications = await _context.Applies
-                                .Where(s => ThesesIDs.Contains(s.ThesisID))
+        var applications = await _context.Applies
+                                .Where(s => thesesIDs.Contains(s.ThesisID))
                                 .ToListAsync();
 
-        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
+        var applyDTOList = new List<ApplyDTOWithMinalThesis>();
 
-        foreach (var item in Applications)
+        foreach (var item in applications)
         {
             var studentDTO = await _context.Students
                                    .Where(s => s.Id == item.StudentID)
@@ -101,32 +101,32 @@ public class TeacherRepository : ITeacherRepository
                                    .FirstOrDefaultAsync();
 
             var DTO = new ApplyDTOWithMinalThesis(item.Id, item.Status, studentDTO, thesisDTO);
-            ApplyDTOList.Add(DTO);
+            applyDTOList.Add(DTO);
         }
 
-        return ApplyDTOList.AsReadOnly();
+        return applyDTOList.AsReadOnly();
     }
 
     public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>?> ReadPendingApplicationsByTeacherID(int teacherID)
     {
         var ownedAppliedEntries = await ReadApplicationsByTeacherID(teacherID);
 
-        var ApplyDTOList = new List<ApplyDTOWithMinalThesis>();
+        var applyDTOList = new List<ApplyDTOWithMinalThesis>();
 
 
         if (ownedAppliedEntries == null)
         {
-            return ApplyDTOList;
+            return applyDTOList;
         }
 
         foreach (var item in ownedAppliedEntries)
         {
             if (item.Status == Status.Pending)
             {
-                ApplyDTOList.Add(item);
+                applyDTOList.Add(item);
             }
         }
 
-        return ApplyDTOList.AsReadOnly();
+        return applyDTOList.AsReadOnly();
     }
 }

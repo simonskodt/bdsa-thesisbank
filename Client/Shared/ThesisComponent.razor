@@ -14,11 +14,11 @@
 </NavLink>
 
 @code {
-    public string ThesisLink = "";
+    public string ThesisLink;
 
     [Parameter]
     public int Id { get; set; } = 0;
-    
+
     [Parameter]
     public string title { get; set; } = "";
 
@@ -29,7 +29,7 @@
     public string keywords { get; set; } = "";
 
     [Parameter]
-    public string excerpt { get; set; } = ""; 
+    public string excerpt { get; set; } = "";
 
     protected override void OnParametersSet()
     {

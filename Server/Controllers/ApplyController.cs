@@ -1,15 +1,13 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Entities;
 namespace Server.Controllers;
-
 [Authorize]
 [ApiController]
-[Route("api/[controller]")]public class ApplyController : ControllerBase
+[Route("api/[controller]")]
+public class ApplyController : ControllerBase
 {
-    private readonly IApplyRepository _repository;
+    readonly IApplyRepository _repository;
 
-    public ApplyController(IApplyRepository repository) {
+    public ApplyController(IApplyRepository repository)
+    {
         _repository = repository;
     }
 
@@ -34,6 +32,6 @@ namespace Server.Controllers;
     public async Task<IActionResult> Post(ApplyPostDTO applyDTO)
     {
         var created = await _repository.ApplyForThesis(applyDTO.studentID, applyDTO.Thesis.Id);
-        return CreatedAtAction(nameof(Get), new {Id = created.Item2.Id}, created.Item2); 
+        return CreatedAtAction(nameof(Get), new { Id = created.Item2.Id }, created.Item2);
     }
 }
