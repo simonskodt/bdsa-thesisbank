@@ -72,7 +72,6 @@ public class ThesisRepositoryTest : IDisposable
         Assert.Equal((Response.NotFound, null), ReadThesisResponse);
     }
 
-
     [Fact]
     public async Task FindApplyDTOid_GivenStudent1AndThesis2_ReturnsApplyID2(){
 

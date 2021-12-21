@@ -65,8 +65,9 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         var rasmus = new Teacher("Rasmus", "rasmus@itu.dk");
 
         var thesis1 = new Thesis("How ITU mentally ruin students", thore);
-        thesis1.Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        thesis1.Excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
         var thesis2 = new Thesis("Why singletons are an anti-pattern", rasmus);
+        thesis2.Excerpt = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
         var thesis3 = new Thesis("A study on why notepad is the best IDE", thore);
 
         var applies1 = new Apply(thesis1, ahmed);

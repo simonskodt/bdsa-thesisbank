@@ -200,4 +200,49 @@ public class ApplyRepositoryTest : IDisposable
     {
         _context.Dispose();
     }
+
+    [Fact]
+    public async Task ReadAppliedByStudentID_GivenID1_returnsAppliesID_1_2_3_4(){
+        
+        var student = await _repo_Stud.ReadStudent(1);
+        var thesis1 = await _repo_Thesis.ReadThesis(1);
+        var thesis2 = await _repo_Thesis.ReadThesis(2);
+        var thesis3 = await _repo_Thesis.ReadThesis(3);
+        var thesis5 = await _repo_Thesis.ReadThesis(5);
+
+        var readList = await _repo_apply.ReadAppliedByStudentID(student.Item2.Id);
+
+        var expectedList = new List<ApplyDTOWithMinalThesis>();        
+            var apply1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2,
+            new ThesisDTOMinimal(thesis1.Item2.Id, thesis1.Item2.Name, null, thesis1.Item2.Teacher.Name));
+            var apply2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2,
+            new ThesisDTOMinimal(thesis2.Item2.Id, thesis2.Item2.Name, null, thesis2.Item2.Teacher.Name));
+            var apply3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student.Item2,
+            new ThesisDTOMinimal(thesis3.Item2.Id, thesis3.Item2.Name, null, thesis3.Item2.Teacher.Name));
+            var apply4 = new ApplyDTOWithMinalThesis(4, Status.Pending, student.Item2,
+            new ThesisDTOMinimal(thesis5.Item2.Id, thesis5.Item2.Name, null, thesis5.Item2.Teacher.Name));
+
+        expectedList.Add(apply1);
+        expectedList.Add(apply2);
+        expectedList.Add(apply3);
+        expectedList.Add(apply4);
+
+        Assert.Equal(readList, expectedList);
+
+    }
+
+    [Fact]
+    public async Task ReadAppliedByStudentID_GivenID1_ReturnsSameAppliesAs_ReadApplied(){
+        var ReadAppliedByStudentIDList = await _repo_apply.ReadAppliedByStudentID(1);
+        var ReadAppliedList = await _repo_apply.ReadApplied();
+
+        var newList = new List<ApplyDTOids>();
+        foreach (var apply in ReadAppliedByStudentIDList)
+        {
+            var applyDTOid = new ApplyDTOids(apply.Id, apply.Status, apply.Student.Id, apply.Thesis.Id);
+            newList.Add(applyDTOid);
+
+        }
+        Assert.Equal(ReadAppliedList, newList);
+    }
 }
