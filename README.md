@@ -36,6 +36,8 @@ Dependencies is then be downloaded, and the container created.
 
 The application can be accesed through  ```localhost:5077```.
 
+In case, the above **does not work**; running the script: `setup-script.ps1` will work instead.
+
 #### **3. Log in to the system**
 
 **To log in as a _Student_:** Press log in in the the top right corner.
