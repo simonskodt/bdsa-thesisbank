@@ -150,11 +150,6 @@ public class ApplyRepositoryTest : IDisposable
         Assert.Equal(Response.Deleted, readRemoved);
     }
 
-    public void Dispose()
-    {
-        _context.Dispose();
-    }
-
     [Fact]
     public async Task ReadAppliedByStudentID_GivenID1_returnsAppliesID_1_2_3_4(){
         
@@ -198,5 +193,10 @@ public class ApplyRepositoryTest : IDisposable
 
         }
         Assert.Equal(ReadAppliedList, newList);
+    }
+    
+    public void Dispose()
+    {
+        _context.Dispose();
     }
 }
