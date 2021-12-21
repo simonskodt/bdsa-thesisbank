@@ -12,7 +12,7 @@ The steps are outlined below.
 
 ### Powershell setup scripts
   
-**1. Setup .locals folder**<br> 
+**1. Setup .locals folder**
 To set up a .locals folder, simply run the powershell script   ```run_1.ps1``` or ```run_mac_1.ps1```  depending on what OS you are running.<br>
 After the script has run, it is important to navigate to the ```db_password.txt``` file. It it as so:
   ```txt
@@ -25,7 +25,8 @@ After the script has run, it is important to navigate to the ```db_password.txt`
 
 It is essential that the `GUID` text, and the slashes are _deleted_ before proceeding. This file should **only contain the sequence of characters and integers**, as seen at the bottom of the document.
 
-**2. Create and run the docker container**<br>
+**2. Create and run the docker container**
+
 Before running the next script, it is needed to delete or pause any containers running on port 1433:1433.
 Also delete the server image, if it is locally downloaded.
 
@@ -34,7 +35,7 @@ Dependencies is then be downloaded, and the container created.
 
 The application can be accesed through  ```localhost:5077```.
 
-**3. Log in to the system **<br>
+**3. Log in to the system**
 
 To log in as a _Student_: Press log in in the the top right corner. Enter the E-Mail: StudentPeterSWU@hotmail.com. And the password: SWUITU2021. Press Login. All the features as a student will now be available.
 
