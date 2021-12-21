@@ -6,54 +6,54 @@
 
 
 <div class="thesis">
-    <div class="card bg-grey mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")" style="box-shadow: 0 0 0 #000 !important;">
+    <div class="card bg-grey mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")"
+        style="box-shadow: 0 0 0 #000 !important;">
         <div class="row mb-4 mt-4">
             <div class="col-sm-8">
                 <h2 class="headline">@title</h2>
                 <h3>Applying Student: @student</h3>
             </div>
-                <div class="col d-flex flex-row justify-content-center">
-                    <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                        
-                        <NavLink href="/teacher" @onclick="reload">
-                            <button class="btn btn-apply shadow"@onclick="Accept"> Accept</button>
-                        </NavLink>
-              
-                        <NavLink href="/teacher" @onclick="reload">
-                            <button class="btn btn-cancel shadow"@onclick="Decline"> Decline </button>
-                        </NavLink>
-                    </div>
+            <div class="col d-flex flex-row justify-content-center">
+                <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
+
+                    <NavLink href="/teacher" @onclick="reload">
+                        <button class="btn btn-apply shadow" @onclick="Accept"> Accept</button>
+                    </NavLink>
+
+                    <NavLink href="/teacher" @onclick="reload">
+                        <button class="btn btn-cancel shadow" @onclick="Decline"> Decline </button>
+                    </NavLink>
                 </div>
+            </div>
         </div>
     </div>
 </div>
 
 @code {
-
-    private ApplyDTOids applyDTOid = null;
+    ApplyDTOids _applyDTOid = null;
 
     [Parameter]
     public int thesisID { get; set; } = 0;
 
     [Parameter]
-    public int studentID { get; set;} = 0;
+    public int studentID { get; set; } = 0;
 
     [Parameter]
     public string title { get; set; } = "";
 
     [Parameter]
-    public string student { get; set;} = "";
+    public string student { get; set; } = "";
 
     [Parameter]
-    public int applyId { get; set;} = 0;
+    public int applyId { get; set; } = 0;
 
     [Parameter]
-    public Status status { get; set;} = 0;
+    public Status status { get; set; } = 0;
 
     private async Task Accept()
     {
-        applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisID);
-        await Http.PutAsJsonAsync($"api/Teacher/"+ applyId, applyDTOid); 
+        _applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisID);
+        await Http.PutAsJsonAsync($"api/Teacher/" + applyId, _applyDTOid);
         reload();
     }
 
@@ -63,7 +63,8 @@
         reload();
     }
 
-    private void reload(){
+    private void reload()
+    {
         NavigationManager.NavigateTo("teacher", true);
     }
 }

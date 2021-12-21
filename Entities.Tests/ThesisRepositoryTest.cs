@@ -3,9 +3,9 @@
 public class ThesisRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
-    private readonly StudentRepository _repo_Stud;
+    readonly StudentRepository _repo_Stud;
 
-    private readonly ThesisRepository _repo_Thesis;
+    readonly ThesisRepository _repo_Thesis;
 
     public ThesisRepositoryTest()
     {
@@ -57,51 +57,54 @@ public class ThesisRepositoryTest : IDisposable
     [Fact]
     public async Task ReadThesis_GivenID1_ReturnWildAlgorithmsByThore()
     {
-        var Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
-        var ReadThesisResponse = await _repo_Thesis.ReadThesis(1);
+        var thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var readThesisResponse = await _repo_Thesis.ReadThesis(1);
 
-        Assert.Equal((Response.Success, new ThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", Thore)), ReadThesisResponse);
+        Assert.Equal((Response.Success, new ThesisDTO(1, "WildAlgorithms", "This is a Thesis about a very interesting topic", thore)), readThesisResponse);
     }
 
     [Fact]
     public async Task ReadThesis_GivenNonExisitingID_ReturnEmpty()
     {
-        var Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
-        var ReadThesisResponse = await _repo_Thesis.ReadThesis(8);
+        var thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        var readThesisResponse = await _repo_Thesis.ReadThesis(8);
 
-        Assert.Equal((Response.NotFound, null), ReadThesisResponse);
+        Assert.Equal((Response.NotFound, null), readThesisResponse);
     }
 
     [Fact]
-    public async Task FindApplyDTOid_GivenStudent1AndThesis2_ReturnsApplyID2(){
+    public async Task FindApplyDTOid_GivenStudent1AndThesis2_ReturnsApplyID2()
+    {
 
         var student1 = await _repo_Stud.ReadStudent(1);
         var thesis2 = await _repo_Thesis.ReadThesis(2);
 
 
         var readApply = await _repo_Thesis.FindApplyDTOid(student1.Item2.Id, thesis2.Item2.Id);
-        
+
         var madeApply = new ApplyDTOids(2, Status.Pending, student1.Item2.Id, thesis2.Item2.Id);
 
         Assert.Equal(readApply.Item2, madeApply);
     }
 
     [Fact]
-    public async Task FindApplyDTOid_GivenStudent1AndThesis3_ReturnsApplyID2(){
+    public async Task FindApplyDTOid_GivenStudent1AndThesis3_ReturnsApplyID2()
+    {
 
         var student1 = await _repo_Stud.ReadStudent(1);
         var thesis3 = await _repo_Thesis.ReadThesis(3);
 
 
         var readApply = await _repo_Thesis.FindApplyDTOid(student1.Item2.Id, thesis3.Item2.Id);
-        
+
         var madeApply = new ApplyDTOids(3, Status.Pending, student1.Item2.Id, thesis3.Item2.Id);
 
         Assert.Equal(readApply.Item2, madeApply);
     }
 
     [Fact]
-    public async Task ReadNonPendingTheses_GivenStudent1_ReturnThesis4(){
+    public async Task ReadNonPendingTheses_GivenStudent1_ReturnThesis4()
+    {
 
         var student = await _repo_Stud.ReadStudent(1);
         var thesis4 = await _repo_Thesis.ReadThesis(4);
@@ -115,7 +118,8 @@ public class ThesisRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadNonPendingTheses_GivenStudent2_ReturnThesis1_2_3_4(){
+    public async Task ReadNonPendingTheses_GivenStudent2_ReturnThesis1_2_3_4()
+    {
 
         var student2 = await _repo_Stud.ReadStudent(2);
 

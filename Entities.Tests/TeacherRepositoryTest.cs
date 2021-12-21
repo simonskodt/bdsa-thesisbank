@@ -2,11 +2,11 @@ namespace Entities.Tests;
 
 public class TeacherRepositoryTest : IDisposable
 {
-    private readonly ThesisBankContext _context;
-    private readonly StudentRepository _repo_Student;
-    private readonly ThesisRepository _repo_Thesis;
-    private readonly TeacherRepository _repo_Teacher;
-    private readonly ApplyRepository _repo_Apply;
+    readonly ThesisBankContext _context;
+    readonly StudentRepository _repo_Student;
+    readonly ThesisRepository _repo_Thesis;
+    readonly TeacherRepository _repo_Teacher;
+    readonly ApplyRepository _repo_Apply;
 
     public TeacherRepositoryTest()
     {
@@ -41,7 +41,7 @@ public class TeacherRepositoryTest : IDisposable
         context.Theses.Add(migration);
         context.Theses.Add(cSharp);
 
-        Apply applies1 = new Apply(1, 1) { Id = 1 };   
+        Apply applies1 = new Apply(1, 1) { Id = 1 };
         Apply applies2 = new Apply(2, 1) { Id = 2 };
         Apply applies3 = new Apply(2, 2) { Id = 3 };
         Apply applies4 = new Apply(5, 1) { Id = 4, Status = Status.Accepted };

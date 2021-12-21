@@ -28,7 +28,6 @@
 </AuthorizeView>
 
 @code{
-
     private async Task BeginLogout(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
@@ -36,7 +35,7 @@
     }
 
     [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
+    Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
-    private string _authMessage;
+    string _authMessage;
 }

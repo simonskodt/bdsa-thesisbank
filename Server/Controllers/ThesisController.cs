@@ -1,19 +1,11 @@
 using System.Collections.Generic;
-using Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Entities;
-
 namespace Server.Controllers;
-
-
 [Authorize]
 [ApiController]
-// [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 [Route("api/[controller]")]
 public class ThesisController : ControllerBase
 {
-    private readonly IThesisRepository _repository;
+    readonly IThesisRepository _repository;
 
     public ThesisController(IThesisRepository repository)
     {
@@ -29,13 +21,16 @@ public class ThesisController : ControllerBase
     [HttpGet("{StudentID}/{ThesisID}")]
     [ProducesResponseType(404)]
     [ProducesResponseType(typeof(ApplyDTOids), 201)]
-    public async Task<ActionResult<ApplyDTOids>> Get(int StudentID, int ThesisID){
-
+    public async Task<ActionResult<ApplyDTOids>> Get(int StudentID, int ThesisID)
+    {
         var repsonse = await _repository.FindApplyDTOid(StudentID, ThesisID);
 
-        if(repsonse.Item1 == Core.Response.Success){
+        if (repsonse.Item1 == Core.Response.Success)
+        {
             return repsonse.Item2;
-        }else{
+        }
+        else
+        {
             return new NotFoundResult();
         }
     }

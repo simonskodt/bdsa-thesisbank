@@ -5,80 +5,86 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @attribute [Authorize]
 
-@if (Thesis != null) {
-<div class="row justify-content-center">
+@if (_thesis != null)
+{
+    <div class="row justify-content-center">
     <div class="col-sm-12 col-lg-10">
         <div class="col-sm-12 mb-4">
-            <a href="/" class="btn btn-login shadow" style="margin-left: 0"><i class="btn-i-left fas fa-chevron-left"> </i>Back</a>
+            <a href="/" class="btn btn-login shadow" style="margin-left: 0"><i class="btn-i-left fas fa-chevron-left">
+                </i>Back</a>
         </div>
-        <h1>@Thesis.Name</h1>
+        <h1>@_thesis.Name</h1>
         <div class="top-box mt-5">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-space">
-                    <h2 class="h3">Professor @Thesis.Teacher.Name</h2>
+                    <h2 class="h3">Professor @_thesis.Teacher.Name</h2>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    @if (!appliedFor)
-                    {
-                        <div>
-                            <button class="btn btn-lg bg-yellow shadow" @onclick="Apply">Apply</button>
-                        </div>
-                    }
-                    else
-                    {
-                        <div>
-                            <button class="btn btn-lg bg-red shadow" @onclick="Delete">Cancel</button>
+                    @if (!_appliedFor)
+                        {
+                            <div>
+                                <button class="btn btn-lg bg-yellow shadow" @onclick="Apply">Apply</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <button class="btn btn-lg bg-red shadow" @onclick="Delete">Cancel</button>
 
-                        </div>
-                    }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
+            <div class="content content-grey mt-5">
+                @((MarkupString)_thesis.Description)
+            </div>
         </div>
-        <div class="content content-grey mt-5">
-            @((MarkupString)Thesis.Description)
-        </div>
-    </div>
-</div>
-} else if (Thesis == null && returned) {
-    <div>
-        <h1>Nothing found</h1>
-    </div>
-} else {
-    <div>
-        <p>loading</p>
     </div>
 }
- 
-@code {
-    private bool returned;
+else if (_thesis == null && _returned)
+{
+    <div>
+    <h1>Nothing found</h1>
+</div>
+}
+else
+{
+    <div>
+    <p>loading</p>
+</div>
+}
 
-    private ThesisDTO? Thesis;
+@code {
+    bool _returned;
+
+    ThesisDTO? _thesis;
 
     [Parameter]
     public int? Id { get; set; } = 0;
 
-    private bool appliedFor = false;   
+    bool _appliedFor;
 
     private async Task Apply()
     {
-        appliedFor = !appliedFor;
+        _appliedFor = !_appliedFor;
         var username = await localStorage.GetItemAsync<string>("user");
-        
+
         var usernameInt = Int32.Parse(username);
-        
-        var createDTO = new ApplyPostDTO(Status.Pending, usernameInt, Thesis);
+
+        var createDTO = new ApplyPostDTO(Status.Pending, usernameInt, _thesis);
 
         var apply = await Http.PostAsJsonAsync("/api/apply", createDTO);
     }
 
     private async Task Delete()
     {
-        appliedFor = !appliedFor;
+        _appliedFor = !_appliedFor;
         var username = await localStorage.GetItemAsync<string>("user");
-        
+
         var usernameInt = Int32.Parse(username);
-        
-        var applyDTO= await Http.GetFromJsonAsync<ApplyDTOids?>($"api/Thesis/{usernameInt}/{Thesis.Id}");
+
+        var applyDTO = await Http.GetFromJsonAsync<ApplyDTOids?>($"api/Thesis/{usernameInt}/{_thesis.Id}");
 
         await Http.DeleteAsync($"api/Apply/{applyDTO.Id}");
     }
@@ -88,10 +94,10 @@
         var username = await localStorage.GetItemAsync<string>("user");
         var usernameInt = Int32.Parse(username);
 
-        returned = false;
+        _returned = false;
 
-        Thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
+        _thesis = await Http.GetFromJsonAsync<ThesisDTO>("api/Thesis/" + Id);
 
-        returned = true;
+        _returned = true;
     }
 }

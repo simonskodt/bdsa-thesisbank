@@ -24,14 +24,14 @@
         </NavLink>
     </div>
     <div class="row">
-    @if(Theses != null) {
-        @foreach (var Thesis in Theses)
+    @if(_theses != null) {
+        @foreach (var thesis in _theses)
         {
             <ThesisComponent 
-                Id="@Thesis.Id"
-                Title="@Thesis.Name"
-                Teacher="@Thesis.TeacherName"
-                Excerpt="@Thesis.Excerpt"
+                Id="@thesis.Id"
+                Title="@thesis.Name"
+                Teacher="@thesis.TeacherName"
+                Excerpt="@thesis.Excerpt"
             />
         }
     }
@@ -39,16 +39,14 @@
 </div>
 
 @code {
-
-
     [CascadingParameter]
-    private Task<AuthenticationState> authenticationStateTask { get; set; }
+    Task<AuthenticationState> _authenticationStateTask { get; set; }
 
-    private ThesisDTOMinimal[]? Theses;
+    ThesisDTOMinimal[]? _theses;
 
     protected override async Task OnInitializedAsync()
     {
-        var authState = await authenticationStateTask;
+        var authState = await _authenticationStateTask;
         var user = authState.User;
         
         var StudentID = await Http.GetFromJsonAsync<int?>($"api/Student/{user.Identity.Name}");
@@ -61,6 +59,6 @@
         
         var usernameInt = Int32.Parse(username);
             
-        Theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
+        _theses = await Http.GetFromJsonAsync<ThesisDTOMinimal[]>("api/Theses/" + usernameInt);
     }
 }

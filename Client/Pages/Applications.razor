@@ -16,8 +16,8 @@
         </NavLink>
     </div>
     <div class="row">
-       @if (applies != null) {
-            @foreach (var Apply in applies)
+       @if (_applies != null) {
+            @foreach (var Apply in _applies)
                 {
                 <ApplicationComponent 
                     thesisId ="@Apply.Thesis.Id"
@@ -35,15 +35,14 @@
 </div>
 
 @code {
-    private ApplyDTOWithMinalThesis[]? applies;
+    ApplyDTOWithMinalThesis[]? _applies;
 
     protected override async Task OnInitializedAsync()
     {
-
-    var username = await localStorage.GetItemAsync<string>("user"); 
-    var usernameInt = Int32.Parse(username);
-    
-    applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Apply/" + usernameInt);
+        var username = await localStorage.GetItemAsync<string>("user"); 
+        var usernameInt = Int32.Parse(username);
+        
+        _applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Apply/" + usernameInt);
     }
 }
 

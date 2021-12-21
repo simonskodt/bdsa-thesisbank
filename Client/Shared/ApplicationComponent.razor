@@ -3,45 +3,47 @@
 @inject NavigationManager NavigationManager;
 
 
-    <div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
-        <div class="row">
-            <div class="col-sm-8">
-                <h2 class="headline">@title</h2>
-                <h3>Professor @teacher</h3>
-                <h4 class="text-muted h6">@keywords</h4>
-                <div class="excerpt">
-                    @((MarkupString)excerpt)
+<div class="card mb-4 mt-3 border-0 @(true ? "yellow" : "bg-grey")">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2 class="headline">@title</h2>
+            <h3>Professor @teacher</h3>
+            <h4 class="text-muted h6">@keywords</h4>
+            <div class="excerpt">
+                @((MarkupString)excerpt)
+            </div>
+        </div>
+        @if (accepted == Status.Accepted)
+        {
+            <div class="col d-flex flex-row justify-content-center">
+                <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
+                    <button class="btn btn-apply" @onclick="Accept">Accept</button>
+                    <button class="btn btn-cancel" @onclick="Delete">Decline</button>
                 </div>
             </div>
-                @if (accepted == Status.Accepted) {
-                    <div class="col d-flex flex-row justify-content-center">
-                        <div class="accepted-btns d-flex flex-column justify-content-around" style="width: 80%">
-                            <button class="btn btn-apply"@onclick="Accept">Accept</button>
-                            <button class="btn btn-cancel"@onclick="Delete">Decline</button>
-                        </div>
-                    </div>
-                } else {
-                    <div class="col d-flex justify-content-center align-items-center">
-                        <div class="not-accepted-btn" style="width: 80%">
-                            <NavLink href="/applications" @onclick="reload">
-                            <button class="btn btn-cancel" @onclick="Delete"> Cancel</button>
-                            </NavLink>
-                        </div>
-                    </div>
-                }
-        </div>
+        }
+        else
+        {
+            <div class="col d-flex justify-content-center align-items-center">
+                <div class="not-accepted-btn" style="width: 80%">
+                    <NavLink href="/applications" @onclick="reload">
+                        <button class="btn btn-cancel" @onclick="Delete"> Cancel</button>
+                    </NavLink>
+                </div>
+            </div>
+        }
     </div>
+</div>
 
 @code {
-
-    private ApplyDTOids applyDTOid = null;
+    ApplyDTOids _applyDTOid = null;
 
     [Parameter]
-    public int studentID { get; set;} = 0;
+    public int studentID { get; set; } = 0;
 
     [Parameter]
     public int thesisId { get; set; } = 0;
-    
+
     [Parameter]
     public string title { get; set; } = "";
 
@@ -52,10 +54,10 @@
     public string keywords { get; set; } = "";
 
     [Parameter]
-    public string student { get; set;} = "";
+    public string student { get; set; } = "";
 
     [Parameter]
-    public string excerpt { get; set; } = "";    
+    public string excerpt { get; set; } = "";
 
     [Parameter]
     public Status accepted { get; set; } = 0;
@@ -64,21 +66,24 @@
     public int applyId { get; set; } = 0;
 
     [Parameter]
-    public Status status { get; set;} = 0;
+    public Status status { get; set; } = 0;
 
-    private async Task Accept(){
-        applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisId);
-        await Http.PutAsJsonAsync($"api/Student/"+ applyId, applyDTOid);
+    private async Task Accept()
+    {
+        _applyDTOid = new ApplyDTOids(applyId, status, studentID, thesisId);
+        await Http.PutAsJsonAsync($"api/Student/" + applyId, _applyDTOid);
         await Http.DeleteAsync($"api/Student/" + studentID);
         reload();
     }
 
-    private async Task Delete(){
+    private async Task Delete()
+    {
         await Http.DeleteAsync($"api/Apply/{applyId}");
         reload();
     }
 
-    private void reload(){
+    private void reload()
+    {
         NavigationManager.NavigateTo("applications", true);
     }
 

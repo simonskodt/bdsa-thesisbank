@@ -2,10 +2,10 @@ namespace Entities.Tests;
 public class ApplyRepositoryTest : IDisposable
 {
     readonly ThesisBankContext _context;
-    private readonly ApplyRepository _repo_apply;
-    private readonly StudentRepository _repo_Stud;
-    private readonly ThesisRepository _repo_Thesis;
-    private readonly TeacherRepository _repo_Teacher;
+    readonly ApplyRepository _repo_apply;
+    readonly StudentRepository _repo_Stud;
+    readonly ThesisRepository _repo_Thesis;
+    readonly TeacherRepository _repo_Teacher;
 
     public ApplyRepositoryTest()
     {
@@ -50,7 +50,7 @@ public class ApplyRepositoryTest : IDisposable
         context.Applies.Add(applies2);
         context.Applies.Add(applies3);
         context.Applies.Add(applies4);
-        
+
 
         context.SaveChangesAsync();
 
@@ -81,25 +81,25 @@ public class ApplyRepositoryTest : IDisposable
         var student = await _repo_Stud.ReadStudent(1);
         var thesis1 = await _repo_Thesis.ReadThesis(5);
 
-        var ExpectedDTO = new ApplyDTO(Status.Pending, student.Item2, thesis1.Item2);
+        var expectedDTO = new ApplyDTO(Status.Pending, student.Item2, thesis1.Item2);
 
-        var AppliedEntry = await _repo_apply.ReadApplied(1, 5);
+        var appliedEntry = await _repo_apply.ReadApplied(1, 5);
 
-        Assert.Equal((Response.Success, ExpectedDTO), AppliedEntry);
+        Assert.Equal((Response.Success, expectedDTO), appliedEntry);
     }
 
     [Fact]
     public async Task ReadApplied_GivenStudentID1AndThesisID2_ReturnsResponseSuccesAndApplyDTO()
     {
-        TeacherDTO Thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
-        StudentDTO Alyson = new StudentDTO(1, "Alyson", "Alyson@mail.dk");
-        ThesisDTO Thesis2 = new ThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", Thore);
+        TeacherDTO thore = new TeacherDTO(1, "Thore", "Thore@itu.dk");
+        StudentDTO alyson = new StudentDTO(1, "Alyson", "Alyson@mail.dk");
+        ThesisDTO thesis2 = new ThesisDTO(2, "GraphAlgorithms", "This is a Thesis about a very interesting algorithm", thore);
 
-        var ExpectedDTO = new ApplyDTO(Status.Pending, Alyson, Thesis2);
+        var expectedDTO = new ApplyDTO(Status.Pending, alyson, thesis2);
 
-        var AppliedEntry = await _repo_apply.ReadApplied(1, 2);
+        var appliedEntry = await _repo_apply.ReadApplied(1, 2);
 
-        Assert.Equal((Response.Success, ExpectedDTO), AppliedEntry);
+        Assert.Equal((Response.Success, expectedDTO), appliedEntry);
     }
 
 
@@ -151,8 +151,9 @@ public class ApplyRepositoryTest : IDisposable
     }
 
     [Fact]
-    public async Task ReadAppliedByStudentID_GivenID1_returnsAppliesID_1_2_3_4(){
-        
+    public async Task ReadAppliedByStudentID_GivenID1_returnsAppliesID_1_2_3_4()
+    {
+
         var student = await _repo_Stud.ReadStudent(1);
         var thesis1 = await _repo_Thesis.ReadThesis(1);
         var thesis2 = await _repo_Thesis.ReadThesis(2);
@@ -161,15 +162,15 @@ public class ApplyRepositoryTest : IDisposable
 
         var readList = await _repo_apply.ReadAppliedByStudentID(student.Item2.Id);
 
-        var expectedList = new List<ApplyDTOWithMinalThesis>();        
-            var apply1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2,
-            new ThesisDTOMinimal(thesis1.Item2.Id, thesis1.Item2.Name, null, thesis1.Item2.Teacher.Name));
-            var apply2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2,
-            new ThesisDTOMinimal(thesis2.Item2.Id, thesis2.Item2.Name, null, thesis2.Item2.Teacher.Name));
-            var apply3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student.Item2,
-            new ThesisDTOMinimal(thesis3.Item2.Id, thesis3.Item2.Name, null, thesis3.Item2.Teacher.Name));
-            var apply4 = new ApplyDTOWithMinalThesis(4, Status.Pending, student.Item2,
-            new ThesisDTOMinimal(thesis5.Item2.Id, thesis5.Item2.Name, null, thesis5.Item2.Teacher.Name));
+        var expectedList = new List<ApplyDTOWithMinalThesis>();
+        var apply1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2,
+        new ThesisDTOMinimal(thesis1.Item2.Id, thesis1.Item2.Name, null, thesis1.Item2.Teacher.Name));
+        var apply2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2,
+        new ThesisDTOMinimal(thesis2.Item2.Id, thesis2.Item2.Name, null, thesis2.Item2.Teacher.Name));
+        var apply3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student.Item2,
+        new ThesisDTOMinimal(thesis3.Item2.Id, thesis3.Item2.Name, null, thesis3.Item2.Teacher.Name));
+        var apply4 = new ApplyDTOWithMinalThesis(4, Status.Pending, student.Item2,
+        new ThesisDTOMinimal(thesis5.Item2.Id, thesis5.Item2.Name, null, thesis5.Item2.Teacher.Name));
 
         expectedList.Add(apply1);
         expectedList.Add(apply2);
@@ -177,24 +178,24 @@ public class ApplyRepositoryTest : IDisposable
         expectedList.Add(apply4);
 
         Assert.Equal(readList, expectedList);
-
     }
 
     [Fact]
-    public async Task ReadAppliedByStudentID_GivenID1_ReturnsSameAppliesAs_ReadApplied(){
-        var ReadAppliedByStudentIDList = await _repo_apply.ReadAppliedByStudentID(1);
-        var ReadAppliedList = await _repo_apply.ReadApplied();
+    public async Task ReadAppliedByStudentID_GivenID1_ReturnsSameAppliesAs_ReadApplied()
+    {
+        var readAppliedByStudentIDList = await _repo_apply.ReadAppliedByStudentID(1);
+        var readAppliedList = await _repo_apply.ReadApplied();
 
         var newList = new List<ApplyDTOids>();
-        foreach (var apply in ReadAppliedByStudentIDList)
+        foreach (var apply in readAppliedByStudentIDList)
         {
             var applyDTOid = new ApplyDTOids(apply.Id, apply.Status, apply.Student.Id, apply.Thesis.Id);
             newList.Add(applyDTOid);
 
         }
-        Assert.Equal(ReadAppliedList, newList);
+        Assert.Equal(readAppliedList, newList);
     }
-    
+
     public void Dispose()
     {
         _context.Dispose();

@@ -6,7 +6,7 @@
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @attribute [Authorize]
 
-@if (applies != null) {
+@if (_applies != null) {
 <div>
     <div class="row mb-5">
         <h1 class="mb-5">Your pending applications</h1>
@@ -15,20 +15,20 @@
         </NavLink>
     </div>
     <div class="row">
-            @foreach (var Apply in applies){
+            @foreach (var apply in _applies){
                 <TeacherComponent 
-                    thesisID="@Apply.Thesis.Id"
-                    title="@Apply.Thesis.Name"
-                    student="@Apply.Student.Name"
-                    studentID="@Apply.Student.Id"
-                    applyId = "@Apply.Id"
-                    status = "@Apply.Status"
+                    thesisID="@apply.Thesis.Id"
+                    title="@apply.Thesis.Name"
+                    student="@apply.Student.Name"
+                    studentID="@apply.Student.Id"
+                    applyId = "@apply.Id"
+                    status = "@apply.Status"
                 />
             }
     </div>
 </div>
 
-} else if (applies == null){
+} else if (_applies == null){
     <div>
         <h1>You must be a teacher to acces this page</h1>
     </div>
@@ -36,10 +36,10 @@
 
 
 @code {
-    private ApplyDTOWithMinalThesis[]? applies;
+    ApplyDTOWithMinalThesis[]? _applies;
 
     protected override async Task OnInitializedAsync()
     {
-        applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Teacher/" + 1);
+        _applies = await Http.GetFromJsonAsync<ApplyDTOWithMinalThesis[]>("api/Teacher/" + 1);
     }
 }
