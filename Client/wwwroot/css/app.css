@@ -196,3 +196,7 @@ a, a:not(.top-btn):hover, a:focus, a:active {
     border-bottom: 1px solid rgba(0,0,0, 1);
 }
 
+
+div#blazor-error-ui {
+    display: none !important;
+}
