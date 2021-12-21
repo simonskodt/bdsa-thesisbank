@@ -14,7 +14,7 @@
 
 <AuthorizeView>
     <Authorized>
-        <div class="d-flex flex-direction-row align-items-center justify-content-end d-none d-lg-block">
+        <div class="d-flex flex-direction-row align-items-center justify-content-end d-none d-lg-block text-right">
             <span class="roboto-500">Hello @context.User.Identity?.Name</span>
             <button class="btn btn-login shadow" @onclick="BeginLogout">Log out</button>
         </div>
