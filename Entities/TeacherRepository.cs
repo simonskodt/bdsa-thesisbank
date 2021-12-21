@@ -67,7 +67,7 @@ public class TeacherRepository : ITeacherRepository
     
     }
 
-     public async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> ReadApplicationsByTeacherID(int teacherID)
+     private async Task<IReadOnlyCollection<ApplyDTOWithMinalThesis>> ReadApplicationsByTeacherID(int teacherID)
     {
 
         var thesesWithCurrentTeacherID = await _context.Theses

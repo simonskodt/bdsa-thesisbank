@@ -123,31 +123,6 @@ public class TeacherRepositoryTest : IDisposable
         Assert.Empty(actual);
     }
 
-      [Fact]
-    public async Task ReadApplicationsByTeacherID_GivenTeacherID1_ReturnsListOfApplyDTO()
-    {
-        
-        var student = await _repo_Student.ReadStudent(1);
-        var student2 = await _repo_Student.ReadStudent(2);
-        
-        var thesis1 = new ThesisDTOMinimal(1, "WildAlgorithms", null, "Thore");
-        var thesis2 = new ThesisDTOMinimal(2, "GraphAlgorithms", null, "Thore");
-        var thesis4 = new ThesisDTOMinimal(5, "CSharp", null, "Thore");
-
-        var readList = await _repo_Teacher.ReadApplicationsByTeacherID(1);
-
-        var expected_DTO_1 = new ApplyDTOWithMinalThesis(1, Status.Pending, student.Item2, thesis1);
-        var expected_DTO_2 = new ApplyDTOWithMinalThesis(2, Status.Pending, student.Item2, thesis2);
-        var expected_DTO_3 = new ApplyDTOWithMinalThesis(3, Status.Pending, student2.Item2, thesis2);
-        var expected_DTO_4 = new ApplyDTOWithMinalThesis(4, Status.Accepted, student.Item2, thesis4);
-
-        Assert.Collection(readList,
-        thesis => Assert.Equal(expected_DTO_1, thesis),
-        thesis => Assert.Equal(expected_DTO_2, thesis),
-        thesis => Assert.Equal(expected_DTO_3, thesis),
-        thesis => Assert.Equal(expected_DTO_4, thesis));
-    }
-
     [Fact]
     public async Task ReadPendingStudentApplication_GivenTeahcerID1_ReturnListOfPendingApplyDTOs()
     {
