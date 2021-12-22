@@ -36,7 +36,7 @@ Dependencies is then be downloaded, and the container created.
 
 The application can be accesed through  ```localhost:5077```.
 
-In case, the above **does not work**; running the script: `setup-script.ps1` or `setup-script_mac.ps1` depending on if you're running windows or mac. 
+In case, the above **does not work**; running the script: `setup-script.ps1` or `setup-script_mac.ps1` depending on the OS. 
 Then navigate to the server directory and write  ```dotnet run``` instead. Then you can connect to the web-application through localhost.
 
 #### **3. Log in to the system**
