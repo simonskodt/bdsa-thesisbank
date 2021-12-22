@@ -4,7 +4,7 @@ _ThesisBank_ project in Analysis, Design, and Software Architecture (BSDA) 3. se
 
 ## Project description
 
-ThesisBank is a project bank that allow students to collaborate with teachers on a thesis. 
+_ThesisBank_ is a project bank that allow students to collaborate with teachers on a thesis. 
 This vertical slice allows students to find a thesis and to apply for it, 
 it allows teachers to confirm or reject the given application,
 and finally it allows the student to see the change in status and accept the collaboration on the chosen thesis. 
