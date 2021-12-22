@@ -42,8 +42,8 @@ Please delete the `server` image, if it has already been previously created.
 Then run the  ```run_2.ps1``` command, for both windows and mac OS, and agree to the permissions that are asked for. 
 Dependencies are then downloaded, and the docker container created.
 
-The application can be accesed through  ```http://localhost:5077```.
-It will redirect you automatically to a secure protocol ```http://localhost:7213```.
+The application can be accesed through  ```http://localhost:5077```.<br>
+It will redirect you automatically to a secure protocol ```https://localhost:7213```.
 
 In case, the above **does not work**; running the script: `setup-script.ps1` or `setup-script_mac.ps1` depending on the OS. 
 Then navigate to the `Server` directory and write  ```dotnet run``` instead. 
